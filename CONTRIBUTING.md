@@ -343,7 +343,8 @@ jobs:
 │   ├── openapi/                 # OpenAPI仕様
 │   └── json-schema/             # JSONスキーマファイル
 ├── CONTRIBUTING.md              # 貢献ガイドライン
-└── CHANGELOG.md                 # 変更履歴
+├── CHANGELOG.md                 # 変更履歴
+└── README.md                    # ReadMe
 ```
 
 ### バージョニング
