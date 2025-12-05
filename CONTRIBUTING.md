@@ -20,20 +20,6 @@
 - **JSON / YAML**: スキーマファイルの構文ハイライトとフォーマット
 - **Prettier**: コードフォーマッター
 
-### セットアップ手順
-```bash
-# リポジトリのクローン
-git clone https://github.com/your-org/smart-building-data-models.git
-cd smart-building-data-models
-
-# 依存関係（検証ツール: AJV, json-schema-ref-parser等）のインストール
-npm install
-
-# 動作確認（既存スキーマの検証）
-npm run validate
-```
-
-
 
 ## 2. ディレクトリ構造
 
