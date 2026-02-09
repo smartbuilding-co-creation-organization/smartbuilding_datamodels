@@ -1,0 +1,18 @@
+id: sbco:site_demo_008
+name: Demo Site Invalid isPointOf
+hasPart:
+  - id: sbco:building_demo_008
+    name: Demo Building
+    hasPart:
+      - id: sbco:level_demo_8f
+        name: 8F
+        hasPart:
+          - id: sbco:room_demo_801
+            name: Demo Room
+            hasPoint:
+              - id: sbco:point_temp_008
+                type: PointExt
+                name: Room Temperature
+                pointType: TemperatureSensor
+                unit: sbco:UnitEnum#celsius
+                isPointOf: sbco:room_demo_801

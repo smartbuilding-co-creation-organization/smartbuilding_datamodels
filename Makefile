@@ -1,8 +1,11 @@
-.PHONY: venv install gen docs serve build deploy clean
+.PHONY: venv install gen docgen docs serve build deploy validate clean
 
 VENV=.venv
 PYTHON=$(VENV)/bin/python
 PIP=$(VENV)/bin/pip
+LINKML=$(VENV)/bin/linkml
+GEN_DOC=$(VENV)/bin/gen-doc
+MKDOCS=$(VENV)/bin/mkdocs
 
 venv:
 	python3 -m venv $(VENV)
@@ -11,20 +14,29 @@ install: venv
 	$(PIP) install -U pip
 	$(PIP) install -r requirements.txt
 
+docgen:
+	$(GEN_DOC) --directory docs schema/building_model_shacl.yaml
+
 gen:
-	linkml generate owl --schema schema/building_model.yaml --output output/building_model.owl.ttl
-	linkml generate shacl --schema schema/building_model.yaml --output output/building_model.shacl.ttl
-	linkml generate json-schema --schema schema/building_model.yaml --output output/building_model.schema.json
-	linkml generate doc --directory docs schema/building_model.yaml
+	$(LINKML) generate owl --metadata-profile rdfs schema/building_model_owl.yaml -f ttl > output/building_model.owl.ttl
+	$(LINKML) generate shacl --non-closed --suffix Shape schema/building_model_shacl.yaml > output/building_model.shacl.ttl
+	$(LINKML) generate json-schema schema/building_model_shacl.yaml > output/building_model.schema.json
+	$(GEN_DOC) --directory docs schema/building_model_shacl.yaml
 
-docs:
-	mkdocs build
+validate: gen
+	$(PYTHON) scripts/generate_validation_ttl.py --schema schema/building_model_shacl.yaml --cases sample/validation/cases.yaml
+	$(PYTHON) scripts/validate_rdf.py --schema schema/building_model_shacl.yaml --ontology output/building_model.owl.ttl --shacl output/building_model.shacl.ttl --cases sample/validation/cases.yaml --use-output-ttl
 
-serve:
-	mkdocs serve
+docs: docgen
+	$(MKDOCS) build
 
-deploy:
-	mkdocs gh-deploy --force --clean
+serve: docgen
+	$(MKDOCS) serve
+
+build: docs
+
+deploy: docgen
+	$(MKDOCS) gh-deploy --force --clean
 
 clean:
 	rm -rf site

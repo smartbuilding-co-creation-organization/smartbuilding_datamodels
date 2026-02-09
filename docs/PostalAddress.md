@@ -56,7 +56,7 @@ URI: [rec:PostalAddress](https://w3id.org/rec/PostalAddress)
     
         
         
-        PostalAddress --> "1..*" KeyStringMapEntry : identifiers
+        PostalAddress --> "*" KeyStringMapEntry : identifiers
         click KeyStringMapEntry href "../KeyStringMapEntry/"
     
 
@@ -90,7 +90,7 @@ URI: [rec:PostalAddress](https://w3id.org/rec/PostalAddress)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [name](name.md) | 1 <br/> [String](String.md) | Machine or Human-readable name | direct |
-| [identifiers](identifiers.md) | 1..* <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | direct |
+| [identifiers](identifiers.md) | * <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | direct |
 | [customTags](customTags.md) | * <br/> [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) | direct |
 | [customProperties](customProperties.md) | * <br/> [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the resource | [Information](Information.md) |
@@ -113,6 +113,9 @@ URI: [rec:PostalAddress](https://w3id.org/rec/PostalAddress)
 | [Site](Site.md) | [address](address.md) | range | [PostalAddress](PostalAddress.md) |
 | [Building](Building.md) | [address](address.md) | range | [PostalAddress](PostalAddress.md) |
 | [Level](Level.md) | [address](address.md) | range | [PostalAddress](PostalAddress.md) |
+| [Room](Room.md) | [address](address.md) | range | [PostalAddress](PostalAddress.md) |
+| [Zone](Zone.md) | [address](address.md) | range | [PostalAddress](PostalAddress.md) |
+| [OutdoorSpace](OutdoorSpace.md) | [address](address.md) | range | [PostalAddress](PostalAddress.md) |
 
 
 
@@ -239,7 +242,7 @@ attributes:
     - ArchitectureArea
     - ArchitectureCapacity
     range: KeyStringMapEntry
-    required: true
+    required: false
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -302,6 +305,8 @@ attributes:
     alias: description
     owner: PostalAddress
     domain_of:
+    - Space
+    - Asset
     - Information
     range: string
   format:

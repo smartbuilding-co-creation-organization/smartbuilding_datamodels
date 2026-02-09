@@ -1,0 +1,129 @@
+id: sbco:site_tokyo_001
+name: 東京第1サイト
+hasPart:
+- id: sbco:building_A
+  name: Aビル
+  hasPart:
+  - id: sbco:level_1F
+    name: 1階
+    hasPart:
+    - id: sbco:room_101
+      name: 会議室101
+      isLocationOf:
+      - sbco:pac_001
+      - sbco:lighting_001
+      - sbco:lighting_002
+      - sbco:sensor_001
+      - sbco:sensor_002
+    - id: sbco:room_102
+      name: 事務室102
+      isLocationOf:
+      - sbco:pac_002
+      - sbco:pac_003
+      - sbco:lighting_003
+      - sbco:lighting_004
+      - sbco:lighting_005
+      - sbco:sensor_003
+      - sbco:sensor_004
+      - sbco:sensor_005
+    - id: sbco:room_103
+      name: 受付103
+      isLocationOf:
+      - sbco:lighting_006
+      - sbco:sensor_006
+    - id: sbco:room_104
+      name: 倉庫104
+      isLocationOf:
+      - sbco:lighting_007
+      - sbco:sensor_007
+    - id: sbco:room_105
+      name: サーバー室105
+      isLocationOf:
+      - sbco:pac_004
+      - sbco:pac_005
+      - sbco:lighting_008
+      - sbco:sensor_008
+      - sbco:sensor_009
+      - sbco:sensor_010
+      - sbco:sensor_011
+    - id: sbco:room_106
+      name: 休憩室106
+      isLocationOf:
+      - sbco:pac_006
+      - sbco:lighting_009
+      - sbco:sensor_012
+      - sbco:sensor_013
+  - id: sbco:level_2F
+    name: 2階
+    hasPart:
+    - id: sbco:room_201
+      name: 大会議室201
+      isLocationOf:
+      - sbco:pac_007
+      - sbco:pac_008
+      - sbco:pac_009
+      - sbco:lighting_10
+    - id: sbco:room_202
+      name: 事務室202
+      isLocationOf:
+      - sbco:pac_010
+      - sbco:lighting_013
+      - sbco:lighting_014
+      - sbco:sensor_017
+      - sbco:sensor_018
+    - id: sbco:room_203
+      name: 事務室203
+      isLocationOf:
+      - sbco:pac_011
+      - sbco:lighting_015
+      - sbco:lighting_016
+      - sbco:sensor_019
+      - sbco:sensor_020
+    - id: sbco:room_204
+      name: 応接室204
+      isLocationOf:
+      - sbco:pac_012
+      - sbco:lighting_017
+      - sbco:lighting_018
+      - sbco:sensor_021
+      - sbco:sensor_022
+    - id: sbco:room_205
+      name: 資料室205
+      isLocationOf:
+      - sbco:lighting_019
+      - sbco:sensor_023
+      - sbco:sensor_024
+  - id: sbco:level_3F
+    name: 3階
+    hasPart:
+    - id: sbco:room_301
+      name: 役員室301
+      isLocationOf:
+      - sbco:pac_013
+      - sbco:lighting_020
+      - sbco:lighting_021
+      - sbco:lighting_022
+      - sbco:sensor_025
+      - sbco:sensor_026
+    - id: sbco:room_302
+      name: 秘書室302
+      isLocationOf:
+      - sbco:pac_014
+      - sbco:lighting_023
+      - sbco:sensor_027
+    - id: sbco:room_303
+      name: 会議室303
+      isLocationOf:
+      - sbco:pac_015
+      - sbco:lighting_024
+      - sbco:lighting_025
+      - sbco:sensor_028
+      - sbco:sensor_029
+    - id: sbco:room_304
+      name: ラウンジ304
+      isLocationOf:
+      - sbco:lighting_026
+      - sbco:lighting_027
+      - sbco:sensor_030
+      - sbco:sensor_031
+      - sbco:sensor_032

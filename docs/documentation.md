@@ -22,13 +22,16 @@ Alias: documentation
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  no  |
-| [Site](Site.md) | A piece of land upon which zero or more buildings may be situated |  no  |
-| [Level](Level.md) | A building storey |  no  |
-| [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
-| [Building](Building.md) | A building which is part of a site |  no  |
+| [Room](Room.md) | A room within a building |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 | [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
+| [Site](Site.md) | A piece of land upon which zero or more buildings may be situated |  no  |
+| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
+| [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
+| [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
+| [Level](Level.md) | A building storey |  no  |
+| [Building](Building.md) | A building which is part of a site |  no  |
+| [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  no  |
 
 
 
@@ -37,7 +40,7 @@ Alias: documentation
 
 ## Properties
 
-* Range: [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Document](Document.md)
+* Range: [Document](Document.md)
 
 * Multivalued: True
 
@@ -82,11 +85,8 @@ alias: documentation
 domain_of:
 - Architecture
 - Asset
-range: string
+range: Document
 multivalued: true
-any_of:
-- range: Resource
-- range: Document
 
 ```
 </details>

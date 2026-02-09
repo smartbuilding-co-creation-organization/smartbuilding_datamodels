@@ -1,0 +1,17 @@
+id: sbco:site_demo_003
+name: Demo Site Invalid Unit
+hasPart:
+  - id: sbco:building_demo_003
+    name: Demo Building
+    hasPart:
+      - id: sbco:level_demo_3f
+        name: 3F
+        hasPart:
+          - id: sbco:room_demo_301
+            name: Demo Room
+            hasPoint:
+              - id: sbco:point_temp_003
+                type: PointExt
+                name: Room Temperature
+                pointType: TemperatureSensor
+                unit: sbco:UnitEnum#invalidUnit

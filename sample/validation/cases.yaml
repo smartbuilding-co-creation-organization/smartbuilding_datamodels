@@ -1,0 +1,85 @@
+cases:
+  - name: valid_minimal
+    input: sample/validation/valid_minimal.yaml
+    output_ttl: reports/validation/valid_minimal.ttl
+    root_class: Site
+    class_chain: [Site, Building, Level, Room]
+    inject_is_part_of: true
+    expected:
+      shacl_conforms: true
+      inferred_types:
+        - subject: sbco:site_demo_001
+          types:
+            - rec:Site
+            - rec:Architecture
+            - rec:Space
+        - subject: sbco:point_temp_001
+          types:
+            - sbco:PointExt
+            - brick:Point
+  - name: invalid_missing_point_type
+    input: sample/validation/invalid_missing_point_type.yaml
+    output_ttl: reports/validation/invalid_missing_point_type.ttl
+    root_class: Site
+    class_chain: [Site, Building, Level, Room]
+    inject_is_part_of: true
+    expected:
+      shacl_conforms: false
+  - name: invalid_unit_enum
+    input: sample/validation/invalid_unit_enum.yaml
+    output_ttl: reports/validation/invalid_unit_enum.ttl
+    root_class: Site
+    class_chain: [Site, Building, Level, Room]
+    inject_is_part_of: true
+    expected:
+      shacl_conforms: false
+  - name: invalid_point_class
+    input: sample/validation/invalid_point_class.yaml
+    output_ttl: reports/validation/invalid_point_class.ttl
+    root_class: Site
+    class_chain: [Site, Building, Level, Room]
+    inject_is_part_of: true
+    expected:
+      shacl_conforms: false
+  - name: valid_full_point
+    input: sample/validation/valid_full_point.yaml
+    output_ttl: reports/validation/valid_full_point.ttl
+    root_class: Site
+    class_chain: [Site, Building, Level, Room]
+    inject_is_part_of: true
+    expected:
+      shacl_conforms: true
+      inferred_types:
+        - subject: sbco:site_demo_005
+          types:
+            - rec:Site
+            - rec:Architecture
+            - rec:Space
+        - subject: sbco:point_temp_005
+          types:
+            - sbco:PointExt
+            - brick:Point
+  - name: invalid_missing_name
+    input: sample/validation/invalid_missing_name.yaml
+    output_ttl: reports/validation/invalid_missing_name.ttl
+    root_class: Site
+    class_chain: [Site, Building, Level, Room]
+    inject_is_part_of: true
+    expected:
+      shacl_conforms: false
+  - name: invalid_point_spec_enum
+    input: sample/validation/invalid_point_spec_enum.yaml
+    output_ttl: reports/validation/invalid_point_spec_enum.ttl
+    root_class: Site
+    class_chain: [Site, Building, Level, Room]
+    inject_is_part_of: true
+    expected:
+      shacl_conforms: false
+  - name: invalid_is_point_of
+    input: sample/validation/invalid_is_point_of.yaml
+    output_ttl: reports/validation/invalid_is_point_of.ttl
+    root_class: Site
+    class_chain: [Site, Building, Level, Room]
+    inject_is_part_of: true
+    expected:
+      shacl_conforms: false

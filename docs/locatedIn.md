@@ -22,8 +22,8 @@ Alias: locatedIn
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  yes  |
 | [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  yes  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  yes  |
 
 
@@ -33,7 +33,7 @@ Alias: locatedIn
 
 ## Properties
 
-* Range: [Resource](Resource.md)
+* Range: [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md)
 
 * Multivalued: True
 
@@ -77,8 +77,16 @@ slot_uri: rec:locatedIn
 alias: locatedIn
 domain_of:
 - Asset
-range: Resource
+range: Any
 multivalued: true
+any_of:
+- range: Space
+- range: Site
+- range: Building
+- range: Level
+- range: Room
+- range: Zone
+- range: OutdoorSpace
 
 ```
 </details>
