@@ -56,7 +56,7 @@ URI: [rec:Document](https://w3id.org/rec/Document)
     
         
         
-        Document --> "1..*" KeyStringMapEntry : identifiers
+        Document --> "*" KeyStringMapEntry : identifiers
         click KeyStringMapEntry href "../KeyStringMapEntry/"
     
 
@@ -91,7 +91,7 @@ URI: [rec:Document](https://w3id.org/rec/Document)
 | ---  | --- | --- | --- |
 | [name](name.md) | 1 <br/> [String](String.md) | Machine or Human-readable name | [Information](Information.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the resource | [Information](Information.md) |
-| [identifiers](identifiers.md) | 1..* <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | [Information](Information.md) |
+| [identifiers](identifiers.md) | * <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | [Information](Information.md) |
 | [customTags](customTags.md) | * <br/> [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) | [Information](Information.md) |
 | [customProperties](customProperties.md) | * <br/> [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) | [Information](Information.md) |
 | [format](format.md) | 0..1 <br/> [String](String.md) | MIME type or format identifier for the information | [Information](Information.md) |
@@ -109,13 +109,16 @@ URI: [rec:Document](https://w3id.org/rec/Document)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [Architecture](Architecture.md) | [documentation](documentation.md) | any_of[range] | [Document](Document.md) |
-| [Site](Site.md) | [documentation](documentation.md) | any_of[range] | [Document](Document.md) |
-| [Building](Building.md) | [documentation](documentation.md) | any_of[range] | [Document](Document.md) |
-| [Level](Level.md) | [documentation](documentation.md) | any_of[range] | [Document](Document.md) |
-| [Asset](Asset.md) | [documentation](documentation.md) | any_of[range] | [Document](Document.md) |
-| [Equipment](Equipment.md) | [documentation](documentation.md) | any_of[range] | [Document](Document.md) |
-| [EquipmentExt](EquipmentExt.md) | [documentation](documentation.md) | any_of[range] | [Document](Document.md) |
+| [Architecture](Architecture.md) | [documentation](documentation.md) | range | [Document](Document.md) |
+| [Site](Site.md) | [documentation](documentation.md) | range | [Document](Document.md) |
+| [Building](Building.md) | [documentation](documentation.md) | range | [Document](Document.md) |
+| [Level](Level.md) | [documentation](documentation.md) | range | [Document](Document.md) |
+| [Room](Room.md) | [documentation](documentation.md) | range | [Document](Document.md) |
+| [Zone](Zone.md) | [documentation](documentation.md) | range | [Document](Document.md) |
+| [OutdoorSpace](OutdoorSpace.md) | [documentation](documentation.md) | range | [Document](Document.md) |
+| [Asset](Asset.md) | [documentation](documentation.md) | range | [Document](Document.md) |
+| [Equipment](Equipment.md) | [documentation](documentation.md) | range | [Document](Document.md) |
+| [EquipmentExt](EquipmentExt.md) | [documentation](documentation.md) | range | [Document](Document.md) |
 
 
 
@@ -230,6 +233,8 @@ attributes:
     alias: description
     owner: Document
     domain_of:
+    - Space
+    - Asset
     - Information
     range: string
   identifiers:
@@ -252,7 +257,7 @@ attributes:
     - ArchitectureArea
     - ArchitectureCapacity
     range: KeyStringMapEntry
-    required: true
+    required: false
     multivalued: true
     inlined: true
     inlined_as_list: true

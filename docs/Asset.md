@@ -33,6 +33,15 @@ URI: [rec:Asset](https://w3id.org/rec/Asset)
         
       Asset : commissionedBy
         
+          
+    
+        
+        
+        Asset --> "*" Agent : commissionedBy
+        click Agent href "../Agent/"
+    
+
+        
       Asset : commissioningDate
         
       Asset : customProperties
@@ -57,7 +66,18 @@ URI: [rec:Asset](https://w3id.org/rec/Asset)
     
 
         
+      Asset : description
+        
       Asset : documentation
+        
+          
+    
+        
+        
+        Asset --> "*" Document : documentation
+        click Document href "../Document/"
+    
+
         
       Asset : geometry
         
@@ -91,7 +111,7 @@ URI: [rec:Asset](https://w3id.org/rec/Asset)
     
         
         
-        Asset --> "1..*" KeyStringMapEntry : identifiers
+        Asset --> "*" KeyStringMapEntry : identifiers
         click KeyStringMapEntry href "../KeyStringMapEntry/"
     
 
@@ -102,29 +122,20 @@ URI: [rec:Asset](https://w3id.org/rec/Asset)
         
       Asset : installedBy
         
+          
+    
+        
+        
+        Asset --> "*" Agent : installedBy
+        click Agent href "../Agent/"
+    
+
+        
       Asset : IPAddress
         
       Asset : isPartOf
         
-          
-    
-        
-        
-        Asset --> "0..1" Space : isPartOf
-        click Space href "../Space/"
-    
-
-        
       Asset : locatedIn
-        
-          
-    
-        
-        
-        Asset --> "*" Resource : locatedIn
-        click Resource href "../Resource/"
-    
-
         
       Asset : MACAddress
         
@@ -132,15 +143,42 @@ URI: [rec:Asset](https://w3id.org/rec/Asset)
         
       Asset : manufacturedBy
         
+          
+    
+        
+        
+        Asset --> "*" Agent : manufacturedBy
+        click Agent href "../Agent/"
+    
+
+        
       Asset : modelNumber
         
       Asset : mountedOn
+        
+          
+    
+        
+        
+        Asset --> "0..1" BuildingElement : mountedOn
+        click BuildingElement href "../BuildingElement/"
+    
+
         
       Asset : name
         
       Asset : serialNumber
         
       Asset : servicedBy
+        
+          
+    
+        
+        
+        Asset --> "*" Agent : servicedBy
+        click Agent href "../Agent/"
+    
+
         
       Asset : turnoverDate
         
@@ -165,27 +203,28 @@ URI: [rec:Asset](https://w3id.org/rec/Asset)
 | Name | Cardinality and Range | Description | Inheritance |
 | ---  | --- | --- | --- |
 | [id](id.md) | 1 <br/> [String](String.md) | Unique identifier within the schema | direct |
-| [commissionedBy](commissionedBy.md) | * <br/> [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Agent](Agent.md) | Agent or resource that commissioned this asset | direct |
-| [documentation](documentation.md) | * <br/> [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Document](Document.md) | Documentation related to this asset | direct |
+| [commissionedBy](commissionedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that commissioned this asset | direct |
+| [documentation](documentation.md) | * <br/> [Document](Document.md) | Documentation related to this asset | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the resource | direct |
 | [geometry](geometry.md) | 0..1 <br/> [Geometry](Geometry.md) | Polygon representing the spatial extent of this Space | direct |
-| [hasPart](hasPart.md) | * <br/> [String](String.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Resource](Resource.md) | The subject is composed in part of the entity given by the object | direct |
-| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md) | Point associated with this architecture | direct |
-| [installedBy](installedBy.md) | * <br/> [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Agent](Agent.md) | Agent or resource that installed this asset | direct |
-| [isPartOf](isPartOf.md) | 0..1 <br/> [Space](Space.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Resource](Resource.md) |  | direct |
-| [locatedIn](locatedIn.md) | * <br/> [Resource](Resource.md) | Space where this asset is located | direct |
-| [manufacturedBy](manufacturedBy.md) | * <br/> [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Agent](Agent.md) | Agent or resource that manufactured this asset | direct |
-| [mountedOn](mountedOn.md) | 0..1 <br/> [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[BuildingElement](BuildingElement.md) | Building element on which this asset is mounted | direct |
-| [servicedBy](servicedBy.md) | * <br/> [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Agent](Agent.md) | Agent or resource that services this asset | direct |
+| [hasPart](hasPart.md) | * <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | The subject is composed in part of the entity given by the object | direct |
+| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | direct |
+| [installedBy](installedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that installed this asset | direct |
+| [isPartOf](isPartOf.md) | 0..1 <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) |  | direct |
+| [locatedIn](locatedIn.md) | * <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | Space where this asset is located | direct |
+| [manufacturedBy](manufacturedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that manufactured this asset | direct |
+| [mountedOn](mountedOn.md) | 0..1 <br/> [BuildingElement](BuildingElement.md) | Building element on which this asset is mounted | direct |
+| [servicedBy](servicedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that services this asset | direct |
 | [assetTag](assetTag.md) | * <br/> [String](String.md) | Asset identification tag | direct |
 | [commissioningDate](commissioningDate.md) | 0..1 <br/> [Date](Date.md) | Date when the asset was commissioned | direct |
 | [customProperties](customProperties.md) | * <br/> [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) | direct |
 | [customTags](customTags.md) | * <br/> [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) | direct |
-| [identifiers](identifiers.md) | 1..* <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | direct |
+| [identifiers](identifiers.md) | * <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | direct |
 | [initialCost](initialCost.md) | 0..1 <br/> [String](String.md) | Initial cost of the asset | direct |
 | [installationDate](installationDate.md) | 0..1 <br/> [Date](Date.md) | Date when the asset was installed | direct |
 | [IPAddress](IPAddress.md) | * <br/> [String](String.md) | IP address of the asset | direct |
 | [MACAddress](MACAddress.md) | * <br/> [String](String.md) | MAC address of the asset | direct |
-| [maintenanceInterval](maintenanceInterval.md) | * <br/> [Duration](Duration.md) | Maintenance interval duration | direct |
+| [maintenanceInterval](maintenanceInterval.md) | * <br/> [DurationString](DurationString.md) | Maintenance interval duration | direct |
 | [modelNumber](modelNumber.md) | 0..1 <br/> [String](String.md) | Model number of the asset | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Machine or Human-readable name | direct |
 | [serialNumber](serialNumber.md) | 0..1 <br/> [String](String.md) | Serial number of the asset | direct |
@@ -260,6 +299,7 @@ slots:
 - id
 - commissionedBy
 - documentation
+- description
 - geometry
 - hasPart
 - hasPoint
@@ -284,6 +324,12 @@ slots:
 - serialNumber
 - turnoverDate
 - weight
+slot_usage:
+  hasPoint:
+    name: hasPoint
+    any_of:
+    - range: Point
+    - range: PointExt
 class_uri: rec:Asset
 
 ```
@@ -305,6 +351,12 @@ exact_mappings:
 - rec:Asset
 is_a: Resource
 abstract: true
+slot_usage:
+  hasPoint:
+    name: hasPoint
+    any_of:
+    - range: Point
+    - range: PointExt
 attributes:
   id:
     name: id
@@ -316,8 +368,8 @@ attributes:
         tag: example
         value: dtmi:example:Building:1
     description: Unique identifier within the schema. Must start with a letter and
-      contain only letters, digits, underscores, hyphens, colons, semicolons, or periods
-      (for DTMI format).
+      contain only letters, digits, underscores, hyphens, colons, semicolons, or periods.
+      DTMI is one acceptable example.
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
@@ -334,7 +386,6 @@ attributes:
     - ArchitectureCapacity
     range: string
     required: true
-    pattern: ^(?:[a-zA-Z][a-zA-Z0-9_-:]*|dtmi:[A-Za-z0-9_:.;-]+)$
   commissionedBy:
     name: commissionedBy
     description: Agent or resource that commissioned this asset
@@ -345,11 +396,8 @@ attributes:
     owner: Asset
     domain_of:
     - Asset
-    range: string
+    range: Agent
     multivalued: true
-    any_of:
-    - range: Resource
-    - range: Agent
   documentation:
     name: documentation
     description: Documentation related to this asset
@@ -361,11 +409,25 @@ attributes:
     domain_of:
     - Architecture
     - Asset
-    range: string
+    range: Document
     multivalued: true
-    any_of:
-    - range: Resource
-    - range: Document
+  description:
+    name: description
+    annotations:
+      description_ja:
+        tag: description_ja
+        value: リソースのテキスト記述
+    description: A textual description of the resource
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    slot_uri: rec:description
+    alias: description
+    owner: Asset
+    domain_of:
+    - Space
+    - Asset
+    - Information
+    range: string
   geometry:
     name: geometry
     description: Polygon representing the spatial extent of this Space.
@@ -390,11 +452,16 @@ attributes:
     domain_of:
     - Space
     - Asset
-    range: string
+    range: Any
     multivalued: true
     any_of:
     - range: Space
-    - range: Resource
+    - range: Site
+    - range: Building
+    - range: Level
+    - range: Room
+    - range: Zone
+    - range: OutdoorSpace
   hasPoint:
     name: hasPoint
     description: Point associated with this architecture
@@ -408,6 +475,9 @@ attributes:
     - Asset
     range: Point
     multivalued: true
+    any_of:
+    - range: Point
+    - range: PointExt
   installedBy:
     name: installedBy
     description: Agent or resource that installed this asset
@@ -418,11 +488,8 @@ attributes:
     owner: Asset
     domain_of:
     - Asset
-    range: string
+    range: Agent
     multivalued: true
-    any_of:
-    - range: Resource
-    - range: Agent
   isPartOf:
     name: isPartOf
     from_schema: https://www.sbco.or.jp/ont/schema
@@ -433,11 +500,16 @@ attributes:
     domain_of:
     - Space
     - Asset
-    range: Space
+    range: Any
     multivalued: false
     any_of:
     - range: Space
-    - range: Resource
+    - range: Site
+    - range: Building
+    - range: Level
+    - range: Room
+    - range: Zone
+    - range: OutdoorSpace
   locatedIn:
     name: locatedIn
     description: Space where this asset is located
@@ -448,8 +520,16 @@ attributes:
     owner: Asset
     domain_of:
     - Asset
-    range: Resource
+    range: Any
     multivalued: true
+    any_of:
+    - range: Space
+    - range: Site
+    - range: Building
+    - range: Level
+    - range: Room
+    - range: Zone
+    - range: OutdoorSpace
   manufacturedBy:
     name: manufacturedBy
     description: Agent or resource that manufactured this asset
@@ -460,11 +540,8 @@ attributes:
     owner: Asset
     domain_of:
     - Asset
-    range: string
+    range: Agent
     multivalued: true
-    any_of:
-    - range: Resource
-    - range: Agent
   mountedOn:
     name: mountedOn
     description: Building element on which this asset is mounted
@@ -475,10 +552,7 @@ attributes:
     owner: Asset
     domain_of:
     - Asset
-    range: string
-    any_of:
-    - range: Resource
-    - range: BuildingElement
+    range: BuildingElement
   servicedBy:
     name: servicedBy
     description: Agent or resource that services this asset
@@ -489,11 +563,8 @@ attributes:
     owner: Asset
     domain_of:
     - Asset
-    range: string
+    range: Agent
     multivalued: true
-    any_of:
-    - range: Resource
-    - range: Agent
   assetTag:
     name: assetTag
     description: Asset identification tag
@@ -583,7 +654,7 @@ attributes:
     - ArchitectureArea
     - ArchitectureCapacity
     range: KeyStringMapEntry
-    required: true
+    required: false
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -645,7 +716,7 @@ attributes:
     owner: Asset
     domain_of:
     - Asset
-    range: Duration
+    range: DurationString
     multivalued: true
   modelNumber:
     name: modelNumber

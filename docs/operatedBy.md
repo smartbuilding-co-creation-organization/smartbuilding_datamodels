@@ -22,9 +22,12 @@ Alias: operatedBy
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  no  |
+| [Room](Room.md) | A room within a building |  no  |
 | [Site](Site.md) | A piece of land upon which zero or more buildings may be situated |  no  |
+| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
+| [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
 | [Level](Level.md) | A building storey |  no  |
+| [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  no  |
 | [Building](Building.md) | A building which is part of a site |  no  |
 
 
@@ -34,7 +37,7 @@ Alias: operatedBy
 
 ## Properties
 
-* Range: [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Agent](Agent.md)
+* Range: [Agent](Agent.md)
 
 * Multivalued: True
 
@@ -78,11 +81,8 @@ slot_uri: rec:operatedBy
 alias: operatedBy
 domain_of:
 - Architecture
-range: string
+range: Agent
 multivalued: true
-any_of:
-- range: Resource
-- range: Agent
 
 ```
 </details>

@@ -1,0 +1,1349 @@
+id: https://www.sbco.or.jp/ont/schema
+name: building_model
+title: Smart Building Model
+description: 'A LinkML schema for sites, buildings, spaces, equipment, and points
+  used in smart-building data exchanges.
+
+  '
+default_prefix: sbco
+default_range: string
+prefixes:
+  linkml: https://w3id.org/linkml/
+  rec: https://w3id.org/rec/
+  sbco: https://www.sbco.or.jp/ont/
+  gutp: https://smart-building-ontology.org/gutp/
+  brick: https://brickschema.org/schema/Brick#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+imports:
+- linkml:types
+
+types:
+  Any:
+    typeof: string
+    description: Any resource or value.
+    uri: linkml:Any
+  DurationString:
+    typeof: string
+    description: ISO 8601 duration format
+    uri: xsd:duration
+    pattern: "^P(?:\\d+Y)?(?:\\d+M)?(?:\\d+D)?(?:T(?:\\d+H)?(?:\\d+M)?(?:\\d+(?:\\.\\d+)?S)?)?$"
+    
+enums:
+  UnitEnum:
+    description: Allowed measurement units
+    permissible_values:
+      celsius:
+        description: Degree Celsius
+        annotations:
+        - tag: text
+          value: °C
+      percent:
+        description: Percent
+        annotations:
+        - tag: text
+          value: '%'
+      ppm:
+        description: Parts per million
+        annotations:
+        - tag: text
+          value: ppm
+  PointSpecificationEnum:
+    description: Point specification categories for equipment point lists
+    annotations:
+      - tag: description_ja
+        value: "設備のポイントリストで示される、ポイントの区分"
+    permissible_values:
+      Alarm:
+        description: "Alarm point"
+        annotations:
+          - tag: description_ja
+            value: "警報"
+      Command:
+        description: "Control command point"
+        annotations:
+          - tag: description_ja
+            value: "制御"
+      Setpoint:
+        description: "Setpoint configuration point"
+        annotations:
+          - tag: description_ja
+            value: "設定"
+      Measurement:
+        description: "Measurement point"
+        annotations:
+          - tag: description_ja
+            value: "計測"
+      Metering:
+        description: "Metering point"
+        annotations:
+          - tag: description_ja
+            value: "計量"
+      Status:
+        description: "Status indication point"
+        annotations:
+          - tag: description_ja
+            value: "状態"
+  SubstanceEnum:
+    description: Types of substances that can be fed between equipment
+    permissible_values:
+      ACElec:
+        description: "AC Electricity"
+      Air:
+        description: "Air"
+      BlowdownWater:
+        description: "Blowdown Water"
+      ChilledWater:
+        description: "Chilled Water"
+      ColdDomesticWater:
+        description: "Cold Domestic Water"
+      Condensate:
+        description: "Condensate"
+      CondenserWater:
+        description: "Condenser Water"
+      DCElec:
+        description: "DC Electricity"
+      Diesel:
+        description: "Diesel"
+      DriveElec:
+        description: "Drive Electricity"
+      Ethernet:
+        description: "Ethernet"
+      ExhaustAir:
+        description: "Exhaust Air"
+      Freight:
+        description: "Freight"
+      FuelOil:
+        description: "Fuel Oil"
+      Gasoline:
+        description: "Gasoline"
+      GreaseExhaustAir:
+        description: "Grease Exhaust Air"
+      HotDomesticWater:
+        description: "Hot Domestic Water"
+      HotWater:
+        description: "Hot Water"
+      IrrigationWater:
+        description: "Irrigation Water"
+      Light:
+        description: "Light"
+      MakeupWater:
+        description: "Makeup Water"
+      NaturalGas:
+        description: "Natural Gas"
+      NonPotableDomesticWater:
+        description: "Non-Potable Domestic Water"
+      OutsideAir:
+        description: "Outside Air"
+      People:
+        description: "People"
+      Propane:
+        description: "Propane"
+      RecircHotDomesticWater:
+        description: "Recirculating Hot Domestic Water"
+      Refrig:
+        description: "Refrigerant"
+      ReturnAir:
+        description: "Return Air"
+      SprinklerWater:
+        description: "Sprinkler Water"
+      Steam:
+        description: "Steam"
+      StormDrainage:
+        description: "Storm Drainage"
+      SupplyAir:
+        description: "Supply Air"
+      TransferAir:
+        description: "Transfer Air"
+      WasteVentDrainage:
+        description: "Waste Vent Drainage"
+      Water:
+        description: "Water"
+  QuantityEnum:
+    description: "Physical quantities that can be measured or monitored by points"
+    annotations:
+      - tag: description_ja
+        value: "ポイントで測定・監視可能な物理量"
+    permissible_values:
+      Absolute_Humidity:
+        description: "Absolute humidity measurement"
+      Acceleration_Time:
+        description: "Time required for acceleration"
+      Active_Energy:
+        description: "Active electrical energy"
+      Active_Power:
+        description: "Active electrical power"
+      Air_Quality:
+        description: "Air quality measurement"
+      Alternating_Current_Frequency:
+        description: "AC frequency measurement"
+      Ammonia_Concentration:
+        description: "Ammonia concentration in air"
+      Angle:
+        description: "Angular measurement"
+      Apparent_Energy:
+        description: "Apparent electrical energy"
+      Apparent_Power:
+        description: "Apparent electrical power"
+      Atmospheric_Pressure:
+        description: "Atmospheric pressure measurement"
+      CO2_Concentration:
+        description: "Carbon dioxide concentration"
+      CO_Concentration:
+        description: "Carbon monoxide concentration"
+      Capacity:
+        description: "Storage or processing capacity"
+      Cloudage:
+        description: "Cloud coverage measurement"
+      Complex_Power:
+        description: "Complex electrical power"
+      Conductivity:
+        description: "Electrical or thermal conductivity"
+      Current_Angle:
+        description: "Electrical current phase angle"
+      Current_Imbalance:
+        description: "Current imbalance in multi-phase systems"
+      Current_Total_Harmonic_Distortion:
+        description: "Total harmonic distortion of current"
+      Deceleration_Time:
+        description: "Time required for deceleration"
+      Dewpoint:
+        description: "Dew point temperature"
+      Differential_CO2_Concentration:
+        description: "Differential carbon dioxide concentration"
+      Differential_CO_Concentration:
+        description: "Differential carbon monoxide concentration"
+      Differential_Dry_Bulb_Temperature:
+        description: "Temperature difference (dry bulb)"
+      Differential_Dynamic_Pressure:
+        description: "Dynamic pressure difference"
+      Differential_Pressure:
+        description: "Pressure difference measurement"
+      Differential_Static_Pressure:
+        description: "Static pressure difference"
+      Differential_Temperature:
+        description: "Temperature difference"
+      Direction:
+        description: "Directional measurement"
+      Dry_Bulb_Temperature:
+        description: "Dry bulb temperature"
+      Dynamic_Pressure:
+        description: "Dynamic pressure measurement"
+      Electric_Current:
+        description: "Electrical current measurement"
+      Electric_Energy:
+        description: "Electrical energy measurement"
+      Electric_Power:
+        description: "Electrical power measurement"
+      Energy:
+        description: "General energy measurement"
+      Enthalpy:
+        description: "Enthalpy measurement"
+      Flow:
+        description: "Flow rate measurement"
+      Flow_Loss:
+        description: "Flow loss measurement"
+      Formaldehyde_Concentration:
+        description: "Formaldehyde concentration in air"
+      Frequency:
+        description: "Frequency measurement"
+      GrainsOfMoisture:
+        description: "Moisture content in grains per pound"
+      Humidity:
+        description: "General humidity measurement"
+      Illuminance:
+        description: "Illuminance measurement"
+      Irradiance:
+        description: "Irradiance measurement"
+      Level:
+        description: "Level measurement"
+      Linear_Speed:
+        description: "Linear speed measurement"
+      Luminance:
+        description: "Luminance measurement"
+      Luminous_Flux:
+        description: "Luminous flux measurement"
+      Luminous_Intensity:
+        description: "Luminance intensity measurement"
+      Mass:
+        description: "Mass measurement"
+      Methane_Concentration:
+        description: "Methane concentration in air"
+      NO2_Concentration:
+        description: "Nitrogen dioxide concentration"
+      Occupancy:
+        description: "Occupancy detection"
+      Occupancy_Count:
+        description: "Number of occupants"
+      Occupancy_Percentage:
+        description: "Occupancy percentage"
+      Operative_Temperature:
+        description: "Operative temperature measurement"
+      Ozone_Concentration:
+        description: "Ozone concentration in air"
+      PM10_Concentration:
+        description: "PM10 particulate matter concentration"
+      PM1_Concentration:
+        description: "PM1 particulate matter concentration"
+      PM2_5_Concentration:
+        description: "PM2.5 particulate matter concentration"
+      Peak_Power:
+        description: "Peak power measurement"
+      Phasor:
+        description: "Phasor measurement"
+      Phasor_Angle:
+        description: "Phasor angle measurement"
+      Phasor_Magnitude:
+        description: "Phasor magnitude measurement"  
+      Position:
+        description: "Position measurement"
+      Power:
+        description: "General power measurement"
+      Power_Factor:
+        description: "Power factor measurement"
+      Precipitation:
+        description: "Precipitation measurement"
+      Pressure:
+        description: "General pressure measurement"
+      Radiance:
+        description: "Radiance measurement"
+      Radiant_Temperature:
+        description: "Radiant temperature measurement"
+      Radioactivity_Concentration:
+        description: "Radioactivity concentration"
+      Radon_Concentration:
+        description: "Radon concentration in air"
+      Reactive_Energy:
+        description: "Reactive electrical energy"
+      Reactive_Power:
+        description: "Reactive electrical power"
+      Real_Power:
+        description: "Real electrical power"
+      Relative_Humidity:
+        description: "Relative humidity measurement"
+      Rotational_Speed:
+        description: "Rotational speed measurement"
+      Solar_Irradiance:
+        description: "Solar irradiance measurement"
+      Solar_Radiance:
+        description: "Solar radiance measurement"
+      Speed:
+        description: "General speed measurement"
+      Static_Pressure:
+        description: "Static pressure measurement"
+      TVOC_Concentration:
+        description: "Total volatile organic compounds concentration"
+      Temperature:
+        description: "General temperature measurement"
+      Thermal_Energy:
+        description: "Thermal energy measurement"
+      Thermal_Power:
+        description: "Thermal power measurement"
+      Time:
+        description: "Time measurement"
+      Torque:
+        description: "Torque measurement"
+      Velocity_Pressure:
+        description: "Velocity pressure measurement"
+      Voltage:
+        description: "Electrical voltage measurement"
+      Voltage_Angle:
+        description: "Voltage phase angle"
+      Voltage_Imbalance:
+        description: "Voltage imbalance in multi-phase systems"
+      Weather_Condition:
+        description: "Weather condition measurement"
+      Wet_Bulb_Temperature:
+        description: "Wet bulb temperature measurement"
+      Wind_Direction:
+        description: "Wind direction measurement"
+  AggregateEnum:
+    description: "Aggregation functions for point data processing"
+    annotations:
+      - tag: description_ja
+        value: "ポイントデータ処理のための集約関数"
+    permissible_values:
+      average:
+        description: "Average value"
+      sum:
+        description: "Sum of values"
+      minimum:
+        description: "Minimum value"
+      maximum:
+        description: "Maximum value"
+      count:
+        description: "Count of values"
+      first:
+        description: "First value"
+      last:
+        description: "Last value"
+      median:
+        description: "Median value"
+      standardDeviation:
+        description: "Standard deviation"
+
+slots:
+  id:
+    description: "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example."
+    range: string
+    identifier: true
+    required: true
+    annotations:
+      - tag: description_ja
+        value: "スキーマ内の一意識別子。文字で開始し、DTMI形式もサポート。"
+      - tag: example
+        value: "dtmi:example:Building:1"
+
+  identifiers:
+    description: map(string -> string)
+    multivalued: true
+    range: KeyStringMapEntry
+    inlined: true
+    inlined_as_list: true
+    required: false
+    slot_uri: rec:identifiers
+
+  key:
+    description: "Key of the map entry"
+    range: string
+  value:
+    description: "Value of the map entry"
+    range: string
+
+  flag:
+    description: "Boolean flag value"
+    range: boolean
+    required: true
+
+
+  entries:
+    description: "Nested map entries"
+    multivalued: true
+    range: KeyStringMapEntry
+    inlined: true
+    inlined_as_list: true
+    required: true
+
+  customTags:
+    description: map(string -> boolean)
+    multivalued: true
+    range: KeyBoolMapEntry
+    inlined: true
+    inlined_as_list: true
+    slot_uri: rec:customTags
+
+  customProperties:
+    description: map(string -> map(string -> string))
+    multivalued: true
+    range: KeyMapOfStringMapEntry
+    inlined: true
+    inlined_as_list: true
+    slot_uri: rec:customProperties
+
+  name:
+    description: Machine or Human-readable name
+    range: string
+    required: true
+    slot_uri: rec:name
+    
+#  名称が被るため    
+#  site:
+#    description: Parent site
+#    range: string
+  
+#  building:
+#    description: Parent building
+#    range: string
+  
+#  level:
+#    description: Parent level
+#    range: string
+
+  deviceType:
+    description: Device Type
+    range: string
+
+  intervalCapability: 
+    description: Polling period (period speed that the device is capable of)
+    range: integer
+
+  installationArea:
+    description: Parent installation area
+    range: string
+
+  targetArea:
+    description: Target area for this resource
+    range: string
+
+  panel:
+    description: Parent panel
+    range: string  
+  
+  
+  pointType:  # point_type → pointType
+    description: "Point type - a profile or template name used to refer to the telemetry format obtainable from the device or point. Specific definitions are provided separately in schema files."
+    range: string
+    required: true
+    annotations:
+      - tag: description_ja
+        value: "ポイントタイプ - 機器やポイントから取得できるテレメトリのフォーマットを参照するためのプロファイル名、またはテンプレート名。具体的な定義については、スキーマファイル等で当該タイプについては別途定義される。"
+  
+  pointSpecification:  # point_specification → pointSpecification
+    description: "Point specification category as shown in equipment point list. English is recommended."
+    range: PointSpecificationEnum
+    annotations:
+      - tag: description_ja
+        value: "設備のポイントリストで示される、ポイントの区分を明示。"
+  unit:
+    description: Measurement unit (enum key; symbol can be taken from annotations)
+    range: UnitEnum
+  minPresValue:  # min_pres_value → minPresValue
+    description: Minimum plausible reading
+    range: float
+  maxPresValue:  # max_pres_value → maxPresValue
+    description: Maximum plausible reading
+    range: float
+  scale:
+    description: Scale factor for raw value conversion
+    range: float
+
+
+  geometry:
+    description: Polygon representing the spatial extent of this Space.
+    range: Geometry
+    multivalued: false
+    slot_uri: rec:geometry
+
+  georeference:
+    description: A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes).
+    range: Georeference
+    multivalued: false
+    slot_uri: rec:georeference
+
+  hasPart:
+    description: The subject is composed in part of the entity given by the object.
+    range: Any
+    multivalued: true
+    slot_uri: rec:hasPart
+    any_of: &SPACE_UNION
+      - range: Space
+      - range: Site
+      - range: Building
+      - range: Level
+      - range: Room
+      - range: Zone
+      - range: OutdoorSpace
+
+  isPartOf:
+    range: Any
+    multivalued: false
+    slot_uri: rec:isPartOf
+    any_of: *SPACE_UNION
+
+  isLocationOf:
+    description: Subject is the physical location encapsulating the object.
+    range: EquipmentExt
+    multivalued: true
+    slot_uri: rec:isLocationOf
+
+  # Asset specific slots
+  assetTag:
+    description: "Asset identification tag"
+    range: string
+    slot_uri: rec:assetTag
+    multivalued: true
+    
+  commissionedBy:
+    description: "Agent or resource that commissioned this asset"
+    range: Agent
+    multivalued: true
+    slot_uri: rec:commissionedBy
+    
+  commissioningDate:
+    description: "Date when the asset was commissioned"
+    range: date
+    slot_uri: rec:commissioningDate
+    
+  documentation:
+    description: "Documentation related to this asset"
+    range: Document
+    multivalued: true
+    slot_uri: rec:documentation
+    
+  initialCost:
+    description: "Initial cost of the asset"
+    range: string  # Using string for rdfs:Literal
+    slot_uri: rec:initialCost
+    
+  installationDate:
+    description: "Date when the asset was installed"
+    range: date
+    slot_uri: rec:installationDate
+    #exact_mappings:
+    #  - xsd:date  # XSD date型との正確なマッピングを明示
+      
+  installedBy:
+    description: "Agent or resource that installed this asset"
+    range: Agent
+    multivalued: true
+    slot_uri: rec:installedBy
+    
+  IPAddress:  
+    description: "IP address of the asset"
+    range: string
+    pattern: "^((25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)$"
+    multivalued: true
+    slot_uri: rec:IPAddress
+    
+  locatedIn:
+    description: "Space where this asset is located"
+    range: Any
+    multivalued: true
+    slot_uri: rec:locatedIn
+    any_of: *SPACE_UNION
+    
+  MACAddress:  
+    description: "MAC address of the asset"
+    range: string
+    pattern: "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
+    multivalued: true
+    slot_uri: rec:MACAddress
+    
+  maintenanceInterval:
+    description: "Maintenance interval duration"
+    range: DurationString
+    multivalued: true
+    slot_uri: rec:maintenanceInterval
+
+  modelNumber:
+    description: "Model number of the asset"
+    range: string
+    slot_uri: rec:modelNumber
+
+  manufacturedBy:
+    description: "Agent or resource that manufactured this asset"
+    range: Agent
+    multivalued: true
+    slot_uri: rec:manufacturedBy
+    
+  mountedOn:
+    description: "Building element on which this asset is mounted"
+    range: BuildingElement
+    slot_uri: rec:mountedOn
+    
+  servicedBy:
+    description: "Agent or resource that services this asset"
+    range: Agent
+    multivalued: true
+    slot_uri: rec:servicedBy
+    
+  serialNumber:
+    description: "Serial number of the asset"
+    range: string
+    slot_uri: rec:serialNumber
+
+  turnoverDate:
+    description: "Date when the asset was turned over"
+    range: date
+    slot_uri: rec:turnoverDate
+    #exact_mappings:
+    #  - xsd:date
+    
+  weight:
+    description: "Weight of the asset"
+    range: decimal
+    slot_uri: rec:weight
+    #exact_mappings:
+    #  - xsd:decimal
+      
+  # Agent specific slots
+  memberOf:
+    description: "Indicates membership in an organization. Note that componency (e.g., departments of a corporation) are expressed using the more generic Organization.isPartOf property."
+    range: Organization
+    multivalued: true
+    slot_uri: rec:memberOf
+    
+  owns:
+    description: " Indicates ownership of some thing, e.g., a building, an asset, an organization, etc."
+    range: Resource
+    multivalued: true
+    slot_uri: rec:owns
+
+  # Architecture specific slots
+  address:
+    description: "Address of the architecture"
+    range: PostalAddress
+    multivalued: true
+    slot_uri: rec:address
+    
+  adjacentElement:
+    description: "Building element adjacent to this architecture"
+    range: BuildingElement
+    multivalued: true
+    slot_uri: rec:adjacentElement
+    
+  architectedBy:
+    description: "Agent or resource that architected this structure"
+    range: Agent
+    multivalued: true
+    slot_uri: rec:architectedBy
+    
+  area:
+    description: "Area of the architecture"
+    range: ArchitectureArea
+    slot_uri: rec:area
+    
+  capacity:
+    description: "Capacity of the architecture"
+    range: ArchitectureCapacity
+    slot_uri: rec:capacity
+    
+  constructedBy:
+    description: "Agent or resource that constructed this architecture"
+    range: Agent
+    multivalued: true
+    slot_uri: rec:constructedBy
+    
+  containsElement:
+    description: "Building element contained within this architecture"
+    range: BuildingElement
+    multivalued: true
+    slot_uri: rec:containsElement
+    
+  hasPoint:
+    description: "Point associated with this architecture"
+    range: Point
+    multivalued: true
+    slot_uri: rec:hasPoint
+    
+  intersectingElement:
+    description: "Building element intersecting with this architecture"
+    range: BuildingElement
+    multivalued: true
+    slot_uri: rec:intersectingElement
+    
+
+  operatedBy:
+    description: "Agent or resource that operates this architecture"
+    range: Agent
+    multivalued: true
+    slot_uri: rec:operatedBy
+    
+  ownedBy:
+    description: "Agent or resource that owns this architecture"
+    range: Agent
+    multivalued: true
+    slot_uri: rec:ownedBy
+
+  levelNumber:
+    description: "Floor or level number within a building"
+    range: integer
+    slot_uri: rec:levelNumber
+    annotations:
+      - tag: description_ja
+        value: "建物内のフロアまたはレベル番号"
+
+  feeds:
+    description: "Equipment or system that this equipment feeds"
+    range: Resource
+    multivalued: true
+    slot_uri: brick:feeds
+    annotations:
+      - tag: substance
+        value: SubstanceEnum
+
+  isFedBy:
+    description: "Resource that feeds this architecture"
+    range: Resource
+    multivalued: true
+    slot_uri: rec:isFedBy
+    annotations:
+      - tag: substance
+        value: SubstanceEnum 
+
+  operationalStageCount:
+    description: "The number of operational stages supported by this equipment"
+    range: integer
+    slot_uri: brick:operationalStageCount
+
+  aggregate:
+    description: "Aggregation function or method for point data processing"
+    range: AggregateEnum
+    slot_uri: brick:aggregate
+    annotations:
+      - tag: description_ja
+        value: "ポイントデータ処理のための集約関数または方法"
+      - tag: azure_dtdl_type
+        value: "DTObjectInfo"
+
+  hasQuantity:
+    description: "Physical quantity measured by this point"
+    range: QuantityEnum
+    slot_uri: brick:hasQuantity
+    annotations:
+      - tag: description_ja
+        value: "このポイントで測定される物理量"
+
+  hasSubstance:
+    description: "Substance associated with this point"
+    range: SubstanceEnum
+    slot_uri: brick:hasSubstance
+    annotations:
+      - tag: description_ja
+        value: "このポイントに関連する物質"
+
+  isPointOf:
+    description: "Equipment that this point belongs to"
+    range: Equipment
+    slot_uri: brick:isPointOf
+    annotations:
+      - tag: description_ja
+        value: "このポイントが属する設備"
+
+
+  # Information specific slots
+  description:
+    description: "A textual description of the resource"
+    range: string
+    slot_uri: rec:description
+    annotations:
+      - tag: description_ja
+        value: "リソースのテキスト記述"
+
+  format:
+    description: "MIME type or format identifier for the information"
+    range: string
+    slot_uri: rec:format
+    annotations:
+      - tag: description_ja
+        value: "情報のMIMEタイプまたはフォーマット識別子"
+
+  url:
+    description: "URL or URI pointing to the information resource"
+    range: uri
+    slot_uri: rec:url
+    annotations:
+      - tag: description_ja
+        value: "情報リソースを指すURLまたはURI"
+
+  version:
+    description: "Version identifier for the information"
+    range: string
+    slot_uri: rec:version
+    annotations:
+      - tag: description_ja
+        value: "情報のバージョン識別子"
+
+  language:
+    description: "Language code (ISO 639-1) of the information content"
+    range: string
+    pattern: "^[a-z]{2}(-[A-Z]{2})?$"
+    slot_uri: rec:language
+    annotations:
+      - tag: description_ja
+        value: "情報コンテンツの言語コード (ISO 639-1)"
+
+  size:
+    description: "Size of the information resource in bytes"
+    range: integer
+    slot_uri: rec:size
+    annotations:
+      - tag: description_ja
+        value: "情報リソースのサイズ（バイト）"
+
+  checksum:
+    description: "Checksum or hash of the information content"
+    range: string
+    slot_uri: rec:checksum
+    annotations:
+      - tag: description_ja
+        value: "情報コンテンツのチェックサムまたはハッシュ"
+
+  # Geofence specific slots
+  coordinates:
+    description: "Geographic coordinates defining the geofence boundary"
+    range: string
+    slot_uri: rec:coordinates
+    annotations:
+      - tag: description_ja
+        value: "ジオフェンス境界を定義する地理座標"
+
+  radius:
+    description: "Radius in meters for circular geofences"
+    range: float
+    slot_uri: rec:radius
+    annotations:
+      - tag: description_ja
+        value: "円形ジオフェンスの半径（メートル）"
+
+  altitude:
+    description: "Altitude above sea level in meters"
+    range: float
+    slot_uri: rec:altitude
+    annotations:
+      - tag: description_ja
+        value: "海抜高度（メートル）"
+
+
+classes:
+  Space:
+    class_uri: rec:Space
+    description: A contiguous part of the physical world that contains or can contain sub-spaces. E.g., a Region can contain many Sites, which in turn can contain many Buildings.
+    annotations:
+    - tag: description_ja
+      value: 室やゾーンなどの空間単位。設備を含みうる。
+    exact_mappings:
+      - rec:Space
+    slots:
+    - id
+    - geometry
+    - georeference
+    - hasPart
+    - isLocationOf
+    - isPartOf
+    - customProperties
+    - customTags
+    - identifiers
+    - name
+    - description
+  
+  Architecture:
+    abstract: true 
+    is_a: Space
+    class_uri: rec:Architecture
+    description: A designed/landscaped (or potentially designed/landscaped) part of the physical world that has a 3D spatial extent. E.g., a building site, a building, levels within the building, rooms, etc.
+    exact_mappings:
+      - rec:Architecture
+    slots:
+    - area
+    - capacity
+    - address
+    - adjacentElement
+    - architectedBy
+    - constructedBy
+    - containsElement
+    - documentation
+    - hasPoint
+    - intersectingElement
+    - isFedBy
+    - operatedBy
+    - ownedBy
+    slot_usage:
+      hasPoint:
+        any_of:
+          - range: Point
+          - range: PointExt
+
+  Site:
+    is_a: Architecture
+    tree_root: true
+    class_uri: rec:Site
+    description: A piece of land upon which zero or more buildings may be situated.
+    exact_mappings:
+      - rec:Site
+    annotations:
+    - tag: description_ja
+      value: サイト。複数の建物を含みうる。
+      
+
+
+  Building:
+    is_a: Architecture
+    class_uri: rec:Building
+    description: A building which is part of a site.
+    annotations:
+    - tag: description_ja
+      value: サイトの一部である建物。
+    exact_mappings:
+      - rec:Building
+
+  Level:
+    is_a: Architecture
+    class_uri: rec:Level
+    description: A building storey. Levels can also be treated as a kind of space.
+    annotations:
+    - tag: description_ja
+      value: 建物のフロア。スペースの一種として扱える。
+    exact_mappings:
+      - rec:Level
+    slots:
+    - levelNumber
+
+  Room:
+    is_a: Architecture
+    class_uri: rec:Room
+    description: A room within a building.
+    exact_mappings:
+      - rec:Room
+
+  Zone:
+    is_a: Architecture
+    class_uri: rec:Zone
+    description: A sub-zone within or outside of a building defined to support some technology and/or use.
+    exact_mappings:
+      - rec:Zone
+
+  OutdoorSpace:
+    is_a: Architecture
+    class_uri: rec:OutdoorSpace
+    description: An outdoor space associated with a site or building.
+    exact_mappings:
+      - rec:OutdoorSpace
+
+  # Base Resource class
+  Resource:
+    abstract: true
+    class_uri: rdfs:Resource
+    description: "Base class for all resources"
+    exact_mappings:
+      - rdfs:Resource
+
+  # Asset class
+  Asset:
+    abstract: true
+    is_a: Resource
+    class_uri: rec:Asset
+    description: "Something which is placed inside of a building, but is not an integral part of that building's structure; e.g., furniture, equipment, systems, etc."
+    annotations:
+      - tag: description_ja
+        value: "建物内に配置されるが、建物構造の不可欠な部分ではないもの。例：家具、設備、システムなど。"
+    exact_mappings:
+      - rec:Asset
+    slots:
+      - id
+      - commissionedBy
+      - documentation
+      - description
+      - geometry
+      - hasPart
+      - hasPoint
+      - installedBy
+      - isPartOf
+      - locatedIn
+      - manufacturedBy
+      - mountedOn
+      - servicedBy
+      - assetTag
+      - commissioningDate
+      - customProperties  # custom_properties → customProperties
+      - customTags       # custom_tags → customTags
+      - identifiers
+      - initialCost
+      - installationDate
+      - IPAddress        
+      - MACAddress       
+      - maintenanceInterval
+      - modelNumber
+      - name
+      - serialNumber
+      - turnoverDate
+      - weight
+    slot_usage:
+      hasPoint:
+        any_of:
+          - range: Point
+          - range: PointExt
+       
+  Equipment:
+    is_a: Asset
+    class_uri: brick:Equipment
+    exact_mappings: 
+      - brick:Equipment
+    description: "An equipment asset installed in a space."
+    annotations:
+    - tag: description_ja
+      value: "空間に設置された設備アセット。"
+    slots:
+      - feeds
+      - isFedBy
+      - operationalStageCount
+    
+    slot_usage:
+      locatedIn:
+        range: Any
+        any_of: *SPACE_UNION
+
+  EquipmentExt:
+    is_a: Equipment
+    class_uri: sbco:EquipmentExt
+    description: "An equipment asset installed in a space."
+    annotations:
+    - tag: description_ja
+      value: "SBCOにて拡張したデバイスモデル"
+    slots:
+      - deviceType
+      - panel
+      - installationArea
+      - targetArea
+    
+    slot_usage:
+      locatedIn:
+        range: Any
+        any_of: *SPACE_UNION
+
+
+  Point:
+    class_uri: brick:Point
+    exact_mappings: 
+      - brick:Point
+    description: A sensor, actuator, or data point associated with equipment.
+    annotations:
+    - tag: description_ja
+      value: 設備に紐づくセンサー/アクチュエータ/データポイント。
+    slots:
+    - id
+    - isPointOf
+    - aggregate
+    - customProperties  # costomProperties → customProperties (タイポ修正)
+    - customTags       # custom_tags → customTags
+    - hasQuantity
+    - hasSubstance
+    - identifiers
+    - name
+  
+  PointExt:
+    is_a: Point
+    class_uri: sbco:PointExt
+    description: "A point (sensor/actuator) in a smart building context."
+    annotations:
+      - tag: description_ja
+        value: "スマートビルディングの文脈におけるポイント（センサー/アクチュエータ）。"
+    slots:
+      - pointSpecification  # point_specification → pointSpecification
+      - pointType          # point_type → pointType
+      - unit
+      - maxPresValue       # max_pres_value → maxPresValue
+      - minPresValue       # min_pres_value → minPresValue
+      - scale      
+
+    slot_usage:
+      isPointOf:
+        any_of:
+          - range: Equipment
+          - range: EquipmentExt
+
+  KeyStringMapEntry:
+    description: map(string -> string) の1エントリ
+    slots:
+    - key
+    - value
+    slot_usage:
+      key:
+        required: true
+      value:
+        required: true
+
+  KeyBoolMapEntry:
+    description: map(string -> boolean) の1エントリ
+    slots:
+    - key
+    - flag
+    slot_usage:
+      key:
+        required: true
+      flag:
+        required: true
+
+  KeyMapOfStringMapEntry:
+    description: map(string -> map(string -> string)) の1エントリ
+    slots:
+    - key
+    - entries
+    slot_usage:
+      key:
+        required: true
+      entries:
+        multivalued: true
+        range: KeyStringMapEntry
+        inlined: true
+        inlined_as_list: true
+
+
+  # Information class - base class for information resources
+  Information:
+    is_a: Resource
+    class_uri: rec:Information
+    description: "Abstract base class for information resources such as documents, images, media files, etc."
+    annotations:
+      - tag: description_ja
+        value: "ドキュメント、画像、メディアファイルなどの情報リソースの抽象基底クラス"
+    exact_mappings:
+      - rec:Information
+    slots:
+      - name
+      - description
+      - identifiers
+      - customTags
+      - customProperties
+      - format
+      - url
+      - version
+      - language
+      - size
+      - checksum
+
+  # Document class extending Information
+  Document:
+    is_a: Information
+    class_uri: rec:Document
+    description: "A document providing information about a building element or asset"
+    annotations:
+      - tag: description_ja
+        value: "建物要素やアセットに関する情報を提供するドキュメント"
+    exact_mappings:
+      - rec:Document
+
+  # Image class extending Information
+  Image:
+    is_a: Information
+    class_uri: rec:Image
+    description: "An image file containing visual information"
+    annotations:
+      - tag: description_ja
+        value: "視覚情報を含む画像ファイル"
+    exact_mappings:
+      - rec:Image
+
+  # Media class extending Information
+  Media:
+    is_a: Information
+    class_uri: rec:Media
+    description: "A media file such as audio or video content"
+    annotations:
+      - tag: description_ja
+        value: "オーディオやビデオコンテンツなどのメディアファイル"
+    exact_mappings:
+      - rec:Media
+
+  # Schema class extending Information
+  Schema:
+    is_a: Information
+    class_uri: rec:Schema
+    description: "A schema definition file"
+    annotations:
+      - tag: description_ja
+        value: "スキーマ定義ファイル"
+    exact_mappings:
+      - rec:Schema
+
+  # PostalAddress class extending Information
+  PostalAddress:
+    is_a: Information
+    class_uri: rec:PostalAddress
+    description: "A postal address"
+    annotations:
+      - tag: description_ja
+        value: "郵便住所"
+    exact_mappings:
+      - rec:PostalAddress
+    slots:
+      - name
+      - identifiers
+      - customTags
+      - customProperties
+
+  Geometry:
+    is_a: Information
+    class_uri: rec:Geometry
+    description: "REC Geometry のプレースホルダ（詳細は別途拡張）"
+    annotations:
+      - tag: description_ja
+        value: "ジオメトリ情報のプレースホルダ"
+    exact_mappings:
+      - rec:Geometry
+
+  Georeference:
+    is_a: Information
+    class_uri: rec:Georeference
+    description: "REC Georeference のプレースホルダ（詳細は別途拡張）"
+    annotations:
+      - tag: description_ja
+        value: "地理参照情報のプレースホルダ"
+    exact_mappings:
+      - rec:Georeference
+# Add missing Agent class
+  Agent:
+    is_a: Resource
+    class_uri: rec:Agent
+    description: "An entity that can act or be acted upon"
+    annotations:
+      - tag: description_ja
+        value: "行動することができる、または行動される主体"
+    exact_mappings:
+      - rec:Agent
+    slots:
+      - id
+      - name
+      - identifiers
+      - customTags
+      - customProperties
+      - memberOf
+      - owns
+
+  # Add missing Organization class
+  Organization:
+    is_a: Agent
+    class_uri: rec:Organization
+    description: "An organization such as a company, institution, or association"
+    annotations:
+      - tag: description_ja
+        value: "会社、機関、協会などの組織"
+    exact_mappings:
+      - rec:Organization
+    slots:
+      - id
+      - name
+      - identifiers
+      - customTags
+      - customProperties
+
+  # Add missing BuildingElement class
+  BuildingElement:
+    is_a: Resource
+    class_uri: rec:BuildingElement
+    description: "A part of the building structure"
+    annotations:
+      - tag: description_ja
+        value: "建物構造の一部"
+    exact_mappings:
+      - rec:BuildingElement
+    slots:
+      - id
+      - name
+      - identifiers
+      - customTags
+      - customProperties
+
+  # Add missing ArchitectureArea class
+  ArchitectureArea:
+    is_a: Resource
+    class_uri: rec:ArchitectureArea
+    description: "Describes business-relevant area measurements typically associated with architected spaces"
+    annotations:
+      - tag: description_ja
+        value: "設計された空間に関連する業務上重要な面積測定"
+    exact_mappings:
+      - rec:ArchitectureArea
+    slots:
+      - id
+      - name
+      - identifiers
+      - customTags
+      - customProperties
+
+  # Add missing ArchitectureCapacity class
+  ArchitectureCapacity:
+    is_a: Resource
+    class_uri: rec:ArchitectureCapacity
+    description: "Describes business-relevant capacity measurements typically associated with architected spaces"
+    annotations:
+      - tag: description_ja
+        value: "設計された空間に関連する業務上重要な容量測定"
+    exact_mappings:
+      - rec:ArchitectureCapacity
+    slots:
+      - id
+      - name
+      - identifiers
+      - customTags
+      - customProperties

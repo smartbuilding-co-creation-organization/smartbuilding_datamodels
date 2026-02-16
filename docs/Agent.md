@@ -57,7 +57,7 @@ URI: [rec:Agent](https://w3id.org/rec/Agent)
     
         
         
-        Agent --> "1..*" KeyStringMapEntry : identifiers
+        Agent --> "*" KeyStringMapEntry : identifiers
         click KeyStringMapEntry href "../KeyStringMapEntry/"
     
 
@@ -106,7 +106,7 @@ URI: [rec:Agent](https://w3id.org/rec/Agent)
 | ---  | --- | --- | --- |
 | [id](id.md) | 1 <br/> [String](String.md) | Unique identifier within the schema | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Machine or Human-readable name | direct |
-| [identifiers](identifiers.md) | 1..* <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | direct |
+| [identifiers](identifiers.md) | * <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | direct |
 | [customTags](customTags.md) | * <br/> [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) | direct |
 | [customProperties](customProperties.md) | * <br/> [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) | direct |
 | [memberOf](memberOf.md) | * <br/> [Organization](Organization.md) | Indicates membership in an organization | direct |
@@ -122,32 +122,44 @@ URI: [rec:Agent](https://w3id.org/rec/Agent)
 | ---  | --- | --- | --- |
 | [Architecture](Architecture.md) | [architectedBy](architectedBy.md) | range | [Agent](Agent.md) |
 | [Architecture](Architecture.md) | [constructedBy](constructedBy.md) | range | [Agent](Agent.md) |
-| [Architecture](Architecture.md) | [operatedBy](operatedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [Architecture](Architecture.md) | [ownedBy](ownedBy.md) | any_of[range] | [Agent](Agent.md) |
+| [Architecture](Architecture.md) | [operatedBy](operatedBy.md) | range | [Agent](Agent.md) |
+| [Architecture](Architecture.md) | [ownedBy](ownedBy.md) | range | [Agent](Agent.md) |
 | [Site](Site.md) | [architectedBy](architectedBy.md) | range | [Agent](Agent.md) |
 | [Site](Site.md) | [constructedBy](constructedBy.md) | range | [Agent](Agent.md) |
-| [Site](Site.md) | [operatedBy](operatedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [Site](Site.md) | [ownedBy](ownedBy.md) | any_of[range] | [Agent](Agent.md) |
+| [Site](Site.md) | [operatedBy](operatedBy.md) | range | [Agent](Agent.md) |
+| [Site](Site.md) | [ownedBy](ownedBy.md) | range | [Agent](Agent.md) |
 | [Building](Building.md) | [architectedBy](architectedBy.md) | range | [Agent](Agent.md) |
 | [Building](Building.md) | [constructedBy](constructedBy.md) | range | [Agent](Agent.md) |
-| [Building](Building.md) | [operatedBy](operatedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [Building](Building.md) | [ownedBy](ownedBy.md) | any_of[range] | [Agent](Agent.md) |
+| [Building](Building.md) | [operatedBy](operatedBy.md) | range | [Agent](Agent.md) |
+| [Building](Building.md) | [ownedBy](ownedBy.md) | range | [Agent](Agent.md) |
 | [Level](Level.md) | [architectedBy](architectedBy.md) | range | [Agent](Agent.md) |
 | [Level](Level.md) | [constructedBy](constructedBy.md) | range | [Agent](Agent.md) |
-| [Level](Level.md) | [operatedBy](operatedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [Level](Level.md) | [ownedBy](ownedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [Asset](Asset.md) | [commissionedBy](commissionedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [Asset](Asset.md) | [installedBy](installedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [Asset](Asset.md) | [manufacturedBy](manufacturedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [Asset](Asset.md) | [servicedBy](servicedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [Equipment](Equipment.md) | [commissionedBy](commissionedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [Equipment](Equipment.md) | [installedBy](installedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [Equipment](Equipment.md) | [manufacturedBy](manufacturedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [Equipment](Equipment.md) | [servicedBy](servicedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [EquipmentExt](EquipmentExt.md) | [commissionedBy](commissionedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [EquipmentExt](EquipmentExt.md) | [installedBy](installedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [EquipmentExt](EquipmentExt.md) | [manufacturedBy](manufacturedBy.md) | any_of[range] | [Agent](Agent.md) |
-| [EquipmentExt](EquipmentExt.md) | [servicedBy](servicedBy.md) | any_of[range] | [Agent](Agent.md) |
+| [Level](Level.md) | [operatedBy](operatedBy.md) | range | [Agent](Agent.md) |
+| [Level](Level.md) | [ownedBy](ownedBy.md) | range | [Agent](Agent.md) |
+| [Room](Room.md) | [architectedBy](architectedBy.md) | range | [Agent](Agent.md) |
+| [Room](Room.md) | [constructedBy](constructedBy.md) | range | [Agent](Agent.md) |
+| [Room](Room.md) | [operatedBy](operatedBy.md) | range | [Agent](Agent.md) |
+| [Room](Room.md) | [ownedBy](ownedBy.md) | range | [Agent](Agent.md) |
+| [Zone](Zone.md) | [architectedBy](architectedBy.md) | range | [Agent](Agent.md) |
+| [Zone](Zone.md) | [constructedBy](constructedBy.md) | range | [Agent](Agent.md) |
+| [Zone](Zone.md) | [operatedBy](operatedBy.md) | range | [Agent](Agent.md) |
+| [Zone](Zone.md) | [ownedBy](ownedBy.md) | range | [Agent](Agent.md) |
+| [OutdoorSpace](OutdoorSpace.md) | [architectedBy](architectedBy.md) | range | [Agent](Agent.md) |
+| [OutdoorSpace](OutdoorSpace.md) | [constructedBy](constructedBy.md) | range | [Agent](Agent.md) |
+| [OutdoorSpace](OutdoorSpace.md) | [operatedBy](operatedBy.md) | range | [Agent](Agent.md) |
+| [OutdoorSpace](OutdoorSpace.md) | [ownedBy](ownedBy.md) | range | [Agent](Agent.md) |
+| [Asset](Asset.md) | [commissionedBy](commissionedBy.md) | range | [Agent](Agent.md) |
+| [Asset](Asset.md) | [installedBy](installedBy.md) | range | [Agent](Agent.md) |
+| [Asset](Asset.md) | [manufacturedBy](manufacturedBy.md) | range | [Agent](Agent.md) |
+| [Asset](Asset.md) | [servicedBy](servicedBy.md) | range | [Agent](Agent.md) |
+| [Equipment](Equipment.md) | [commissionedBy](commissionedBy.md) | range | [Agent](Agent.md) |
+| [Equipment](Equipment.md) | [installedBy](installedBy.md) | range | [Agent](Agent.md) |
+| [Equipment](Equipment.md) | [manufacturedBy](manufacturedBy.md) | range | [Agent](Agent.md) |
+| [Equipment](Equipment.md) | [servicedBy](servicedBy.md) | range | [Agent](Agent.md) |
+| [EquipmentExt](EquipmentExt.md) | [commissionedBy](commissionedBy.md) | range | [Agent](Agent.md) |
+| [EquipmentExt](EquipmentExt.md) | [installedBy](installedBy.md) | range | [Agent](Agent.md) |
+| [EquipmentExt](EquipmentExt.md) | [manufacturedBy](manufacturedBy.md) | range | [Agent](Agent.md) |
+| [EquipmentExt](EquipmentExt.md) | [servicedBy](servicedBy.md) | range | [Agent](Agent.md) |
 
 
 
@@ -246,8 +258,8 @@ attributes:
         tag: example
         value: dtmi:example:Building:1
     description: Unique identifier within the schema. Must start with a letter and
-      contain only letters, digits, underscores, hyphens, colons, semicolons, or periods
-      (for DTMI format).
+      contain only letters, digits, underscores, hyphens, colons, semicolons, or periods.
+      DTMI is one acceptable example.
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
@@ -264,7 +276,6 @@ attributes:
     - ArchitectureCapacity
     range: string
     required: true
-    pattern: ^(?:[a-zA-Z][a-zA-Z0-9_-:]*|dtmi:[A-Za-z0-9_:.;-]+)$
   name:
     name: name
     description: Machine or Human-readable name
@@ -306,7 +317,7 @@ attributes:
     - ArchitectureArea
     - ArchitectureCapacity
     range: KeyStringMapEntry
-    required: true
+    required: false
     multivalued: true
     inlined: true
     inlined_as_list: true

@@ -52,7 +52,7 @@ URI: [rec:BuildingElement](https://w3id.org/rec/BuildingElement)
     
         
         
-        BuildingElement --> "1..*" KeyStringMapEntry : identifiers
+        BuildingElement --> "*" KeyStringMapEntry : identifiers
         click KeyStringMapEntry href "../KeyStringMapEntry/"
     
 
@@ -78,7 +78,7 @@ URI: [rec:BuildingElement](https://w3id.org/rec/BuildingElement)
 | ---  | --- | --- | --- |
 | [id](id.md) | 1 <br/> [String](String.md) | Unique identifier within the schema | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Machine or Human-readable name | direct |
-| [identifiers](identifiers.md) | 1..* <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | direct |
+| [identifiers](identifiers.md) | * <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | direct |
 | [customTags](customTags.md) | * <br/> [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) | direct |
 | [customProperties](customProperties.md) | * <br/> [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) | direct |
 
@@ -90,21 +90,30 @@ URI: [rec:BuildingElement](https://w3id.org/rec/BuildingElement)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [Architecture](Architecture.md) | [adjacentElement](adjacentElement.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Architecture](Architecture.md) | [containsElement](containsElement.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Architecture](Architecture.md) | [intersectingElement](intersectingElement.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Site](Site.md) | [adjacentElement](adjacentElement.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Site](Site.md) | [containsElement](containsElement.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Site](Site.md) | [intersectingElement](intersectingElement.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Building](Building.md) | [adjacentElement](adjacentElement.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Building](Building.md) | [containsElement](containsElement.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Building](Building.md) | [intersectingElement](intersectingElement.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Level](Level.md) | [adjacentElement](adjacentElement.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Level](Level.md) | [containsElement](containsElement.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Level](Level.md) | [intersectingElement](intersectingElement.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Asset](Asset.md) | [mountedOn](mountedOn.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [Equipment](Equipment.md) | [mountedOn](mountedOn.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
-| [EquipmentExt](EquipmentExt.md) | [mountedOn](mountedOn.md) | any_of[range] | [BuildingElement](BuildingElement.md) |
+| [Architecture](Architecture.md) | [adjacentElement](adjacentElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Architecture](Architecture.md) | [containsElement](containsElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Architecture](Architecture.md) | [intersectingElement](intersectingElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Site](Site.md) | [adjacentElement](adjacentElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Site](Site.md) | [containsElement](containsElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Site](Site.md) | [intersectingElement](intersectingElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Building](Building.md) | [adjacentElement](adjacentElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Building](Building.md) | [containsElement](containsElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Building](Building.md) | [intersectingElement](intersectingElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Level](Level.md) | [adjacentElement](adjacentElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Level](Level.md) | [containsElement](containsElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Level](Level.md) | [intersectingElement](intersectingElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Room](Room.md) | [adjacentElement](adjacentElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Room](Room.md) | [containsElement](containsElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Room](Room.md) | [intersectingElement](intersectingElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Zone](Zone.md) | [adjacentElement](adjacentElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Zone](Zone.md) | [containsElement](containsElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Zone](Zone.md) | [intersectingElement](intersectingElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [OutdoorSpace](OutdoorSpace.md) | [adjacentElement](adjacentElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [OutdoorSpace](OutdoorSpace.md) | [containsElement](containsElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [OutdoorSpace](OutdoorSpace.md) | [intersectingElement](intersectingElement.md) | range | [BuildingElement](BuildingElement.md) |
+| [Asset](Asset.md) | [mountedOn](mountedOn.md) | range | [BuildingElement](BuildingElement.md) |
+| [Equipment](Equipment.md) | [mountedOn](mountedOn.md) | range | [BuildingElement](BuildingElement.md) |
+| [EquipmentExt](EquipmentExt.md) | [mountedOn](mountedOn.md) | range | [BuildingElement](BuildingElement.md) |
 
 
 
@@ -201,8 +210,8 @@ attributes:
         tag: example
         value: dtmi:example:Building:1
     description: Unique identifier within the schema. Must start with a letter and
-      contain only letters, digits, underscores, hyphens, colons, semicolons, or periods
-      (for DTMI format).
+      contain only letters, digits, underscores, hyphens, colons, semicolons, or periods.
+      DTMI is one acceptable example.
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
@@ -219,7 +228,6 @@ attributes:
     - ArchitectureCapacity
     range: string
     required: true
-    pattern: ^(?:[a-zA-Z][a-zA-Z0-9_-:]*|dtmi:[A-Za-z0-9_:.;-]+)$
   name:
     name: name
     description: Machine or Human-readable name
@@ -261,7 +269,7 @@ attributes:
     - ArchitectureArea
     - ArchitectureCapacity
     range: KeyStringMapEntry
-    required: true
+    required: false
     multivalued: true
     inlined: true
     inlined_as_list: true

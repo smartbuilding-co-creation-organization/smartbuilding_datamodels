@@ -22,8 +22,8 @@ Alias: mountedOn
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
@@ -33,7 +33,7 @@ Alias: mountedOn
 
 ## Properties
 
-* Range: [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[BuildingElement](BuildingElement.md)
+* Range: [BuildingElement](BuildingElement.md)
 
 
 
@@ -75,10 +75,7 @@ slot_uri: rec:mountedOn
 alias: mountedOn
 domain_of:
 - Asset
-range: string
-any_of:
-- range: Resource
-- range: BuildingElement
+range: BuildingElement
 
 ```
 </details>

@@ -22,8 +22,8 @@ Alias: servicedBy
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
@@ -33,7 +33,7 @@ Alias: servicedBy
 
 ## Properties
 
-* Range: [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Agent](Agent.md)
+* Range: [Agent](Agent.md)
 
 * Multivalued: True
 
@@ -77,11 +77,8 @@ slot_uri: rec:servicedBy
 alias: servicedBy
 domain_of:
 - Asset
-range: string
+range: Agent
 multivalued: true
-any_of:
-- range: Resource
-- range: Agent
 
 ```
 </details>

@@ -3,9 +3,9 @@
 LinkMLでスマートビル向けモデル（オントロジー）を管理し、以下を自動生成・公開するテンプレートです。
 このプロジェクトは、スマートビルディング共創機構の標準策定WGで仕様検討しているデータモデルです。
 
-- OWL (Turtle): `output/building_model.owl.ttl`
-- SHACL (Turtle): `output/building_model.shacl.ttl`
-- JSON Schema: `output/building_model.schema.json`
+- OWL (Turtle): `output/building_model.owl.ttl` (from `schema/building_model_owl.yaml`)
+- SHACL (Turtle): `output/building_model.shacl.ttl` (from `schema/building_model_shacl.yaml`)
+- JSON Schema: `output/building_model.schema.json` (from `schema/building_model_shacl.yaml`)
 - Docs (MkDocs + GitHub Pages)
 
 ## Quick Start
@@ -15,13 +15,27 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
 # Generate artifacts
-linkml generate owl --schema schema/building_model.yaml --output output/building_model.owl.ttl
-linkml generate shacl --schema schema/building_model.yaml --output output/building_model.shacl.ttl
-linkml generate json-schema --schema schema/building_model.yaml --output output/building_model.schema.json
+linkml generate owl --metadata-profile rdfs schema/building_model_owl.yaml -f ttl >  output/building_model.owl.ttl
+linkml generate shacl --non-closed --suffix Shape schema/building_model_shacl.yaml > output/building_model.shacl.ttl
+linkml generate json-schema schema/building_model_shacl.yaml > output/building_model.schema.json
 
 # Generate docs and preview
-gen-doc --directory docs schema/building_model.yaml
+gen-doc --directory docs schema/building_model_shacl.yaml
 mkdocs serve
+```
+
+## RDF Validation (OWL Inference + SHACL)
+
+`scripts/validate_rdf.py` runs the YAML→RDF conversion and validates the resulting RDF with
+the generated OWL/SHACL artifacts. Validation cases live under `sample/validation/` and
+can assert both SHACL conformance and expected inferred class types.
+
+```bash
+python scripts/validate_rdf.py \
+  --schema schema/building_model.yaml \
+  --ontology output/building_model.owl.ttl \
+  --shacl output/building_model.shacl.ttl \
+  --cases sample/validation/cases.yaml
 ```
 
 ## CI/CD
@@ -34,14 +48,16 @@ mkdocs serve
 
 ## スキーマ概要と編集ポイント
 
-- 単一ソース: `schema/building_model.yaml`（ここを編集すれば生成物がそろって更新されます）
+- スキーマ分割: `schema/building_model_shacl.yaml`（SHACL/JSON Schema/Docs）と `schema/building_model_owl.yaml`（OWL）
 - トップレベルの階層: `Site` → `Building` → `Level` → `Space`
 - 設備とポイント: `Equipment` が設備本体、`Point` が計測・制御・状態などのポイント。
 - 主なスロット: `buildings`, `levels`, `spaces`, `equipment_list`, `points`
 - カードィナリティ: `multivalued`（複数可）、`required`（必須）、`inlined_as_list`（子要素をリストとしてインライン展開）で表現。
+- `hasPart` / `isPartOf` は `Space` を range として扱います（Space→Space の階層関係を表現）。
+- `id` と `maintenanceInterval` は独自の型（`IdString` / `DurationString`）で定義します。`DurationString` は `xsd:duration` にマップされます。
 
 **English recap**
-- Single source of truth: edit `schema/building_model.yaml` to regenerate all artifacts.
+- Schema sources: use `schema/building_model_shacl.yaml` for SHACL/JSON Schema/Docs and `schema/building_model_owl.yaml` for OWL.
 - Core hierarchy: `Site` → `Building` → `Level` → `Space` with embedded `Equipment` and `Point`.
 - Key slots: `buildings`, `levels`, `spaces`, `equipment_list`, `points`.
 - Cardinality controls: `multivalued`, `required`, and `inlined_as_list` indicate multiplicity, requiredness, and inline list expansion.
@@ -81,22 +97,36 @@ ex:space/A-3F-Office a sbco:Space ;
   sbco:isPartOf ex:level/A-3F ;
   sbco:hasPart ex:equip/AHU-01 .
 
-ex:equip/AHU-01 a sbco:Equipment ;
+ex:equip/AHU-01 a sbco:EquipmentExt ;
+  sbco:id "equip/AHU-01" ;
   sbco:name "AHU-01" ;
+  sbco:identifiers [ sbco:key "serial" ; sbco:value "AHU-01-XYZ" ] ;
+  sbco:deviceType "AHU" ;
+  sbco:panel "Panel-1" ;
+  sbco:installationArea "Office Area" ;
+  sbco:targetArea "Office Area" ;
   sbco:locatedIn ex:space/A-3F-Office ;
   sbco:hasPoint ex:point/AHU-01-SAT, ex:point/AHU-01-SF-CMD .
 
-ex:point/AHU-01-SAT a sbco:Point ;
+ex:point/AHU-01-SAT a sbco:PointExt ;
+  sbco:id "point/AHU-01-SAT" ;
   sbco:name "Supply Air Temperature" ;
+  sbco:identifiers [ sbco:key "BACnet" ; sbco:value "1234" ] ;
+  sbco:pointType "TemperatureSensor" ;
+  sbco:pointSpecification <https://www.sbco.or.jp/ont/PointSpecificationEnum#Measurement> ;
+  sbco:unit <https://www.sbco.or.jp/ont/UnitEnum#celsius> ;
   sbco:isPointOf ex:equip/AHU-01 ;
-  sbco:hasQuantity <https://www.sbco.or.jp/ont/QuantityEnum#Temperature> ;
-  sbco:unit <https://www.sbco.or.jp/ont/UnitEnum#celsius> .
+  sbco:hasQuantity <https://www.sbco.or.jp/ont/QuantityEnum#Temperature> .
 
-ex:point/AHU-01-SF-CMD a sbco:Point ;
+ex:point/AHU-01-SF-CMD a sbco:PointExt ;
+  sbco:id "point/AHU-01-SF-CMD" ;
   sbco:name "Supply Fan Command" ;
+  sbco:identifiers [ sbco:key "BACnet" ; sbco:value "5678" ] ;
+  sbco:pointType "Command" ;
+  sbco:pointSpecification <https://www.sbco.or.jp/ont/PointSpecificationEnum#Command> ;
+  sbco:unit <https://www.sbco.or.jp/ont/UnitEnum#percent> ;
   sbco:isPointOf ex:equip/AHU-01 ;
-  sbco:hasQuantity <https://www.sbco.or.jp/ont/QuantityEnum#Active_Power> ;
-  sbco:unit <https://www.sbco.or.jp/ont/UnitEnum#percent> .
+  sbco:hasQuantity <https://www.sbco.or.jp/ont/QuantityEnum#Active_Power> .
 ```
 
 ## 参考
@@ -104,4 +134,3 @@ ex:point/AHU-01-SF-CMD a sbco:Point ;
 - LinkML: https://linkml.io
 - MkDocs: https://www.mkdocs.org/
 - mkdocs-material: https://squidfunk.github.io/mkdocs-material/
-

@@ -1,0 +1,16 @@
+id: sbco:site_demo_002
+name: Demo Site Missing PointType
+hasPart:
+  - id: sbco:building_demo_002
+    name: Demo Building
+    hasPart:
+      - id: sbco:level_demo_2f
+        name: 2F
+        hasPart:
+          - id: sbco:room_demo_201
+            name: Demo Room
+            hasPoint:
+              - id: sbco:point_temp_002
+                type: PointExt
+                name: Room Temperature
+                unit: sbco:UnitEnum#celsius

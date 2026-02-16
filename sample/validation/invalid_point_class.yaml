@@ -1,0 +1,16 @@
+id: sbco:site_demo_004
+name: Demo Site Invalid Point Class
+hasPart:
+  - id: sbco:building_demo_004
+    name: Demo Building
+    hasPart:
+      - id: sbco:level_demo_4f
+        name: 4F
+        hasPart:
+          - id: sbco:room_demo_401
+            name: Demo Room
+            hasPoint:
+              - id: sbco:equipment_as_point_001
+                type: EquipmentExt
+                name: Incorrect Equipment As Point
+                deviceType: AHU

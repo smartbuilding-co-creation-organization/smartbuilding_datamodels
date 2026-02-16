@@ -26,6 +26,15 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
         
       EquipmentExt : commissionedBy
         
+          
+    
+        
+        
+        EquipmentExt --> "*" Agent : commissionedBy
+        click Agent href "../Agent/"
+    
+
+        
       EquipmentExt : commissioningDate
         
       EquipmentExt : customProperties
@@ -50,9 +59,20 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
     
 
         
+      EquipmentExt : description
+        
       EquipmentExt : deviceType
         
       EquipmentExt : documentation
+        
+          
+    
+        
+        
+        EquipmentExt --> "*" Document : documentation
+        click Document href "../Document/"
+    
+
         
       EquipmentExt : feeds
         
@@ -97,7 +117,7 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
     
         
         
-        EquipmentExt --> "1..*" KeyStringMapEntry : identifiers
+        EquipmentExt --> "*" KeyStringMapEntry : identifiers
         click KeyStringMapEntry href "../KeyStringMapEntry/"
     
 
@@ -109,6 +129,15 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
       EquipmentExt : installationDate
         
       EquipmentExt : installedBy
+        
+          
+    
+        
+        
+        EquipmentExt --> "*" Agent : installedBy
+        click Agent href "../Agent/"
+    
+
         
       EquipmentExt : IPAddress
         
@@ -125,25 +154,7 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
         
       EquipmentExt : isPartOf
         
-          
-    
-        
-        
-        EquipmentExt --> "0..1" Space : isPartOf
-        click Space href "../Space/"
-    
-
-        
       EquipmentExt : locatedIn
-        
-          
-    
-        
-        
-        EquipmentExt --> "*" Space : locatedIn
-        click Space href "../Space/"
-    
-
         
       EquipmentExt : MACAddress
         
@@ -151,9 +162,27 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
         
       EquipmentExt : manufacturedBy
         
+          
+    
+        
+        
+        EquipmentExt --> "*" Agent : manufacturedBy
+        click Agent href "../Agent/"
+    
+
+        
       EquipmentExt : modelNumber
         
       EquipmentExt : mountedOn
+        
+          
+    
+        
+        
+        EquipmentExt --> "0..1" BuildingElement : mountedOn
+        click BuildingElement href "../BuildingElement/"
+    
+
         
       EquipmentExt : name
         
@@ -164,6 +193,15 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
       EquipmentExt : serialNumber
         
       EquipmentExt : servicedBy
+        
+          
+    
+        
+        
+        EquipmentExt --> "*" Agent : servicedBy
+        click Agent href "../Agent/"
+    
+
         
       EquipmentExt : targetArea
         
@@ -198,27 +236,28 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
 | [isFedBy](isFedBy.md) | * <br/> [Resource](Resource.md) | Resource that feeds this architecture | [Equipment](Equipment.md) |
 | [operationalStageCount](operationalStageCount.md) | 0..1 <br/> [Integer](Integer.md) | The number of operational stages supported by this equipment | [Equipment](Equipment.md) |
 | [id](id.md) | 1 <br/> [String](String.md) | Unique identifier within the schema | [Asset](Asset.md) |
-| [commissionedBy](commissionedBy.md) | * <br/> [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Agent](Agent.md) | Agent or resource that commissioned this asset | [Asset](Asset.md) |
-| [documentation](documentation.md) | * <br/> [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Document](Document.md) | Documentation related to this asset | [Asset](Asset.md) |
+| [commissionedBy](commissionedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that commissioned this asset | [Asset](Asset.md) |
+| [documentation](documentation.md) | * <br/> [Document](Document.md) | Documentation related to this asset | [Asset](Asset.md) |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the resource | [Asset](Asset.md) |
 | [geometry](geometry.md) | 0..1 <br/> [Geometry](Geometry.md) | Polygon representing the spatial extent of this Space | [Asset](Asset.md) |
-| [hasPart](hasPart.md) | * <br/> [String](String.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Resource](Resource.md) | The subject is composed in part of the entity given by the object | [Asset](Asset.md) |
-| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md) | Point associated with this architecture | [Asset](Asset.md) |
-| [installedBy](installedBy.md) | * <br/> [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Agent](Agent.md) | Agent or resource that installed this asset | [Asset](Asset.md) |
-| [isPartOf](isPartOf.md) | 0..1 <br/> [Space](Space.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Resource](Resource.md) |  | [Asset](Asset.md) |
-| [locatedIn](locatedIn.md) | * <br/> [Space](Space.md) | Space where this asset is located | [Asset](Asset.md) |
-| [manufacturedBy](manufacturedBy.md) | * <br/> [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Agent](Agent.md) | Agent or resource that manufactured this asset | [Asset](Asset.md) |
-| [mountedOn](mountedOn.md) | 0..1 <br/> [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[BuildingElement](BuildingElement.md) | Building element on which this asset is mounted | [Asset](Asset.md) |
-| [servicedBy](servicedBy.md) | * <br/> [String](String.md)&nbsp;or&nbsp;<br />[Resource](Resource.md)&nbsp;or&nbsp;<br />[Agent](Agent.md) | Agent or resource that services this asset | [Asset](Asset.md) |
+| [hasPart](hasPart.md) | * <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | The subject is composed in part of the entity given by the object | [Asset](Asset.md) |
+| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | [Asset](Asset.md) |
+| [installedBy](installedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that installed this asset | [Asset](Asset.md) |
+| [isPartOf](isPartOf.md) | 0..1 <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) |  | [Asset](Asset.md) |
+| [locatedIn](locatedIn.md) | * <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | Space where this asset is located | [Asset](Asset.md) |
+| [manufacturedBy](manufacturedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that manufactured this asset | [Asset](Asset.md) |
+| [mountedOn](mountedOn.md) | 0..1 <br/> [BuildingElement](BuildingElement.md) | Building element on which this asset is mounted | [Asset](Asset.md) |
+| [servicedBy](servicedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that services this asset | [Asset](Asset.md) |
 | [assetTag](assetTag.md) | * <br/> [String](String.md) | Asset identification tag | [Asset](Asset.md) |
 | [commissioningDate](commissioningDate.md) | 0..1 <br/> [Date](Date.md) | Date when the asset was commissioned | [Asset](Asset.md) |
 | [customProperties](customProperties.md) | * <br/> [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) | [Asset](Asset.md) |
 | [customTags](customTags.md) | * <br/> [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) | [Asset](Asset.md) |
-| [identifiers](identifiers.md) | 1..* <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | [Asset](Asset.md) |
+| [identifiers](identifiers.md) | * <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | [Asset](Asset.md) |
 | [initialCost](initialCost.md) | 0..1 <br/> [String](String.md) | Initial cost of the asset | [Asset](Asset.md) |
 | [installationDate](installationDate.md) | 0..1 <br/> [Date](Date.md) | Date when the asset was installed | [Asset](Asset.md) |
 | [IPAddress](IPAddress.md) | * <br/> [String](String.md) | IP address of the asset | [Asset](Asset.md) |
 | [MACAddress](MACAddress.md) | * <br/> [String](String.md) | MAC address of the asset | [Asset](Asset.md) |
-| [maintenanceInterval](maintenanceInterval.md) | * <br/> [Duration](Duration.md) | Maintenance interval duration | [Asset](Asset.md) |
+| [maintenanceInterval](maintenanceInterval.md) | * <br/> [DurationString](DurationString.md) | Maintenance interval duration | [Asset](Asset.md) |
 | [modelNumber](modelNumber.md) | 0..1 <br/> [String](String.md) | Model number of the asset | [Asset](Asset.md) |
 | [name](name.md) | 1 <br/> [String](String.md) | Machine or Human-readable name | [Asset](Asset.md) |
 | [serialNumber](serialNumber.md) | 0..1 <br/> [String](String.md) | Serial number of the asset | [Asset](Asset.md) |
@@ -227,6 +266,21 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
 
 
 
+
+
+## Usages
+
+| used by | used in | type | used |
+| ---  | --- | --- | --- |
+| [Space](Space.md) | [isLocationOf](isLocationOf.md) | range | [EquipmentExt](EquipmentExt.md) |
+| [Architecture](Architecture.md) | [isLocationOf](isLocationOf.md) | range | [EquipmentExt](EquipmentExt.md) |
+| [Site](Site.md) | [isLocationOf](isLocationOf.md) | range | [EquipmentExt](EquipmentExt.md) |
+| [Building](Building.md) | [isLocationOf](isLocationOf.md) | range | [EquipmentExt](EquipmentExt.md) |
+| [Level](Level.md) | [isLocationOf](isLocationOf.md) | range | [EquipmentExt](EquipmentExt.md) |
+| [Room](Room.md) | [isLocationOf](isLocationOf.md) | range | [EquipmentExt](EquipmentExt.md) |
+| [Zone](Zone.md) | [isLocationOf](isLocationOf.md) | range | [EquipmentExt](EquipmentExt.md) |
+| [OutdoorSpace](OutdoorSpace.md) | [isLocationOf](isLocationOf.md) | range | [EquipmentExt](EquipmentExt.md) |
+| [PointExt](PointExt.md) | [isPointOf](isPointOf.md) | any_of[range] | [EquipmentExt](EquipmentExt.md) |
 
 
 
@@ -292,7 +346,15 @@ slots:
 slot_usage:
   locatedIn:
     name: locatedIn
-    range: Space
+    range: Any
+    any_of:
+    - range: Space
+    - range: Site
+    - range: Building
+    - range: Level
+    - range: Room
+    - range: Zone
+    - range: OutdoorSpace
 class_uri: sbco:EquipmentExt
 
 ```
@@ -313,7 +375,15 @@ is_a: Equipment
 slot_usage:
   locatedIn:
     name: locatedIn
-    range: Space
+    range: Any
+    any_of:
+    - range: Space
+    - range: Site
+    - range: Building
+    - range: Level
+    - range: Room
+    - range: Zone
+    - range: OutdoorSpace
 attributes:
   deviceType:
     name: deviceType
@@ -409,8 +479,8 @@ attributes:
         tag: example
         value: dtmi:example:Building:1
     description: Unique identifier within the schema. Must start with a letter and
-      contain only letters, digits, underscores, hyphens, colons, semicolons, or periods
-      (for DTMI format).
+      contain only letters, digits, underscores, hyphens, colons, semicolons, or periods.
+      DTMI is one acceptable example.
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
@@ -427,7 +497,6 @@ attributes:
     - ArchitectureCapacity
     range: string
     required: true
-    pattern: ^(?:[a-zA-Z][a-zA-Z0-9_-:]*|dtmi:[A-Za-z0-9_:.;-]+)$
   commissionedBy:
     name: commissionedBy
     description: Agent or resource that commissioned this asset
@@ -438,11 +507,8 @@ attributes:
     owner: EquipmentExt
     domain_of:
     - Asset
-    range: string
+    range: Agent
     multivalued: true
-    any_of:
-    - range: Resource
-    - range: Agent
   documentation:
     name: documentation
     description: Documentation related to this asset
@@ -454,11 +520,25 @@ attributes:
     domain_of:
     - Architecture
     - Asset
-    range: string
+    range: Document
     multivalued: true
-    any_of:
-    - range: Resource
-    - range: Document
+  description:
+    name: description
+    annotations:
+      description_ja:
+        tag: description_ja
+        value: リソースのテキスト記述
+    description: A textual description of the resource
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    slot_uri: rec:description
+    alias: description
+    owner: EquipmentExt
+    domain_of:
+    - Space
+    - Asset
+    - Information
+    range: string
   geometry:
     name: geometry
     description: Polygon representing the spatial extent of this Space.
@@ -483,11 +563,16 @@ attributes:
     domain_of:
     - Space
     - Asset
-    range: string
+    range: Any
     multivalued: true
     any_of:
     - range: Space
-    - range: Resource
+    - range: Site
+    - range: Building
+    - range: Level
+    - range: Room
+    - range: Zone
+    - range: OutdoorSpace
   hasPoint:
     name: hasPoint
     description: Point associated with this architecture
@@ -501,6 +586,9 @@ attributes:
     - Asset
     range: Point
     multivalued: true
+    any_of:
+    - range: Point
+    - range: PointExt
   installedBy:
     name: installedBy
     description: Agent or resource that installed this asset
@@ -511,11 +599,8 @@ attributes:
     owner: EquipmentExt
     domain_of:
     - Asset
-    range: string
+    range: Agent
     multivalued: true
-    any_of:
-    - range: Resource
-    - range: Agent
   isPartOf:
     name: isPartOf
     from_schema: https://www.sbco.or.jp/ont/schema
@@ -526,11 +611,16 @@ attributes:
     domain_of:
     - Space
     - Asset
-    range: Space
+    range: Any
     multivalued: false
     any_of:
     - range: Space
-    - range: Resource
+    - range: Site
+    - range: Building
+    - range: Level
+    - range: Room
+    - range: Zone
+    - range: OutdoorSpace
   locatedIn:
     name: locatedIn
     description: Space where this asset is located
@@ -541,8 +631,16 @@ attributes:
     owner: EquipmentExt
     domain_of:
     - Asset
-    range: Space
+    range: Any
     multivalued: true
+    any_of:
+    - range: Space
+    - range: Site
+    - range: Building
+    - range: Level
+    - range: Room
+    - range: Zone
+    - range: OutdoorSpace
   manufacturedBy:
     name: manufacturedBy
     description: Agent or resource that manufactured this asset
@@ -553,11 +651,8 @@ attributes:
     owner: EquipmentExt
     domain_of:
     - Asset
-    range: string
+    range: Agent
     multivalued: true
-    any_of:
-    - range: Resource
-    - range: Agent
   mountedOn:
     name: mountedOn
     description: Building element on which this asset is mounted
@@ -568,10 +663,7 @@ attributes:
     owner: EquipmentExt
     domain_of:
     - Asset
-    range: string
-    any_of:
-    - range: Resource
-    - range: BuildingElement
+    range: BuildingElement
   servicedBy:
     name: servicedBy
     description: Agent or resource that services this asset
@@ -582,11 +674,8 @@ attributes:
     owner: EquipmentExt
     domain_of:
     - Asset
-    range: string
+    range: Agent
     multivalued: true
-    any_of:
-    - range: Resource
-    - range: Agent
   assetTag:
     name: assetTag
     description: Asset identification tag
@@ -676,7 +765,7 @@ attributes:
     - ArchitectureArea
     - ArchitectureCapacity
     range: KeyStringMapEntry
-    required: true
+    required: false
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -738,7 +827,7 @@ attributes:
     owner: EquipmentExt
     domain_of:
     - Asset
-    range: Duration
+    range: DurationString
     multivalued: true
   modelNumber:
     name: modelNumber

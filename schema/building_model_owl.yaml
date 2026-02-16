@@ -19,19 +19,15 @@ imports:
 - linkml:types
 
 types:
-  Dtmi:
-    base: string
-    description: DTMI形式のID
-    uri: xsd:string
-    pattern: "^dtmi:[A-Za-z0-9_:.;-]+$"
-
-    # 以下を追加
-  Duration:
-    base: string
+  Any:
+    typeof: string
+    description: Any resource or value.
+    uri: linkml:Any
+  DurationString:
+    typeof: string
     description: ISO 8601 duration format
     uri: xsd:duration
     pattern: "^P(?:\\d+Y)?(?:\\d+M)?(?:\\d+D)?(?:T(?:\\d+H)?(?:\\d+M)?(?:\\d+(?:\\.\\d+)?S)?)?$"
-
     
 enums:
   UnitEnum:
@@ -388,11 +384,10 @@ enums:
 
 slots:
   id:
-    description: "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods (for DTMI format)."
+    description: "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example."
     range: string
     identifier: true
     required: true
-    pattern: "^(?:[a-zA-Z][a-zA-Z0-9_-:]*|dtmi:[A-Za-z0-9_:.;-]+)$"
     annotations:
       - tag: description_ja
         value: "スキーマ内の一意識別子。文字で開始し、DTMI形式もサポート。"
@@ -405,7 +400,7 @@ slots:
     range: KeyStringMapEntry
     inlined: true
     inlined_as_list: true
-    required: true
+    required: false
     slot_uri: rec:identifiers
 
   key:
@@ -527,23 +522,18 @@ slots:
 
   hasPart:
     description: The subject is composed in part of the entity given by the object.
-    any_of:
-      - range : Space
-      - range : Resource
+    range: Space
     multivalued: true
     slot_uri: rec:hasPart
 
   isPartOf:
     range: Space
-    any_of:
-      - range : Space
-      - range : Resource
     multivalued: false
     slot_uri: rec:isPartOf
 
   isLocationOf:
     description: Subject is the physical location encapsulating the object.
-    range: Space
+    range: EquipmentExt
     multivalued: true
     slot_uri: rec:isLocationOf
 
@@ -556,9 +546,7 @@ slots:
     
   commissionedBy:
     description: "Agent or resource that commissioned this asset"
-    any_of:
-      - range: Resource
-      - range: Agent
+    range: Agent
     multivalued: true
     slot_uri: rec:commissionedBy
     
@@ -569,9 +557,7 @@ slots:
     
   documentation:
     description: "Documentation related to this asset"
-    any_of:
-      - range: Resource
-      - range: Document
+    range: Document
     multivalued: true
     slot_uri: rec:documentation
     
@@ -589,9 +575,7 @@ slots:
       
   installedBy:
     description: "Agent or resource that installed this asset"
-    any_of:
-      - range: Resource
-      - range: Agent
+    range: Agent
     multivalued: true
     slot_uri: rec:installedBy
     
@@ -604,7 +588,7 @@ slots:
     
   locatedIn:
     description: "Space where this asset is located"
-    range: Resource
+    range: Space
     multivalued: true
     slot_uri: rec:locatedIn
     
@@ -617,7 +601,7 @@ slots:
     
   maintenanceInterval:
     description: "Maintenance interval duration"
-    range: Duration
+    range: DurationString
     multivalued: true
     slot_uri: rec:maintenanceInterval
 
@@ -628,24 +612,18 @@ slots:
 
   manufacturedBy:
     description: "Agent or resource that manufactured this asset"
-    any_of:
-      - range: Resource
-      - range: Agent
+    range: Agent
     multivalued: true
     slot_uri: rec:manufacturedBy
     
   mountedOn:
     description: "Building element on which this asset is mounted"
-    any_of:
-      - range: Resource
-      - range: BuildingElement
+    range: BuildingElement
     slot_uri: rec:mountedOn
     
   servicedBy:
     description: "Agent or resource that services this asset"
-    any_of:
-      - range: Resource
-      - range: Agent
+    range: Agent
     multivalued: true
     slot_uri: rec:servicedBy
     
@@ -690,9 +668,7 @@ slots:
     
   adjacentElement:
     description: "Building element adjacent to this architecture"
-    any_of:
-      - range: Resource
-      - range: BuildingElement
+    range: BuildingElement
     multivalued: true
     slot_uri: rec:adjacentElement
     
@@ -720,9 +696,7 @@ slots:
     
   containsElement:
     description: "Building element contained within this architecture"
-    any_of:
-      - range: Resource
-      - range: BuildingElement
+    range: BuildingElement
     multivalued: true
     slot_uri: rec:containsElement
     
@@ -734,26 +708,20 @@ slots:
     
   intersectingElement:
     description: "Building element intersecting with this architecture"
-    any_of:
-      - range: Resource
-      - range: BuildingElement
+    range: BuildingElement
     multivalued: true
     slot_uri: rec:intersectingElement
     
 
   operatedBy:
     description: "Agent or resource that operates this architecture"
-    any_of:
-      - range: Resource
-      - range: Agent
+    range: Agent
     multivalued: true
     slot_uri: rec:operatedBy
     
   ownedBy:
     description: "Agent or resource that owns this architecture"
-    any_of:
-      - range: Resource
-      - range: Agent
+    range: Agent
     multivalued: true
     slot_uri: rec:ownedBy
 
@@ -927,6 +895,7 @@ classes:
     - customTags
     - identifiers
     - name
+    - description
   
   Architecture:
     abstract: true 
@@ -949,9 +918,15 @@ classes:
     - isFedBy
     - operatedBy
     - ownedBy
+    slot_usage:
+      hasPoint:
+        any_of:
+          - range: Point
+          - range: PointExt
 
   Site:
     is_a: Architecture
+    tree_root: true
     class_uri: rec:Site
     description: A piece of land upon which zero or more buildings may be situated.
     exact_mappings:
@@ -984,6 +959,27 @@ classes:
     slots:
     - levelNumber
 
+  Room:
+    is_a: Architecture
+    class_uri: rec:Room
+    description: A room within a building.
+    exact_mappings:
+      - rec:Room
+
+  Zone:
+    is_a: Architecture
+    class_uri: rec:Zone
+    description: A sub-zone within or outside of a building defined to support some technology and/or use.
+    exact_mappings:
+      - rec:Zone
+
+  OutdoorSpace:
+    is_a: Architecture
+    class_uri: rec:OutdoorSpace
+    description: An outdoor space associated with a site or building.
+    exact_mappings:
+      - rec:OutdoorSpace
+
   # Base Resource class
   Resource:
     abstract: true
@@ -1007,6 +1003,7 @@ classes:
       - id
       - commissionedBy
       - documentation
+      - description
       - geometry
       - hasPart
       - hasPoint
@@ -1031,6 +1028,11 @@ classes:
       - serialNumber
       - turnoverDate
       - weight
+    slot_usage:
+      hasPoint:
+        any_of:
+          - range: Point
+          - range: PointExt
        
   Equipment:
     is_a: Asset
@@ -1048,7 +1050,7 @@ classes:
     
     slot_usage:
       locatedIn:
-        range: Space  # Equipment is specifically located in spaces
+        range: Space
 
   EquipmentExt:
     is_a: Equipment
@@ -1065,7 +1067,7 @@ classes:
     
     slot_usage:
       locatedIn:
-        range: Space  # Equipment is specifically located in spaces
+        range: Space
 
 
   Point:
@@ -1104,7 +1106,9 @@ classes:
 
     slot_usage:
       isPointOf:
-        range: Equipment  # SBCOPoint is specifically a point of Equipment
+        any_of:
+          - range: Equipment
+          - range: EquipmentExt
 
   KeyStringMapEntry:
     description: map(string -> string) の1エントリ

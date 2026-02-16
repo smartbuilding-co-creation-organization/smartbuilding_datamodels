@@ -1,0 +1,18 @@
+id: sbco:site_demo_007
+name: Demo Site Invalid Point Spec
+hasPart:
+  - id: sbco:building_demo_007
+    name: Demo Building
+    hasPart:
+      - id: sbco:level_demo_7f
+        name: 7F
+        hasPart:
+          - id: sbco:room_demo_701
+            name: Demo Room
+            hasPoint:
+              - id: sbco:point_temp_007
+                type: PointExt
+                name: Room Temperature
+                pointType: TemperatureSensor
+                pointSpecification: sbco:PointSpecificationEnum#NotAType
+                unit: sbco:UnitEnum#celsius

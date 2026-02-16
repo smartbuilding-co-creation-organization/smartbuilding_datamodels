@@ -52,7 +52,7 @@ URI: [rec:ArchitectureArea](https://w3id.org/rec/ArchitectureArea)
     
         
         
-        ArchitectureArea --> "1..*" KeyStringMapEntry : identifiers
+        ArchitectureArea --> "*" KeyStringMapEntry : identifiers
         click KeyStringMapEntry href "../KeyStringMapEntry/"
     
 
@@ -78,7 +78,7 @@ URI: [rec:ArchitectureArea](https://w3id.org/rec/ArchitectureArea)
 | ---  | --- | --- | --- |
 | [id](id.md) | 1 <br/> [String](String.md) | Unique identifier within the schema | direct |
 | [name](name.md) | 1 <br/> [String](String.md) | Machine or Human-readable name | direct |
-| [identifiers](identifiers.md) | 1..* <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | direct |
+| [identifiers](identifiers.md) | * <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | direct |
 | [customTags](customTags.md) | * <br/> [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) | direct |
 | [customProperties](customProperties.md) | * <br/> [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) | direct |
 
@@ -94,6 +94,9 @@ URI: [rec:ArchitectureArea](https://w3id.org/rec/ArchitectureArea)
 | [Site](Site.md) | [area](area.md) | range | [ArchitectureArea](ArchitectureArea.md) |
 | [Building](Building.md) | [area](area.md) | range | [ArchitectureArea](ArchitectureArea.md) |
 | [Level](Level.md) | [area](area.md) | range | [ArchitectureArea](ArchitectureArea.md) |
+| [Room](Room.md) | [area](area.md) | range | [ArchitectureArea](ArchitectureArea.md) |
+| [Zone](Zone.md) | [area](area.md) | range | [ArchitectureArea](ArchitectureArea.md) |
+| [OutdoorSpace](OutdoorSpace.md) | [area](area.md) | range | [ArchitectureArea](ArchitectureArea.md) |
 
 
 
@@ -192,8 +195,8 @@ attributes:
         tag: example
         value: dtmi:example:Building:1
     description: Unique identifier within the schema. Must start with a letter and
-      contain only letters, digits, underscores, hyphens, colons, semicolons, or periods
-      (for DTMI format).
+      contain only letters, digits, underscores, hyphens, colons, semicolons, or periods.
+      DTMI is one acceptable example.
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
@@ -210,7 +213,6 @@ attributes:
     - ArchitectureCapacity
     range: string
     required: true
-    pattern: ^(?:[a-zA-Z][a-zA-Z0-9_-:]*|dtmi:[A-Za-z0-9_:.;-]+)$
   name:
     name: name
     description: Machine or Human-readable name
@@ -252,7 +254,7 @@ attributes:
     - ArchitectureArea
     - ArchitectureCapacity
     range: KeyStringMapEntry
-    required: true
+    required: false
     multivalued: true
     inlined: true
     inlined_as_list: true

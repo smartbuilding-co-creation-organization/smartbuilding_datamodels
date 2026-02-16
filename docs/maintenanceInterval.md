@@ -22,8 +22,8 @@ Alias: maintenanceInterval
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
@@ -33,7 +33,7 @@ Alias: maintenanceInterval
 
 ## Properties
 
-* Range: [Duration](Duration.md)
+* Range: [DurationString](DurationString.md)
 
 * Multivalued: True
 
@@ -77,7 +77,7 @@ slot_uri: rec:maintenanceInterval
 alias: maintenanceInterval
 domain_of:
 - Asset
-range: Duration
+range: DurationString
 multivalued: true
 
 ```

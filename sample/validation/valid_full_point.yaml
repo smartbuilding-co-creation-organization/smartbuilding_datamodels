@@ -1,0 +1,22 @@
+id: sbco:site_demo_005
+name: Demo Site Full Point
+hasPart:
+  - id: sbco:building_demo_005
+    name: Demo Building
+    hasPart:
+      - id: sbco:level_demo_5f
+        name: 5F
+        hasPart:
+          - id: sbco:room_demo_501
+            name: Demo Room
+            hasPoint:
+              - id: sbco:point_temp_005
+                type: PointExt
+                name: Room Temperature
+                pointType: TemperatureSensor
+                pointSpecification: sbco:PointSpecificationEnum#Measurement
+                unit: sbco:UnitEnum#celsius
+                hasQuantity: sbco:QuantityEnum#Temperature
+                minPresValue: 10.0
+                maxPresValue: 35.0
+                scale: 1.0

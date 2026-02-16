@@ -73,7 +73,7 @@ URI: [rec:Information](https://w3id.org/rec/Information)
     
         
         
-        Information --> "1..*" KeyStringMapEntry : identifiers
+        Information --> "*" KeyStringMapEntry : identifiers
         click KeyStringMapEntry href "../KeyStringMapEntry/"
     
 
@@ -114,7 +114,7 @@ URI: [rec:Information](https://w3id.org/rec/Information)
 | ---  | --- | --- | --- |
 | [name](name.md) | 1 <br/> [String](String.md) | Machine or Human-readable name | direct |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the resource | direct |
-| [identifiers](identifiers.md) | 1..* <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | direct |
+| [identifiers](identifiers.md) | * <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | direct |
 | [customTags](customTags.md) | * <br/> [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) | direct |
 | [customProperties](customProperties.md) | * <br/> [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) | direct |
 | [format](format.md) | 0..1 <br/> [String](String.md) | MIME type or format identifier for the information | direct |
@@ -254,6 +254,8 @@ attributes:
     alias: description
     owner: Information
     domain_of:
+    - Space
+    - Asset
     - Information
     range: string
   identifiers:
@@ -276,7 +278,7 @@ attributes:
     - ArchitectureArea
     - ArchitectureCapacity
     range: KeyStringMapEntry
-    required: true
+    required: false
     multivalued: true
     inlined: true
     inlined_as_list: true
