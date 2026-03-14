@@ -1,0 +1,32 @@
+@prefix rec: <https://w3id.org/rec/> .
+@prefix sbco: <https://www.sbco.or.jp/ont/> .
+
+sbco:equipment_as_point_001 a sbco:EquipmentExt ;
+    rec:isPartOf sbco:room_demo_401 ;
+    rec:name "Incorrect Equipment As Point" ;
+    sbco:deviceType "AHU" ;
+    sbco:id "sbco:equipment_as_point_001" .
+
+sbco:site_demo_004 a rec:Site ;
+    rec:hasPart sbco:building_demo_004 ;
+    rec:name "Demo Site Invalid Point Class" ;
+    sbco:id "sbco:site_demo_004" .
+
+sbco:building_demo_004 a rec:Building ;
+    rec:hasPart sbco:level_demo_4f ;
+    rec:isPartOf sbco:site_demo_004 ;
+    rec:name "Demo Building" ;
+    sbco:id "sbco:building_demo_004" .
+
+sbco:level_demo_4f a rec:Level ;
+    rec:hasPart sbco:room_demo_401 ;
+    rec:isPartOf sbco:building_demo_004 ;
+    rec:name "4F" ;
+    sbco:id "sbco:level_demo_4f" .
+
+sbco:room_demo_401 a rec:Room ;
+    rec:hasPoint sbco:equipment_as_point_001 ;
+    rec:isPartOf sbco:level_demo_4f ;
+    rec:name "Demo Room" ;
+    sbco:id "sbco:room_demo_401" .
+

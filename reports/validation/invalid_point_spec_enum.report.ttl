@@ -1,0 +1,20 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sbco: <https://www.sbco.or.jp/ont/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode sbco:point_temp_007 ;
+            sh:resultMessage "Value Literal(\"NotAType\") not in list ['Literal(\"Status\")', 'Literal(\"Setpoint\")', 'Literal(\"Measurement\")', 'Literal(\"Command\")', 'Literal(\"Metering\")', 'Literal(\"Alarm\")']" ;
+            sh:resultPath sbco:pointSpecification ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape [ sh:description "Point specification category as shown in equipment point list. English is recommended." ;
+                    sh:in ( "Alarm" "Command" "Setpoint" "Measurement" "Metering" "Status" ) ;
+                    sh:maxCount 1 ;
+                    sh:order 0 ;
+                    sh:path sbco:pointSpecification ] ;
+            sh:value "NotAType" ] .
+

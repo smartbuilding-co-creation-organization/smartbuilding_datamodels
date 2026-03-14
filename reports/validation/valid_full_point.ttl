@@ -1,0 +1,52 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix rec: <https://w3id.org/rec/> .
+@prefix sbco: <https://www.sbco.or.jp/ont/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sbco:point_temp_005 a sbco:PointExt ;
+    brick:hasQuantity "Temperature" ;
+    rec:isPartOf sbco:room_demo_501 ;
+    rec:name "Room Temperature" ;
+    sbco:deviceIdBacnet "BAC001" ;
+    sbco:gatewayId "GW001" ;
+    sbco:id "sbco:point_temp_005" ;
+    sbco:installationArea "Room101" ;
+    sbco:instanceNoBacnet "1002" ;
+    sbco:interval 60 ;
+    sbco:labels "Closed",
+        "Open" ;
+    sbco:localId "LOCAL002" ;
+    sbco:maxPresValue 3.5e+01 ;
+    sbco:minPresValue 1e+01 ;
+    sbco:objectTypeBacnet "Analog-Input" ;
+    sbco:pointSpecification "Measurement" ;
+    sbco:pointType "TemperatureSensor" ;
+    sbco:scale 1e+00 ;
+    sbco:supplier "VendorA" ;
+    sbco:targetArea "Room101" ;
+    sbco:unit "celsius" ;
+    sbco:writable false .
+
+sbco:site_demo_005 a rec:Site ;
+    rec:hasPart sbco:building_demo_005 ;
+    rec:name "Demo Site Full Point" ;
+    sbco:id "sbco:site_demo_005" .
+
+sbco:building_demo_005 a rec:Building ;
+    rec:hasPart sbco:level_demo_5f ;
+    rec:isPartOf sbco:site_demo_005 ;
+    rec:name "Demo Building" ;
+    sbco:id "sbco:building_demo_005" .
+
+sbco:level_demo_5f a rec:Level ;
+    rec:hasPart sbco:room_demo_501 ;
+    rec:isPartOf sbco:building_demo_005 ;
+    rec:name "5F" ;
+    sbco:id "sbco:level_demo_5f" .
+
+sbco:room_demo_501 a rec:Room ;
+    rec:hasPoint sbco:point_temp_005 ;
+    rec:isPartOf sbco:level_demo_5f ;
+    rec:name "Demo Room" ;
+    sbco:id "sbco:room_demo_501" .
+

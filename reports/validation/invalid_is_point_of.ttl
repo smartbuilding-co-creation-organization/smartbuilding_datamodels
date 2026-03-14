@@ -1,0 +1,35 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix rec: <https://w3id.org/rec/> .
+@prefix sbco: <https://www.sbco.or.jp/ont/> .
+
+sbco:point_temp_008 a sbco:PointExt ;
+    brick:isPointOf sbco:room_demo_801 ;
+    rec:isPartOf sbco:room_demo_801 ;
+    rec:name "Room Temperature" ;
+    sbco:id "sbco:point_temp_008" ;
+    sbco:pointType "TemperatureSensor" ;
+    sbco:unit "celsius" .
+
+sbco:site_demo_008 a rec:Site ;
+    rec:hasPart sbco:building_demo_008 ;
+    rec:name "Demo Site Invalid isPointOf" ;
+    sbco:id "sbco:site_demo_008" .
+
+sbco:building_demo_008 a rec:Building ;
+    rec:hasPart sbco:level_demo_8f ;
+    rec:isPartOf sbco:site_demo_008 ;
+    rec:name "Demo Building" ;
+    sbco:id "sbco:building_demo_008" .
+
+sbco:level_demo_8f a rec:Level ;
+    rec:hasPart sbco:room_demo_801 ;
+    rec:isPartOf sbco:building_demo_008 ;
+    rec:name "8F" ;
+    sbco:id "sbco:level_demo_8f" .
+
+sbco:room_demo_801 a rec:Room ;
+    rec:hasPoint sbco:point_temp_008 ;
+    rec:isPartOf sbco:level_demo_8f ;
+    rec:name "Demo Room" ;
+    sbco:id "sbco:room_demo_801" .
+

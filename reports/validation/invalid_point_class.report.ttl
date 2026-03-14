@@ -1,0 +1,21 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rec: <https://w3id.org/rec/> .
+@prefix sbco: <https://www.sbco.or.jp/ont/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode sbco:room_demo_401 ;
+            sh:resultMessage "Node sbco:equipment_as_point_001 must conform to one or more shapes in [ sh:class brick:Point ] , [ sh:class sbco:PointExt ]" ;
+            sh:resultPath rec:hasPoint ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:OrConstraintComponent ;
+            sh:sourceShape [ sh:description "Point associated with this architecture" ;
+                    sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
+                    sh:order 8 ;
+                    sh:path rec:hasPoint ] ;
+            sh:value sbco:equipment_as_point_001 ] .
+

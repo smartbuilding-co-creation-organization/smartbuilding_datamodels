@@ -1,0 +1,33 @@
+@prefix rec: <https://w3id.org/rec/> .
+@prefix sbco: <https://www.sbco.or.jp/ont/> .
+
+sbco:point_temp_001 a sbco:PointExt ;
+    rec:isPartOf sbco:room_demo_101 ;
+    rec:name "Room Temperature" ;
+    sbco:id "sbco:point_temp_001" ;
+    sbco:pointType "TemperatureSensor" ;
+    sbco:unit "celsius" .
+
+sbco:site_demo_001 a rec:Site ;
+    rec:hasPart sbco:building_demo_001 ;
+    rec:name "Demo Site" ;
+    sbco:id "sbco:site_demo_001" .
+
+sbco:building_demo_001 a rec:Building ;
+    rec:hasPart sbco:level_demo_1f ;
+    rec:isPartOf sbco:site_demo_001 ;
+    rec:name "Demo Building" ;
+    sbco:id "sbco:building_demo_001" .
+
+sbco:level_demo_1f a rec:Level ;
+    rec:hasPart sbco:room_demo_101 ;
+    rec:isPartOf sbco:building_demo_001 ;
+    rec:name "1F" ;
+    sbco:id "sbco:level_demo_1f" .
+
+sbco:room_demo_101 a rec:Room ;
+    rec:hasPoint sbco:point_temp_001 ;
+    rec:isPartOf sbco:level_demo_1f ;
+    rec:name "Demo Room" ;
+    sbco:id "sbco:room_demo_101" .
+

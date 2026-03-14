@@ -22,6 +22,7 @@ Alias: installationArea
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [PointExt](PointExt.md) | A point (sensor/actuator) in a smart building context |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
@@ -72,6 +73,7 @@ rank: 1000
 alias: installationArea
 domain_of:
 - EquipmentExt
+- PointExt
 range: string
 
 ```

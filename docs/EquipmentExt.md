@@ -414,6 +414,7 @@ attributes:
     owner: EquipmentExt
     domain_of:
     - EquipmentExt
+    - PointExt
     range: string
   targetArea:
     name: targetArea
@@ -424,6 +425,7 @@ attributes:
     owner: EquipmentExt
     domain_of:
     - EquipmentExt
+    - PointExt
     range: string
   feeds:
     name: feeds

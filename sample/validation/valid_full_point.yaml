@@ -20,3 +20,16 @@ hasPart:
                 minPresValue: 10.0
                 maxPresValue: 35.0
                 scale: 1.0
+                writable: false
+                interval: 60
+                gatewayId: GW001
+                localId: LOCAL002
+                supplier: VendorA
+                installationArea: Room101
+                targetArea: Room101
+                deviceIdBacnet: BAC001
+                instanceNoBacnet: "1002"
+                labels:
+                  - Open
+                  - Closed
+                objectTypeBacnet: Analog-Input

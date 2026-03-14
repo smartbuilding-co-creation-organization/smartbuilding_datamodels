@@ -2640,6 +2640,20 @@
                         "null"
                     ]
                 },
+                "deviceIdBacnet": {
+                    "description": "BACnet device identifier",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gatewayId": {
+                    "description": "Identifier of the gateway device managing this point",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "hasQuantity": {
                     "$ref": "#/$defs/QuantityEnum",
                     "description": "Physical quantity measured by this point"
@@ -2662,6 +2676,27 @@
                         "null"
                     ]
                 },
+                "installationArea": {
+                    "description": "Parent installation area",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "instanceNoBacnet": {
+                    "description": "BACnet object instance number",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "interval": {
+                    "description": "Polling or reporting interval in seconds",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
                 "isPointOf": {
                     "anyOf": [
                         {
@@ -2676,6 +2711,23 @@
                     ],
                     "description": "Equipment that this point belongs to",
                     "type": "string"
+                },
+                "labels": {
+                    "description": "Labels or tags associated with this point",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "localId": {
+                    "description": "Local identifier for this point within the gateway or system",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "maxPresValue": {
                     "description": "Maximum plausible reading",
@@ -2695,6 +2747,13 @@
                     "description": "Machine or Human-readable name",
                     "type": "string"
                 },
+                "objectTypeBacnet": {
+                    "description": "BACnet object type (e.g., Analog-Input, Binary-Output)",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "pointSpecification": {
                     "$ref": "#/$defs/PointSpecificationEnum",
                     "description": "Point specification category as shown in equipment point list. English is recommended."
@@ -2710,9 +2769,30 @@
                         "null"
                     ]
                 },
+                "supplier": {
+                    "description": "Supplier or vendor of the device associated with this point",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "targetArea": {
+                    "description": "Target area for this resource",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "unit": {
                     "$ref": "#/$defs/UnitEnum",
                     "description": "Measurement unit (enum key; symbol can be taken from annotations)"
+                },
+                "writable": {
+                    "description": "Whether the point value can be written (commanded)",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 }
             },
             "required": [

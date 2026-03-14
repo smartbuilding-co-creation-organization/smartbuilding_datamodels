@@ -1,0 +1,21 @@
+@prefix rec: <https://w3id.org/rec/> .
+@prefix sbco: <https://www.sbco.or.jp/ont/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode sbco:room_demo_601 ;
+            sh:resultMessage "Less than 1 values on sbco:room_demo_601->rec:name" ;
+            sh:resultPath rec:name ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:string ;
+                    sh:description "Machine or Human-readable name" ;
+                    sh:maxCount 1 ;
+                    sh:minCount 1 ;
+                    sh:nodeKind sh:Literal ;
+                    sh:order 22 ;
+                    sh:path rec:name ] ] .
+

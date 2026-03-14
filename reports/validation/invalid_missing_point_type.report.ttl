@@ -1,0 +1,20 @@
+@prefix sbco: <https://www.sbco.or.jp/ont/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode sbco:point_temp_002 ;
+            sh:resultMessage "Less than 1 values on sbco:point_temp_002->sbco:pointType" ;
+            sh:resultPath sbco:pointType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:string ;
+                    sh:description "Point type - a profile or template name used to refer to the telemetry format obtainable from the device or point. Specific definitions are provided separately in schema files." ;
+                    sh:maxCount 1 ;
+                    sh:minCount 1 ;
+                    sh:nodeKind sh:Literal ;
+                    sh:order 1 ;
+                    sh:path sbco:pointType ] ] .
+

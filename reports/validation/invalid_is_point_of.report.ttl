@@ -1,0 +1,21 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sbco: <https://www.sbco.or.jp/ont/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode sbco:point_temp_008 ;
+            sh:resultMessage "Node sbco:room_demo_801 must conform to one or more shapes in [ sh:class brick:Equipment ] , [ sh:class sbco:EquipmentExt ]" ;
+            sh:resultPath brick:isPointOf ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:OrConstraintComponent ;
+            sh:sourceShape [ sh:description "Equipment that this point belongs to" ;
+                    sh:maxCount 1 ;
+                    sh:or ( [ sh:class brick:Equipment ] [ sh:class sbco:EquipmentExt ] ) ;
+                    sh:order 7 ;
+                    sh:path brick:isPointOf ] ;
+            sh:value sbco:room_demo_801 ] .
+

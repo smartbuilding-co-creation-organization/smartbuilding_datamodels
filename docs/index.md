@@ -67,12 +67,14 @@ Name: building_model
 | [customProperties](customProperties.md) | map(string -> map(string -> string)) |
 | [customTags](customTags.md) | map(string -> boolean) |
 | [description](description.md) | A textual description of the resource |
+| [deviceIdBacnet](deviceIdBacnet.md) | BACnet device identifier |
 | [deviceType](deviceType.md) | Device Type |
 | [documentation](documentation.md) | Documentation related to this asset |
 | [entries](entries.md) | Nested map entries |
 | [feeds](feeds.md) | Equipment or system that this equipment feeds |
 | [flag](flag.md) | Boolean flag value |
 | [format](format.md) | MIME type or format identifier for the information |
+| [gatewayId](gatewayId.md) | Identifier of the gateway device managing this point |
 | [geometry](geometry.md) | Polygon representing the spatial extent of this Space |
 | [georeference](georeference.md) | A georeference creates a relationship between the local coordinate system use... |
 | [hasPart](hasPart.md) | The subject is composed in part of the entity given by the object |
@@ -85,7 +87,9 @@ Name: building_model
 | [installationArea](installationArea.md) | Parent installation area |
 | [installationDate](installationDate.md) | Date when the asset was installed |
 | [installedBy](installedBy.md) | Agent or resource that installed this asset |
+| [instanceNoBacnet](instanceNoBacnet.md) | BACnet object instance number |
 | [intersectingElement](intersectingElement.md) | Building element intersecting with this architecture |
+| [interval](interval.md) | Polling or reporting interval in seconds |
 | [intervalCapability](intervalCapability.md) | Polling period (period speed that the device is capable of) |
 | [IPAddress](IPAddress.md) | IP address of the asset |
 | [isFedBy](isFedBy.md) | Resource that feeds this architecture |
@@ -93,8 +97,10 @@ Name: building_model
 | [isPartOf](isPartOf.md) |  |
 | [isPointOf](isPointOf.md) | Equipment that this point belongs to |
 | [key](key.md) | Key of the map entry |
+| [labels](labels.md) | Labels or tags associated with this point |
 | [language](language.md) | Language code (ISO 639-1) of the information content |
 | [levelNumber](levelNumber.md) | Floor or level number within a building |
+| [localId](localId.md) | Local identifier for this point within the gateway or system |
 | [locatedIn](locatedIn.md) | Space where this asset is located |
 | [MACAddress](MACAddress.md) | MAC address of the asset |
 | [maintenanceInterval](maintenanceInterval.md) | Maintenance interval duration |
@@ -105,6 +111,7 @@ Name: building_model
 | [modelNumber](modelNumber.md) | Model number of the asset |
 | [mountedOn](mountedOn.md) | Building element on which this asset is mounted |
 | [name](name.md) | Machine or Human-readable name |
+| [objectTypeBacnet](objectTypeBacnet.md) | BACnet object type (e |
 | [operatedBy](operatedBy.md) | Agent or resource that operates this architecture |
 | [operationalStageCount](operationalStageCount.md) | The number of operational stages supported by this equipment |
 | [ownedBy](ownedBy.md) | Agent or resource that owns this architecture |
@@ -117,6 +124,7 @@ Name: building_model
 | [serialNumber](serialNumber.md) | Serial number of the asset |
 | [servicedBy](servicedBy.md) | Agent or resource that services this asset |
 | [size](size.md) | Size of the information resource in bytes |
+| [supplier](supplier.md) | Supplier or vendor of the device associated with this point |
 | [targetArea](targetArea.md) | Target area for this resource |
 | [turnoverDate](turnoverDate.md) | Date when the asset was turned over |
 | [unit](unit.md) | Measurement unit (enum key; symbol can be taken from annotations) |
@@ -124,6 +132,7 @@ Name: building_model
 | [value](value.md) | Value of the map entry |
 | [version](version.md) | Version identifier for the information |
 | [weight](weight.md) | Weight of the asset |
+| [writable](writable.md) | Whether the point value can be written (commanded) |
 
 
 ## Enumerations
