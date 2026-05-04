@@ -1,16 +1,16 @@
 
 
-# Slot: hasSubstance 
+# Slot: labels 
 
 
-_Substance associated with this point_
+_Labels or tags associated with this point_
 
 
 
 
 
-URI: [brick:hasSubstance](https://brickschema.org/schema/Brick#hasSubstance)
-Alias: hasSubstance
+URI: [sbco:labels](https://www.sbco.or.jp/ont/labels)
+Alias: labels
 
 <!-- no inheritance hierarchy -->
 
@@ -23,7 +23,6 @@ Alias: hasSubstance
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [PointExt](PointExt.md) | A point (sensor/actuator) in a smart building context |  no  |
-| [Point](Point.md) | A sensor, actuator, or data point associated with equipment |  no  |
 
 
 
@@ -32,7 +31,9 @@ Alias: hasSubstance
 
 ## Properties
 
-* Range: [SubstanceEnum](SubstanceEnum.md)
+* Range: [String](String.md)
+
+* Multivalued: True
 
 
 
@@ -46,7 +47,7 @@ Alias: hasSubstance
 
 | property | value |
 | --- | --- |
-| description_ja | このポイントに関連する物質 |
+| description_ja | このポイントに関連するラベルまたはタグ |
 
 
 
@@ -63,8 +64,8 @@ Alias: hasSubstance
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | brick:hasSubstance |
-| native | sbco:hasSubstance |
+| self | sbco:labels |
+| native | sbco:labels |
 
 
 
@@ -73,19 +74,19 @@ Alias: hasSubstance
 
 <details>
 ```yaml
-name: hasSubstance
+name: labels
 annotations:
   description_ja:
     tag: description_ja
-    value: このポイントに関連する物質
-description: Substance associated with this point
+    value: このポイントに関連するラベルまたはタグ
+description: Labels or tags associated with this point
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-slot_uri: brick:hasSubstance
-alias: hasSubstance
+alias: labels
 domain_of:
-- Point
-range: SubstanceEnum
+- PointExt
+range: string
+multivalued: true
 
 ```
 </details>

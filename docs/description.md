@@ -22,25 +22,25 @@ Alias: description
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
-| [Level](Level.md) | A building storey |  no  |
-| [Building](Building.md) | A building which is part of a site |  no  |
-| [Space](Space.md) | A contiguous part of the physical world that contains or can contain sub-spac... |  no  |
-| [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  no  |
-| [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
-| [Image](Image.md) | An image file containing visual information |  no  |
-| [Georeference](Georeference.md) | REC Georeference のプレースホルダ（詳細は別途拡張） |  no  |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
-| [Schema](Schema.md) | A schema definition file |  no  |
-| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
 | [Media](Media.md) | A media file such as audio or video content |  no  |
-| [Site](Site.md) | A piece of land upon which zero or more buildings may be situated |  no  |
+| [Space](Space.md) | A contiguous part of the physical world that contains or can contain sub-spac... |  no  |
+| [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
+| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
 | [Geometry](Geometry.md) | REC Geometry のプレースホルダ（詳細は別途拡張） |  no  |
-| [Information](Information.md) | Abstract base class for information resources such as documents, images, medi... |  no  |
-| [PostalAddress](PostalAddress.md) | A postal address |  no  |
+| [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  no  |
+| [Schema](Schema.md) | A schema definition file |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
+| [Georeference](Georeference.md) | REC Georeference のプレースホルダ（詳細は別途拡張） |  no  |
 | [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
+| [Level](Level.md) | A building storey |  no  |
+| [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 | [Document](Document.md) | A document providing information about a building element or asset |  no  |
+| [Information](Information.md) | Abstract base class for information resources such as documents, images, medi... |  no  |
+| [Image](Image.md) | An image file containing visual information |  no  |
 | [Room](Room.md) | A room within a building |  no  |
+| [PostalAddress](PostalAddress.md) | A postal address |  no  |
+| [Building](Building.md) | A building which is part of a site |  no  |
+| [Site](Site.md) | A piece of land upon which zero or more buildings may be situated |  no  |
 
 
 

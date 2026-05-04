@@ -1,16 +1,16 @@
 
 
-# Slot: hasSubstance 
+# Slot: localId 
 
 
-_Substance associated with this point_
+_Local identifier for this point within the gateway or system_
 
 
 
 
 
-URI: [brick:hasSubstance](https://brickschema.org/schema/Brick#hasSubstance)
-Alias: hasSubstance
+URI: [sbco:localId](https://www.sbco.or.jp/ont/localId)
+Alias: localId
 
 <!-- no inheritance hierarchy -->
 
@@ -23,7 +23,6 @@ Alias: hasSubstance
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [PointExt](PointExt.md) | A point (sensor/actuator) in a smart building context |  no  |
-| [Point](Point.md) | A sensor, actuator, or data point associated with equipment |  no  |
 
 
 
@@ -32,7 +31,7 @@ Alias: hasSubstance
 
 ## Properties
 
-* Range: [SubstanceEnum](SubstanceEnum.md)
+* Range: [String](String.md)
 
 
 
@@ -46,7 +45,7 @@ Alias: hasSubstance
 
 | property | value |
 | --- | --- |
-| description_ja | このポイントに関連する物質 |
+| description_ja | ゲートウェイまたはシステム内でのポイントのローカル識別子 |
 
 
 
@@ -63,8 +62,8 @@ Alias: hasSubstance
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | brick:hasSubstance |
-| native | sbco:hasSubstance |
+| self | sbco:localId |
+| native | sbco:localId |
 
 
 
@@ -73,19 +72,18 @@ Alias: hasSubstance
 
 <details>
 ```yaml
-name: hasSubstance
+name: localId
 annotations:
   description_ja:
     tag: description_ja
-    value: このポイントに関連する物質
-description: Substance associated with this point
+    value: ゲートウェイまたはシステム内でのポイントのローカル識別子
+description: Local identifier for this point within the gateway or system
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-slot_uri: brick:hasSubstance
-alias: hasSubstance
+alias: localId
 domain_of:
-- Point
-range: SubstanceEnum
+- PointExt
+range: string
 
 ```
 </details>

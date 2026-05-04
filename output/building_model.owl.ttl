@@ -14,259 +14,135 @@ linkml:Any a rdfs:Datatype ;
 
 sbco:Building a owl:Class ;
     rdfs:label "Building" ;
-    rdfs:comment "A building which is part of a site." ;
     rdfs:subClassOf sbco:Architecture ;
+    skos:definition "A building which is part of a site." ;
     skos:exactMatch rec:Building ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "サイトの一部である建物。" .
 
 sbco:Image a owl:Class ;
     rdfs:label "Image" ;
-    rdfs:comment "An image file containing visual information" ;
     rdfs:subClassOf sbco:Information ;
+    skos:definition "An image file containing visual information" ;
     skos:exactMatch rec:Image ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "視覚情報を含む画像ファイル" .
 
 sbco:Level a owl:Class ;
     rdfs:label "Level" ;
-    rdfs:comment "A building storey. Levels can also be treated as a kind of space." ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty sbco:levelNumber ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:levelNumber ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:levelNumber ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:levelNumber ],
         sbco:Architecture ;
+    skos:definition "A building storey. Levels can also be treated as a kind of space." ;
     skos:exactMatch rec:Level ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "建物のフロア。スペースの一種として扱える。" .
 
 sbco:Media a owl:Class ;
     rdfs:label "Media" ;
-    rdfs:comment "A media file such as audio or video content" ;
     rdfs:subClassOf sbco:Information ;
+    skos:definition "A media file such as audio or video content" ;
     skos:exactMatch rec:Media ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "オーディオやビデオコンテンツなどのメディアファイル" .
 
 sbco:OutdoorSpace a owl:Class ;
     rdfs:label "OutdoorSpace" ;
-    rdfs:comment "An outdoor space associated with a site or building." ;
     rdfs:subClassOf sbco:Architecture ;
+    skos:definition "An outdoor space associated with a site or building." ;
     skos:exactMatch rec:OutdoorSpace ;
     skos:inScheme sbco:schema .
 
 sbco:Room a owl:Class ;
     rdfs:label "Room" ;
-    rdfs:comment "A room within a building." ;
     rdfs:subClassOf sbco:Architecture ;
+    skos:definition "A room within a building." ;
     skos:exactMatch rec:Room ;
     skos:inScheme sbco:schema .
 
 sbco:Schema a owl:Class ;
     rdfs:label "Schema" ;
-    rdfs:comment "A schema definition file" ;
     rdfs:subClassOf sbco:Information ;
+    skos:definition "A schema definition file" ;
     skos:exactMatch rec:Schema ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "スキーマ定義ファイル" .
 
 sbco:Site a owl:Class ;
     rdfs:label "Site" ;
-    rdfs:comment "A piece of land upon which zero or more buildings may be situated." ;
     rdfs:subClassOf sbco:Architecture ;
+    skos:definition "A piece of land upon which zero or more buildings may be situated." ;
     skos:exactMatch rec:Site ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "サイト。複数の建物を含みうる。" .
 
 sbco:Zone a owl:Class ;
     rdfs:label "Zone" ;
-    rdfs:comment "A sub-zone within or outside of a building defined to support some technology and/or use." ;
     rdfs:subClassOf sbco:Architecture ;
+    skos:definition "A sub-zone within or outside of a building defined to support some technology and/or use." ;
     skos:exactMatch rec:Zone ;
     skos:inScheme sbco:schema .
 
 sbco:altitude a owl:DatatypeProperty ;
     rdfs:label "altitude" ;
-    rdfs:comment "Altitude above sea level in meters" ;
     rdfs:range xsd:float ;
+    skos:definition "Altitude above sea level in meters" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "海抜高度（メートル）" .
 
 sbco:coordinates a owl:DatatypeProperty ;
     rdfs:label "coordinates" ;
-    rdfs:comment "Geographic coordinates defining the geofence boundary" ;
     rdfs:range xsd:string ;
+    skos:definition "Geographic coordinates defining the geofence boundary" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "ジオフェンス境界を定義する地理座標" .
 
 sbco:intervalCapability a owl:DatatypeProperty ;
     rdfs:label "intervalCapability" ;
-    rdfs:comment "Polling period (period speed that the device is capable of)" ;
     rdfs:range xsd:integer ;
+    skos:definition "Polling period (period speed that the device is capable of)" ;
     skos:inScheme sbco:schema .
 
 sbco:radius a owl:DatatypeProperty ;
     rdfs:label "radius" ;
-    rdfs:comment "Radius in meters for circular geofences" ;
     rdfs:range xsd:float ;
+    skos:definition "Radius in meters for circular geofences" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "円形ジオフェンスの半径（メートル）" .
 
 sbco:schema.owl.ttl a owl:Ontology ;
     rdfs:label "building_model" ;
     dcterms:title "Smart Building Model" ;
-    rdfs:comment """A LinkML schema for sites, buildings, spaces, equipment, and points used in smart-building data exchanges.
+    skos:definition """A LinkML schema for sites, buildings, spaces, equipment, and points used in smart-building data exchanges.
 """ .
 
 sbco:Asset a owl:Class ;
     rdfs:label "Asset" ;
-    rdfs:comment "Something which is placed inside of a building, but is not an integral part of that building's structure; e.g., furniture, equipment, systems, etc." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:date ;
-            owl:onProperty sbco:installationDate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:serialNumber ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyStringMapEntry ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:installedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:serialNumber ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:turnoverDate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:intersectionOf ( [ owl:unionOf ( sbco:Point sbco:PointExt ) ] sbco:Point ) ] ;
             owl:onProperty sbco:hasPoint ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:locatedIn ],
+            owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:modelNumber ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:assetTag ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Document ;
-            owl:onProperty sbco:documentation ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:initialCost ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:serialNumber ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:installationDate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Space ;
-            owl:onProperty sbco:locatedIn ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:hasPart ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Geometry ;
-            owl:onProperty sbco:geometry ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:geometry ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:initialCost ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:date ;
-            owl:onProperty sbco:commissioningDate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:decimal ;
-            owl:onProperty sbco:weight ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:maintenanceInterval ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:geometry ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:MACAddress ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
             owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:IPAddress ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:turnoverDate ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Agent ;
-            owl:onProperty sbco:servicedBy ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:BuildingElement ;
-            owl:onProperty sbco:mountedOn ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:modelNumber ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:date ;
-            owl:onProperty sbco:turnoverDate ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:isPartOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Space ;
-            owl:onProperty sbco:hasPart ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:commissionedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:documentation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Agent ;
-            owl:onProperty sbco:commissionedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:isPartOf ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:modelNumber ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:servicedBy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Space ;
-            owl:onProperty sbco:isPartOf ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:mountedOn ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
@@ -274,23 +150,98 @@ sbco:Asset a owl:Class ;
                                 owl:withRestrictions ( [ xsd:pattern "^((25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)$" ] ) ] ) ] ;
             owl:onProperty sbco:IPAddress ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:locatedIn ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:installationDate ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:modelNumber ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:description ],
+            owl:onProperty sbco:MACAddress ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:mountedOn ],
+            owl:onProperty sbco:serialNumber ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Space ;
+            owl:onProperty sbco:isPartOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:isPartOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:weight ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:commissioningDate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:serialNumber ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:commissionedBy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:isPartOf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Space ;
+            owl:onProperty sbco:hasPart ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Space ;
+            owl:onProperty sbco:locatedIn ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:commissioningDate ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:manufacturedBy ],
+            owl:onProperty sbco:turnoverDate ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:id ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:serialNumber ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:hasPart ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:installedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Document ;
+            owl:onProperty sbco:documentation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:date ;
+            owl:onProperty sbco:installationDate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:maintenanceInterval ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:installationDate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:mountedOn ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:geometry ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:initialCost ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:modelNumber ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:commissioningDate ],
@@ -307,39 +258,100 @@ sbco:Asset a owl:Class ;
                                 owl:withRestrictions ( [ xsd:pattern "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" ] ) ] ) ] ;
             owl:onProperty sbco:MACAddress ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:hasPoint ],
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:manufacturedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:installedBy ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:assetTag ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:servicedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:manufacturedBy ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:weight ],
+            owl:onProperty sbco:geometry ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:mountedOn ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:duration ;
             owl:onProperty sbco:maintenanceInterval ],
         [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:initialCost ],
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:date ;
+            owl:onProperty sbco:commissioningDate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:servicedBy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:weight ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
             owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:installationDate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:assetTag ],
+            owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:weight ],
+            owl:onProperty sbco:documentation ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:IPAddress ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:date ;
+            owl:onProperty sbco:turnoverDate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Geometry ;
+            owl:onProperty sbco:geometry ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:initialCost ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:turnoverDate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyStringMapEntry ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:initialCost ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:BuildingElement ;
+            owl:onProperty sbco:mountedOn ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:commissionedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:intersectionOf ( [ owl:unionOf ( sbco:Point sbco:PointExt ) ] sbco:Point ) ] ;
+            owl:onProperty sbco:hasPoint ],
         sbco:Resource ;
+    skos:definition "Something which is placed inside of a building, but is not an integral part of that building's structure; e.g., furniture, equipment, systems, etc." ;
     skos:exactMatch rec:Asset ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "建物内に配置されるが、建物構造の不可欠な部分ではないもの。例：家具、設備、システムなど。" .
@@ -352,73 +364,75 @@ xsd:duration a rdfs:Datatype ;
 
 <https://www.sbco.or.jp/ont/AggregateEnum#average> a owl:Class ;
     rdfs:label "average" ;
-    rdfs:comment "Average value" ;
-    rdfs:subClassOf sbco:AggregateEnum .
+    rdfs:subClassOf sbco:AggregateEnum ;
+    skos:definition "Average value" .
 
 <https://www.sbco.or.jp/ont/AggregateEnum#count> a owl:Class ;
     rdfs:label "count" ;
-    rdfs:comment "Count of values" ;
-    rdfs:subClassOf sbco:AggregateEnum .
+    rdfs:subClassOf sbco:AggregateEnum ;
+    skos:definition "Count of values" .
 
 <https://www.sbco.or.jp/ont/AggregateEnum#first> a owl:Class ;
     rdfs:label "first" ;
-    rdfs:comment "First value" ;
-    rdfs:subClassOf sbco:AggregateEnum .
+    rdfs:subClassOf sbco:AggregateEnum ;
+    skos:definition "First value" .
 
 <https://www.sbco.or.jp/ont/AggregateEnum#last> a owl:Class ;
     rdfs:label "last" ;
-    rdfs:comment "Last value" ;
-    rdfs:subClassOf sbco:AggregateEnum .
+    rdfs:subClassOf sbco:AggregateEnum ;
+    skos:definition "Last value" .
 
 <https://www.sbco.or.jp/ont/AggregateEnum#maximum> a owl:Class ;
     rdfs:label "maximum" ;
-    rdfs:comment "Maximum value" ;
-    rdfs:subClassOf sbco:AggregateEnum .
+    rdfs:subClassOf sbco:AggregateEnum ;
+    skos:definition "Maximum value" .
 
 <https://www.sbco.or.jp/ont/AggregateEnum#median> a owl:Class ;
     rdfs:label "median" ;
-    rdfs:comment "Median value" ;
-    rdfs:subClassOf sbco:AggregateEnum .
+    rdfs:subClassOf sbco:AggregateEnum ;
+    skos:definition "Median value" .
 
 <https://www.sbco.or.jp/ont/AggregateEnum#minimum> a owl:Class ;
     rdfs:label "minimum" ;
-    rdfs:comment "Minimum value" ;
-    rdfs:subClassOf sbco:AggregateEnum .
+    rdfs:subClassOf sbco:AggregateEnum ;
+    skos:definition "Minimum value" .
 
 <https://www.sbco.or.jp/ont/AggregateEnum#standardDeviation> a owl:Class ;
     rdfs:label "standardDeviation" ;
-    rdfs:comment "Standard deviation" ;
-    rdfs:subClassOf sbco:AggregateEnum .
+    rdfs:subClassOf sbco:AggregateEnum ;
+    skos:definition "Standard deviation" .
 
 <https://www.sbco.or.jp/ont/AggregateEnum#sum> a owl:Class ;
     rdfs:label "sum" ;
-    rdfs:comment "Sum of values" ;
-    rdfs:subClassOf sbco:AggregateEnum .
+    rdfs:subClassOf sbco:AggregateEnum ;
+    skos:definition "Sum of values" .
 
 sbco:ArchitectureArea a owl:Class ;
     rdfs:label "ArchitectureArea" ;
-    rdfs:comment "Describes business-relevant area measurements typically associated with architected spaces" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:identifiers ],
@@ -429,46 +443,31 @@ sbco:ArchitectureArea a owl:Class ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
-            owl:onProperty sbco:customProperties ],
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:name ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
         sbco:Resource ;
+    skos:definition "Describes business-relevant area measurements typically associated with architected spaces" ;
     skos:exactMatch rec:ArchitectureArea ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "設計された空間に関連する業務上重要な面積測定" .
 
 sbco:ArchitectureCapacity a owl:Class ;
     rdfs:label "ArchitectureCapacity" ;
-    rdfs:comment "Describes business-relevant capacity measurements typically associated with architected spaces" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyStringMapEntry ;
             owl:onProperty sbco:identifiers ],
@@ -476,56 +475,68 @@ sbco:ArchitectureCapacity a owl:Class ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
+            owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
         sbco:Resource ;
+    skos:definition "Describes business-relevant capacity measurements typically associated with architected spaces" ;
     skos:exactMatch rec:ArchitectureCapacity ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "設計された空間に関連する業務上重要な容量測定" .
 
 sbco:Georeference a owl:Class ;
     rdfs:label "Georeference" ;
-    rdfs:comment "REC Georeference のプレースホルダ（詳細は別途拡張）" ;
     rdfs:subClassOf sbco:Information ;
+    skos:definition "REC Georeference のプレースホルダ（詳細は別途拡張）" ;
     skos:exactMatch rec:Georeference ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "地理参照情報のプレースホルダ" .
 
 sbco:IPAddress a owl:DatatypeProperty ;
     rdfs:label "IPAddress" ;
-    rdfs:comment "IP address of the asset" ;
     rdfs:range [ a rdfs:Datatype ;
             owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
                         owl:onDatatype xsd:string ;
                         owl:withRestrictions ( [ xsd:pattern "^((25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)$" ] ) ] ) ] ;
+    skos:definition "IP address of the asset" ;
     skos:inScheme sbco:schema .
 
 sbco:MACAddress a owl:DatatypeProperty ;
     rdfs:label "MACAddress" ;
-    rdfs:comment "MAC address of the asset" ;
     rdfs:range [ a rdfs:Datatype ;
             owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
                         owl:onDatatype xsd:string ;
                         owl:withRestrictions ( [ xsd:pattern "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" ] ) ] ) ] ;
+    skos:definition "MAC address of the asset" ;
     skos:inScheme sbco:schema .
 
 sbco:Organization a owl:Class ;
     rdfs:label "Organization" ;
-    rdfs:comment "An organization such as a company, institution, or association" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyBoolMapEntry ;
             owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyStringMapEntry ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
+            owl:minCardinality 0 ;
             owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -534,8 +545,14 @@ sbco:Organization a owl:Class ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:customTags ],
@@ -543,905 +560,960 @@ sbco:Organization a owl:Class ;
             owl:minCardinality 1 ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
+            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
+            owl:onProperty sbco:customProperties ],
         sbco:Agent ;
+    skos:definition "An organization such as a company, institution, or association" ;
     skos:exactMatch rec:Organization ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "会社、機関、協会などの組織" .
 
 <https://www.sbco.or.jp/ont/PointSpecificationEnum#Alarm> a owl:Class ;
     rdfs:label "Alarm" ;
-    rdfs:comment "Alarm point" ;
     rdfs:subClassOf sbco:PointSpecificationEnum ;
+    skos:definition "Alarm point" ;
     sbco:description_ja "警報" .
 
 <https://www.sbco.or.jp/ont/PointSpecificationEnum#Command> a owl:Class ;
     rdfs:label "Command" ;
-    rdfs:comment "Control command point" ;
     rdfs:subClassOf sbco:PointSpecificationEnum ;
+    skos:definition "Control command point" ;
     sbco:description_ja "制御" .
 
 <https://www.sbco.or.jp/ont/PointSpecificationEnum#Measurement> a owl:Class ;
     rdfs:label "Measurement" ;
-    rdfs:comment "Measurement point" ;
     rdfs:subClassOf sbco:PointSpecificationEnum ;
+    skos:definition "Measurement point" ;
     sbco:description_ja "計測" .
 
 <https://www.sbco.or.jp/ont/PointSpecificationEnum#Metering> a owl:Class ;
     rdfs:label "Metering" ;
-    rdfs:comment "Metering point" ;
     rdfs:subClassOf sbco:PointSpecificationEnum ;
+    skos:definition "Metering point" ;
     sbco:description_ja "計量" .
 
 <https://www.sbco.or.jp/ont/PointSpecificationEnum#Setpoint> a owl:Class ;
     rdfs:label "Setpoint" ;
-    rdfs:comment "Setpoint configuration point" ;
     rdfs:subClassOf sbco:PointSpecificationEnum ;
+    skos:definition "Setpoint configuration point" ;
     sbco:description_ja "設定" .
 
 <https://www.sbco.or.jp/ont/PointSpecificationEnum#Status> a owl:Class ;
     rdfs:label "Status" ;
-    rdfs:comment "Status indication point" ;
     rdfs:subClassOf sbco:PointSpecificationEnum ;
+    skos:definition "Status indication point" ;
     sbco:description_ja "状態" .
 
 sbco:PostalAddress a owl:Class ;
     rdfs:label "PostalAddress" ;
-    rdfs:comment "A postal address" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
             owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyStringMapEntry ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:name ],
         sbco:Information ;
+    skos:definition "A postal address" ;
     skos:exactMatch rec:PostalAddress ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "郵便住所" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Absolute_Humidity> a owl:Class ;
     rdfs:label "Absolute_Humidity" ;
-    rdfs:comment "Absolute humidity measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Absolute humidity measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Acceleration_Time> a owl:Class ;
     rdfs:label "Acceleration_Time" ;
-    rdfs:comment "Time required for acceleration" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Time required for acceleration" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Active_Energy> a owl:Class ;
     rdfs:label "Active_Energy" ;
-    rdfs:comment "Active electrical energy" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Active electrical energy" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Active_Power> a owl:Class ;
     rdfs:label "Active_Power" ;
-    rdfs:comment "Active electrical power" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Active electrical power" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Air_Quality> a owl:Class ;
     rdfs:label "Air_Quality" ;
-    rdfs:comment "Air quality measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Air quality measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Alternating_Current_Frequency> a owl:Class ;
     rdfs:label "Alternating_Current_Frequency" ;
-    rdfs:comment "AC frequency measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "AC frequency measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Ammonia_Concentration> a owl:Class ;
     rdfs:label "Ammonia_Concentration" ;
-    rdfs:comment "Ammonia concentration in air" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Ammonia concentration in air" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Angle> a owl:Class ;
     rdfs:label "Angle" ;
-    rdfs:comment "Angular measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Angular measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Apparent_Energy> a owl:Class ;
     rdfs:label "Apparent_Energy" ;
-    rdfs:comment "Apparent electrical energy" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Apparent electrical energy" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Apparent_Power> a owl:Class ;
     rdfs:label "Apparent_Power" ;
-    rdfs:comment "Apparent electrical power" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Apparent electrical power" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Atmospheric_Pressure> a owl:Class ;
     rdfs:label "Atmospheric_Pressure" ;
-    rdfs:comment "Atmospheric pressure measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Atmospheric pressure measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#CO2_Concentration> a owl:Class ;
     rdfs:label "CO2_Concentration" ;
-    rdfs:comment "Carbon dioxide concentration" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Carbon dioxide concentration" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#CO_Concentration> a owl:Class ;
     rdfs:label "CO_Concentration" ;
-    rdfs:comment "Carbon monoxide concentration" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Carbon monoxide concentration" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Capacity> a owl:Class ;
     rdfs:label "Capacity" ;
-    rdfs:comment "Storage or processing capacity" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Storage or processing capacity" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Cloudage> a owl:Class ;
     rdfs:label "Cloudage" ;
-    rdfs:comment "Cloud coverage measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Cloud coverage measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Complex_Power> a owl:Class ;
     rdfs:label "Complex_Power" ;
-    rdfs:comment "Complex electrical power" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Complex electrical power" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Conductivity> a owl:Class ;
     rdfs:label "Conductivity" ;
-    rdfs:comment "Electrical or thermal conductivity" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Electrical or thermal conductivity" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Current_Angle> a owl:Class ;
     rdfs:label "Current_Angle" ;
-    rdfs:comment "Electrical current phase angle" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Electrical current phase angle" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Current_Imbalance> a owl:Class ;
     rdfs:label "Current_Imbalance" ;
-    rdfs:comment "Current imbalance in multi-phase systems" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Current imbalance in multi-phase systems" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Current_Total_Harmonic_Distortion> a owl:Class ;
     rdfs:label "Current_Total_Harmonic_Distortion" ;
-    rdfs:comment "Total harmonic distortion of current" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Total harmonic distortion of current" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Deceleration_Time> a owl:Class ;
     rdfs:label "Deceleration_Time" ;
-    rdfs:comment "Time required for deceleration" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Time required for deceleration" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Dewpoint> a owl:Class ;
     rdfs:label "Dewpoint" ;
-    rdfs:comment "Dew point temperature" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Dew point temperature" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Differential_CO2_Concentration> a owl:Class ;
     rdfs:label "Differential_CO2_Concentration" ;
-    rdfs:comment "Differential carbon dioxide concentration" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Differential carbon dioxide concentration" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Differential_CO_Concentration> a owl:Class ;
     rdfs:label "Differential_CO_Concentration" ;
-    rdfs:comment "Differential carbon monoxide concentration" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Differential carbon monoxide concentration" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Differential_Dry_Bulb_Temperature> a owl:Class ;
     rdfs:label "Differential_Dry_Bulb_Temperature" ;
-    rdfs:comment "Temperature difference (dry bulb)" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Temperature difference (dry bulb)" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Differential_Dynamic_Pressure> a owl:Class ;
     rdfs:label "Differential_Dynamic_Pressure" ;
-    rdfs:comment "Dynamic pressure difference" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Dynamic pressure difference" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Differential_Pressure> a owl:Class ;
     rdfs:label "Differential_Pressure" ;
-    rdfs:comment "Pressure difference measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Pressure difference measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Differential_Static_Pressure> a owl:Class ;
     rdfs:label "Differential_Static_Pressure" ;
-    rdfs:comment "Static pressure difference" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Static pressure difference" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Differential_Temperature> a owl:Class ;
     rdfs:label "Differential_Temperature" ;
-    rdfs:comment "Temperature difference" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Temperature difference" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Direction> a owl:Class ;
     rdfs:label "Direction" ;
-    rdfs:comment "Directional measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Directional measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Dry_Bulb_Temperature> a owl:Class ;
     rdfs:label "Dry_Bulb_Temperature" ;
-    rdfs:comment "Dry bulb temperature" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Dry bulb temperature" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Dynamic_Pressure> a owl:Class ;
     rdfs:label "Dynamic_Pressure" ;
-    rdfs:comment "Dynamic pressure measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Dynamic pressure measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Electric_Current> a owl:Class ;
     rdfs:label "Electric_Current" ;
-    rdfs:comment "Electrical current measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Electrical current measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Electric_Energy> a owl:Class ;
     rdfs:label "Electric_Energy" ;
-    rdfs:comment "Electrical energy measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Electrical energy measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Electric_Power> a owl:Class ;
     rdfs:label "Electric_Power" ;
-    rdfs:comment "Electrical power measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Electrical power measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Energy> a owl:Class ;
     rdfs:label "Energy" ;
-    rdfs:comment "General energy measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "General energy measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Enthalpy> a owl:Class ;
     rdfs:label "Enthalpy" ;
-    rdfs:comment "Enthalpy measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Enthalpy measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Flow> a owl:Class ;
     rdfs:label "Flow" ;
-    rdfs:comment "Flow rate measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Flow rate measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Flow_Loss> a owl:Class ;
     rdfs:label "Flow_Loss" ;
-    rdfs:comment "Flow loss measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Flow loss measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Formaldehyde_Concentration> a owl:Class ;
     rdfs:label "Formaldehyde_Concentration" ;
-    rdfs:comment "Formaldehyde concentration in air" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Formaldehyde concentration in air" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Frequency> a owl:Class ;
     rdfs:label "Frequency" ;
-    rdfs:comment "Frequency measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Frequency measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#GrainsOfMoisture> a owl:Class ;
     rdfs:label "GrainsOfMoisture" ;
-    rdfs:comment "Moisture content in grains per pound" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Moisture content in grains per pound" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Humidity> a owl:Class ;
     rdfs:label "Humidity" ;
-    rdfs:comment "General humidity measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "General humidity measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Illuminance> a owl:Class ;
     rdfs:label "Illuminance" ;
-    rdfs:comment "Illuminance measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Illuminance measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Irradiance> a owl:Class ;
     rdfs:label "Irradiance" ;
-    rdfs:comment "Irradiance measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Irradiance measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Level> a owl:Class ;
     rdfs:label "Level" ;
-    rdfs:comment "Level measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Level measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Linear_Speed> a owl:Class ;
     rdfs:label "Linear_Speed" ;
-    rdfs:comment "Linear speed measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Linear speed measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Luminance> a owl:Class ;
     rdfs:label "Luminance" ;
-    rdfs:comment "Luminance measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Luminance measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Luminous_Flux> a owl:Class ;
     rdfs:label "Luminous_Flux" ;
-    rdfs:comment "Luminous flux measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Luminous flux measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Luminous_Intensity> a owl:Class ;
     rdfs:label "Luminous_Intensity" ;
-    rdfs:comment "Luminance intensity measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Luminance intensity measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Mass> a owl:Class ;
     rdfs:label "Mass" ;
-    rdfs:comment "Mass measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Mass measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Methane_Concentration> a owl:Class ;
     rdfs:label "Methane_Concentration" ;
-    rdfs:comment "Methane concentration in air" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Methane concentration in air" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#NO2_Concentration> a owl:Class ;
     rdfs:label "NO2_Concentration" ;
-    rdfs:comment "Nitrogen dioxide concentration" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Nitrogen dioxide concentration" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Occupancy> a owl:Class ;
     rdfs:label "Occupancy" ;
-    rdfs:comment "Occupancy detection" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Occupancy detection" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Occupancy_Count> a owl:Class ;
     rdfs:label "Occupancy_Count" ;
-    rdfs:comment "Number of occupants" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Number of occupants" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Occupancy_Percentage> a owl:Class ;
     rdfs:label "Occupancy_Percentage" ;
-    rdfs:comment "Occupancy percentage" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Occupancy percentage" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Operative_Temperature> a owl:Class ;
     rdfs:label "Operative_Temperature" ;
-    rdfs:comment "Operative temperature measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Operative temperature measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Ozone_Concentration> a owl:Class ;
     rdfs:label "Ozone_Concentration" ;
-    rdfs:comment "Ozone concentration in air" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Ozone concentration in air" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#PM10_Concentration> a owl:Class ;
     rdfs:label "PM10_Concentration" ;
-    rdfs:comment "PM10 particulate matter concentration" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "PM10 particulate matter concentration" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#PM1_Concentration> a owl:Class ;
     rdfs:label "PM1_Concentration" ;
-    rdfs:comment "PM1 particulate matter concentration" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "PM1 particulate matter concentration" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#PM2_5_Concentration> a owl:Class ;
     rdfs:label "PM2_5_Concentration" ;
-    rdfs:comment "PM2.5 particulate matter concentration" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "PM2.5 particulate matter concentration" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Peak_Power> a owl:Class ;
     rdfs:label "Peak_Power" ;
-    rdfs:comment "Peak power measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Peak power measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Phasor> a owl:Class ;
     rdfs:label "Phasor" ;
-    rdfs:comment "Phasor measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Phasor measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Phasor_Angle> a owl:Class ;
     rdfs:label "Phasor_Angle" ;
-    rdfs:comment "Phasor angle measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Phasor angle measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Phasor_Magnitude> a owl:Class ;
     rdfs:label "Phasor_Magnitude" ;
-    rdfs:comment "Phasor magnitude measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Phasor magnitude measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Position> a owl:Class ;
     rdfs:label "Position" ;
-    rdfs:comment "Position measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Position measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Power> a owl:Class ;
     rdfs:label "Power" ;
-    rdfs:comment "General power measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "General power measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Power_Factor> a owl:Class ;
     rdfs:label "Power_Factor" ;
-    rdfs:comment "Power factor measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Power factor measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Precipitation> a owl:Class ;
     rdfs:label "Precipitation" ;
-    rdfs:comment "Precipitation measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Precipitation measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Pressure> a owl:Class ;
     rdfs:label "Pressure" ;
-    rdfs:comment "General pressure measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "General pressure measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Radiance> a owl:Class ;
     rdfs:label "Radiance" ;
-    rdfs:comment "Radiance measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Radiance measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Radiant_Temperature> a owl:Class ;
     rdfs:label "Radiant_Temperature" ;
-    rdfs:comment "Radiant temperature measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Radiant temperature measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Radioactivity_Concentration> a owl:Class ;
     rdfs:label "Radioactivity_Concentration" ;
-    rdfs:comment "Radioactivity concentration" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Radioactivity concentration" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Radon_Concentration> a owl:Class ;
     rdfs:label "Radon_Concentration" ;
-    rdfs:comment "Radon concentration in air" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Radon concentration in air" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Reactive_Energy> a owl:Class ;
     rdfs:label "Reactive_Energy" ;
-    rdfs:comment "Reactive electrical energy" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Reactive electrical energy" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Reactive_Power> a owl:Class ;
     rdfs:label "Reactive_Power" ;
-    rdfs:comment "Reactive electrical power" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Reactive electrical power" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Real_Power> a owl:Class ;
     rdfs:label "Real_Power" ;
-    rdfs:comment "Real electrical power" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Real electrical power" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Relative_Humidity> a owl:Class ;
     rdfs:label "Relative_Humidity" ;
-    rdfs:comment "Relative humidity measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Relative humidity measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Rotational_Speed> a owl:Class ;
     rdfs:label "Rotational_Speed" ;
-    rdfs:comment "Rotational speed measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Rotational speed measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Solar_Irradiance> a owl:Class ;
     rdfs:label "Solar_Irradiance" ;
-    rdfs:comment "Solar irradiance measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Solar irradiance measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Solar_Radiance> a owl:Class ;
     rdfs:label "Solar_Radiance" ;
-    rdfs:comment "Solar radiance measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Solar radiance measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Speed> a owl:Class ;
     rdfs:label "Speed" ;
-    rdfs:comment "General speed measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "General speed measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Static_Pressure> a owl:Class ;
     rdfs:label "Static_Pressure" ;
-    rdfs:comment "Static pressure measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Static pressure measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#TVOC_Concentration> a owl:Class ;
     rdfs:label "TVOC_Concentration" ;
-    rdfs:comment "Total volatile organic compounds concentration" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Total volatile organic compounds concentration" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Temperature> a owl:Class ;
     rdfs:label "Temperature" ;
-    rdfs:comment "General temperature measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "General temperature measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Thermal_Energy> a owl:Class ;
     rdfs:label "Thermal_Energy" ;
-    rdfs:comment "Thermal energy measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Thermal energy measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Thermal_Power> a owl:Class ;
     rdfs:label "Thermal_Power" ;
-    rdfs:comment "Thermal power measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Thermal power measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Time> a owl:Class ;
     rdfs:label "Time" ;
-    rdfs:comment "Time measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Time measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Torque> a owl:Class ;
     rdfs:label "Torque" ;
-    rdfs:comment "Torque measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Torque measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Velocity_Pressure> a owl:Class ;
     rdfs:label "Velocity_Pressure" ;
-    rdfs:comment "Velocity pressure measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Velocity pressure measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Voltage> a owl:Class ;
     rdfs:label "Voltage" ;
-    rdfs:comment "Electrical voltage measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Electrical voltage measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Voltage_Angle> a owl:Class ;
     rdfs:label "Voltage_Angle" ;
-    rdfs:comment "Voltage phase angle" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Voltage phase angle" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Voltage_Imbalance> a owl:Class ;
     rdfs:label "Voltage_Imbalance" ;
-    rdfs:comment "Voltage imbalance in multi-phase systems" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Voltage imbalance in multi-phase systems" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Weather_Condition> a owl:Class ;
     rdfs:label "Weather_Condition" ;
-    rdfs:comment "Weather condition measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Weather condition measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Wet_Bulb_Temperature> a owl:Class ;
     rdfs:label "Wet_Bulb_Temperature" ;
-    rdfs:comment "Wet bulb temperature measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Wet bulb temperature measurement" .
 
 <https://www.sbco.or.jp/ont/QuantityEnum#Wind_Direction> a owl:Class ;
     rdfs:label "Wind_Direction" ;
-    rdfs:comment "Wind direction measurement" ;
-    rdfs:subClassOf sbco:QuantityEnum .
+    rdfs:subClassOf sbco:QuantityEnum ;
+    skos:definition "Wind direction measurement" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#ACElec> a owl:Class ;
     rdfs:label "ACElec" ;
-    rdfs:comment "AC Electricity" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "AC Electricity" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#Air> a owl:Class ;
     rdfs:label "Air" ;
-    rdfs:comment "Air" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Air" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#BlowdownWater> a owl:Class ;
     rdfs:label "BlowdownWater" ;
-    rdfs:comment "Blowdown Water" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Blowdown Water" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#ChilledWater> a owl:Class ;
     rdfs:label "ChilledWater" ;
-    rdfs:comment "Chilled Water" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Chilled Water" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#ColdDomesticWater> a owl:Class ;
     rdfs:label "ColdDomesticWater" ;
-    rdfs:comment "Cold Domestic Water" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Cold Domestic Water" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#Condensate> a owl:Class ;
     rdfs:label "Condensate" ;
-    rdfs:comment "Condensate" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Condensate" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#CondenserWater> a owl:Class ;
     rdfs:label "CondenserWater" ;
-    rdfs:comment "Condenser Water" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Condenser Water" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#DCElec> a owl:Class ;
     rdfs:label "DCElec" ;
-    rdfs:comment "DC Electricity" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "DC Electricity" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#Diesel> a owl:Class ;
     rdfs:label "Diesel" ;
-    rdfs:comment "Diesel" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Diesel" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#DriveElec> a owl:Class ;
     rdfs:label "DriveElec" ;
-    rdfs:comment "Drive Electricity" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Drive Electricity" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#Ethernet> a owl:Class ;
     rdfs:label "Ethernet" ;
-    rdfs:comment "Ethernet" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Ethernet" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#ExhaustAir> a owl:Class ;
     rdfs:label "ExhaustAir" ;
-    rdfs:comment "Exhaust Air" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Exhaust Air" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#Freight> a owl:Class ;
     rdfs:label "Freight" ;
-    rdfs:comment "Freight" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Freight" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#FuelOil> a owl:Class ;
     rdfs:label "FuelOil" ;
-    rdfs:comment "Fuel Oil" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Fuel Oil" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#Gasoline> a owl:Class ;
     rdfs:label "Gasoline" ;
-    rdfs:comment "Gasoline" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Gasoline" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#GreaseExhaustAir> a owl:Class ;
     rdfs:label "GreaseExhaustAir" ;
-    rdfs:comment "Grease Exhaust Air" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Grease Exhaust Air" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#HotDomesticWater> a owl:Class ;
     rdfs:label "HotDomesticWater" ;
-    rdfs:comment "Hot Domestic Water" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Hot Domestic Water" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#HotWater> a owl:Class ;
     rdfs:label "HotWater" ;
-    rdfs:comment "Hot Water" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Hot Water" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#IrrigationWater> a owl:Class ;
     rdfs:label "IrrigationWater" ;
-    rdfs:comment "Irrigation Water" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Irrigation Water" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#Light> a owl:Class ;
     rdfs:label "Light" ;
-    rdfs:comment "Light" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Light" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#MakeupWater> a owl:Class ;
     rdfs:label "MakeupWater" ;
-    rdfs:comment "Makeup Water" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Makeup Water" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#NaturalGas> a owl:Class ;
     rdfs:label "NaturalGas" ;
-    rdfs:comment "Natural Gas" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Natural Gas" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#NonPotableDomesticWater> a owl:Class ;
     rdfs:label "NonPotableDomesticWater" ;
-    rdfs:comment "Non-Potable Domestic Water" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Non-Potable Domestic Water" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#OutsideAir> a owl:Class ;
     rdfs:label "OutsideAir" ;
-    rdfs:comment "Outside Air" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Outside Air" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#People> a owl:Class ;
     rdfs:label "People" ;
-    rdfs:comment "People" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "People" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#Propane> a owl:Class ;
     rdfs:label "Propane" ;
-    rdfs:comment "Propane" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Propane" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#RecircHotDomesticWater> a owl:Class ;
     rdfs:label "RecircHotDomesticWater" ;
-    rdfs:comment "Recirculating Hot Domestic Water" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Recirculating Hot Domestic Water" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#Refrig> a owl:Class ;
     rdfs:label "Refrig" ;
-    rdfs:comment "Refrigerant" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Refrigerant" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#ReturnAir> a owl:Class ;
     rdfs:label "ReturnAir" ;
-    rdfs:comment "Return Air" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Return Air" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#SprinklerWater> a owl:Class ;
     rdfs:label "SprinklerWater" ;
-    rdfs:comment "Sprinkler Water" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Sprinkler Water" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#Steam> a owl:Class ;
     rdfs:label "Steam" ;
-    rdfs:comment "Steam" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Steam" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#StormDrainage> a owl:Class ;
     rdfs:label "StormDrainage" ;
-    rdfs:comment "Storm Drainage" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Storm Drainage" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#SupplyAir> a owl:Class ;
     rdfs:label "SupplyAir" ;
-    rdfs:comment "Supply Air" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Supply Air" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#TransferAir> a owl:Class ;
     rdfs:label "TransferAir" ;
-    rdfs:comment "Transfer Air" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Transfer Air" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#WasteVentDrainage> a owl:Class ;
     rdfs:label "WasteVentDrainage" ;
-    rdfs:comment "Waste Vent Drainage" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Waste Vent Drainage" .
 
 <https://www.sbco.or.jp/ont/SubstanceEnum#Water> a owl:Class ;
     rdfs:label "Water" ;
-    rdfs:comment "Water" ;
-    rdfs:subClassOf sbco:SubstanceEnum .
+    rdfs:subClassOf sbco:SubstanceEnum ;
+    skos:definition "Water" .
 
 <https://www.sbco.or.jp/ont/UnitEnum#celsius> a owl:Class ;
     rdfs:label "celsius" ;
-    rdfs:comment "Degree Celsius" ;
     rdfs:subClassOf sbco:UnitEnum ;
+    skos:definition "Degree Celsius" ;
     sbco:text "°C" .
 
 <https://www.sbco.or.jp/ont/UnitEnum#percent> a owl:Class ;
     rdfs:label "percent" ;
-    rdfs:comment "Percent" ;
     rdfs:subClassOf sbco:UnitEnum ;
+    skos:definition "Percent" ;
     sbco:text "%" .
 
 <https://www.sbco.or.jp/ont/UnitEnum#ppm> a owl:Class ;
     rdfs:label "ppm" ;
-    rdfs:comment "Parts per million" ;
     rdfs:subClassOf sbco:UnitEnum ;
+    skos:definition "Parts per million" ;
     sbco:text "ppm" .
 
 sbco:address a owl:ObjectProperty ;
     rdfs:label "address" ;
-    rdfs:comment "Address of the architecture" ;
     rdfs:range sbco:PostalAddress ;
+    skos:definition "Address of the architecture" ;
     skos:inScheme sbco:schema .
 
 sbco:adjacentElement a owl:ObjectProperty ;
     rdfs:label "adjacentElement" ;
-    rdfs:comment "Building element adjacent to this architecture" ;
     rdfs:range sbco:BuildingElement ;
+    skos:definition "Building element adjacent to this architecture" ;
     skos:inScheme sbco:schema .
 
 sbco:architectedBy a owl:ObjectProperty ;
     rdfs:label "architectedBy" ;
-    rdfs:comment "Agent or resource that architected this structure" ;
     rdfs:range sbco:Agent ;
+    skos:definition "Agent or resource that architected this structure" ;
     skos:inScheme sbco:schema .
 
 sbco:assetTag a owl:DatatypeProperty ;
     rdfs:label "assetTag" ;
-    rdfs:comment "Asset identification tag" ;
     rdfs:range xsd:string ;
+    skos:definition "Asset identification tag" ;
     skos:inScheme sbco:schema .
 
 sbco:commissionedBy a owl:ObjectProperty ;
     rdfs:label "commissionedBy" ;
-    rdfs:comment "Agent or resource that commissioned this asset" ;
     rdfs:range sbco:Agent ;
+    skos:definition "Agent or resource that commissioned this asset" ;
     skos:inScheme sbco:schema .
 
 sbco:constructedBy a owl:ObjectProperty ;
     rdfs:label "constructedBy" ;
-    rdfs:comment "Agent or resource that constructed this architecture" ;
     rdfs:range sbco:Agent ;
+    skos:definition "Agent or resource that constructed this architecture" ;
     skos:inScheme sbco:schema .
 
 sbco:containsElement a owl:ObjectProperty ;
     rdfs:label "containsElement" ;
-    rdfs:comment "Building element contained within this architecture" ;
     rdfs:range sbco:BuildingElement ;
+    skos:definition "Building element contained within this architecture" ;
     skos:inScheme sbco:schema .
 
 sbco:entries a owl:ObjectProperty ;
     rdfs:label "entries" ;
-    rdfs:comment "Nested map entries" ;
     rdfs:range sbco:KeyStringMapEntry ;
+    skos:definition "Nested map entries" ;
     skos:inScheme sbco:schema .
 
 sbco:feeds a owl:ObjectProperty ;
     rdfs:label "feeds" ;
-    rdfs:comment "Equipment or system that this equipment feeds" ;
     rdfs:range sbco:Resource ;
+    skos:definition "Equipment or system that this equipment feeds" ;
     skos:inScheme sbco:schema ;
     sbco:substance "SubstanceEnum" .
 
 sbco:installedBy a owl:ObjectProperty ;
     rdfs:label "installedBy" ;
-    rdfs:comment "Agent or resource that installed this asset" ;
     rdfs:range sbco:Agent ;
+    skos:definition "Agent or resource that installed this asset" ;
     skos:inScheme sbco:schema .
 
 sbco:intersectingElement a owl:ObjectProperty ;
     rdfs:label "intersectingElement" ;
-    rdfs:comment "Building element intersecting with this architecture" ;
     rdfs:range sbco:BuildingElement ;
+    skos:definition "Building element intersecting with this architecture" ;
     skos:inScheme sbco:schema .
 
 sbco:isLocationOf a owl:ObjectProperty ;
     rdfs:label "isLocationOf" ;
-    rdfs:comment "Subject is the physical location encapsulating the object." ;
     rdfs:range sbco:EquipmentExt ;
+    skos:definition "Subject is the physical location encapsulating the object." ;
     skos:inScheme sbco:schema .
+
+sbco:labels a owl:DatatypeProperty ;
+    rdfs:label "labels" ;
+    rdfs:range xsd:string ;
+    skos:definition "Labels or tags associated with this point" ;
+    skos:inScheme sbco:schema ;
+    sbco:description_ja "このポイントに関連するラベルまたはタグ" .
 
 sbco:maintenanceInterval a owl:DatatypeProperty ;
     rdfs:label "maintenanceInterval" ;
-    rdfs:comment "Maintenance interval duration" ;
     rdfs:range xsd:duration ;
+    skos:definition "Maintenance interval duration" ;
     skos:inScheme sbco:schema .
 
 sbco:manufacturedBy a owl:ObjectProperty ;
     rdfs:label "manufacturedBy" ;
-    rdfs:comment "Agent or resource that manufactured this asset" ;
     rdfs:range sbco:Agent ;
+    skos:definition "Agent or resource that manufactured this asset" ;
     skos:inScheme sbco:schema .
 
 sbco:memberOf a owl:ObjectProperty ;
     rdfs:label "memberOf" ;
-    rdfs:comment "Indicates membership in an organization. Note that componency (e.g., departments of a corporation) are expressed using the more generic Organization.isPartOf property." ;
     rdfs:range sbco:Organization ;
+    skos:definition "Indicates membership in an organization. Note that componency (e.g., departments of a corporation) are expressed using the more generic Organization.isPartOf property." ;
     skos:inScheme sbco:schema .
 
 sbco:operatedBy a owl:ObjectProperty ;
     rdfs:label "operatedBy" ;
-    rdfs:comment "Agent or resource that operates this architecture" ;
     rdfs:range sbco:Agent ;
+    skos:definition "Agent or resource that operates this architecture" ;
     skos:inScheme sbco:schema .
 
 sbco:ownedBy a owl:ObjectProperty ;
     rdfs:label "ownedBy" ;
-    rdfs:comment "Agent or resource that owns this architecture" ;
     rdfs:range sbco:Agent ;
+    skos:definition "Agent or resource that owns this architecture" ;
     skos:inScheme sbco:schema .
 
 sbco:owns a owl:ObjectProperty ;
     rdfs:label "owns" ;
-    rdfs:comment " Indicates ownership of some thing, e.g., a building, an asset, an organization, etc." ;
     rdfs:range sbco:Resource ;
+    skos:definition " Indicates ownership of some thing, e.g., a building, an asset, an organization, etc." ;
     skos:inScheme sbco:schema .
 
 sbco:servicedBy a owl:ObjectProperty ;
     rdfs:label "servicedBy" ;
-    rdfs:comment "Agent or resource that services this asset" ;
     rdfs:range sbco:Agent ;
+    skos:definition "Agent or resource that services this asset" ;
     skos:inScheme sbco:schema .
 
 sbco:Document a owl:Class ;
     rdfs:label "Document" ;
-    rdfs:comment "A document providing information about a building element or asset" ;
     rdfs:subClassOf sbco:Information ;
+    skos:definition "A document providing information about a building element or asset" ;
     skos:exactMatch rec:Document ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "建物要素やアセットに関する情報を提供するドキュメント" .
 
 sbco:Geometry a owl:Class ;
     rdfs:label "Geometry" ;
-    rdfs:comment "REC Geometry のプレースホルダ（詳細は別途拡張）" ;
     rdfs:subClassOf sbco:Information ;
+    skos:definition "REC Geometry のプレースホルダ（詳細は別途拡張）" ;
     skos:exactMatch rec:Geometry ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "ジオメトリ情報のプレースホルダ" .
 
 sbco:PointExt a owl:Class ;
     rdfs:label "PointExt" ;
-    rdfs:comment "A point (sensor/actuator) in a smart building context." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty sbco:instanceNoBacnet ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:installationArea ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:instanceNoBacnet ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
             owl:onProperty sbco:maxPresValue ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:isPointOf ],
+            owl:onProperty sbco:maxPresValue ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:minPresValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:gatewayId ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:installationArea ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:targetArea ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty sbco:scale ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:supplier ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:localId ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:supplier ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:deviceIdBacnet ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:deviceIdBacnet ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:supplier ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:gatewayId ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty sbco:interval ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:pointType ],
@@ -1453,391 +1525,490 @@ sbco:PointExt a owl:Class ;
             owl:onProperty sbco:pointType ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:pointSpecification ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:isPointOf ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:scale ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty sbco:scale ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty sbco:maxPresValue ],
+            owl:onProperty sbco:deviceIdBacnet ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty sbco:gatewayId ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:localId ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:scale ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:interval ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:objectTypeBacnet ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:minPresValue ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:isPointOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:pointType ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:labels ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:pointSpecification ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:UnitEnum ;
             owl:onProperty sbco:unit ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty sbco:scale ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:targetArea ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:maxPresValue ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:pointSpecification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:instanceNoBacnet ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:unit ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:float ;
             owl:onProperty sbco:minPresValue ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:pointType ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:localId ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty sbco:writable ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:minPresValue ],
+            owl:onProperty sbco:objectTypeBacnet ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:labels ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:unit ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:unit ],
+            owl:onProperty sbco:isPointOf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:PointSpecificationEnum ;
+            owl:onProperty sbco:pointSpecification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:installationArea ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ owl:unionOf ( sbco:Equipment sbco:EquipmentExt ) ] ;
             owl:onProperty sbco:isPointOf ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:scale ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:pointType ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:PointSpecificationEnum ;
-            owl:onProperty sbco:pointSpecification ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:targetArea ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:objectTypeBacnet ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:writable ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:writable ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:interval ],
         sbco:Point ;
+    skos:definition "A point (sensor/actuator) in a smart building context." ;
     skos:exactMatch sbco:PointExt ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "スマートビルディングの文脈におけるポイント（センサー/アクチュエータ）。" .
 
 sbco:aggregate a owl:ObjectProperty ;
     rdfs:label "aggregate" ;
-    rdfs:comment "Aggregation function or method for point data processing" ;
     rdfs:range sbco:AggregateEnum ;
+    skos:definition "Aggregation function or method for point data processing" ;
     skos:inScheme sbco:schema ;
     sbco:azure_dtdl_type "DTObjectInfo" ;
     sbco:description_ja "ポイントデータ処理のための集約関数または方法" .
 
 sbco:area a owl:ObjectProperty ;
     rdfs:label "area" ;
-    rdfs:comment "Area of the architecture" ;
     rdfs:range sbco:ArchitectureArea ;
+    skos:definition "Area of the architecture" ;
     skos:inScheme sbco:schema .
 
 sbco:capacity a owl:ObjectProperty ;
     rdfs:label "capacity" ;
-    rdfs:comment "Capacity of the architecture" ;
     rdfs:range sbco:ArchitectureCapacity ;
+    skos:definition "Capacity of the architecture" ;
     skos:inScheme sbco:schema .
 
 sbco:checksum a owl:DatatypeProperty ;
     rdfs:label "checksum" ;
-    rdfs:comment "Checksum or hash of the information content" ;
     rdfs:range xsd:string ;
+    skos:definition "Checksum or hash of the information content" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "情報コンテンツのチェックサムまたはハッシュ" .
 
 sbco:commissioningDate a owl:DatatypeProperty ;
     rdfs:label "commissioningDate" ;
-    rdfs:comment "Date when the asset was commissioned" ;
     rdfs:range xsd:date ;
+    skos:definition "Date when the asset was commissioned" ;
     skos:inScheme sbco:schema .
+
+sbco:deviceIdBacnet a owl:DatatypeProperty ;
+    rdfs:label "deviceIdBacnet" ;
+    rdfs:range xsd:string ;
+    skos:definition "BACnet device identifier" ;
+    skos:inScheme sbco:schema ;
+    sbco:description_ja "BACnetデバイス識別子" .
 
 sbco:deviceType a owl:DatatypeProperty ;
     rdfs:label "deviceType" ;
-    rdfs:comment "Device Type" ;
     rdfs:range xsd:string ;
+    skos:definition "Device Type" ;
     skos:inScheme sbco:schema .
 
 sbco:flag a owl:DatatypeProperty ;
     rdfs:label "flag" ;
-    rdfs:comment "Boolean flag value" ;
     rdfs:range xsd:boolean ;
+    skos:definition "Boolean flag value" ;
     skos:inScheme sbco:schema .
 
 sbco:format a owl:DatatypeProperty ;
     rdfs:label "format" ;
-    rdfs:comment "MIME type or format identifier for the information" ;
     rdfs:range xsd:string ;
+    skos:definition "MIME type or format identifier for the information" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "情報のMIMEタイプまたはフォーマット識別子" .
 
+sbco:gatewayId a owl:DatatypeProperty ;
+    rdfs:label "gatewayId" ;
+    rdfs:range xsd:string ;
+    skos:definition "Identifier of the gateway device managing this point" ;
+    skos:inScheme sbco:schema ;
+    sbco:description_ja "このポイントを管理するゲートウェイデバイスの識別子" .
+
 sbco:georeference a owl:ObjectProperty ;
     rdfs:label "georeference" ;
-    rdfs:comment "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
     rdfs:range sbco:Georeference ;
+    skos:definition "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
     skos:inScheme sbco:schema .
 
 sbco:hasQuantity a owl:ObjectProperty ;
     rdfs:label "hasQuantity" ;
-    rdfs:comment "Physical quantity measured by this point" ;
     rdfs:range sbco:QuantityEnum ;
+    skos:definition "Physical quantity measured by this point" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "このポイントで測定される物理量" .
 
 sbco:hasSubstance a owl:ObjectProperty ;
     rdfs:label "hasSubstance" ;
-    rdfs:comment "Substance associated with this point" ;
     rdfs:range sbco:SubstanceEnum ;
+    skos:definition "Substance associated with this point" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "このポイントに関連する物質" .
 
 sbco:initialCost a owl:DatatypeProperty ;
     rdfs:label "initialCost" ;
-    rdfs:comment "Initial cost of the asset" ;
     rdfs:range xsd:string ;
-    skos:inScheme sbco:schema .
-
-sbco:installationArea a owl:DatatypeProperty ;
-    rdfs:label "installationArea" ;
-    rdfs:comment "Parent installation area" ;
-    rdfs:range xsd:string ;
+    skos:definition "Initial cost of the asset" ;
     skos:inScheme sbco:schema .
 
 sbco:installationDate a owl:DatatypeProperty ;
     rdfs:label "installationDate" ;
-    rdfs:comment "Date when the asset was installed" ;
     rdfs:range xsd:date ;
+    skos:definition "Date when the asset was installed" ;
     skos:inScheme sbco:schema .
+
+sbco:instanceNoBacnet a owl:DatatypeProperty ;
+    rdfs:label "instanceNoBacnet" ;
+    rdfs:range xsd:string ;
+    skos:definition "BACnet object instance number" ;
+    skos:inScheme sbco:schema ;
+    sbco:description_ja "BACnetオブジェクトインスタンス番号" .
+
+sbco:interval a owl:DatatypeProperty ;
+    rdfs:label "interval" ;
+    rdfs:range xsd:integer ;
+    skos:definition "Polling or reporting interval in seconds" ;
+    skos:inScheme sbco:schema ;
+    sbco:description_ja "ポーリングまたはレポートの間隔（秒）" .
 
 sbco:language a owl:DatatypeProperty ;
     rdfs:label "language" ;
-    rdfs:comment "Language code (ISO 639-1) of the information content" ;
     rdfs:range [ a rdfs:Datatype ;
             owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
                         owl:onDatatype xsd:string ;
                         owl:withRestrictions ( [ xsd:pattern "^[a-z]{2}(-[A-Z]{2})?$" ] ) ] ) ] ;
+    skos:definition "Language code (ISO 639-1) of the information content" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "情報コンテンツの言語コード (ISO 639-1)" .
 
 sbco:levelNumber a owl:DatatypeProperty ;
     rdfs:label "levelNumber" ;
-    rdfs:comment "Floor or level number within a building" ;
     rdfs:range xsd:integer ;
+    skos:definition "Floor or level number within a building" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "建物内のフロアまたはレベル番号" .
 
+sbco:localId a owl:DatatypeProperty ;
+    rdfs:label "localId" ;
+    rdfs:range xsd:string ;
+    skos:definition "Local identifier for this point within the gateway or system" ;
+    skos:inScheme sbco:schema ;
+    sbco:description_ja "ゲートウェイまたはシステム内でのポイントのローカル識別子" .
+
 sbco:maxPresValue a owl:DatatypeProperty ;
     rdfs:label "maxPresValue" ;
-    rdfs:comment "Maximum plausible reading" ;
     rdfs:range xsd:float ;
+    skos:definition "Maximum plausible reading" ;
     skos:inScheme sbco:schema .
 
 sbco:minPresValue a owl:DatatypeProperty ;
     rdfs:label "minPresValue" ;
-    rdfs:comment "Minimum plausible reading" ;
     rdfs:range xsd:float ;
+    skos:definition "Minimum plausible reading" ;
     skos:inScheme sbco:schema .
 
 sbco:modelNumber a owl:DatatypeProperty ;
     rdfs:label "modelNumber" ;
-    rdfs:comment "Model number of the asset" ;
     rdfs:range xsd:string ;
+    skos:definition "Model number of the asset" ;
     skos:inScheme sbco:schema .
 
 sbco:mountedOn a owl:ObjectProperty ;
     rdfs:label "mountedOn" ;
-    rdfs:comment "Building element on which this asset is mounted" ;
     rdfs:range sbco:BuildingElement ;
+    skos:definition "Building element on which this asset is mounted" ;
     skos:inScheme sbco:schema .
+
+sbco:objectTypeBacnet a owl:DatatypeProperty ;
+    rdfs:label "objectTypeBacnet" ;
+    rdfs:range xsd:string ;
+    skos:definition "BACnet object type (e.g., Analog-Input, Binary-Output)" ;
+    skos:inScheme sbco:schema ;
+    sbco:description_ja "BACnetオブジェクトタイプ（例：Analog-Input、Binary-Output）" .
 
 sbco:operationalStageCount a owl:DatatypeProperty ;
     rdfs:label "operationalStageCount" ;
-    rdfs:comment "The number of operational stages supported by this equipment" ;
     rdfs:range xsd:integer ;
+    skos:definition "The number of operational stages supported by this equipment" ;
     skos:inScheme sbco:schema .
 
 sbco:panel a owl:DatatypeProperty ;
     rdfs:label "panel" ;
-    rdfs:comment "Parent panel" ;
     rdfs:range xsd:string ;
+    skos:definition "Parent panel" ;
     skos:inScheme sbco:schema .
 
 sbco:pointSpecification a owl:ObjectProperty ;
     rdfs:label "pointSpecification" ;
-    rdfs:comment "Point specification category as shown in equipment point list. English is recommended." ;
     rdfs:range sbco:PointSpecificationEnum ;
+    skos:definition "Point specification category as shown in equipment point list. English is recommended." ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "設備のポイントリストで示される、ポイントの区分を明示。" .
 
 sbco:pointType a owl:DatatypeProperty ;
     rdfs:label "pointType" ;
-    rdfs:comment "Point type - a profile or template name used to refer to the telemetry format obtainable from the device or point. Specific definitions are provided separately in schema files." ;
     rdfs:range xsd:string ;
+    skos:definition "Point type - a profile or template name used to refer to the telemetry format obtainable from the device or point. Specific definitions are provided separately in schema files." ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "ポイントタイプ - 機器やポイントから取得できるテレメトリのフォーマットを参照するためのプロファイル名、またはテンプレート名。具体的な定義については、スキーマファイル等で当該タイプについては別途定義される。" .
 
 sbco:scale a owl:DatatypeProperty ;
     rdfs:label "scale" ;
-    rdfs:comment "Scale factor for raw value conversion" ;
     rdfs:range xsd:float ;
+    skos:definition "Scale factor for raw value conversion" ;
     skos:inScheme sbco:schema .
 
 sbco:serialNumber a owl:DatatypeProperty ;
     rdfs:label "serialNumber" ;
-    rdfs:comment "Serial number of the asset" ;
     rdfs:range xsd:string ;
+    skos:definition "Serial number of the asset" ;
     skos:inScheme sbco:schema .
 
 sbco:size a owl:DatatypeProperty ;
     rdfs:label "size" ;
-    rdfs:comment "Size of the information resource in bytes" ;
     rdfs:range xsd:integer ;
+    skos:definition "Size of the information resource in bytes" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "情報リソースのサイズ（バイト）" .
 
-sbco:targetArea a owl:DatatypeProperty ;
-    rdfs:label "targetArea" ;
-    rdfs:comment "Target area for this resource" ;
+sbco:supplier a owl:DatatypeProperty ;
+    rdfs:label "supplier" ;
     rdfs:range xsd:string ;
-    skos:inScheme sbco:schema .
+    skos:definition "Supplier or vendor of the device associated with this point" ;
+    skos:inScheme sbco:schema ;
+    sbco:description_ja "このポイントに関連するデバイスのサプライヤーまたはベンダー" .
 
 sbco:turnoverDate a owl:DatatypeProperty ;
     rdfs:label "turnoverDate" ;
-    rdfs:comment "Date when the asset was turned over" ;
     rdfs:range xsd:date ;
+    skos:definition "Date when the asset was turned over" ;
     skos:inScheme sbco:schema .
 
 sbco:unit a owl:ObjectProperty ;
     rdfs:label "unit" ;
-    rdfs:comment "Measurement unit (enum key; symbol can be taken from annotations)" ;
     rdfs:range sbco:UnitEnum ;
+    skos:definition "Measurement unit (enum key; symbol can be taken from annotations)" ;
     skos:inScheme sbco:schema .
 
 sbco:url a owl:DatatypeProperty ;
     rdfs:label "url" ;
-    rdfs:comment "URL or URI pointing to the information resource" ;
     rdfs:range xsd:anyURI ;
+    skos:definition "URL or URI pointing to the information resource" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "情報リソースを指すURLまたはURI" .
 
 sbco:value a owl:DatatypeProperty ;
     rdfs:label "value" ;
-    rdfs:comment "Value of the map entry" ;
     rdfs:range xsd:string ;
+    skos:definition "Value of the map entry" ;
     skos:inScheme sbco:schema .
 
 sbco:version a owl:DatatypeProperty ;
     rdfs:label "version" ;
-    rdfs:comment "Version identifier for the information" ;
     rdfs:range xsd:string ;
+    skos:definition "Version identifier for the information" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "情報のバージョン識別子" .
 
 sbco:weight a owl:DatatypeProperty ;
     rdfs:label "weight" ;
-    rdfs:comment "Weight of the asset" ;
     rdfs:range xsd:decimal ;
+    skos:definition "Weight of the asset" ;
     skos:inScheme sbco:schema .
+
+sbco:writable a owl:DatatypeProperty ;
+    rdfs:label "writable" ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether the point value can be written (commanded)" ;
+    skos:inScheme sbco:schema ;
+    sbco:description_ja "ポイントの値を書き込み（制御）できるかどうか" .
 
 sbco:Equipment a owl:Class ;
     rdfs:label "Equipment" ;
-    rdfs:comment "An equipment asset installed in a space." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:isFedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:operationalStageCount ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:feeds ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Resource ;
-            owl:onProperty sbco:isFedBy ],
-        [ a owl:Restriction ;
             owl:allValuesFrom sbco:Resource ;
             owl:onProperty sbco:feeds ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom xsd:integer ;
             owl:onProperty sbco:operationalStageCount ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:Space ;
             owl:onProperty sbco:locatedIn ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:feeds ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:isFedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:operationalStageCount ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Resource ;
+            owl:onProperty sbco:isFedBy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:operationalStageCount ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:locatedIn ],
         sbco:Asset ;
+    skos:definition "An equipment asset installed in a space." ;
     skos:exactMatch brick:Equipment ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "空間に設置された設備アセット。" .
 
 sbco:EquipmentExt a owl:Class ;
     rdfs:label "EquipmentExt" ;
-    rdfs:comment "An equipment asset installed in a space." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:targetArea ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:deviceType ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:installationArea ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:panel ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:targetArea ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:deviceType ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:panel ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:locatedIn ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:panel ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:installationArea ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:installationArea ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:targetArea ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:deviceType ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:installationArea ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:panel ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:installationArea ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:Space ;
             owl:onProperty sbco:locatedIn ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:deviceType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:deviceType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:targetArea ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:targetArea ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:panel ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:locatedIn ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:installationArea ],
         sbco:Equipment ;
+    skos:definition "An equipment asset installed in a space." ;
     skos:exactMatch sbco:EquipmentExt ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "SBCOにて拡張したデバイスモデル" .
 
 sbco:documentation a owl:ObjectProperty ;
     rdfs:label "documentation" ;
-    rdfs:comment "Documentation related to this asset" ;
     rdfs:range sbco:Document ;
+    skos:definition "Documentation related to this asset" ;
     skos:inScheme sbco:schema .
 
 sbco:hasPart a owl:ObjectProperty ;
     rdfs:label "hasPart" ;
-    rdfs:comment "The subject is composed in part of the entity given by the object." ;
     rdfs:range sbco:Space ;
+    skos:definition "The subject is composed in part of the entity given by the object." ;
     skos:inScheme sbco:schema .
 
 sbco:hasPoint a owl:ObjectProperty ;
     rdfs:label "hasPoint" ;
-    rdfs:comment "Point associated with this architecture" ;
     rdfs:range sbco:Point ;
+    skos:definition "Point associated with this architecture" ;
     skos:inScheme sbco:schema .
 
 sbco:isFedBy a owl:ObjectProperty ;
     rdfs:label "isFedBy" ;
-    rdfs:comment "Resource that feeds this architecture" ;
     rdfs:range sbco:Resource ;
+    skos:definition "Resource that feeds this architecture" ;
     skos:inScheme sbco:schema ;
     sbco:substance "SubstanceEnum" .
 
 sbco:UnitEnum a owl:Class ;
     rdfs:label "UnitEnum" ;
-    rdfs:comment "Allowed measurement units" ;
     owl:unionOf ( <https://www.sbco.or.jp/ont/UnitEnum#celsius> <https://www.sbco.or.jp/ont/UnitEnum#percent> <https://www.sbco.or.jp/ont/UnitEnum#ppm> ) ;
+    skos:definition "Allowed measurement units" ;
     skos:inScheme sbco:schema ;
     linkml:permissible_values <https://www.sbco.or.jp/ont/UnitEnum#celsius>,
         <https://www.sbco.or.jp/ont/UnitEnum#percent>,
@@ -1845,51 +2016,77 @@ sbco:UnitEnum a owl:Class ;
 
 sbco:Architecture a owl:Class ;
     rdfs:label "Architecture" ;
-    rdfs:comment "A designed/landscaped (or potentially designed/landscaped) part of the physical world that has a 3D spatial extent. E.g., a building site, a building, levels within the building, rooms, etc." ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:intersectingElement ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:address ],
+        [ a owl:Restriction ;
             owl:allValuesFrom sbco:Agent ;
             owl:onProperty sbco:ownedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:documentation ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:adjacentElement ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:hasPoint ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:BuildingElement ;
-            owl:onProperty sbco:adjacentElement ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ owl:intersectionOf ( [ owl:unionOf ( sbco:Point sbco:PointExt ) ] sbco:Point ) ] ;
             owl:onProperty sbco:hasPoint ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:BuildingElement ;
-            owl:onProperty sbco:intersectingElement ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:BuildingElement ;
-            owl:onProperty sbco:containsElement ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Document ;
-            owl:onProperty sbco:documentation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Resource ;
-            owl:onProperty sbco:isFedBy ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:constructedBy ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:isFedBy ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:PostalAddress ;
-            owl:onProperty sbco:address ],
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:operatedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:containsElement ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:BuildingElement ;
+            owl:onProperty sbco:intersectingElement ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:ArchitectureCapacity ;
+            owl:onProperty sbco:capacity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:documentation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Document ;
+            owl:onProperty sbco:documentation ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:Agent ;
             owl:onProperty sbco:constructedBy ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty sbco:ownedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:adjacentElement ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:ArchitectureArea ;
+            owl:onProperty sbco:area ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:area ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Resource ;
+            owl:onProperty sbco:isFedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty sbco:capacity ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty sbco:architectedBy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:capacity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:BuildingElement ;
+            owl:onProperty sbco:adjacentElement ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:hasPoint ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:PostalAddress ;
             owl:onProperty sbco:address ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:ArchitectureArea ;
@@ -1905,53 +2102,29 @@ sbco:Architecture a owl:Class ;
             owl:onProperty sbco:area ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:Agent ;
-            owl:onProperty sbco:operatedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:ownedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:architectedBy ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:area ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Agent ;
             owl:onProperty sbco:architectedBy ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:operatedBy ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:constructedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom sbco:BuildingElement ;
             owl:onProperty sbco:containsElement ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:intersectingElement ],
         sbco:Space ;
+    skos:definition "A designed/landscaped (or potentially designed/landscaped) part of the physical world that has a 3D spatial extent. E.g., a building site, a building, levels within the building, rooms, etc." ;
     skos:exactMatch rec:Architecture ;
     skos:inScheme sbco:schema .
 
 sbco:Point a owl:Class ;
     rdfs:label "Point" ;
-    rdfs:comment "A sensor, actuator, or data point associated with equipment." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:hasQuantity ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:name ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:hasSubstance ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:id ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:isPointOf ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:AggregateEnum ;
             owl:onProperty sbco:aggregate ],
@@ -1959,17 +2132,14 @@ sbco:Point a owl:Class ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:isPointOf ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
-            owl:onProperty sbco:customProperties ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:hasSubstance ],
+            owl:onProperty sbco:aggregate ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyStringMapEntry ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:hasQuantity ],
+            owl:allValuesFrom sbco:Equipment ;
+            owl:onProperty sbco:isPointOf ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyBoolMapEntry ;
             owl:onProperty sbco:customTags ],
@@ -1977,14 +2147,32 @@ sbco:Point a owl:Class ;
             owl:allValuesFrom sbco:QuantityEnum ;
             owl:onProperty sbco:hasQuantity ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Equipment ;
-            owl:onProperty sbco:isPointOf ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:hasSubstance ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:aggregate ],
         [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty sbco:hasQuantity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
             owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:SubstanceEnum ;
             owl:onProperty sbco:hasSubstance ],
@@ -1993,30 +2181,31 @@ sbco:Point a owl:Class ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
+            owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:hasSubstance ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:isPointOf ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:aggregate ],
+            owl:allValuesFrom sbco:KeyStringMapEntry ;
+            owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:id ] ;
+    skos:definition "A sensor, actuator, or data point associated with equipment." ;
     skos:exactMatch brick:Point ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "設備に紐づくセンサー/アクチュエータ/データポイント。" .
 
 sbco:geometry a owl:ObjectProperty ;
     rdfs:label "geometry" ;
-    rdfs:comment "Polygon representing the spatial extent of this Space." ;
     rdfs:range sbco:Geometry ;
+    skos:definition "Polygon representing the spatial extent of this Space." ;
+    skos:inScheme sbco:schema .
+
+sbco:installationArea a owl:DatatypeProperty ;
+    rdfs:label "installationArea" ;
+    rdfs:range xsd:string ;
+    skos:definition "Parent installation area" ;
     skos:inScheme sbco:schema .
 
 sbco:isPartOf a owl:ObjectProperty ;
@@ -2026,21 +2215,32 @@ sbco:isPartOf a owl:ObjectProperty ;
 
 sbco:isPointOf a owl:ObjectProperty ;
     rdfs:label "isPointOf" ;
-    rdfs:comment "Equipment that this point belongs to" ;
     rdfs:range sbco:Equipment ;
+    skos:definition "Equipment that this point belongs to" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "このポイントが属する設備" .
 
 sbco:locatedIn a owl:ObjectProperty ;
     rdfs:label "locatedIn" ;
-    rdfs:comment "Space where this asset is located" ;
     rdfs:range sbco:Space ;
+    skos:definition "Space where this asset is located" ;
+    skos:inScheme sbco:schema .
+
+sbco:targetArea a owl:DatatypeProperty ;
+    rdfs:label "targetArea" ;
+    rdfs:range xsd:string ;
+    skos:definition "Target area for this resource" ;
     skos:inScheme sbco:schema .
 
 sbco:Information a owl:Class ;
     rdfs:label "Information" ;
-    rdfs:comment "Abstract base class for information resources such as documents, images, media files, etc." ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:format ],
+        [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
             owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
@@ -2048,13 +2248,16 @@ sbco:Information a owl:Class ;
             owl:onProperty sbco:checksum ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
+            owl:onProperty sbco:format ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:version ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:format ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:description ],
@@ -2066,25 +2269,64 @@ sbco:Information a owl:Class ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:version ],
+            owl:onProperty sbco:checksum ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:format ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyStringMapEntry ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:language ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:url ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:url ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:integer ;
             owl:onProperty sbco:size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
+            owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:version ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:checksum ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:language ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:checksum ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty sbco:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:size ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
             owl:onProperty sbco:url ],
@@ -2113,79 +2355,62 @@ sbco:Information a owl:Class ;
                                 owl:withRestrictions ( [ xsd:pattern "^[a-z]{2}(-[A-Z]{2})?$" ] ) ] ) ] ;
             owl:onProperty sbco:language ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:format ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:checksum ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom xsd:anyURI ;
             owl:onProperty sbco:url ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:checksum ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:name ],
         sbco:Resource ;
+    skos:definition "Abstract base class for information resources such as documents, images, media files, etc." ;
     skos:exactMatch rec:Information ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "ドキュメント、画像、メディアファイルなどの情報リソースの抽象基底クラス" .
 
 sbco:BuildingElement a owl:Class ;
     rdfs:label "BuildingElement" ;
-    rdfs:comment "A part of the building structure" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:customTags ],
+            owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
             owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyStringMapEntry ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyStringMapEntry ;
-            owl:onProperty sbco:identifiers ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
         sbco:Resource ;
+    skos:definition "A part of the building structure" ;
     skos:exactMatch rec:BuildingElement ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "建物構造の一部" .
 
 sbco:PointSpecificationEnum a owl:Class ;
     rdfs:label "PointSpecificationEnum" ;
-    rdfs:comment "Point specification categories for equipment point lists" ;
     owl:unionOf ( <https://www.sbco.or.jp/ont/PointSpecificationEnum#Alarm> <https://www.sbco.or.jp/ont/PointSpecificationEnum#Command> <https://www.sbco.or.jp/ont/PointSpecificationEnum#Setpoint> <https://www.sbco.or.jp/ont/PointSpecificationEnum#Measurement> <https://www.sbco.or.jp/ont/PointSpecificationEnum#Metering> <https://www.sbco.or.jp/ont/PointSpecificationEnum#Status> ) ;
+    skos:definition "Point specification categories for equipment point lists" ;
     skos:inScheme sbco:schema ;
     linkml:permissible_values <https://www.sbco.or.jp/ont/PointSpecificationEnum#Alarm>,
         <https://www.sbco.or.jp/ont/PointSpecificationEnum#Command>,
@@ -2197,21 +2422,21 @@ sbco:PointSpecificationEnum a owl:Class ;
 
 sbco:description a owl:DatatypeProperty ;
     rdfs:label "description" ;
-    rdfs:comment "A textual description of the resource" ;
     rdfs:range xsd:string ;
+    skos:definition "A textual description of the resource" ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "リソースのテキスト記述" .
 
 sbco:key a owl:DatatypeProperty ;
     rdfs:label "key" ;
-    rdfs:comment "Key of the map entry" ;
     rdfs:range xsd:string ;
+    skos:definition "Key of the map entry" ;
     skos:inScheme sbco:schema .
 
 sbco:AggregateEnum a owl:Class ;
     rdfs:label "AggregateEnum" ;
-    rdfs:comment "Aggregation functions for point data processing" ;
     owl:unionOf ( <https://www.sbco.or.jp/ont/AggregateEnum#average> <https://www.sbco.or.jp/ont/AggregateEnum#sum> <https://www.sbco.or.jp/ont/AggregateEnum#minimum> <https://www.sbco.or.jp/ont/AggregateEnum#maximum> <https://www.sbco.or.jp/ont/AggregateEnum#count> <https://www.sbco.or.jp/ont/AggregateEnum#first> <https://www.sbco.or.jp/ont/AggregateEnum#last> <https://www.sbco.or.jp/ont/AggregateEnum#median> <https://www.sbco.or.jp/ont/AggregateEnum#standardDeviation> ) ;
+    skos:definition "Aggregation functions for point data processing" ;
     skos:inScheme sbco:schema ;
     linkml:permissible_values <https://www.sbco.or.jp/ont/AggregateEnum#average>,
         <https://www.sbco.or.jp/ont/AggregateEnum#count>,
@@ -2226,12 +2451,11 @@ sbco:AggregateEnum a owl:Class ;
 
 sbco:KeyBoolMapEntry a owl:Class ;
     rdfs:label "KeyBoolMapEntry" ;
-    rdfs:comment "map(string -> boolean) の1エントリ" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:minCardinality 1 ;
             owl:onProperty sbco:key ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:flag ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -2240,59 +2464,89 @@ sbco:KeyBoolMapEntry a owl:Class ;
             owl:allValuesFrom xsd:boolean ;
             owl:onProperty sbco:flag ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:flag ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:key ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
+            owl:onProperty sbco:flag ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:key ] ;
+    skos:definition "map(string -> boolean) の1エントリ" ;
     skos:inScheme sbco:schema .
 
 sbco:KeyMapOfStringMapEntry a owl:Class ;
     rdfs:label "KeyMapOfStringMapEntry" ;
-    rdfs:comment "map(string -> map(string -> string)) の1エントリ" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:key ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty sbco:key ],
+            owl:onProperty sbco:entries ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyStringMapEntry ;
             owl:onProperty sbco:entries ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty sbco:entries ],
+            owl:onProperty sbco:key ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:key ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:key ] ;
+    skos:definition "map(string -> map(string -> string)) の1エントリ" ;
     skos:inScheme sbco:schema .
 
 sbco:Space a owl:Class ;
     rdfs:label "Space" ;
-    rdfs:comment "A contiguous part of the physical world that contains or can contain sub-spaces. E.g., a Region can contain many Sites, which in turn can contain many Buildings." ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Space ;
+            owl:onProperty sbco:hasPart ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:hasPart ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:geometry ],
+        [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyBoolMapEntry ;
             owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Space ;
+            owl:onProperty sbco:isPartOf ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:georeference ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:georeference ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:EquipmentExt ;
+            owl:onProperty sbco:isLocationOf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:georeference ],
+            owl:onProperty sbco:geometry ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:isPartOf ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom sbco:Geometry ;
             owl:onProperty sbco:geometry ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -2308,177 +2562,160 @@ sbco:Space a owl:Class ;
             owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:name ],
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:isPartOf ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:Georeference ;
             owl:onProperty sbco:georeference ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Space ;
-            owl:onProperty sbco:isPartOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:EquipmentExt ;
             owl:onProperty sbco:isLocationOf ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:isPartOf ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Geometry ;
-            owl:onProperty sbco:geometry ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Space ;
-            owl:onProperty sbco:hasPart ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:geometry ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:isLocationOf ] ;
+            owl:onProperty sbco:description ] ;
+    skos:definition "A contiguous part of the physical world that contains or can contain sub-spaces. E.g., a Region can contain many Sites, which in turn can contain many Buildings." ;
     skos:exactMatch rec:Space ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "室やゾーンなどの空間単位。設備を含みうる。" .
 
 sbco:KeyStringMapEntry a owl:Class ;
     rdfs:label "KeyStringMapEntry" ;
-    rdfs:comment "map(string -> string) の1エントリ" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:value ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:key ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:key ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty sbco:value ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:key ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:value ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:value ] ;
+            owl:onProperty sbco:value ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:key ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:key ] ;
+    skos:definition "map(string -> string) の1エントリ" ;
     skos:inScheme sbco:schema .
 
 sbco:Resource a owl:Class ;
     rdfs:label "Resource" ;
-    rdfs:comment "Base class for all resources" ;
+    skos:definition "Base class for all resources" ;
     skos:exactMatch rdfs:Resource ;
     skos:inScheme sbco:schema .
 
 sbco:Agent a owl:Class ;
     rdfs:label "Agent" ;
-    rdfs:comment "An entity that can act or be acted upon" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyStringMapEntry ;
+            owl:minCardinality 0 ;
             owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
-            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
             owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:owns ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Organization ;
-            owl:onProperty sbco:memberOf ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:name ],
+            owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:memberOf ],
+            owl:onProperty sbco:owns ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyStringMapEntry ;
+            owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:Resource ;
             owl:onProperty sbco:owns ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Organization ;
+            owl:onProperty sbco:memberOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:memberOf ],
         sbco:Resource ;
+    skos:definition "An entity that can act or be acted upon" ;
     skos:exactMatch rec:Agent ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "行動することができる、または行動される主体" .
 
 sbco:customProperties a owl:ObjectProperty ;
     rdfs:label "customProperties" ;
-    rdfs:comment "map(string -> map(string -> string))" ;
     rdfs:range sbco:KeyMapOfStringMapEntry ;
+    skos:definition "map(string -> map(string -> string))" ;
     skos:inScheme sbco:schema .
 
 sbco:customTags a owl:ObjectProperty ;
     rdfs:label "customTags" ;
-    rdfs:comment "map(string -> boolean)" ;
     rdfs:range sbco:KeyBoolMapEntry ;
+    skos:definition "map(string -> boolean)" ;
     skos:inScheme sbco:schema .
 
 sbco:identifiers a owl:ObjectProperty ;
     rdfs:label "identifiers" ;
-    rdfs:comment "map(string -> string)" ;
     rdfs:range sbco:KeyStringMapEntry ;
+    skos:definition "map(string -> string)" ;
     skos:inScheme sbco:schema .
 
 sbco:id a owl:DatatypeProperty ;
     rdfs:label "id" ;
-    rdfs:comment "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
     rdfs:range xsd:string ;
+    skos:definition "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "スキーマ内の一意識別子。文字で開始し、DTMI形式もサポート。" ;
     sbco:example "dtmi:example:Building:1" .
 
 sbco:name a owl:DatatypeProperty ;
     rdfs:label "name" ;
-    rdfs:comment "Machine or Human-readable name" ;
     rdfs:range xsd:string ;
+    skos:definition "Machine or Human-readable name" ;
     skos:inScheme sbco:schema .
 
 sbco:SubstanceEnum a owl:Class ;
     rdfs:label "SubstanceEnum" ;
-    rdfs:comment "Types of substances that can be fed between equipment" ;
     owl:unionOf ( <https://www.sbco.or.jp/ont/SubstanceEnum#ACElec> <https://www.sbco.or.jp/ont/SubstanceEnum#Air> <https://www.sbco.or.jp/ont/SubstanceEnum#BlowdownWater> <https://www.sbco.or.jp/ont/SubstanceEnum#ChilledWater> <https://www.sbco.or.jp/ont/SubstanceEnum#ColdDomesticWater> <https://www.sbco.or.jp/ont/SubstanceEnum#Condensate> <https://www.sbco.or.jp/ont/SubstanceEnum#CondenserWater> <https://www.sbco.or.jp/ont/SubstanceEnum#DCElec> <https://www.sbco.or.jp/ont/SubstanceEnum#Diesel> <https://www.sbco.or.jp/ont/SubstanceEnum#DriveElec> <https://www.sbco.or.jp/ont/SubstanceEnum#Ethernet> <https://www.sbco.or.jp/ont/SubstanceEnum#ExhaustAir> <https://www.sbco.or.jp/ont/SubstanceEnum#Freight> <https://www.sbco.or.jp/ont/SubstanceEnum#FuelOil> <https://www.sbco.or.jp/ont/SubstanceEnum#Gasoline> <https://www.sbco.or.jp/ont/SubstanceEnum#GreaseExhaustAir> <https://www.sbco.or.jp/ont/SubstanceEnum#HotDomesticWater> <https://www.sbco.or.jp/ont/SubstanceEnum#HotWater> <https://www.sbco.or.jp/ont/SubstanceEnum#IrrigationWater> <https://www.sbco.or.jp/ont/SubstanceEnum#Light> <https://www.sbco.or.jp/ont/SubstanceEnum#MakeupWater> <https://www.sbco.or.jp/ont/SubstanceEnum#NaturalGas> <https://www.sbco.or.jp/ont/SubstanceEnum#NonPotableDomesticWater> <https://www.sbco.or.jp/ont/SubstanceEnum#OutsideAir> <https://www.sbco.or.jp/ont/SubstanceEnum#People> <https://www.sbco.or.jp/ont/SubstanceEnum#Propane> <https://www.sbco.or.jp/ont/SubstanceEnum#RecircHotDomesticWater> <https://www.sbco.or.jp/ont/SubstanceEnum#Refrig> <https://www.sbco.or.jp/ont/SubstanceEnum#ReturnAir> <https://www.sbco.or.jp/ont/SubstanceEnum#SprinklerWater> <https://www.sbco.or.jp/ont/SubstanceEnum#Steam> <https://www.sbco.or.jp/ont/SubstanceEnum#StormDrainage> <https://www.sbco.or.jp/ont/SubstanceEnum#SupplyAir> <https://www.sbco.or.jp/ont/SubstanceEnum#TransferAir> <https://www.sbco.or.jp/ont/SubstanceEnum#WasteVentDrainage> <https://www.sbco.or.jp/ont/SubstanceEnum#Water> ) ;
+    skos:definition "Types of substances that can be fed between equipment" ;
     skos:inScheme sbco:schema ;
     linkml:permissible_values <https://www.sbco.or.jp/ont/SubstanceEnum#ACElec>,
         <https://www.sbco.or.jp/ont/SubstanceEnum#Air>,
@@ -2519,8 +2756,8 @@ sbco:SubstanceEnum a owl:Class ;
 
 sbco:QuantityEnum a owl:Class ;
     rdfs:label "QuantityEnum" ;
-    rdfs:comment "Physical quantities that can be measured or monitored by points" ;
     owl:unionOf ( <https://www.sbco.or.jp/ont/QuantityEnum#Absolute_Humidity> <https://www.sbco.or.jp/ont/QuantityEnum#Acceleration_Time> <https://www.sbco.or.jp/ont/QuantityEnum#Active_Energy> <https://www.sbco.or.jp/ont/QuantityEnum#Active_Power> <https://www.sbco.or.jp/ont/QuantityEnum#Air_Quality> <https://www.sbco.or.jp/ont/QuantityEnum#Alternating_Current_Frequency> <https://www.sbco.or.jp/ont/QuantityEnum#Ammonia_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#Angle> <https://www.sbco.or.jp/ont/QuantityEnum#Apparent_Energy> <https://www.sbco.or.jp/ont/QuantityEnum#Apparent_Power> <https://www.sbco.or.jp/ont/QuantityEnum#Atmospheric_Pressure> <https://www.sbco.or.jp/ont/QuantityEnum#CO2_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#CO_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#Capacity> <https://www.sbco.or.jp/ont/QuantityEnum#Cloudage> <https://www.sbco.or.jp/ont/QuantityEnum#Complex_Power> <https://www.sbco.or.jp/ont/QuantityEnum#Conductivity> <https://www.sbco.or.jp/ont/QuantityEnum#Current_Angle> <https://www.sbco.or.jp/ont/QuantityEnum#Current_Imbalance> <https://www.sbco.or.jp/ont/QuantityEnum#Current_Total_Harmonic_Distortion> <https://www.sbco.or.jp/ont/QuantityEnum#Deceleration_Time> <https://www.sbco.or.jp/ont/QuantityEnum#Dewpoint> <https://www.sbco.or.jp/ont/QuantityEnum#Differential_CO2_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#Differential_CO_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#Differential_Dry_Bulb_Temperature> <https://www.sbco.or.jp/ont/QuantityEnum#Differential_Dynamic_Pressure> <https://www.sbco.or.jp/ont/QuantityEnum#Differential_Pressure> <https://www.sbco.or.jp/ont/QuantityEnum#Differential_Static_Pressure> <https://www.sbco.or.jp/ont/QuantityEnum#Differential_Temperature> <https://www.sbco.or.jp/ont/QuantityEnum#Direction> <https://www.sbco.or.jp/ont/QuantityEnum#Dry_Bulb_Temperature> <https://www.sbco.or.jp/ont/QuantityEnum#Dynamic_Pressure> <https://www.sbco.or.jp/ont/QuantityEnum#Electric_Current> <https://www.sbco.or.jp/ont/QuantityEnum#Electric_Energy> <https://www.sbco.or.jp/ont/QuantityEnum#Electric_Power> <https://www.sbco.or.jp/ont/QuantityEnum#Energy> <https://www.sbco.or.jp/ont/QuantityEnum#Enthalpy> <https://www.sbco.or.jp/ont/QuantityEnum#Flow> <https://www.sbco.or.jp/ont/QuantityEnum#Flow_Loss> <https://www.sbco.or.jp/ont/QuantityEnum#Formaldehyde_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#Frequency> <https://www.sbco.or.jp/ont/QuantityEnum#GrainsOfMoisture> <https://www.sbco.or.jp/ont/QuantityEnum#Humidity> <https://www.sbco.or.jp/ont/QuantityEnum#Illuminance> <https://www.sbco.or.jp/ont/QuantityEnum#Irradiance> <https://www.sbco.or.jp/ont/QuantityEnum#Level> <https://www.sbco.or.jp/ont/QuantityEnum#Linear_Speed> <https://www.sbco.or.jp/ont/QuantityEnum#Luminance> <https://www.sbco.or.jp/ont/QuantityEnum#Luminous_Flux> <https://www.sbco.or.jp/ont/QuantityEnum#Luminous_Intensity> <https://www.sbco.or.jp/ont/QuantityEnum#Mass> <https://www.sbco.or.jp/ont/QuantityEnum#Methane_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#NO2_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#Occupancy> <https://www.sbco.or.jp/ont/QuantityEnum#Occupancy_Count> <https://www.sbco.or.jp/ont/QuantityEnum#Occupancy_Percentage> <https://www.sbco.or.jp/ont/QuantityEnum#Operative_Temperature> <https://www.sbco.or.jp/ont/QuantityEnum#Ozone_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#PM10_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#PM1_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#PM2_5_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#Peak_Power> <https://www.sbco.or.jp/ont/QuantityEnum#Phasor> <https://www.sbco.or.jp/ont/QuantityEnum#Phasor_Angle> <https://www.sbco.or.jp/ont/QuantityEnum#Phasor_Magnitude> <https://www.sbco.or.jp/ont/QuantityEnum#Position> <https://www.sbco.or.jp/ont/QuantityEnum#Power> <https://www.sbco.or.jp/ont/QuantityEnum#Power_Factor> <https://www.sbco.or.jp/ont/QuantityEnum#Precipitation> <https://www.sbco.or.jp/ont/QuantityEnum#Pressure> <https://www.sbco.or.jp/ont/QuantityEnum#Radiance> <https://www.sbco.or.jp/ont/QuantityEnum#Radiant_Temperature> <https://www.sbco.or.jp/ont/QuantityEnum#Radioactivity_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#Radon_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#Reactive_Energy> <https://www.sbco.or.jp/ont/QuantityEnum#Reactive_Power> <https://www.sbco.or.jp/ont/QuantityEnum#Real_Power> <https://www.sbco.or.jp/ont/QuantityEnum#Relative_Humidity> <https://www.sbco.or.jp/ont/QuantityEnum#Rotational_Speed> <https://www.sbco.or.jp/ont/QuantityEnum#Solar_Irradiance> <https://www.sbco.or.jp/ont/QuantityEnum#Solar_Radiance> <https://www.sbco.or.jp/ont/QuantityEnum#Speed> <https://www.sbco.or.jp/ont/QuantityEnum#Static_Pressure> <https://www.sbco.or.jp/ont/QuantityEnum#TVOC_Concentration> <https://www.sbco.or.jp/ont/QuantityEnum#Temperature> <https://www.sbco.or.jp/ont/QuantityEnum#Thermal_Energy> <https://www.sbco.or.jp/ont/QuantityEnum#Thermal_Power> <https://www.sbco.or.jp/ont/QuantityEnum#Time> <https://www.sbco.or.jp/ont/QuantityEnum#Torque> <https://www.sbco.or.jp/ont/QuantityEnum#Velocity_Pressure> <https://www.sbco.or.jp/ont/QuantityEnum#Voltage> <https://www.sbco.or.jp/ont/QuantityEnum#Voltage_Angle> <https://www.sbco.or.jp/ont/QuantityEnum#Voltage_Imbalance> <https://www.sbco.or.jp/ont/QuantityEnum#Weather_Condition> <https://www.sbco.or.jp/ont/QuantityEnum#Wet_Bulb_Temperature> <https://www.sbco.or.jp/ont/QuantityEnum#Wind_Direction> ) ;
+    skos:definition "Physical quantities that can be measured or monitored by points" ;
     skos:inScheme sbco:schema ;
     linkml:permissible_values <https://www.sbco.or.jp/ont/QuantityEnum#Absolute_Humidity>,
         <https://www.sbco.or.jp/ont/QuantityEnum#Acceleration_Time>,
