@@ -55,6 +55,10 @@ URI: [sbco:PointExt](https://www.sbco.or.jp/ont/PointExt)
     
 
         
+      PointExt : deviceIdBacnet
+        
+      PointExt : gatewayId
+        
       PointExt : hasQuantity
         
           
@@ -90,6 +94,12 @@ URI: [sbco:PointExt](https://www.sbco.or.jp/ont/PointExt)
     
 
         
+      PointExt : installationArea
+        
+      PointExt : instanceNoBacnet
+        
+      PointExt : interval
+        
       PointExt : isPointOf
         
           
@@ -101,11 +111,17 @@ URI: [sbco:PointExt](https://www.sbco.or.jp/ont/PointExt)
     
 
         
+      PointExt : labels
+        
+      PointExt : localId
+        
       PointExt : maxPresValue
         
       PointExt : minPresValue
         
       PointExt : name
+        
+      PointExt : objectTypeBacnet
         
       PointExt : pointSpecification
         
@@ -122,6 +138,10 @@ URI: [sbco:PointExt](https://www.sbco.or.jp/ont/PointExt)
         
       PointExt : scale
         
+      PointExt : supplier
+        
+      PointExt : targetArea
+        
       PointExt : unit
         
           
@@ -132,6 +152,8 @@ URI: [sbco:PointExt](https://www.sbco.or.jp/ont/PointExt)
         click UnitEnum href "../UnitEnum/"
     
 
+        
+      PointExt : writable
         
       
 ```
@@ -156,6 +178,17 @@ URI: [sbco:PointExt](https://www.sbco.or.jp/ont/PointExt)
 | [maxPresValue](maxPresValue.md) | 0..1 <br/> [Float](Float.md) | Maximum plausible reading | direct |
 | [minPresValue](minPresValue.md) | 0..1 <br/> [Float](Float.md) | Minimum plausible reading | direct |
 | [scale](scale.md) | 0..1 <br/> [Float](Float.md) | Scale factor for raw value conversion | direct |
+| [writable](writable.md) | 0..1 <br/> [Boolean](Boolean.md) | Whether the point value can be written (commanded) | direct |
+| [interval](interval.md) | 0..1 <br/> [Integer](Integer.md) | Polling or reporting interval in seconds | direct |
+| [gatewayId](gatewayId.md) | 0..1 <br/> [String](String.md) | Identifier of the gateway device managing this point | direct |
+| [localId](localId.md) | 0..1 <br/> [String](String.md) | Local identifier for this point within the gateway or system | direct |
+| [supplier](supplier.md) | 0..1 <br/> [String](String.md) | Supplier or vendor of the device associated with this point | direct |
+| [installationArea](installationArea.md) | 0..1 <br/> [String](String.md) | Parent installation area | direct |
+| [targetArea](targetArea.md) | 0..1 <br/> [String](String.md) | Target area for this resource | direct |
+| [deviceIdBacnet](deviceIdBacnet.md) | 0..1 <br/> [String](String.md) | BACnet device identifier | direct |
+| [instanceNoBacnet](instanceNoBacnet.md) | 0..1 <br/> [String](String.md) | BACnet object instance number | direct |
+| [labels](labels.md) | * <br/> [String](String.md) | Labels or tags associated with this point | direct |
+| [objectTypeBacnet](objectTypeBacnet.md) | 0..1 <br/> [String](String.md) | BACnet object type (e | direct |
 | [id](id.md) | 1 <br/> [String](String.md) | Unique identifier within the schema | [Point](Point.md) |
 | [isPointOf](isPointOf.md) | 0..1 <br/> [Equipment](Equipment.md)&nbsp;or&nbsp;<br />[Equipment](Equipment.md)&nbsp;or&nbsp;<br />[EquipmentExt](EquipmentExt.md) | Equipment that this point belongs to | [Point](Point.md) |
 | [aggregate](aggregate.md) | 0..1 <br/> [AggregateEnum](AggregateEnum.md) | Aggregation function or method for point data processing | [Point](Point.md) |
@@ -248,6 +281,17 @@ slots:
 - maxPresValue
 - minPresValue
 - scale
+- writable
+- interval
+- gatewayId
+- localId
+- supplier
+- installationArea
+- targetArea
+- deviceIdBacnet
+- instanceNoBacnet
+- labels
+- objectTypeBacnet
 slot_usage:
   isPointOf:
     name: isPointOf
@@ -350,6 +394,155 @@ attributes:
     domain_of:
     - PointExt
     range: float
+  writable:
+    name: writable
+    annotations:
+      description_ja:
+        tag: description_ja
+        value: ポイントの値を書き込み（制御）できるかどうか
+    description: Whether the point value can be written (commanded)
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    alias: writable
+    owner: PointExt
+    domain_of:
+    - PointExt
+    range: boolean
+  interval:
+    name: interval
+    annotations:
+      description_ja:
+        tag: description_ja
+        value: ポーリングまたはレポートの間隔（秒）
+    description: Polling or reporting interval in seconds
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    alias: interval
+    owner: PointExt
+    domain_of:
+    - PointExt
+    range: integer
+  gatewayId:
+    name: gatewayId
+    annotations:
+      description_ja:
+        tag: description_ja
+        value: このポイントを管理するゲートウェイデバイスの識別子
+    description: Identifier of the gateway device managing this point
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    alias: gatewayId
+    owner: PointExt
+    domain_of:
+    - PointExt
+    range: string
+  localId:
+    name: localId
+    annotations:
+      description_ja:
+        tag: description_ja
+        value: ゲートウェイまたはシステム内でのポイントのローカル識別子
+    description: Local identifier for this point within the gateway or system
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    alias: localId
+    owner: PointExt
+    domain_of:
+    - PointExt
+    range: string
+  supplier:
+    name: supplier
+    annotations:
+      description_ja:
+        tag: description_ja
+        value: このポイントに関連するデバイスのサプライヤーまたはベンダー
+    description: Supplier or vendor of the device associated with this point
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    alias: supplier
+    owner: PointExt
+    domain_of:
+    - PointExt
+    range: string
+  installationArea:
+    name: installationArea
+    description: Parent installation area
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    alias: installationArea
+    owner: PointExt
+    domain_of:
+    - EquipmentExt
+    - PointExt
+    range: string
+  targetArea:
+    name: targetArea
+    description: Target area for this resource
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    alias: targetArea
+    owner: PointExt
+    domain_of:
+    - EquipmentExt
+    - PointExt
+    range: string
+  deviceIdBacnet:
+    name: deviceIdBacnet
+    annotations:
+      description_ja:
+        tag: description_ja
+        value: BACnetデバイス識別子
+    description: BACnet device identifier
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    alias: deviceIdBacnet
+    owner: PointExt
+    domain_of:
+    - PointExt
+    range: string
+  instanceNoBacnet:
+    name: instanceNoBacnet
+    annotations:
+      description_ja:
+        tag: description_ja
+        value: BACnetオブジェクトインスタンス番号
+    description: BACnet object instance number
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    alias: instanceNoBacnet
+    owner: PointExt
+    domain_of:
+    - PointExt
+    range: string
+  labels:
+    name: labels
+    annotations:
+      description_ja:
+        tag: description_ja
+        value: このポイントに関連するラベルまたはタグ
+    description: Labels or tags associated with this point
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    alias: labels
+    owner: PointExt
+    domain_of:
+    - PointExt
+    range: string
+    multivalued: true
+  objectTypeBacnet:
+    name: objectTypeBacnet
+    annotations:
+      description_ja:
+        tag: description_ja
+        value: BACnetオブジェクトタイプ（例：Analog-Input、Binary-Output）
+    description: BACnet object type (e.g., Analog-Input, Binary-Output)
+    from_schema: https://www.sbco.or.jp/ont/schema
+    rank: 1000
+    alias: objectTypeBacnet
+    owner: PointExt
+    domain_of:
+    - PointExt
+    range: string
   id:
     name: id
     annotations:

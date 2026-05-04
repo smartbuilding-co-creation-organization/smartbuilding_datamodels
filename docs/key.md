@@ -23,8 +23,8 @@ Alias: key
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) の1エントリ |  yes  |
-| [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) の1エントリ |  yes  |
 | [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) の1エントリ |  yes  |
+| [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) の1エントリ |  yes  |
 
 
 

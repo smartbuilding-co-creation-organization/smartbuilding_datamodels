@@ -507,6 +507,70 @@ slots:
     description: Scale factor for raw value conversion
     range: float
 
+  writable:
+    description: "Whether the point value can be written (commanded)"
+    range: boolean
+    annotations:
+      - tag: description_ja
+        value: "ポイントの値を書き込み（制御）できるかどうか"
+
+  interval:
+    description: "Polling or reporting interval in seconds"
+    range: integer
+    annotations:
+      - tag: description_ja
+        value: "ポーリングまたはレポートの間隔（秒）"
+
+  gatewayId:
+    description: "Identifier of the gateway device managing this point"
+    range: string
+    annotations:
+      - tag: description_ja
+        value: "このポイントを管理するゲートウェイデバイスの識別子"
+
+  localId:
+    description: "Local identifier for this point within the gateway or system"
+    range: string
+    annotations:
+      - tag: description_ja
+        value: "ゲートウェイまたはシステム内でのポイントのローカル識別子"
+
+  supplier:
+    description: "Supplier or vendor of the device associated with this point"
+    range: string
+    annotations:
+      - tag: description_ja
+        value: "このポイントに関連するデバイスのサプライヤーまたはベンダー"
+
+  deviceIdBacnet:
+    description: "BACnet device identifier"
+    range: string
+    annotations:
+      - tag: description_ja
+        value: "BACnetデバイス識別子"
+
+  instanceNoBacnet:
+    description: "BACnet object instance number"
+    range: string
+    annotations:
+      - tag: description_ja
+        value: "BACnetオブジェクトインスタンス番号"
+
+  labels:
+    description: "Labels or tags associated with this point"
+    range: string
+    multivalued: true
+    annotations:
+      - tag: description_ja
+        value: "このポイントに関連するラベルまたはタグ"
+
+  objectTypeBacnet:
+    description: "BACnet object type (e.g., Analog-Input, Binary-Output)"
+    range: string
+    annotations:
+      - tag: description_ja
+        value: "BACnetオブジェクトタイプ（例：Analog-Input、Binary-Output）"
+
 
   geometry:
     description: Polygon representing the spatial extent of this Space.
@@ -1114,7 +1178,18 @@ classes:
       - unit
       - maxPresValue       # max_pres_value → maxPresValue
       - minPresValue       # min_pres_value → minPresValue
-      - scale      
+      - scale
+      - writable
+      - interval
+      - gatewayId
+      - localId
+      - supplier
+      - installationArea
+      - targetArea
+      - deviceIdBacnet
+      - instanceNoBacnet
+      - labels
+      - objectTypeBacnet
 
     slot_usage:
       isPointOf:

@@ -1,16 +1,16 @@
 
 
-# Slot: hasSubstance 
+# Slot: deviceIdBacnet 
 
 
-_Substance associated with this point_
+_BACnet device identifier_
 
 
 
 
 
-URI: [brick:hasSubstance](https://brickschema.org/schema/Brick#hasSubstance)
-Alias: hasSubstance
+URI: [sbco:deviceIdBacnet](https://www.sbco.or.jp/ont/deviceIdBacnet)
+Alias: deviceIdBacnet
 
 <!-- no inheritance hierarchy -->
 
@@ -23,7 +23,6 @@ Alias: hasSubstance
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [PointExt](PointExt.md) | A point (sensor/actuator) in a smart building context |  no  |
-| [Point](Point.md) | A sensor, actuator, or data point associated with equipment |  no  |
 
 
 
@@ -32,7 +31,7 @@ Alias: hasSubstance
 
 ## Properties
 
-* Range: [SubstanceEnum](SubstanceEnum.md)
+* Range: [String](String.md)
 
 
 
@@ -46,7 +45,7 @@ Alias: hasSubstance
 
 | property | value |
 | --- | --- |
-| description_ja | このポイントに関連する物質 |
+| description_ja | BACnetデバイス識別子 |
 
 
 
@@ -63,8 +62,8 @@ Alias: hasSubstance
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | brick:hasSubstance |
-| native | sbco:hasSubstance |
+| self | sbco:deviceIdBacnet |
+| native | sbco:deviceIdBacnet |
 
 
 
@@ -73,19 +72,18 @@ Alias: hasSubstance
 
 <details>
 ```yaml
-name: hasSubstance
+name: deviceIdBacnet
 annotations:
   description_ja:
     tag: description_ja
-    value: このポイントに関連する物質
-description: Substance associated with this point
+    value: BACnetデバイス識別子
+description: BACnet device identifier
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-slot_uri: brick:hasSubstance
-alias: hasSubstance
+alias: deviceIdBacnet
 domain_of:
-- Point
-range: SubstanceEnum
+- PointExt
+range: string
 
 ```
 </details>
