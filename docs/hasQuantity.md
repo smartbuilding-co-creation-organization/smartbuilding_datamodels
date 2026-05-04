@@ -22,8 +22,8 @@ Alias: hasQuantity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PointExt](PointExt.md) | A point (sensor/actuator) in a smart building context |  no  |
 | [Point](Point.md) | A sensor, actuator, or data point associated with equipment |  no  |
+| [PointExt](PointExt.md) | A point (sensor/actuator) in a smart building context |  no  |
 
 
 

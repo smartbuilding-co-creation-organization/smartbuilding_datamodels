@@ -1,5 +1,5 @@
 site_name: Smart Building Ontology (LinkML)
-site_url: https://example.github.io/smart-building-ontology/
+site_url: https://smartbuilding-co-creation-organization.github.io/smartbuiding_datamodels/
 theme:
   name: material
   features:
@@ -7,13 +7,10 @@ theme:
     - content.code.copy
 nav:
   - Home: index.md
-  - Generated Docs:
-      - Classes (after first build): classes/index.md
-      - Slots (after first build): slots/index.md
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/your-org/smart-building-ontology
+      link: https://github.com/smartbuilding-co-creation-organization/smartbuiding_datamodels
 markdown_extensions:
   - toc:
       permalink: true
@@ -25,10 +22,3 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-
-extra_javascript:
-  - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
-  - js/mermaid-init.js
-
-extra_css:
-  - css/mermaid.css
