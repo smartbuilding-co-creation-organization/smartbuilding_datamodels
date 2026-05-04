@@ -15,7 +15,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
 # Generate artifacts
-linkml generate owl --metadata-profile rdfs schema/building_model_owl.yaml -f ttl >  output/building_model.owl.ttl
+linkml generate owl --metadata-profile rdfs schema/building_model_owl.yaml -f ttl > output/building_model.owl.ttl
 linkml generate shacl --non-closed --suffix Shape schema/building_model_shacl.yaml > output/building_model.shacl.ttl
 linkml generate json-schema schema/building_model_shacl.yaml > output/building_model.schema.json
 
@@ -32,7 +32,7 @@ can assert both SHACL conformance and expected inferred class types.
 
 ```bash
 python scripts/validate_rdf.py \
-  --schema schema/building_model.yaml \
+  --schema schema/building_model_shacl.yaml \
   --ontology output/building_model.owl.ttl \
   --shacl output/building_model.shacl.ttl \
   --cases sample/validation/cases.yaml
@@ -52,7 +52,7 @@ python scripts/validate_rdf.py \
 - トップレベルの階層: `Site` → `Building` → `Level` → `Space`
 - 設備とポイント: `Equipment` が設備本体、`Point` が計測・制御・状態などのポイント。
 - 主なスロット: `buildings`, `levels`, `spaces`, `equipment_list`, `points`
-- カードィナリティ: `multivalued`（複数可）、`required`（必須）、`inlined_as_list`（子要素をリストとしてインライン展開）で表現。
+- カーディナリティ: `multivalued`（複数可）、`required`（必須）、`inlined_as_list`（子要素をリストとしてインライン展開）で表現。
 - `hasPart` / `isPartOf` は `Space` を range として扱います（Space→Space の階層関係を表現）。
 - `id` と `maintenanceInterval` は独自の型（`IdString` / `DurationString`）で定義します。`DurationString` は `xsd:duration` にマップされます。
 

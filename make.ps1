@@ -107,7 +107,7 @@ Targets:
   serve    : docgen + mkdocs serve
   build    : same as docs
   deploy   : docgen + mkdocs gh-deploy --force --clean
-  validate : gen + convert_yaml_to_ttl.py outputs + scripts/validate_rdf.py (sample/validation)
+  validate : generate_validation_ttl.py + scripts/validate_rdf.py (sample/validation)
   clean    : remove site/
 "@ | Write-Host
   }

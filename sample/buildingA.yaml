@@ -62,7 +62,7 @@ hasPart:
       - sbco:pac_007
       - sbco:pac_008
       - sbco:pac_009
-      - sbco:lighting_10
+      - sbco:lighting_010
     - id: sbco:room_202
       name: 事務室202
       isLocationOf:

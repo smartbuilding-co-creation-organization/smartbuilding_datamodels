@@ -26,11 +26,10 @@ jobs:
       - name: Generate artifacts from LinkML
         run: |
           mkdir -p output
-          linkml generate owl schema/building_model.yaml > output/building_model.owl.ttl
-          linkml generate shacl schema/building_model.yaml > output/building_model.shacl.ttl
-          linkml generate json-schema schema/building_model.yaml > output/building_model.schema.json
-          # Generate docs into docs/ (in-place)
-          linkml generate doc --directory docs schema/building_model.yaml
+          linkml generate owl --metadata-profile rdfs schema/building_model_owl.yaml -f ttl > output/building_model.owl.ttl
+          linkml generate shacl --non-closed --suffix Shape schema/building_model_shacl.yaml > output/building_model.shacl.ttl
+          linkml generate json-schema schema/building_model_shacl.yaml > output/building_model.schema.json
+          gen-doc --directory docs schema/building_model_shacl.yaml
 
       - name: Build docs (MkDocs)
         run: mkdocs build --site-dir site
