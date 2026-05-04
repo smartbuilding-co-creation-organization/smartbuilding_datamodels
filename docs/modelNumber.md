@@ -23,8 +23,8 @@ Alias: modelNumber
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 
 
 

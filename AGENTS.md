@@ -14,7 +14,7 @@
 - **SHACL generation**: The LinkML CLI currently does not accept `--include-range-class-descendants` or `--schema`/`--output`, so list descendant classes explicitly in the schema (e.g., include `PointExt`/`EquipmentExt`) and run `linkml generate shacl --non-closed --suffix Shape schema/building_model_shacl.yaml > output/building_model.shacl.ttl` to keep shapes open, append `Shape`, and redirect stdout into the SHACL file.【F:README.md†L17-L32】
 - **Docs & preview**: The `gen-doc --directory docs schema/building_model_shacl.yaml` command feeds MkDocs (`mkdocs serve`, `mkdocs build`, `mkdocs gh-deploy`) so reader-friendly docs always match the schema surface.【F:README.md†L22-L28】【F:Makefile†L14-L28】
 
-- **Schema sync (OWL/SHACL)**: Keep `schema/building_model_owl.yaml` and `schema/building_model_shacl.yaml` synchronized to reflect the same content. Differences are limited to OWL vs SHACL output requirements, and `any_of` / `SPACE_UNION` usage should be confined to that scope.【F:README.md†L49-L57】
+- **Schema sync (OWL/SHACL)**: Keep `schema/building_model_owl.yaml` and `schema/building_model_shacl.yaml` synchronized to reflect the same content. Differences are limited to OWL vs SHACL output requirements, and `any_of` / `SPACE_UNION` usage should be confined to that scope.【F:schema/building_model_shacl.yaml†L528-L541】
 
 ## 3. Safety & Security Guardrails
 
