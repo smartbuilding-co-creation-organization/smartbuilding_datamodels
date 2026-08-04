@@ -3,7 +3,7 @@
 # Class: KeyMapOfStringMapEntry 
 
 
-_map(string -> map(string -> string)) の1エントリ_
+_One entry in a map from strings to string-to-string maps._
 
 
 
@@ -75,8 +75,8 @@ URI: [sbco:KeyMapOfStringMapEntry](https://www.sbco.or.jp/ont/KeyMapOfStringMapE
 | [Media](Media.md) | [customProperties](customProperties.md) | range | [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) |
 | [Schema](Schema.md) | [customProperties](customProperties.md) | range | [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) |
 | [PostalAddress](PostalAddress.md) | [customProperties](customProperties.md) | range | [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) |
-| [Geometry](Geometry.md) | [customProperties](customProperties.md) | range | [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) |
-| [Georeference](Georeference.md) | [customProperties](customProperties.md) | range | [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) |
+| [GeometryInfo](GeometryInfo.md) | [customProperties](customProperties.md) | range | [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) |
+| [GeoreferenceInfo](GeoreferenceInfo.md) | [customProperties](customProperties.md) | range | [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) |
 | [Agent](Agent.md) | [customProperties](customProperties.md) | range | [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) |
 | [Organization](Organization.md) | [customProperties](customProperties.md) | range | [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) |
 | [BuildingElement](BuildingElement.md) | [customProperties](customProperties.md) | range | [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) |
@@ -92,6 +92,13 @@ URI: [sbco:KeyMapOfStringMapEntry](https://www.sbco.or.jp/ont/KeyMapOfStringMapE
 ## Identifier and Mapping Information
 
 
+
+
+### Annotations
+
+| property | value |
+| --- | --- |
+| description_ja | map(string -> map(string -> string)) の1エントリ |
 
 
 
@@ -125,7 +132,11 @@ URI: [sbco:KeyMapOfStringMapEntry](https://www.sbco.or.jp/ont/KeyMapOfStringMapE
 <details>
 ```yaml
 name: KeyMapOfStringMapEntry
-description: map(string -> map(string -> string)) の1エントリ
+annotations:
+  description_ja:
+    tag: description_ja
+    value: map(string -> map(string -> string)) の1エントリ
+description: One entry in a map from strings to string-to-string maps.
 from_schema: https://www.sbco.or.jp/ont/schema
 slots:
 - key
@@ -149,7 +160,11 @@ slot_usage:
 <details>
 ```yaml
 name: KeyMapOfStringMapEntry
-description: map(string -> map(string -> string)) の1エントリ
+annotations:
+  description_ja:
+    tag: description_ja
+    value: map(string -> map(string -> string)) の1エントリ
+description: One entry in a map from strings to string-to-string maps.
 from_schema: https://www.sbco.or.jp/ont/schema
 slot_usage:
   key:

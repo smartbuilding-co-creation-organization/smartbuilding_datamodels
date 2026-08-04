@@ -1,6 +1,7 @@
 .PHONY: venv install gen docgen docs serve build deploy validate clean
 
 VENV=.venv
+PYTHONHASHSEED=0
 PYTHON=$(VENV)/bin/python
 PIP=$(VENV)/bin/pip
 LINKML=$(VENV)/bin/linkml
@@ -15,13 +16,13 @@ install: venv
 	$(PIP) install -r requirements.txt
 
 docgen:
-	$(GEN_DOC) --directory docs schema/building_model_shacl.yaml
+	PYTHONHASHSEED=$(PYTHONHASHSEED) $(GEN_DOC) --directory docs schema/building_model_shacl.yaml
 
 gen:
-	$(LINKML) generate owl --metadata-profile rdfs schema/building_model_owl.yaml -f ttl > output/building_model.owl.ttl
-	$(LINKML) generate shacl --non-closed --suffix Shape schema/building_model_shacl.yaml > output/building_model.shacl.ttl
-	$(LINKML) generate json-schema schema/building_model_shacl.yaml > output/building_model.schema.json
-	$(GEN_DOC) --directory docs schema/building_model_shacl.yaml
+	PYTHONHASHSEED=$(PYTHONHASHSEED) $(LINKML) generate owl --metadata-profile rdfs schema/building_model_owl.yaml -f ttl > output/building_model.owl.ttl
+	PYTHONHASHSEED=$(PYTHONHASHSEED) $(LINKML) generate shacl --non-closed --suffix Shape schema/building_model_shacl.yaml > output/building_model.shacl.ttl
+	PYTHONHASHSEED=$(PYTHONHASHSEED) $(LINKML) generate json-schema schema/building_model_shacl.yaml > output/building_model.schema.json
+	PYTHONHASHSEED=$(PYTHONHASHSEED) $(GEN_DOC) --directory docs schema/building_model_shacl.yaml
 
 validate: gen
 	$(PYTHON) scripts/generate_validation_ttl.py --schema schema/building_model_shacl.yaml --cases sample/validation/cases.yaml

@@ -140,8 +140,8 @@ URI: [rec:Site](https://w3id.org/rec/Site)
     
         
         
-        Site --> "0..1" Geometry : geometry
-        click Geometry href "../Geometry/"
+        Site --> "0..1" GeometryInfo : geometry
+        click GeometryInfo href "../GeometryInfo/"
     
 
         
@@ -151,8 +151,8 @@ URI: [rec:Site](https://w3id.org/rec/Site)
     
         
         
-        Site --> "0..1" Georeference : georeference
-        click Georeference href "../Georeference/"
+        Site --> "0..1" GeoreferenceInfo : georeference
+        click GeoreferenceInfo href "../GeoreferenceInfo/"
     
 
         
@@ -273,11 +273,11 @@ URI: [rec:Site](https://w3id.org/rec/Site)
 | [operatedBy](operatedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that operates this architecture | [Architecture](Architecture.md) |
 | [ownedBy](ownedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that owns this architecture | [Architecture](Architecture.md) |
 | [id](id.md) | 1 <br/> [String](String.md) | Unique identifier within the schema | [Space](Space.md) |
-| [geometry](geometry.md) | 0..1 <br/> [Geometry](Geometry.md) | Polygon representing the spatial extent of this Space | [Space](Space.md) |
-| [georeference](georeference.md) | 0..1 <br/> [Georeference](Georeference.md) | A georeference creates a relationship between the local coordinate system use... | [Space](Space.md) |
+| [geometry](geometry.md) | 0..1 <br/> [GeometryInfo](GeometryInfo.md) | Polygon representing the spatial extent of this Space | [Space](Space.md) |
+| [georeference](georeference.md) | 0..1 <br/> [GeoreferenceInfo](GeoreferenceInfo.md) | A georeference creates a relationship between the local coordinate system use... | [Space](Space.md) |
 | [hasPart](hasPart.md) | * <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | The subject is composed in part of the entity given by the object | [Space](Space.md) |
 | [isLocationOf](isLocationOf.md) | * <br/> [EquipmentExt](EquipmentExt.md) | Subject is the physical location encapsulating the object | [Space](Space.md) |
-| [isPartOf](isPartOf.md) | 0..1 <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) |  | [Space](Space.md) |
+| [isPartOf](isPartOf.md) | 0..1 <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | The subject is a part of the entity given by the object | [Space](Space.md) |
 | [customProperties](customProperties.md) | * <br/> [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) | [Space](Space.md) |
 | [customTags](customTags.md) | * <br/> [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) | [Space](Space.md) |
 | [identifiers](identifiers.md) | * <br/> [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) | [Space](Space.md) |
@@ -601,7 +601,7 @@ attributes:
     domain_of:
     - Space
     - Asset
-    range: Geometry
+    range: GeometryInfo
     multivalued: false
   georeference:
     name: georeference
@@ -616,7 +616,7 @@ attributes:
     owner: Site
     domain_of:
     - Space
-    range: Georeference
+    range: GeoreferenceInfo
     multivalued: false
   hasPart:
     name: hasPart
@@ -653,6 +653,7 @@ attributes:
     multivalued: true
   isPartOf:
     name: isPartOf
+    description: The subject is a part of the entity given by the object.
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isPartOf

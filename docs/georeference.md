@@ -22,14 +22,14 @@ Alias: georeference
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
+| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
+| [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  no  |
 | [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
 | [Site](Site.md) | A piece of land upon which zero or more buildings may be situated |  no  |
-| [Level](Level.md) | A building storey |  no  |
-| [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  no  |
 | [Space](Space.md) | A contiguous part of the physical world that contains or can contain sub-spac... |  no  |
-| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
-| [Room](Room.md) | A room within a building |  no  |
 | [Building](Building.md) | A building which is part of a site |  no  |
+| [Room](Room.md) | A room within a building |  no  |
+| [Level](Level.md) | A building storey |  no  |
 
 
 
@@ -38,7 +38,7 @@ Alias: georeference
 
 ## Properties
 
-* Range: [Georeference](Georeference.md)
+* Range: [GeoreferenceInfo](GeoreferenceInfo.md)
 
 
 
@@ -83,7 +83,7 @@ slot_uri: rec:georeference
 alias: georeference
 domain_of:
 - Space
-range: Georeference
+range: GeoreferenceInfo
 multivalued: false
 
 ```

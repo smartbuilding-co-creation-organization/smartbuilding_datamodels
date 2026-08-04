@@ -1,15 +1,15 @@
 
 
-# Class: Geometry 
+# Class: GeoreferenceInfo 
 
 
-_REC Geometry のプレースホルダ（詳細は別途拡張）_
+_Placeholder for REC Georeference; details can be supplied by extensions._
 
 
 
 
 
-URI: [rec:Geometry](https://w3id.org/rec/Geometry)
+URI: [rec:Georeference](https://w3id.org/rec/Georeference)
 
 
 
@@ -17,59 +17,59 @@ URI: [rec:Geometry](https://w3id.org/rec/Geometry)
 
 ```mermaid
  classDiagram
-    class Geometry
-    click Geometry href "../Geometry/"
-      Information <|-- Geometry
+    class GeoreferenceInfo
+    click GeoreferenceInfo href "../GeoreferenceInfo/"
+      Information <|-- GeoreferenceInfo
         click Information href "../Information/"
       
-      Geometry : checksum
+      GeoreferenceInfo : checksum
         
-      Geometry : customProperties
+      GeoreferenceInfo : customProperties
         
           
     
         
         
-        Geometry --> "*" KeyMapOfStringMapEntry : customProperties
+        GeoreferenceInfo --> "*" KeyMapOfStringMapEntry : customProperties
         click KeyMapOfStringMapEntry href "../KeyMapOfStringMapEntry/"
     
 
         
-      Geometry : customTags
+      GeoreferenceInfo : customTags
         
           
     
         
         
-        Geometry --> "*" KeyBoolMapEntry : customTags
+        GeoreferenceInfo --> "*" KeyBoolMapEntry : customTags
         click KeyBoolMapEntry href "../KeyBoolMapEntry/"
     
 
         
-      Geometry : description
+      GeoreferenceInfo : description
         
-      Geometry : format
+      GeoreferenceInfo : format
         
-      Geometry : identifiers
+      GeoreferenceInfo : identifiers
         
           
     
         
         
-        Geometry --> "*" KeyStringMapEntry : identifiers
+        GeoreferenceInfo --> "*" KeyStringMapEntry : identifiers
         click KeyStringMapEntry href "../KeyStringMapEntry/"
     
 
         
-      Geometry : language
+      GeoreferenceInfo : language
         
-      Geometry : name
+      GeoreferenceInfo : name
         
-      Geometry : size
+      GeoreferenceInfo : size
         
-      Geometry : url
+      GeoreferenceInfo : url
         
-      Geometry : version
+      GeoreferenceInfo : version
         
       
 ```
@@ -81,7 +81,7 @@ URI: [rec:Geometry](https://w3id.org/rec/Geometry)
 ## Inheritance
 * [Resource](Resource.md)
     * [Information](Information.md)
-        * **Geometry**
+        * **GeoreferenceInfo**
 
 
 
@@ -109,17 +109,14 @@ URI: [rec:Geometry](https://w3id.org/rec/Geometry)
 
 | used by | used in | type | used |
 | ---  | --- | --- | --- |
-| [Space](Space.md) | [geometry](geometry.md) | range | [Geometry](Geometry.md) |
-| [Architecture](Architecture.md) | [geometry](geometry.md) | range | [Geometry](Geometry.md) |
-| [Site](Site.md) | [geometry](geometry.md) | range | [Geometry](Geometry.md) |
-| [Building](Building.md) | [geometry](geometry.md) | range | [Geometry](Geometry.md) |
-| [Level](Level.md) | [geometry](geometry.md) | range | [Geometry](Geometry.md) |
-| [Room](Room.md) | [geometry](geometry.md) | range | [Geometry](Geometry.md) |
-| [Zone](Zone.md) | [geometry](geometry.md) | range | [Geometry](Geometry.md) |
-| [OutdoorSpace](OutdoorSpace.md) | [geometry](geometry.md) | range | [Geometry](Geometry.md) |
-| [Asset](Asset.md) | [geometry](geometry.md) | range | [Geometry](Geometry.md) |
-| [Equipment](Equipment.md) | [geometry](geometry.md) | range | [Geometry](Geometry.md) |
-| [EquipmentExt](EquipmentExt.md) | [geometry](geometry.md) | range | [Geometry](Geometry.md) |
+| [Space](Space.md) | [georeference](georeference.md) | range | [GeoreferenceInfo](GeoreferenceInfo.md) |
+| [Architecture](Architecture.md) | [georeference](georeference.md) | range | [GeoreferenceInfo](GeoreferenceInfo.md) |
+| [Site](Site.md) | [georeference](georeference.md) | range | [GeoreferenceInfo](GeoreferenceInfo.md) |
+| [Building](Building.md) | [georeference](georeference.md) | range | [GeoreferenceInfo](GeoreferenceInfo.md) |
+| [Level](Level.md) | [georeference](georeference.md) | range | [GeoreferenceInfo](GeoreferenceInfo.md) |
+| [Room](Room.md) | [georeference](georeference.md) | range | [GeoreferenceInfo](GeoreferenceInfo.md) |
+| [Zone](Zone.md) | [georeference](georeference.md) | range | [GeoreferenceInfo](GeoreferenceInfo.md) |
+| [OutdoorSpace](OutdoorSpace.md) | [georeference](georeference.md) | range | [GeoreferenceInfo](GeoreferenceInfo.md) |
 
 
 
@@ -136,7 +133,7 @@ URI: [rec:Geometry](https://w3id.org/rec/Geometry)
 
 | property | value |
 | --- | --- |
-| description_ja | ジオメトリ情報のプレースホルダ |
+| description_ja | 地理参照情報のプレースホルダ |
 
 
 
@@ -153,9 +150,9 @@ URI: [rec:Geometry](https://w3id.org/rec/Geometry)
 
 | Mapping Type | Mapped Value |
 | ---  | ---  |
-| self | rec:Geometry |
-| native | sbco:Geometry |
-| exact | rec:Geometry |
+| self | rec:Georeference |
+| native | sbco:GeoreferenceInfo |
+| exact | rec:Georeference |
 
 
 
@@ -170,17 +167,17 @@ URI: [rec:Geometry](https://w3id.org/rec/Geometry)
 
 <details>
 ```yaml
-name: Geometry
+name: GeoreferenceInfo
 annotations:
   description_ja:
     tag: description_ja
-    value: ジオメトリ情報のプレースホルダ
-description: REC Geometry のプレースホルダ（詳細は別途拡張）
+    value: 地理参照情報のプレースホルダ
+description: Placeholder for REC Georeference; details can be supplied by extensions.
 from_schema: https://www.sbco.or.jp/ont/schema
 exact_mappings:
-- rec:Geometry
+- rec:Georeference
 is_a: Information
-class_uri: rec:Geometry
+class_uri: rec:Georeference
 
 ```
 </details>
@@ -189,15 +186,15 @@ class_uri: rec:Geometry
 
 <details>
 ```yaml
-name: Geometry
+name: GeoreferenceInfo
 annotations:
   description_ja:
     tag: description_ja
-    value: ジオメトリ情報のプレースホルダ
-description: REC Geometry のプレースホルダ（詳細は別途拡張）
+    value: 地理参照情報のプレースホルダ
+description: Placeholder for REC Georeference; details can be supplied by extensions.
 from_schema: https://www.sbco.or.jp/ont/schema
 exact_mappings:
-- rec:Geometry
+- rec:Georeference
 is_a: Information
 attributes:
   name:
@@ -207,7 +204,7 @@ attributes:
     rank: 1000
     slot_uri: rec:name
     alias: name
-    owner: Geometry
+    owner: GeoreferenceInfo
     domain_of:
     - Space
     - Asset
@@ -232,7 +229,7 @@ attributes:
     rank: 1000
     slot_uri: rec:description
     alias: description
-    owner: Geometry
+    owner: GeoreferenceInfo
     domain_of:
     - Space
     - Asset
@@ -245,7 +242,7 @@ attributes:
     rank: 1000
     slot_uri: rec:identifiers
     alias: identifiers
-    owner: Geometry
+    owner: GeoreferenceInfo
     domain_of:
     - Space
     - Asset
@@ -269,7 +266,7 @@ attributes:
     rank: 1000
     slot_uri: rec:customTags
     alias: customTags
-    owner: Geometry
+    owner: GeoreferenceInfo
     domain_of:
     - Space
     - Asset
@@ -292,7 +289,7 @@ attributes:
     rank: 1000
     slot_uri: rec:customProperties
     alias: customProperties
-    owner: Geometry
+    owner: GeoreferenceInfo
     domain_of:
     - Space
     - Asset
@@ -319,7 +316,7 @@ attributes:
     rank: 1000
     slot_uri: rec:format
     alias: format
-    owner: Geometry
+    owner: GeoreferenceInfo
     domain_of:
     - Information
     range: string
@@ -334,7 +331,7 @@ attributes:
     rank: 1000
     slot_uri: rec:url
     alias: url
-    owner: Geometry
+    owner: GeoreferenceInfo
     domain_of:
     - Information
     range: uri
@@ -349,7 +346,7 @@ attributes:
     rank: 1000
     slot_uri: rec:version
     alias: version
-    owner: Geometry
+    owner: GeoreferenceInfo
     domain_of:
     - Information
     range: string
@@ -364,7 +361,7 @@ attributes:
     rank: 1000
     slot_uri: rec:language
     alias: language
-    owner: Geometry
+    owner: GeoreferenceInfo
     domain_of:
     - Information
     range: string
@@ -380,7 +377,7 @@ attributes:
     rank: 1000
     slot_uri: rec:size
     alias: size
-    owner: Geometry
+    owner: GeoreferenceInfo
     domain_of:
     - Information
     range: integer
@@ -395,11 +392,11 @@ attributes:
     rank: 1000
     slot_uri: rec:checksum
     alias: checksum
-    owner: Geometry
+    owner: GeoreferenceInfo
     domain_of:
     - Information
     range: string
-class_uri: rec:Geometry
+class_uri: rec:Georeference
 
 ```
 </details>

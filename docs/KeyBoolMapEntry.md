@@ -3,7 +3,7 @@
 # Class: KeyBoolMapEntry 
 
 
-_map(string -> boolean) の1エントリ_
+_One entry in a map from strings to booleans._
 
 
 
@@ -66,8 +66,8 @@ URI: [sbco:KeyBoolMapEntry](https://www.sbco.or.jp/ont/KeyBoolMapEntry)
 | [Media](Media.md) | [customTags](customTags.md) | range | [KeyBoolMapEntry](KeyBoolMapEntry.md) |
 | [Schema](Schema.md) | [customTags](customTags.md) | range | [KeyBoolMapEntry](KeyBoolMapEntry.md) |
 | [PostalAddress](PostalAddress.md) | [customTags](customTags.md) | range | [KeyBoolMapEntry](KeyBoolMapEntry.md) |
-| [Geometry](Geometry.md) | [customTags](customTags.md) | range | [KeyBoolMapEntry](KeyBoolMapEntry.md) |
-| [Georeference](Georeference.md) | [customTags](customTags.md) | range | [KeyBoolMapEntry](KeyBoolMapEntry.md) |
+| [GeometryInfo](GeometryInfo.md) | [customTags](customTags.md) | range | [KeyBoolMapEntry](KeyBoolMapEntry.md) |
+| [GeoreferenceInfo](GeoreferenceInfo.md) | [customTags](customTags.md) | range | [KeyBoolMapEntry](KeyBoolMapEntry.md) |
 | [Agent](Agent.md) | [customTags](customTags.md) | range | [KeyBoolMapEntry](KeyBoolMapEntry.md) |
 | [Organization](Organization.md) | [customTags](customTags.md) | range | [KeyBoolMapEntry](KeyBoolMapEntry.md) |
 | [BuildingElement](BuildingElement.md) | [customTags](customTags.md) | range | [KeyBoolMapEntry](KeyBoolMapEntry.md) |
@@ -83,6 +83,13 @@ URI: [sbco:KeyBoolMapEntry](https://www.sbco.or.jp/ont/KeyBoolMapEntry)
 ## Identifier and Mapping Information
 
 
+
+
+### Annotations
+
+| property | value |
+| --- | --- |
+| description_ja | map(string -> boolean) の1エントリ |
 
 
 
@@ -116,7 +123,11 @@ URI: [sbco:KeyBoolMapEntry](https://www.sbco.or.jp/ont/KeyBoolMapEntry)
 <details>
 ```yaml
 name: KeyBoolMapEntry
-description: map(string -> boolean) の1エントリ
+annotations:
+  description_ja:
+    tag: description_ja
+    value: map(string -> boolean) の1エントリ
+description: One entry in a map from strings to booleans.
 from_schema: https://www.sbco.or.jp/ont/schema
 slots:
 - key
@@ -137,7 +148,11 @@ slot_usage:
 <details>
 ```yaml
 name: KeyBoolMapEntry
-description: map(string -> boolean) の1エントリ
+annotations:
+  description_ja:
+    tag: description_ja
+    value: map(string -> boolean) の1エントリ
+description: One entry in a map from strings to booleans.
 from_schema: https://www.sbco.or.jp/ont/schema
 slot_usage:
   key:

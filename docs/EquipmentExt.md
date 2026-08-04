@@ -91,8 +91,8 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
     
         
         
-        EquipmentExt --> "0..1" Geometry : geometry
-        click Geometry href "../Geometry/"
+        EquipmentExt --> "0..1" GeometryInfo : geometry
+        click GeometryInfo href "../GeometryInfo/"
     
 
         
@@ -239,11 +239,11 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
 | [commissionedBy](commissionedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that commissioned this asset | [Asset](Asset.md) |
 | [documentation](documentation.md) | * <br/> [Document](Document.md) | Documentation related to this asset | [Asset](Asset.md) |
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the resource | [Asset](Asset.md) |
-| [geometry](geometry.md) | 0..1 <br/> [Geometry](Geometry.md) | Polygon representing the spatial extent of this Space | [Asset](Asset.md) |
+| [geometry](geometry.md) | 0..1 <br/> [GeometryInfo](GeometryInfo.md) | Polygon representing the spatial extent of this Space | [Asset](Asset.md) |
 | [hasPart](hasPart.md) | * <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | The subject is composed in part of the entity given by the object | [Asset](Asset.md) |
 | [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | [Asset](Asset.md) |
 | [installedBy](installedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that installed this asset | [Asset](Asset.md) |
-| [isPartOf](isPartOf.md) | 0..1 <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) |  | [Asset](Asset.md) |
+| [isPartOf](isPartOf.md) | 0..1 <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | The subject is a part of the entity given by the object | [Asset](Asset.md) |
 | [locatedIn](locatedIn.md) | * <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | Space where this asset is located | [Asset](Asset.md) |
 | [manufacturedBy](manufacturedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that manufactured this asset | [Asset](Asset.md) |
 | [mountedOn](mountedOn.md) | 0..1 <br/> [BuildingElement](BuildingElement.md) | Building element on which this asset is mounted | [Asset](Asset.md) |
@@ -552,7 +552,7 @@ attributes:
     domain_of:
     - Space
     - Asset
-    range: Geometry
+    range: GeometryInfo
     multivalued: false
   hasPart:
     name: hasPart
@@ -605,6 +605,7 @@ attributes:
     multivalued: true
   isPartOf:
     name: isPartOf
+    description: The subject is a part of the entity given by the object.
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isPartOf

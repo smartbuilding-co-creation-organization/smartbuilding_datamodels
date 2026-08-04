@@ -294,7 +294,7 @@
                 "geometry": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Geometry"
+                            "$ref": "#/$defs/GeometryInfo"
                         },
                         {
                             "type": "null"
@@ -305,7 +305,7 @@
                 "georeference": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Georeference"
+                            "$ref": "#/$defs/GeoreferenceInfo"
                         },
                         {
                             "type": "null"
@@ -435,6 +435,7 @@
                             "type": "null"
                         }
                     ],
+                    "description": "The subject is a part of the entity given by the object.",
                     "type": "string"
                 },
                 "name": {
@@ -718,7 +719,7 @@
                 "geometry": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Geometry"
+                            "$ref": "#/$defs/GeometryInfo"
                         },
                         {
                             "type": "null"
@@ -853,6 +854,7 @@
                             "type": "null"
                         }
                     ],
+                    "description": "The subject is a part of the entity given by the object.",
                     "type": "string"
                 },
                 "locatedIn": {
@@ -1085,7 +1087,7 @@
                 "geometry": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Geometry"
+                            "$ref": "#/$defs/GeometryInfo"
                         },
                         {
                             "type": "null"
@@ -1227,6 +1229,7 @@
                             "type": "null"
                         }
                     ],
+                    "description": "The subject is a part of the entity given by the object.",
                     "type": "string"
                 },
                 "locatedIn": {
@@ -1362,9 +1365,9 @@
             "title": "EquipmentExt",
             "type": "object"
         },
-        "Geometry": {
+        "GeometryInfo": {
             "additionalProperties": false,
-            "description": "REC Geometry \u306e\u30d7\u30ec\u30fc\u30b9\u30db\u30eb\u30c0\uff08\u8a73\u7d30\u306f\u5225\u9014\u62e1\u5f35\uff09",
+            "description": "Placeholder for REC Geometry; details can be supplied by extensions.",
             "properties": {
                 "checksum": {
                     "description": "Checksum or hash of the information content",
@@ -1454,12 +1457,12 @@
             "required": [
                 "name"
             ],
-            "title": "Geometry",
+            "title": "GeometryInfo",
             "type": "object"
         },
-        "Georeference": {
+        "GeoreferenceInfo": {
             "additionalProperties": false,
-            "description": "REC Georeference \u306e\u30d7\u30ec\u30fc\u30b9\u30db\u30eb\u30c0\uff08\u8a73\u7d30\u306f\u5225\u9014\u62e1\u5f35\uff09",
+            "description": "Placeholder for REC Georeference; details can be supplied by extensions.",
             "properties": {
                 "checksum": {
                     "description": "Checksum or hash of the information content",
@@ -1549,7 +1552,7 @@
             "required": [
                 "name"
             ],
-            "title": "Georeference",
+            "title": "GeoreferenceInfo",
             "type": "object"
         },
         "Image": {
@@ -1744,7 +1747,7 @@
         },
         "KeyBoolMapEntry": {
             "additionalProperties": false,
-            "description": "map(string -> boolean) \u306e1\u30a8\u30f3\u30c8\u30ea",
+            "description": "One entry in a map from strings to booleans.",
             "properties": {
                 "flag": {
                     "description": "Boolean flag value",
@@ -1764,7 +1767,7 @@
         },
         "KeyMapOfStringMapEntry": {
             "additionalProperties": false,
-            "description": "map(string -> map(string -> string)) \u306e1\u30a8\u30f3\u30c8\u30ea",
+            "description": "One entry in a map from strings to string-to-string maps.",
             "properties": {
                 "entries": {
                     "description": "Nested map entries",
@@ -1787,7 +1790,7 @@
         },
         "KeyStringMapEntry": {
             "additionalProperties": false,
-            "description": "map(string -> string) \u306e1\u30a8\u30f3\u30c8\u30ea",
+            "description": "One entry in a map from strings to strings.",
             "properties": {
                 "key": {
                     "description": "Key of the map entry",
@@ -1913,7 +1916,7 @@
                 "geometry": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Geometry"
+                            "$ref": "#/$defs/GeometryInfo"
                         },
                         {
                             "type": "null"
@@ -1924,7 +1927,7 @@
                 "georeference": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Georeference"
+                            "$ref": "#/$defs/GeoreferenceInfo"
                         },
                         {
                             "type": "null"
@@ -2054,6 +2057,7 @@
                             "type": "null"
                         }
                     ],
+                    "description": "The subject is a part of the entity given by the object.",
                     "type": "string"
                 },
                 "levelNumber": {
@@ -2368,7 +2372,7 @@
                 "geometry": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Geometry"
+                            "$ref": "#/$defs/GeometryInfo"
                         },
                         {
                             "type": "null"
@@ -2379,7 +2383,7 @@
                 "georeference": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Georeference"
+                            "$ref": "#/$defs/GeoreferenceInfo"
                         },
                         {
                             "type": "null"
@@ -2509,6 +2513,7 @@
                             "type": "null"
                         }
                     ],
+                    "description": "The subject is a part of the entity given by the object.",
                     "type": "string"
                 },
                 "name": {
@@ -3122,7 +3127,7 @@
                 "geometry": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Geometry"
+                            "$ref": "#/$defs/GeometryInfo"
                         },
                         {
                             "type": "null"
@@ -3133,7 +3138,7 @@
                 "georeference": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Georeference"
+                            "$ref": "#/$defs/GeoreferenceInfo"
                         },
                         {
                             "type": "null"
@@ -3263,6 +3268,7 @@
                             "type": "null"
                         }
                     ],
+                    "description": "The subject is a part of the entity given by the object.",
                     "type": "string"
                 },
                 "name": {
@@ -3500,7 +3506,7 @@
                 "geometry": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Geometry"
+                            "$ref": "#/$defs/GeometryInfo"
                         },
                         {
                             "type": "null"
@@ -3511,7 +3517,7 @@
                 "georeference": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Georeference"
+                            "$ref": "#/$defs/GeoreferenceInfo"
                         },
                         {
                             "type": "null"
@@ -3641,6 +3647,7 @@
                             "type": "null"
                         }
                     ],
+                    "description": "The subject is a part of the entity given by the object.",
                     "type": "string"
                 },
                 "name": {
@@ -3709,7 +3716,7 @@
                 "geometry": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Geometry"
+                            "$ref": "#/$defs/GeometryInfo"
                         },
                         {
                             "type": "null"
@@ -3720,7 +3727,7 @@
                 "georeference": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Georeference"
+                            "$ref": "#/$defs/GeoreferenceInfo"
                         },
                         {
                             "type": "null"
@@ -3812,6 +3819,7 @@
                             "type": "null"
                         }
                     ],
+                    "description": "The subject is a part of the entity given by the object.",
                     "type": "string"
                 },
                 "name": {
@@ -3987,7 +3995,7 @@
                 "geometry": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Geometry"
+                            "$ref": "#/$defs/GeometryInfo"
                         },
                         {
                             "type": "null"
@@ -3998,7 +4006,7 @@
                 "georeference": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Georeference"
+                            "$ref": "#/$defs/GeoreferenceInfo"
                         },
                         {
                             "type": "null"
@@ -4128,6 +4136,7 @@
                             "type": "null"
                         }
                     ],
+                    "description": "The subject is a part of the entity given by the object.",
                     "type": "string"
                 },
                 "name": {
@@ -4273,7 +4282,7 @@
         "geometry": {
             "anyOf": [
                 {
-                    "$ref": "#/$defs/Geometry"
+                    "$ref": "#/$defs/GeometryInfo"
                 },
                 {
                     "type": "null"
@@ -4284,7 +4293,7 @@
         "georeference": {
             "anyOf": [
                 {
-                    "$ref": "#/$defs/Georeference"
+                    "$ref": "#/$defs/GeoreferenceInfo"
                 },
                 {
                     "type": "null"
@@ -4414,6 +4423,7 @@
                     "type": "null"
                 }
             ],
+            "description": "The subject is a part of the entity given by the object.",
             "type": "string"
         },
         "name": {

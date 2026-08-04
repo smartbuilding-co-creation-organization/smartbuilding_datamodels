@@ -1,5 +1,5 @@
 site_name: Smart Building Ontology (LinkML)
-site_url: https://smartbuilding-co-creation-organization.github.io/smartbuiding_datamodels/
+site_url: https://smartbuilding-co-creation-organization.github.io/smartbuilding_datamodels/
 theme:
   name: material
   features:
@@ -10,7 +10,7 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/smartbuilding-co-creation-organization/smartbuiding_datamodels
+      link: https://github.com/smartbuilding-co-creation-organization/smartbuilding_datamodels
 markdown_extensions:
   - toc:
       permalink: true

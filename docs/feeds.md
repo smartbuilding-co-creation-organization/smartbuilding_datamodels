@@ -22,8 +22,8 @@ Alias: feeds
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 | [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
+| [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
 
