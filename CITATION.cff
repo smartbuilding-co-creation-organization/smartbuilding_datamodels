@@ -2,6 +2,8 @@ cff-version: 1.2.0
 message: If you use this data model, please cite the software and the relevant release.
 title: Smart Building Ontology (LinkML)
 type: software
+version: 0.1.0
+date-released: 2026-08-04
 authors:
   - name: Smart Building Co-creation Organization
 repository-code: https://github.com/smartbuilding-co-creation-organization/smartbuilding_datamodels

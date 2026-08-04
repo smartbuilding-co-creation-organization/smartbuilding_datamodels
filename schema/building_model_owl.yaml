@@ -6,6 +6,7 @@ description: 'A LinkML schema for sites, buildings, spaces, equipment, and point
 
   '
 license: https://creativecommons.org/licenses/by/4.0/
+version: 0.1.0
 default_prefix: sbco
 default_range: string
 prefixes:
