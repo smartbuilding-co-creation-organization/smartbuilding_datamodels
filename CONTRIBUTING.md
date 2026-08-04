@@ -3,6 +3,15 @@
 スマートビルデータモデル・リポジトリ（以下、本プロジェクト）への貢献に関心をお寄せいただきありがとうございます。
 本リポジトリは、システム間で交換される**データの構造（Schema）と定義**を LinkML で管理し、OWL・SHACL・JSON Schema・ドキュメントを自動生成するプロジェクトです。
 
+## 受け付けるコントリビューション
+
+- **Issue**: どなたでも、バグ報告・データモデルの追加要望・改善提案を作成できます。
+- **Pull Request**: Smart Building Co-creation Organization が管理する同一リポジトリ内のブランチからのみ受け付けます。外部 fork からの PR は受け付けず、自動的に案内コメントを付けてクローズします。
+
+外部の方が具体的な変更案をお持ちの場合も、コードやスキーマを PR として送るのではなく、再現例・期待する定義・利用事例を Issue に記載してください。Datamodel TF が内容を検討し、必要な変更を組織内のブランチで実装します。
+
+この制限は、標準案への提案を閉じるものではありません。提案窓口を Issue に統一し、標準化の議論と実装責任を明確にするための運用です。
+
 
 
 ## 1. 開発環境のセットアップ
@@ -100,7 +109,7 @@ gitGraph
 4. **生成物の更新**: `make gen` で出力ファイルを再生成します。
 5. **検証**: `make validate` でスキーマと SHACL 検証を実行します。
 6. **サンプル作成**: 必要に応じて `sample/validation/cases.yaml` に検証ケースを追加します。
-7. **Pull Request**: `main` へ PR を作成します。
+7. **Pull Request**: 組織内の作業ブランチから `main` へ PR を作成します。`main` への直接 push は行いません。
 
 
 
@@ -195,6 +204,8 @@ BREAKING CHANGE: Equipment.id の文字列パターンが変更されました�
 
 ## 7. Pull Request ガイドライン
 
+この節は、リポジトリへの Write 権限を持つ Datamodel TF および組織内メンバー向けです。外部からの変更提案は Issue を利用してください。
+
 PR には以下のチェックリストを含めてください。
 
 ### チェックリスト
@@ -219,8 +230,7 @@ PR が `main` にマージされると、GitHub Actions により以下が自動
 
 ## 9. サポート
 
-- **モデルの利用方法・設計相談**: [Discussions](https://github.com/smartbuilding-co-creation-organization/smartbuilding_datamodels/discussions)
-- **バグ報告・追加要望**: [Issues](https://github.com/smartbuilding-co-creation-organization/smartbuilding_datamodels/issues)
+- **モデルの利用方法・設計相談・バグ報告・追加要望**: [Issues](https://github.com/smartbuilding-co-creation-organization/smartbuilding_datamodels/issues)
 
 データモデルはスマートビルの共通言語です。分かりやすく、使いやすい定義へのご協力をお願いします。
 

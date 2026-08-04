@@ -2,6 +2,8 @@
 
 Describe the motivation and the user-visible or schema-visible change.
 
+> Pull Requests are accepted only from branches maintained in this repository by authorized organization members. Public proposals should be submitted as Issues.
+
 ## Downstream impact
 
 - [ ] OWL
@@ -12,6 +14,7 @@ Describe the motivation and the user-visible or schema-visible change.
 
 ## Checklist
 
+- [ ] This PR comes from an organization-managed branch, not an external fork
 - [ ] `make validate` passes
 - [ ] `make gen` has regenerated `output/` and `docs/`
 - [ ] Generated artifacts are committed
