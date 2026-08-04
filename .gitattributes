@@ -1,0 +1,2 @@
+# LinkML gen-doc emits trailing spaces in generated Markdown templates.
+docs/*.md whitespace=-blank-at-eol

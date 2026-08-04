@@ -116,6 +116,24 @@ def add_literal(graph: Graph, subject: URIRef, predicate: URIRef, value: Any) ->
     graph.add((subject, predicate, Literal(value)))
 
 
+def add_slot_literal(
+    graph: Graph,
+    schema_view: SchemaView,
+    prefix_map: dict[str, str],
+    subject: URIRef,
+    predicate: URIRef,
+    slot_name: str,
+    value: Any,
+) -> None:
+    """Add a literal using the datatype declared by the slot's LinkML range."""
+    range_name = slot_range(schema_view, slot_name)
+    type_def = schema_view.get_type(range_name) if range_name else None
+    datatype = None
+    if type_def is not None and type_def.uri:
+        datatype = expand_uri(prefix_map, str(type_def.uri))
+    graph.add((subject, predicate, Literal(value, datatype=datatype)))
+
+
 def enum_literal(value: str) -> str:
     if "#" in value:
         return value.rsplit("#", 1)[-1]
@@ -179,7 +197,15 @@ def convert_node(
     graph.add((subject, RDF.type, class_uri(schema_view, prefix_map, class_name)))
 
     if schema_view.get_slot("id") is not None:
-        add_literal(graph, subject, slot_predicate(schema_view, prefix_map, "id"), node_id)
+        add_slot_literal(
+            graph,
+            schema_view,
+            prefix_map,
+            subject,
+            slot_predicate(schema_view, prefix_map, "id"),
+            "id",
+            node_id,
+        )
 
     if parent is not None and parent_predicate is not None:
         graph.add((parent, parent_predicate, subject))
@@ -250,14 +276,30 @@ def convert_node(
                 elif slot_range_is_enum(schema_view, key) and isinstance(item, str):
                     add_literal(graph, subject, predicate, enum_literal(item))
                 else:
-                    add_literal(graph, subject, predicate, item)
+                    add_slot_literal(
+                        graph,
+                        schema_view,
+                        prefix_map,
+                        subject,
+                        predicate,
+                        key,
+                        item,
+                    )
         else:
             if slot_range_is_class(schema_view, key) and isinstance(value, str):
                 graph.add((subject, predicate, expand_uri(prefix_map, value)))
             elif slot_range_is_enum(schema_view, key) and isinstance(value, str):
                 add_literal(graph, subject, predicate, enum_literal(value))
             else:
-                add_literal(graph, subject, predicate, value)
+                add_slot_literal(
+                    graph,
+                    schema_view,
+                    prefix_map,
+                    subject,
+                    predicate,
+                    key,
+                    value,
+                )
 
     return subject
 

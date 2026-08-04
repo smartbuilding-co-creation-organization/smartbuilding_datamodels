@@ -3,7 +3,7 @@
 # Class: KeyStringMapEntry 
 
 
-_map(string -> string) の1エントリ_
+_One entry in a map from strings to strings._
 
 
 
@@ -67,8 +67,8 @@ URI: [sbco:KeyStringMapEntry](https://www.sbco.or.jp/ont/KeyStringMapEntry)
 | [Media](Media.md) | [identifiers](identifiers.md) | range | [KeyStringMapEntry](KeyStringMapEntry.md) |
 | [Schema](Schema.md) | [identifiers](identifiers.md) | range | [KeyStringMapEntry](KeyStringMapEntry.md) |
 | [PostalAddress](PostalAddress.md) | [identifiers](identifiers.md) | range | [KeyStringMapEntry](KeyStringMapEntry.md) |
-| [Geometry](Geometry.md) | [identifiers](identifiers.md) | range | [KeyStringMapEntry](KeyStringMapEntry.md) |
-| [Georeference](Georeference.md) | [identifiers](identifiers.md) | range | [KeyStringMapEntry](KeyStringMapEntry.md) |
+| [GeometryInfo](GeometryInfo.md) | [identifiers](identifiers.md) | range | [KeyStringMapEntry](KeyStringMapEntry.md) |
+| [GeoreferenceInfo](GeoreferenceInfo.md) | [identifiers](identifiers.md) | range | [KeyStringMapEntry](KeyStringMapEntry.md) |
 | [Agent](Agent.md) | [identifiers](identifiers.md) | range | [KeyStringMapEntry](KeyStringMapEntry.md) |
 | [Organization](Organization.md) | [identifiers](identifiers.md) | range | [KeyStringMapEntry](KeyStringMapEntry.md) |
 | [BuildingElement](BuildingElement.md) | [identifiers](identifiers.md) | range | [KeyStringMapEntry](KeyStringMapEntry.md) |
@@ -84,6 +84,13 @@ URI: [sbco:KeyStringMapEntry](https://www.sbco.or.jp/ont/KeyStringMapEntry)
 ## Identifier and Mapping Information
 
 
+
+
+### Annotations
+
+| property | value |
+| --- | --- |
+| description_ja | map(string -> string) の1エントリ |
 
 
 
@@ -117,7 +124,11 @@ URI: [sbco:KeyStringMapEntry](https://www.sbco.or.jp/ont/KeyStringMapEntry)
 <details>
 ```yaml
 name: KeyStringMapEntry
-description: map(string -> string) の1エントリ
+annotations:
+  description_ja:
+    tag: description_ja
+    value: map(string -> string) の1エントリ
+description: One entry in a map from strings to strings.
 from_schema: https://www.sbco.or.jp/ont/schema
 slots:
 - key
@@ -138,7 +149,11 @@ slot_usage:
 <details>
 ```yaml
 name: KeyStringMapEntry
-description: map(string -> string) の1エントリ
+annotations:
+  description_ja:
+    tag: description_ja
+    value: map(string -> string) の1エントリ
+description: One entry in a map from strings to strings.
 from_schema: https://www.sbco.or.jp/ont/schema
 slot_usage:
   key:

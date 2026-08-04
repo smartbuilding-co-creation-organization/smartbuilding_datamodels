@@ -1,0 +1,37 @@
+name: Schema change proposal
+description: Propose a class, slot, enum, mapping, or constraint change.
+title: "schema: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case
+      description: Describe the interoperability need and example data.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed schema change
+      description: List classes, slots, ranges, cardinalities, enum values, and mappings.
+    validations:
+      required: true
+  - type: dropdown
+    id: compatibility
+    attributes:
+      label: Compatibility
+      options:
+        - Backward compatible
+        - Breaking change
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation examples
+      description: Describe valid and invalid cases that should be added.
+    validations:
+      required: true

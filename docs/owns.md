@@ -22,8 +22,8 @@ Alias: owns
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Agent](Agent.md) | An entity that can act or be acted upon |  no  |
 | [Organization](Organization.md) | An organization such as a company, institution, or association |  no  |
+| [Agent](Agent.md) | An entity that can act or be acted upon |  no  |
 
 
 

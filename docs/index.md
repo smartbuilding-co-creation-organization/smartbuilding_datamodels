@@ -13,9 +13,9 @@ Name: building_model
 
 | Class | Description |
 | --- | --- |
-| [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) の1エントリ |
-| [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) の1エントリ |
-| [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) の1エントリ |
+| [KeyBoolMapEntry](KeyBoolMapEntry.md) | One entry in a map from strings to booleans |
+| [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | One entry in a map from strings to string-to-string maps |
+| [KeyStringMapEntry](KeyStringMapEntry.md) | One entry in a map from strings to strings |
 | [Point](Point.md) | A sensor, actuator, or data point associated with equipment |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PointExt](PointExt.md) | A point (sensor/actuator) in a smart building context |
 | [Resource](Resource.md) | Base class for all resources |
@@ -29,8 +29,8 @@ Name: building_model
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[BuildingElement](BuildingElement.md) | A part of the building structure |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Information](Information.md) | Abstract base class for information resources such as documents, images, medi... |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Document](Document.md) | A document providing information about a building element or asset |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Geometry](Geometry.md) | REC Geometry のプレースホルダ（詳細は別途拡張） |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Georeference](Georeference.md) | REC Georeference のプレースホルダ（詳細は別途拡張） |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[GeometryInfo](GeometryInfo.md) | Placeholder for REC Geometry; details can be supplied by extensions |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[GeoreferenceInfo](GeoreferenceInfo.md) | Placeholder for REC Georeference; details can be supplied by extensions |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Image](Image.md) | An image file containing visual information |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Media](Media.md) | A media file such as audio or video content |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[PostalAddress](PostalAddress.md) | A postal address |
@@ -94,7 +94,7 @@ Name: building_model
 | [IPAddress](IPAddress.md) | IP address of the asset |
 | [isFedBy](isFedBy.md) | Resource that feeds this architecture |
 | [isLocationOf](isLocationOf.md) | Subject is the physical location encapsulating the object |
-| [isPartOf](isPartOf.md) |  |
+| [isPartOf](isPartOf.md) | The subject is a part of the entity given by the object |
 | [isPointOf](isPointOf.md) | Equipment that this point belongs to |
 | [key](key.md) | Key of the map entry |
 | [labels](labels.md) | Labels or tags associated with this point |

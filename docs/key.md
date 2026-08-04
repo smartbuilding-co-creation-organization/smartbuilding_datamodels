@@ -22,9 +22,9 @@ Alias: key
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) の1エントリ |  yes  |
-| [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) の1エントリ |  yes  |
-| [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) の1エントリ |  yes  |
+| [KeyStringMapEntry](KeyStringMapEntry.md) | One entry in a map from strings to strings |  yes  |
+| [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | One entry in a map from strings to string-to-string maps |  yes  |
+| [KeyBoolMapEntry](KeyBoolMapEntry.md) | One entry in a map from strings to booleans |  yes  |
 
 
 

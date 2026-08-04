@@ -1,0 +1,56 @@
+# Licensing
+
+Copyright 2025-2026 Smart Building Co-creation Organization contributors.
+
+Unless a file says otherwise, this repository uses the following licenses.
+
+## Ontology and documentation
+
+The following material is licensed under the Creative Commons Attribution 4.0
+International License (`CC-BY-4.0`):
+
+- `schema/`
+- `output/`
+- `docs/`
+- `sample/`
+- project documentation, including `README.md`, `CONTRIBUTING.md`,
+  `CHANGELOG.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md`
+
+The full license text is available in `LICENSES/CC-BY-4.0.txt` and at
+<https://creativecommons.org/licenses/by/4.0/>.
+
+When redistributing or adapting this material, provide appropriate credit,
+include a link to the license, and indicate whether changes were made.
+
+## Software and automation
+
+The following material is licensed under the Apache License, Version 2.0
+(`Apache-2.0`):
+
+- `scripts/`
+- `.github/`
+- `Makefile`
+- `make.ps1`
+- `requirements.txt`
+- `mkdocs.yml`
+
+The full license text is available in `LICENSES/Apache-2.0.txt` and at
+<https://www.apache.org/licenses/LICENSE-2.0>.
+
+## Generated artifacts
+
+Artifacts under `output/` and generated reference pages under `docs/` are
+licensed under `CC-BY-4.0`, matching their source schema. The tools used to
+generate them remain subject to their own licenses.
+
+## Third-party material
+
+Third-party names, identifiers, mappings, and any incorporated material remain
+subject to their respective rights and licenses. See `NOTICE.md` for upstream
+projects referenced by this repository. Nothing in this file grants rights in
+third-party trademarks.
+
+## Contributions
+
+Unless explicitly stated otherwise, contributions are submitted under the
+license that applies to the files being modified.

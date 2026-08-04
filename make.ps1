@@ -5,6 +5,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+$env:PYTHONHASHSEED = "0"
 
 $VENV = ".venv"
 $PY  = Join-Path $VENV "Scripts\python.exe"
@@ -29,6 +30,23 @@ function Invoke-Docgen {
   & $GEN_DOC --directory docs schema/building_model_shacl.yaml
 }
 
+function Invoke-Generation {
+  Ensure-Venv
+  Ensure-Dir "output"
+
+  # stdout redirection must preserve UTF-8 on Windows PowerShell.
+  & $LINKML generate owl --metadata-profile rdfs schema/building_model_owl.yaml -f ttl |
+    Out-File -Encoding utf8 "output/building_model.owl.ttl"
+
+  & $LINKML generate shacl --non-closed --suffix Shape schema/building_model_shacl.yaml |
+    Out-File -Encoding utf8 "output/building_model.shacl.ttl"
+
+  & $LINKML generate json-schema schema/building_model_shacl.yaml |
+    Out-File -Encoding utf8 "output/building_model.schema.json"
+
+  Invoke-Docgen
+}
+
 switch ($Target) {
   "venv" {
     Ensure-Venv
@@ -45,20 +63,7 @@ switch ($Target) {
   }
 
   "gen" {
-    Ensure-Venv
-    Ensure-Dir "output"
-
-    # stdout リダイレクトが PowerShell でも効くように Out-File を使用
-    & $LINKML generate owl --metadata-profile rdfs schema/building_model_owl.yaml -f ttl |
-      Out-File -Encoding utf8 "output/building_model.owl.ttl"
-
-    & $LINKML generate shacl --non-closed --suffix Shape schema/building_model_shacl.yaml |
-      Out-File -Encoding utf8 "output/building_model.shacl.ttl"
-
-    & $LINKML generate json-schema schema/building_model_shacl.yaml |
-      Out-File -Encoding utf8 "output/building_model.schema.json"
-
-    Invoke-Docgen
+    Invoke-Generation
   }
 
   "docs" {
@@ -82,9 +87,7 @@ switch ($Target) {
   }
 
   "validate" {
-    Ensure-Venv
-    Ensure-Dir "output"
-
+    Invoke-Generation
     & $PY scripts/generate_validation_ttl.py --schema schema/building_model_shacl.yaml --cases sample/validation/cases.yaml
     & $PY scripts/validate_rdf.py --schema schema/building_model_shacl.yaml --ontology output/building_model.owl.ttl --shacl output/building_model.shacl.ttl --cases sample/validation/cases.yaml --use-output-ttl
   }

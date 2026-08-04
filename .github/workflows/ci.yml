@@ -1,42 +1,62 @@
 name: build-validate-deploy
+
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
 
 permissions:
-  contents: write
-  pages: write
+  contents: read
+
+env:
+  PYTHONHASHSEED: "0"
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build-validate-deploy:
+  build-validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
-          python-version: '3.11'
+          python-version: "3.11"
+          cache: pip
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m venv .venv
+          .venv/bin/python -m pip install -r requirements.txt
 
-      - name: Generate artifacts from LinkML
-        run: |
-          mkdir -p output
-          linkml generate owl --metadata-profile rdfs schema/building_model_owl.yaml -f ttl > output/building_model.owl.ttl
-          linkml generate shacl --non-closed --suffix Shape schema/building_model_shacl.yaml > output/building_model.shacl.ttl
-          linkml generate json-schema schema/building_model_shacl.yaml > output/building_model.schema.json
-          gen-doc --directory docs schema/building_model_shacl.yaml
+      - name: Generate artifacts and validate RDF
+        run: make validate
 
-      - name: Build docs (MkDocs)
-        run: mkdocs build --site-dir site
+      - name: Build documentation
+        run: .venv/bin/mkdocs build --strict --site-dir site
 
-      - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Verify generated JSON Schema and docs are committed
+        run: git diff --exit-code -- output/building_model.schema.json docs
+
+      - name: Upload GitHub Pages artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
+          path: site
+
+  deploy-pages:
+    if: github.event_name == 'push'
+    needs: build-validate
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

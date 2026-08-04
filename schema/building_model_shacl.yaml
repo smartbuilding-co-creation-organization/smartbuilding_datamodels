@@ -5,6 +5,7 @@ description: 'A LinkML schema for sites, buildings, spaces, equipment, and point
   used in smart-building data exchanges.
 
   '
+license: https://creativecommons.org/licenses/by/4.0/
 default_prefix: sbco
 default_range: string
 prefixes:
@@ -574,13 +575,13 @@ slots:
 
   geometry:
     description: Polygon representing the spatial extent of this Space.
-    range: Geometry
+    range: GeometryInfo
     multivalued: false
     slot_uri: rec:geometry
 
   georeference:
     description: A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes).
-    range: Georeference
+    range: GeoreferenceInfo
     multivalued: false
     slot_uri: rec:georeference
 
@@ -599,6 +600,7 @@ slots:
       - range: OutdoorSpace
 
   isPartOf:
+    description: The subject is a part of the entity given by the object.
     range: Any
     multivalued: false
     slot_uri: rec:isPartOf
@@ -1198,7 +1200,10 @@ classes:
           - range: EquipmentExt
 
   KeyStringMapEntry:
-    description: map(string -> string) の1エントリ
+    description: One entry in a map from strings to strings.
+    annotations:
+      - tag: description_ja
+        value: map(string -> string) の1エントリ
     slots:
     - key
     - value
@@ -1209,7 +1214,10 @@ classes:
         required: true
 
   KeyBoolMapEntry:
-    description: map(string -> boolean) の1エントリ
+    description: One entry in a map from strings to booleans.
+    annotations:
+      - tag: description_ja
+        value: map(string -> boolean) の1エントリ
     slots:
     - key
     - flag
@@ -1220,7 +1228,10 @@ classes:
         required: true
 
   KeyMapOfStringMapEntry:
-    description: map(string -> map(string -> string)) の1エントリ
+    description: One entry in a map from strings to string-to-string maps.
+    annotations:
+      - tag: description_ja
+        value: map(string -> map(string -> string)) の1エントリ
     slots:
     - key
     - entries
@@ -1317,20 +1328,20 @@ classes:
       - customTags
       - customProperties
 
-  Geometry:
+  GeometryInfo:
     is_a: Information
     class_uri: rec:Geometry
-    description: "REC Geometry のプレースホルダ（詳細は別途拡張）"
+    description: Placeholder for REC Geometry; details can be supplied by extensions.
     annotations:
       - tag: description_ja
         value: "ジオメトリ情報のプレースホルダ"
     exact_mappings:
       - rec:Geometry
 
-  Georeference:
+  GeoreferenceInfo:
     is_a: Information
     class_uri: rec:Georeference
-    description: "REC Georeference のプレースホルダ（詳細は別途拡張）"
+    description: Placeholder for REC Georeference; details can be supplied by extensions.
     annotations:
       - tag: description_ja
         value: "地理参照情報のプレースホルダ"

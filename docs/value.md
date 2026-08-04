@@ -22,7 +22,7 @@ Alias: value
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [KeyStringMapEntry](KeyStringMapEntry.md) | map(string -> string) の1エントリ |  yes  |
+| [KeyStringMapEntry](KeyStringMapEntry.md) | One entry in a map from strings to strings |  yes  |
 
 
 

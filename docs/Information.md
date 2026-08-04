@@ -33,10 +33,10 @@ URI: [rec:Information](https://w3id.org/rec/Information)
         click Schema href "../Schema/"
       Information <|-- PostalAddress
         click PostalAddress href "../PostalAddress/"
-      Information <|-- Geometry
-        click Geometry href "../Geometry/"
-      Information <|-- Georeference
-        click Georeference href "../Georeference/"
+      Information <|-- GeometryInfo
+        click GeometryInfo href "../GeometryInfo/"
+      Information <|-- GeoreferenceInfo
+        click GeoreferenceInfo href "../GeoreferenceInfo/"
       
 
       Information : checksum
@@ -103,8 +103,8 @@ URI: [rec:Information](https://w3id.org/rec/Information)
         * [Media](Media.md)
         * [Schema](Schema.md)
         * [PostalAddress](PostalAddress.md)
-        * [Geometry](Geometry.md)
-        * [Georeference](Georeference.md)
+        * [GeometryInfo](GeometryInfo.md)
+        * [GeoreferenceInfo](GeoreferenceInfo.md)
 
 
 

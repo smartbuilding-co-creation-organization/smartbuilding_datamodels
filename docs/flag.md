@@ -22,7 +22,7 @@ Alias: flag
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) の1エントリ |  yes  |
+| [KeyBoolMapEntry](KeyBoolMapEntry.md) | One entry in a map from strings to booleans |  yes  |
 
 
 

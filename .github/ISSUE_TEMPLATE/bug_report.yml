@@ -1,0 +1,45 @@
+name: Bug report
+description: Report incorrect schema behavior, generated artifacts, or documentation.
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Do not report vulnerabilities or secrets here; use the Security tab instead.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Include commands, input data, and relevant output.
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Version or commit
+      placeholder: v0.1.0 or commit SHA
+    validations:
+      required: true
+  - type: dropdown
+    id: artifacts
+    attributes:
+      label: Affected output
+      multiple: true
+      options:
+        - LinkML schema
+        - OWL
+        - SHACL
+        - JSON Schema
+        - Documentation
+        - Validation scripts
+        - GitHub Pages
+    validations:
+      required: true

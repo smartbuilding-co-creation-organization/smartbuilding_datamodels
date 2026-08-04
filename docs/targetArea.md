@@ -22,8 +22,8 @@ Alias: targetArea
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 | [PointExt](PointExt.md) | A point (sensor/actuator) in a smart building context |  no  |
+| [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
 

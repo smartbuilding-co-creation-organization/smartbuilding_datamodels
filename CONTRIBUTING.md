@@ -15,8 +15,8 @@
 
 ```bash
 # 1. リポジトリをクローン
-git clone https://github.com/smartbuilding-co-creation-organization/smartbuiding_datamodels.git
-cd smartbuiding_datamodels
+git clone https://github.com/smartbuilding-co-creation-organization/smartbuilding_datamodels.git
+cd smartbuilding_datamodels
 
 # 2. 仮想環境の作成と有効化
 python -m venv .venv
@@ -186,9 +186,9 @@ cases:
 ### 破壊的変更がある場合
 
 ```
-feat(schema): 機器IDの形式を変更
+feat(schema): 機器IDの形式制約を変更
 
-BREAKING CHANGE: Equipment.id の range が IdString 必須になりました。
+BREAKING CHANGE: Equipment.id の文字列パターンが変更されました。
 ```
 
 
@@ -219,7 +219,17 @@ PR が `main` にマージされると、GitHub Actions により以下が自動
 
 ## 9. サポート
 
-- **モデルの利用方法・設計相談**: [Discussions](https://github.com/smartbuilding-co-creation-organization/smartbuiding_datamodels/discussions)
-- **バグ報告・追加要望**: [Issues](https://github.com/smartbuilding-co-creation-organization/smartbuiding_datamodels/issues)
+- **モデルの利用方法・設計相談**: [Discussions](https://github.com/smartbuilding-co-creation-organization/smartbuilding_datamodels/discussions)
+- **バグ報告・追加要望**: [Issues](https://github.com/smartbuilding-co-creation-organization/smartbuilding_datamodels/issues)
 
 データモデルはスマートビルの共通言語です。分かりやすく、使いやすい定義へのご協力をお願いします。
+
+## 10. コントリビューションのライセンス
+
+明示的に別段の記載がない限り、コントリビューションは変更対象ファイルに
+適用されるライセンスの下で提供されます。オントロジーおよび文書には
+CC BY 4.0、ソフトウェアおよび自動化設定には Apache License 2.0 が
+適用されます。詳細は [LICENSE](LICENSE) を確認してください。
+
+コントリビューターは、提出する内容をこの条件で提供する権限を有している
+ことを確認してください。
