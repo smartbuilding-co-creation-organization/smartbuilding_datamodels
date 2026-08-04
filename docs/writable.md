@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: writable 
 
@@ -7,11 +10,11 @@ _Whether the point value can be written (commanded)_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:writable](https://www.sbco.or.jp/ont/writable)
-Alias: writable
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,28 @@ Alias: writable
 
 ## Properties
 
-* Range: [Boolean](Boolean.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Boolean](Boolean.md) |
+| Domain Of | [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -80,10 +98,9 @@ annotations:
 description: Whether the point value can be written (commanded)
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: writable
 domain_of:
 - PointExt
 range: boolean
 
 ```
-</details>
+</details></div>

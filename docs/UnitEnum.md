@@ -1,3 +1,9 @@
+---
+search:
+  boost: 2.0
+---
+
+
 # Enum: UnitEnum 
 
 
@@ -7,10 +13,11 @@ _Allowed measurement units_
 
 
 
+<div data-search-exclude markdown="1">
+
 URI: [sbco:UnitEnum](https://www.sbco.or.jp/ont/UnitEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | celsius | None | Degree Celsius |
@@ -30,8 +37,12 @@ URI: [sbco:UnitEnum](https://www.sbco.or.jp/ont/UnitEnum)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -80,3 +91,5 @@ permissible_values:
 
 ```
 </details>
+
+</div>

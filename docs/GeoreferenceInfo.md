@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: GeoreferenceInfo 
 
@@ -6,6 +9,8 @@
 _Placeholder for REC Georeference; details can be supplied by extensions._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -84,6 +89,12 @@ URI: [rec:Georeference](https://w3id.org/rec/Georeference)
         * **GeoreferenceInfo**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:Georeference](https://w3id.org/rec/Georeference) |
+
 
 ## Slots
 
@@ -124,8 +135,12 @@ URI: [rec:Georeference](https://w3id.org/rec/Georeference)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -203,7 +218,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: GeoreferenceInfo
     domain_of:
     - Space
@@ -228,7 +242,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:description
-    alias: description
     owner: GeoreferenceInfo
     domain_of:
     - Space
@@ -241,7 +254,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: GeoreferenceInfo
     domain_of:
     - Space
@@ -265,7 +277,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: GeoreferenceInfo
     domain_of:
     - Space
@@ -288,7 +299,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: GeoreferenceInfo
     domain_of:
     - Space
@@ -315,7 +325,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:format
-    alias: format
     owner: GeoreferenceInfo
     domain_of:
     - Information
@@ -330,7 +339,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:url
-    alias: url
     owner: GeoreferenceInfo
     domain_of:
     - Information
@@ -345,7 +353,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:version
-    alias: version
     owner: GeoreferenceInfo
     domain_of:
     - Information
@@ -360,7 +367,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:language
-    alias: language
     owner: GeoreferenceInfo
     domain_of:
     - Information
@@ -376,7 +382,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:size
-    alias: size
     owner: GeoreferenceInfo
     domain_of:
     - Information
@@ -391,7 +396,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:checksum
-    alias: checksum
     owner: GeoreferenceInfo
     domain_of:
     - Information
@@ -399,4 +403,4 @@ attributes:
 class_uri: rec:Georeference
 
 ```
-</details>
+</details></div>

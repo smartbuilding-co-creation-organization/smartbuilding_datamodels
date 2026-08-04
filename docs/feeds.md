@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: feeds 
 
@@ -7,11 +10,11 @@ _Equipment or system that this equipment feeds_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [brick:feeds](https://brickschema.org/schema/Brick#feeds)
-Alias: feeds
-
 <!-- no inheritance hierarchy -->
 
 
@@ -32,15 +35,30 @@ Alias: feeds
 
 ## Properties
 
-* Range: [Resource](Resource.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [Resource](Resource.md) |
+| Domain Of | [Equipment](Equipment.md) |
+| Slot URI | [brick:feeds](https://brickschema.org/schema/Brick#feeds) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -84,11 +102,10 @@ description: Equipment or system that this equipment feeds
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: brick:feeds
-alias: feeds
 domain_of:
 - Equipment
 range: Resource
 multivalued: true
 
 ```
-</details>
+</details></div>

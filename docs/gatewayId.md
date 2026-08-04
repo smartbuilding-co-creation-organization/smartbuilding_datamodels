@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: gatewayId 
 
@@ -7,11 +10,11 @@ _Identifier of the gateway device managing this point_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:gatewayId](https://www.sbco.or.jp/ont/gatewayId)
-Alias: gatewayId
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,28 @@ Alias: gatewayId
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -80,10 +98,9 @@ annotations:
 description: Identifier of the gateway device managing this point
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: gatewayId
 domain_of:
 - PointExt
 range: string
 
 ```
-</details>
+</details></div>

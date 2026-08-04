@@ -1,3 +1,9 @@
+---
+search:
+  boost: 2.0
+---
+
+
 # Enum: SubstanceEnum 
 
 
@@ -7,10 +13,11 @@ _Types of substances that can be fed between equipment_
 
 
 
+<div data-search-exclude markdown="1">
+
 URI: [sbco:SubstanceEnum](https://www.sbco.or.jp/ont/SubstanceEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | ACElec | None | AC Electricity |
@@ -63,8 +70,12 @@ URI: [sbco:SubstanceEnum](https://www.sbco.or.jp/ont/SubstanceEnum)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -200,3 +211,5 @@ permissible_values:
 
 ```
 </details>
+
+</div>

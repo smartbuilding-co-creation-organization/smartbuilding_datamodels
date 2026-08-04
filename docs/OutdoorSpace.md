@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: OutdoorSpace 
 
@@ -6,6 +9,8 @@
 _An outdoor space associated with a site or building._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -254,6 +259,12 @@ URI: [rec:OutdoorSpace](https://w3id.org/rec/OutdoorSpace)
         * **OutdoorSpace**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:OutdoorSpace](https://w3id.org/rec/OutdoorSpace) |
+
 
 ## Slots
 
@@ -267,7 +278,7 @@ URI: [rec:OutdoorSpace](https://w3id.org/rec/OutdoorSpace)
 | [constructedBy](constructedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that constructed this architecture | [Architecture](Architecture.md) |
 | [containsElement](containsElement.md) | * <br/> [BuildingElement](BuildingElement.md) | Building element contained within this architecture | [Architecture](Architecture.md) |
 | [documentation](documentation.md) | * <br/> [Document](Document.md) | Documentation related to this asset | [Architecture](Architecture.md) |
-| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | [Architecture](Architecture.md) |
+| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | [Architecture](Architecture.md) |
 | [intersectingElement](intersectingElement.md) | * <br/> [BuildingElement](BuildingElement.md) | Building element intersecting with this architecture | [Architecture](Architecture.md) |
 | [isFedBy](isFedBy.md) | * <br/> [Resource](Resource.md) | Resource that feeds this architecture | [Architecture](Architecture.md) |
 | [operatedBy](operatedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that operates this architecture | [Architecture](Architecture.md) |
@@ -324,8 +335,12 @@ URI: [rec:OutdoorSpace](https://w3id.org/rec/OutdoorSpace)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -388,7 +403,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:area
-    alias: area
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -399,7 +413,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:capacity
-    alias: capacity
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -410,7 +423,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:address
-    alias: address
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -422,7 +434,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:adjacentElement
-    alias: adjacentElement
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -434,7 +445,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:architectedBy
-    alias: architectedBy
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -446,7 +456,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:constructedBy
-    alias: constructedBy
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -458,7 +467,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:containsElement
-    alias: containsElement
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -470,7 +478,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:documentation
-    alias: documentation
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -483,7 +490,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:hasPoint
-    alias: hasPoint
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -499,7 +505,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:intersectingElement
-    alias: intersectingElement
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -515,7 +520,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isFedBy
-    alias: isFedBy
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -528,7 +532,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:operatedBy
-    alias: operatedBy
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -540,7 +543,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:ownedBy
-    alias: ownedBy
     owner: OutdoorSpace
     domain_of:
     - Architecture
@@ -561,7 +563,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
-    alias: id
     owner: OutdoorSpace
     domain_of:
     - Space
@@ -580,7 +581,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:geometry
-    alias: geometry
     owner: OutdoorSpace
     domain_of:
     - Space
@@ -596,7 +596,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:georeference
-    alias: georeference
     owner: OutdoorSpace
     domain_of:
     - Space
@@ -608,7 +607,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:hasPart
-    alias: hasPart
     owner: OutdoorSpace
     domain_of:
     - Space
@@ -629,7 +627,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isLocationOf
-    alias: isLocationOf
     owner: OutdoorSpace
     domain_of:
     - Space
@@ -641,7 +638,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isPartOf
-    alias: isPartOf
     owner: OutdoorSpace
     domain_of:
     - Space
@@ -662,7 +658,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: OutdoorSpace
     domain_of:
     - Space
@@ -685,7 +680,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: OutdoorSpace
     domain_of:
     - Space
@@ -708,7 +702,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: OutdoorSpace
     domain_of:
     - Space
@@ -732,7 +725,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: OutdoorSpace
     domain_of:
     - Space
@@ -757,7 +749,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:description
-    alias: description
     owner: OutdoorSpace
     domain_of:
     - Space
@@ -767,4 +758,4 @@ attributes:
 class_uri: rec:OutdoorSpace
 
 ```
-</details>
+</details></div>

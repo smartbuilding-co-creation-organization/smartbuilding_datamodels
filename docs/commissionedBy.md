@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: commissionedBy 
 
@@ -7,11 +10,11 @@ _Agent or resource that commissioned this asset_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:commissionedBy](https://w3id.org/rec/commissionedBy)
-Alias: commissionedBy
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,8 +25,8 @@ Alias: commissionedBy
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
@@ -33,15 +36,30 @@ Alias: commissionedBy
 
 ## Properties
 
-* Range: [Agent](Agent.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [Agent](Agent.md) |
+| Domain Of | [Asset](Asset.md) |
+| Slot URI | [rec:commissionedBy](https://w3id.org/rec/commissionedBy) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -74,11 +92,10 @@ description: Agent or resource that commissioned this asset
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:commissionedBy
-alias: commissionedBy
 domain_of:
 - Asset
 range: Agent
 multivalued: true
 
 ```
-</details>
+</details></div>

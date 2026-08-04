@@ -1,3 +1,9 @@
+---
+search:
+  boost: 2.0
+---
+
+
 # Enum: AggregateEnum 
 
 
@@ -7,10 +13,11 @@ _Aggregation functions for point data processing_
 
 
 
+<div data-search-exclude markdown="1">
+
 URI: [sbco:AggregateEnum](https://www.sbco.or.jp/ont/AggregateEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | average | None | Average value |
@@ -36,8 +43,12 @@ URI: [sbco:AggregateEnum](https://www.sbco.or.jp/ont/AggregateEnum)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -103,3 +114,5 @@ permissible_values:
 
 ```
 </details>
+
+</div>

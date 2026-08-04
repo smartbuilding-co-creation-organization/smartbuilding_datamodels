@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: Document 
 
@@ -6,6 +9,8 @@
 _A document providing information about a building element or asset_
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -84,6 +89,12 @@ URI: [rec:Document](https://w3id.org/rec/Document)
         * **Document**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:Document](https://w3id.org/rec/Document) |
+
 
 ## Slots
 
@@ -126,8 +137,12 @@ URI: [rec:Document](https://w3id.org/rec/Document)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -205,7 +220,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: Document
     domain_of:
     - Space
@@ -230,7 +244,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:description
-    alias: description
     owner: Document
     domain_of:
     - Space
@@ -243,7 +256,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: Document
     domain_of:
     - Space
@@ -267,7 +279,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: Document
     domain_of:
     - Space
@@ -290,7 +301,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: Document
     domain_of:
     - Space
@@ -317,7 +327,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:format
-    alias: format
     owner: Document
     domain_of:
     - Information
@@ -332,7 +341,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:url
-    alias: url
     owner: Document
     domain_of:
     - Information
@@ -347,7 +355,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:version
-    alias: version
     owner: Document
     domain_of:
     - Information
@@ -362,7 +369,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:language
-    alias: language
     owner: Document
     domain_of:
     - Information
@@ -378,7 +384,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:size
-    alias: size
     owner: Document
     domain_of:
     - Information
@@ -393,7 +398,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:checksum
-    alias: checksum
     owner: Document
     domain_of:
     - Information
@@ -401,4 +405,4 @@ attributes:
 class_uri: rec:Document
 
 ```
-</details>
+</details></div>

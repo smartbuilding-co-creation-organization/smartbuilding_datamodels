@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: radius 
 
@@ -7,11 +10,11 @@ _Radius in meters for circular geofences_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:radius](https://w3id.org/rec/radius)
-Alias: radius
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,13 +25,28 @@ Alias: radius
 
 ## Properties
 
-* Range: [Float](Float.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Float](Float.md) |
+| Slot URI | [rec:radius](https://w3id.org/rec/radius) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -72,8 +90,7 @@ description: Radius in meters for circular geofences
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:radius
-alias: radius
 range: float
 
 ```
-</details>
+</details></div>

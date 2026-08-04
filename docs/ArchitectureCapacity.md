@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: ArchitectureCapacity 
 
@@ -6,6 +9,8 @@
 _Describes business-relevant capacity measurements typically associated with architected spaces_
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -71,6 +76,12 @@ URI: [rec:ArchitectureCapacity](https://w3id.org/rec/ArchitectureCapacity)
     * **ArchitectureCapacity**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:ArchitectureCapacity](https://w3id.org/rec/ArchitectureCapacity) |
+
 
 ## Slots
 
@@ -104,8 +115,12 @@ URI: [rec:ArchitectureCapacity](https://w3id.org/rec/ArchitectureCapacity)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -200,7 +215,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
-    alias: id
     owner: ArchitectureCapacity
     domain_of:
     - Space
@@ -219,7 +233,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: ArchitectureCapacity
     domain_of:
     - Space
@@ -240,7 +253,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: ArchitectureCapacity
     domain_of:
     - Space
@@ -264,7 +276,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: ArchitectureCapacity
     domain_of:
     - Space
@@ -287,7 +298,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: ArchitectureCapacity
     domain_of:
     - Space
@@ -307,4 +317,4 @@ attributes:
 class_uri: rec:ArchitectureCapacity
 
 ```
-</details>
+</details></div>

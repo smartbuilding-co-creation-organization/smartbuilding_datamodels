@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: Image 
 
@@ -6,6 +9,8 @@
 _An image file containing visual information_
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -84,6 +89,12 @@ URI: [rec:Image](https://w3id.org/rec/Image)
         * **Image**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:Image](https://w3id.org/rec/Image) |
+
 
 ## Slots
 
@@ -110,8 +121,12 @@ URI: [rec:Image](https://w3id.org/rec/Image)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -189,7 +204,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: Image
     domain_of:
     - Space
@@ -214,7 +228,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:description
-    alias: description
     owner: Image
     domain_of:
     - Space
@@ -227,7 +240,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: Image
     domain_of:
     - Space
@@ -251,7 +263,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: Image
     domain_of:
     - Space
@@ -274,7 +285,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: Image
     domain_of:
     - Space
@@ -301,7 +311,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:format
-    alias: format
     owner: Image
     domain_of:
     - Information
@@ -316,7 +325,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:url
-    alias: url
     owner: Image
     domain_of:
     - Information
@@ -331,7 +339,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:version
-    alias: version
     owner: Image
     domain_of:
     - Information
@@ -346,7 +353,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:language
-    alias: language
     owner: Image
     domain_of:
     - Information
@@ -362,7 +368,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:size
-    alias: size
     owner: Image
     domain_of:
     - Information
@@ -377,7 +382,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:checksum
-    alias: checksum
     owner: Image
     domain_of:
     - Information
@@ -385,4 +389,4 @@ attributes:
 class_uri: rec:Image
 
 ```
-</details>
+</details></div>

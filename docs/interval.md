@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: interval 
 
@@ -7,11 +10,11 @@ _Polling or reporting interval in seconds_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:interval](https://www.sbco.or.jp/ont/interval)
-Alias: interval
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,28 @@ Alias: interval
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Integer](Integer.md) |
+| Domain Of | [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -80,10 +98,9 @@ annotations:
 description: Polling or reporting interval in seconds
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: interval
 domain_of:
 - PointExt
 range: integer
 
 ```
-</details>
+</details></div>

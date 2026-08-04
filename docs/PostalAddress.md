@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: PostalAddress 
 
@@ -6,6 +9,8 @@
 _A postal address_
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -84,6 +89,12 @@ URI: [rec:PostalAddress](https://w3id.org/rec/PostalAddress)
         * **PostalAddress**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:PostalAddress](https://w3id.org/rec/PostalAddress) |
+
 
 ## Slots
 
@@ -123,8 +134,12 @@ URI: [rec:PostalAddress](https://w3id.org/rec/PostalAddress)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -207,7 +222,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: PostalAddress
     domain_of:
     - Space
@@ -228,7 +242,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: PostalAddress
     domain_of:
     - Space
@@ -252,7 +265,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: PostalAddress
     domain_of:
     - Space
@@ -275,7 +287,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: PostalAddress
     domain_of:
     - Space
@@ -302,7 +313,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:description
-    alias: description
     owner: PostalAddress
     domain_of:
     - Space
@@ -319,7 +329,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:format
-    alias: format
     owner: PostalAddress
     domain_of:
     - Information
@@ -334,7 +343,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:url
-    alias: url
     owner: PostalAddress
     domain_of:
     - Information
@@ -349,7 +357,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:version
-    alias: version
     owner: PostalAddress
     domain_of:
     - Information
@@ -364,7 +371,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:language
-    alias: language
     owner: PostalAddress
     domain_of:
     - Information
@@ -380,7 +386,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:size
-    alias: size
     owner: PostalAddress
     domain_of:
     - Information
@@ -395,7 +400,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:checksum
-    alias: checksum
     owner: PostalAddress
     domain_of:
     - Information
@@ -403,4 +407,4 @@ attributes:
 class_uri: rec:PostalAddress
 
 ```
-</details>
+</details></div>

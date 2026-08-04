@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: Building 
 
@@ -6,6 +9,8 @@
 _A building which is part of a site._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -254,6 +259,12 @@ URI: [rec:Building](https://w3id.org/rec/Building)
         * **Building**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:Building](https://w3id.org/rec/Building) |
+
 
 ## Slots
 
@@ -267,7 +278,7 @@ URI: [rec:Building](https://w3id.org/rec/Building)
 | [constructedBy](constructedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that constructed this architecture | [Architecture](Architecture.md) |
 | [containsElement](containsElement.md) | * <br/> [BuildingElement](BuildingElement.md) | Building element contained within this architecture | [Architecture](Architecture.md) |
 | [documentation](documentation.md) | * <br/> [Document](Document.md) | Documentation related to this asset | [Architecture](Architecture.md) |
-| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | [Architecture](Architecture.md) |
+| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | [Architecture](Architecture.md) |
 | [intersectingElement](intersectingElement.md) | * <br/> [BuildingElement](BuildingElement.md) | Building element intersecting with this architecture | [Architecture](Architecture.md) |
 | [isFedBy](isFedBy.md) | * <br/> [Resource](Resource.md) | Resource that feeds this architecture | [Architecture](Architecture.md) |
 | [operatedBy](operatedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that operates this architecture | [Architecture](Architecture.md) |
@@ -324,8 +335,12 @@ URI: [rec:Building](https://w3id.org/rec/Building)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -403,7 +418,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:area
-    alias: area
     owner: Building
     domain_of:
     - Architecture
@@ -414,7 +428,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:capacity
-    alias: capacity
     owner: Building
     domain_of:
     - Architecture
@@ -425,7 +438,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:address
-    alias: address
     owner: Building
     domain_of:
     - Architecture
@@ -437,7 +449,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:adjacentElement
-    alias: adjacentElement
     owner: Building
     domain_of:
     - Architecture
@@ -449,7 +460,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:architectedBy
-    alias: architectedBy
     owner: Building
     domain_of:
     - Architecture
@@ -461,7 +471,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:constructedBy
-    alias: constructedBy
     owner: Building
     domain_of:
     - Architecture
@@ -473,7 +482,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:containsElement
-    alias: containsElement
     owner: Building
     domain_of:
     - Architecture
@@ -485,7 +493,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:documentation
-    alias: documentation
     owner: Building
     domain_of:
     - Architecture
@@ -498,7 +505,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:hasPoint
-    alias: hasPoint
     owner: Building
     domain_of:
     - Architecture
@@ -514,7 +520,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:intersectingElement
-    alias: intersectingElement
     owner: Building
     domain_of:
     - Architecture
@@ -530,7 +535,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isFedBy
-    alias: isFedBy
     owner: Building
     domain_of:
     - Architecture
@@ -543,7 +547,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:operatedBy
-    alias: operatedBy
     owner: Building
     domain_of:
     - Architecture
@@ -555,7 +558,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:ownedBy
-    alias: ownedBy
     owner: Building
     domain_of:
     - Architecture
@@ -576,7 +578,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
-    alias: id
     owner: Building
     domain_of:
     - Space
@@ -595,7 +596,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:geometry
-    alias: geometry
     owner: Building
     domain_of:
     - Space
@@ -611,7 +611,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:georeference
-    alias: georeference
     owner: Building
     domain_of:
     - Space
@@ -623,7 +622,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:hasPart
-    alias: hasPart
     owner: Building
     domain_of:
     - Space
@@ -644,7 +642,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isLocationOf
-    alias: isLocationOf
     owner: Building
     domain_of:
     - Space
@@ -656,7 +653,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isPartOf
-    alias: isPartOf
     owner: Building
     domain_of:
     - Space
@@ -677,7 +673,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: Building
     domain_of:
     - Space
@@ -700,7 +695,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: Building
     domain_of:
     - Space
@@ -723,7 +717,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: Building
     domain_of:
     - Space
@@ -747,7 +740,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: Building
     domain_of:
     - Space
@@ -772,7 +764,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:description
-    alias: description
     owner: Building
     domain_of:
     - Space
@@ -782,4 +773,4 @@ attributes:
 class_uri: rec:Building
 
 ```
-</details>
+</details></div>

@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: Asset 
 
@@ -6,6 +9,8 @@
 _Something which is placed inside of a building, but is not an integral part of that building's structure; e.g., furniture, equipment, systems, etc._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 * __NOTE__: this is an abstract class and should not be instantiated directly
@@ -197,6 +202,12 @@ URI: [rec:Asset](https://w3id.org/rec/Asset)
         * [Equipment](Equipment.md)
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:Asset](https://w3id.org/rec/Asset) |
+
 
 ## Slots
 
@@ -208,7 +219,7 @@ URI: [rec:Asset](https://w3id.org/rec/Asset)
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the resource | direct |
 | [geometry](geometry.md) | 0..1 <br/> [GeometryInfo](GeometryInfo.md) | Polygon representing the spatial extent of this Space | direct |
 | [hasPart](hasPart.md) | * <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | The subject is composed in part of the entity given by the object | direct |
-| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | direct |
+| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | direct |
 | [installedBy](installedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that installed this asset | direct |
 | [isPartOf](isPartOf.md) | 0..1 <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | The subject is a part of the entity given by the object | direct |
 | [locatedIn](locatedIn.md) | * <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | Space where this asset is located | direct |
@@ -240,8 +251,12 @@ URI: [rec:Asset](https://w3id.org/rec/Asset)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -373,7 +388,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
-    alias: id
     owner: Asset
     domain_of:
     - Space
@@ -392,7 +406,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:commissionedBy
-    alias: commissionedBy
     owner: Asset
     domain_of:
     - Asset
@@ -404,7 +417,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:documentation
-    alias: documentation
     owner: Asset
     domain_of:
     - Architecture
@@ -421,7 +433,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:description
-    alias: description
     owner: Asset
     domain_of:
     - Space
@@ -434,7 +445,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:geometry
-    alias: geometry
     owner: Asset
     domain_of:
     - Space
@@ -447,7 +457,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:hasPart
-    alias: hasPart
     owner: Asset
     domain_of:
     - Space
@@ -468,7 +477,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:hasPoint
-    alias: hasPoint
     owner: Asset
     domain_of:
     - Architecture
@@ -484,7 +492,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:installedBy
-    alias: installedBy
     owner: Asset
     domain_of:
     - Asset
@@ -496,7 +503,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isPartOf
-    alias: isPartOf
     owner: Asset
     domain_of:
     - Space
@@ -517,7 +523,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:locatedIn
-    alias: locatedIn
     owner: Asset
     domain_of:
     - Asset
@@ -537,7 +542,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:manufacturedBy
-    alias: manufacturedBy
     owner: Asset
     domain_of:
     - Asset
@@ -549,7 +553,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:mountedOn
-    alias: mountedOn
     owner: Asset
     domain_of:
     - Asset
@@ -560,7 +563,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:servicedBy
-    alias: servicedBy
     owner: Asset
     domain_of:
     - Asset
@@ -572,7 +574,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:assetTag
-    alias: assetTag
     owner: Asset
     domain_of:
     - Asset
@@ -584,7 +585,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:commissioningDate
-    alias: commissioningDate
     owner: Asset
     domain_of:
     - Asset
@@ -595,7 +595,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: Asset
     domain_of:
     - Space
@@ -618,7 +617,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: Asset
     domain_of:
     - Space
@@ -641,7 +639,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: Asset
     domain_of:
     - Space
@@ -665,7 +662,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:initialCost
-    alias: initialCost
     owner: Asset
     domain_of:
     - Asset
@@ -676,7 +672,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:installationDate
-    alias: installationDate
     owner: Asset
     domain_of:
     - Asset
@@ -687,7 +682,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:IPAddress
-    alias: IPAddress
     owner: Asset
     domain_of:
     - Asset
@@ -700,7 +694,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:MACAddress
-    alias: MACAddress
     owner: Asset
     domain_of:
     - Asset
@@ -713,7 +706,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:maintenanceInterval
-    alias: maintenanceInterval
     owner: Asset
     domain_of:
     - Asset
@@ -725,7 +717,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:modelNumber
-    alias: modelNumber
     owner: Asset
     domain_of:
     - Asset
@@ -736,7 +727,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: Asset
     domain_of:
     - Space
@@ -757,7 +747,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:serialNumber
-    alias: serialNumber
     owner: Asset
     domain_of:
     - Asset
@@ -768,7 +757,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:turnoverDate
-    alias: turnoverDate
     owner: Asset
     domain_of:
     - Asset
@@ -779,7 +767,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:weight
-    alias: weight
     owner: Asset
     domain_of:
     - Asset
@@ -787,4 +774,4 @@ attributes:
 class_uri: rec:Asset
 
 ```
-</details>
+</details></div>

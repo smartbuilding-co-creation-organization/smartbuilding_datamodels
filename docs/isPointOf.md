@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: isPointOf 
 
@@ -7,11 +10,11 @@ _Equipment that this point belongs to_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [brick:isPointOf](https://brickschema.org/schema/Brick#isPointOf)
-Alias: isPointOf
-
 <!-- no inheritance hierarchy -->
 
 
@@ -32,13 +35,29 @@ Alias: isPointOf
 
 ## Properties
 
-* Range: [Equipment](Equipment.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Equipment](Equipment.md) |
+| Domain Of | [Point](Point.md) |
+| Slot URI | [brick:isPointOf](https://brickschema.org/schema/Brick#isPointOf) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -82,10 +101,9 @@ description: Equipment that this point belongs to
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: brick:isPointOf
-alias: isPointOf
 domain_of:
 - Point
 range: Equipment
 
 ```
-</details>
+</details></div>

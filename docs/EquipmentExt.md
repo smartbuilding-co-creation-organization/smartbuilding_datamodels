@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: EquipmentExt 
 
@@ -6,6 +9,8 @@
 _An equipment asset installed in a space._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -223,6 +228,12 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
             * **EquipmentExt**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt) |
+
 
 ## Slots
 
@@ -241,7 +252,7 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
 | [description](description.md) | 0..1 <br/> [String](String.md) | A textual description of the resource | [Asset](Asset.md) |
 | [geometry](geometry.md) | 0..1 <br/> [GeometryInfo](GeometryInfo.md) | Polygon representing the spatial extent of this Space | [Asset](Asset.md) |
 | [hasPart](hasPart.md) | * <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | The subject is composed in part of the entity given by the object | [Asset](Asset.md) |
-| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | [Asset](Asset.md) |
+| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | [Asset](Asset.md) |
 | [installedBy](installedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that installed this asset | [Asset](Asset.md) |
 | [isPartOf](isPartOf.md) | 0..1 <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | The subject is a part of the entity given by the object | [Asset](Asset.md) |
 | [locatedIn](locatedIn.md) | * <br/> [Any](Any.md)&nbsp;or&nbsp;<br />[Space](Space.md)&nbsp;or&nbsp;<br />[Site](Site.md)&nbsp;or&nbsp;<br />[Building](Building.md)&nbsp;or&nbsp;<br />[Level](Level.md)&nbsp;or&nbsp;<br />[Room](Room.md)&nbsp;or&nbsp;<br />[Zone](Zone.md)&nbsp;or&nbsp;<br />[OutdoorSpace](OutdoorSpace.md) | Space where this asset is located | [Asset](Asset.md) |
@@ -288,8 +299,12 @@ URI: [sbco:EquipmentExt](https://www.sbco.or.jp/ont/EquipmentExt)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -390,7 +405,6 @@ attributes:
     description: Device Type
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: deviceType
     owner: EquipmentExt
     domain_of:
     - EquipmentExt
@@ -400,7 +414,6 @@ attributes:
     description: Parent panel
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: panel
     owner: EquipmentExt
     domain_of:
     - EquipmentExt
@@ -410,7 +423,6 @@ attributes:
     description: Parent installation area
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: installationArea
     owner: EquipmentExt
     domain_of:
     - EquipmentExt
@@ -421,7 +433,6 @@ attributes:
     description: Target area for this resource
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: targetArea
     owner: EquipmentExt
     domain_of:
     - EquipmentExt
@@ -437,7 +448,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: brick:feeds
-    alias: feeds
     owner: EquipmentExt
     domain_of:
     - Equipment
@@ -453,7 +463,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isFedBy
-    alias: isFedBy
     owner: EquipmentExt
     domain_of:
     - Architecture
@@ -466,7 +475,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: brick:operationalStageCount
-    alias: operationalStageCount
     owner: EquipmentExt
     domain_of:
     - Equipment
@@ -486,7 +494,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
-    alias: id
     owner: EquipmentExt
     domain_of:
     - Space
@@ -505,7 +512,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:commissionedBy
-    alias: commissionedBy
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -517,7 +523,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:documentation
-    alias: documentation
     owner: EquipmentExt
     domain_of:
     - Architecture
@@ -534,7 +539,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:description
-    alias: description
     owner: EquipmentExt
     domain_of:
     - Space
@@ -547,7 +551,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:geometry
-    alias: geometry
     owner: EquipmentExt
     domain_of:
     - Space
@@ -560,7 +563,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:hasPart
-    alias: hasPart
     owner: EquipmentExt
     domain_of:
     - Space
@@ -581,7 +583,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:hasPoint
-    alias: hasPoint
     owner: EquipmentExt
     domain_of:
     - Architecture
@@ -597,7 +598,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:installedBy
-    alias: installedBy
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -609,7 +609,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isPartOf
-    alias: isPartOf
     owner: EquipmentExt
     domain_of:
     - Space
@@ -630,7 +629,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:locatedIn
-    alias: locatedIn
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -650,7 +648,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:manufacturedBy
-    alias: manufacturedBy
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -662,7 +659,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:mountedOn
-    alias: mountedOn
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -673,7 +669,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:servicedBy
-    alias: servicedBy
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -685,7 +680,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:assetTag
-    alias: assetTag
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -697,7 +691,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:commissioningDate
-    alias: commissioningDate
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -708,7 +701,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: EquipmentExt
     domain_of:
     - Space
@@ -731,7 +723,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: EquipmentExt
     domain_of:
     - Space
@@ -754,7 +745,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: EquipmentExt
     domain_of:
     - Space
@@ -778,7 +768,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:initialCost
-    alias: initialCost
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -789,7 +778,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:installationDate
-    alias: installationDate
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -800,7 +788,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:IPAddress
-    alias: IPAddress
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -813,7 +800,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:MACAddress
-    alias: MACAddress
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -826,7 +812,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:maintenanceInterval
-    alias: maintenanceInterval
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -838,7 +823,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:modelNumber
-    alias: modelNumber
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -849,7 +833,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: EquipmentExt
     domain_of:
     - Space
@@ -870,7 +853,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:serialNumber
-    alias: serialNumber
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -881,7 +863,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:turnoverDate
-    alias: turnoverDate
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -892,7 +873,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:weight
-    alias: weight
     owner: EquipmentExt
     domain_of:
     - Asset
@@ -900,4 +880,4 @@ attributes:
 class_uri: sbco:EquipmentExt
 
 ```
-</details>
+</details></div>

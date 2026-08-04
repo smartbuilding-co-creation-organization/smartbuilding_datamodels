@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: coordinates 
 
@@ -7,11 +10,11 @@ _Geographic coordinates defining the geofence boundary_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:coordinates](https://w3id.org/rec/coordinates)
-Alias: coordinates
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,13 +25,28 @@ Alias: coordinates
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Slot URI | [rec:coordinates](https://w3id.org/rec/coordinates) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -72,8 +90,7 @@ description: Geographic coordinates defining the geofence boundary
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:coordinates
-alias: coordinates
 range: string
 
 ```
-</details>
+</details></div>

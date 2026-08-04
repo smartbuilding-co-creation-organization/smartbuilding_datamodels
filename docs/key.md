@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: key 
 
@@ -7,11 +10,11 @@ _Key of the map entry_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:key](https://www.sbco.or.jp/ont/key)
-Alias: key
-
 <!-- no inheritance hierarchy -->
 
 
@@ -23,8 +26,8 @@ Alias: key
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
 | [KeyStringMapEntry](KeyStringMapEntry.md) | One entry in a map from strings to strings |  yes  |
-| [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | One entry in a map from strings to string-to-string maps |  yes  |
 | [KeyBoolMapEntry](KeyBoolMapEntry.md) | One entry in a map from strings to booleans |  yes  |
+| [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | One entry in a map from strings to string-to-string maps |  yes  |
 
 
 
@@ -33,13 +36,28 @@ Alias: key
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [KeyStringMapEntry](KeyStringMapEntry.md), [KeyBoolMapEntry](KeyBoolMapEntry.md), [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -71,7 +89,6 @@ name: key
 description: Key of the map entry
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: key
 domain_of:
 - KeyStringMapEntry
 - KeyBoolMapEntry
@@ -79,4 +96,4 @@ domain_of:
 range: string
 
 ```
-</details>
+</details></div>

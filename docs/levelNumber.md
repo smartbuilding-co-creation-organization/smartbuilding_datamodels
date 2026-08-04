@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: levelNumber 
 
@@ -7,11 +10,11 @@ _Floor or level number within a building_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:levelNumber](https://w3id.org/rec/levelNumber)
-Alias: levelNumber
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,29 @@ Alias: levelNumber
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Integer](Integer.md) |
+| Domain Of | [Level](Level.md) |
+| Slot URI | [rec:levelNumber](https://w3id.org/rec/levelNumber) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -81,10 +100,9 @@ description: Floor or level number within a building
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:levelNumber
-alias: levelNumber
 domain_of:
 - Level
 range: integer
 
 ```
-</details>
+</details></div>

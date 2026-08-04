@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: unit 
 
@@ -7,11 +10,11 @@ _Measurement unit (enum key; symbol can be taken from annotations)_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:unit](https://www.sbco.or.jp/ont/unit)
-Alias: unit
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,28 @@ Alias: unit
 
 ## Properties
 
-* Range: [UnitEnum](UnitEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [UnitEnum](UnitEnum.md) |
+| Domain Of | [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -69,10 +87,9 @@ name: unit
 description: Measurement unit (enum key; symbol can be taken from annotations)
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: unit
 domain_of:
 - PointExt
 range: UnitEnum
 
 ```
-</details>
+</details></div>

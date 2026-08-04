@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: modelNumber 
 
@@ -7,11 +10,11 @@ _Model number of the asset_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:modelNumber](https://w3id.org/rec/modelNumber)
-Alias: modelNumber
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,8 +25,8 @@ Alias: modelNumber
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
@@ -33,13 +36,29 @@ Alias: modelNumber
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [Asset](Asset.md) |
+| Slot URI | [rec:modelNumber](https://w3id.org/rec/modelNumber) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -72,10 +91,9 @@ description: Model number of the asset
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:modelNumber
-alias: modelNumber
 domain_of:
 - Asset
 range: string
 
 ```
-</details>
+</details></div>

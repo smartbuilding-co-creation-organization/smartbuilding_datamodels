@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: KeyMapOfStringMapEntry 
 
@@ -6,6 +9,8 @@
 _One entry in a map from strings to string-to-string maps._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -39,7 +44,6 @@ URI: [sbco:KeyMapOfStringMapEntry](https://www.sbco.or.jp/ont/KeyMapOfStringMapE
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -89,8 +93,12 @@ URI: [sbco:KeyMapOfStringMapEntry](https://www.sbco.or.jp/ont/KeyMapOfStringMapE
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -182,7 +190,6 @@ attributes:
     description: Key of the map entry
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: key
     owner: KeyMapOfStringMapEntry
     domain_of:
     - KeyStringMapEntry
@@ -195,7 +202,6 @@ attributes:
     description: Nested map entries
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: entries
     owner: KeyMapOfStringMapEntry
     domain_of:
     - KeyMapOfStringMapEntry
@@ -206,4 +212,4 @@ attributes:
     inlined_as_list: true
 
 ```
-</details>
+</details></div>

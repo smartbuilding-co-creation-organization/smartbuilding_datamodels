@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: panel 
 
@@ -7,11 +10,11 @@ _Parent panel_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:panel](https://www.sbco.or.jp/ont/panel)
-Alias: panel
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,28 @@ Alias: panel
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [EquipmentExt](EquipmentExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -69,10 +87,9 @@ name: panel
 description: Parent panel
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: panel
 domain_of:
 - EquipmentExt
 range: string
 
 ```
-</details>
+</details></div>

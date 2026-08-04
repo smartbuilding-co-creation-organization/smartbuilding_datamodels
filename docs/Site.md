@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: Site 
 
@@ -6,6 +9,8 @@
 _A piece of land upon which zero or more buildings may be situated._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -254,6 +259,13 @@ URI: [rec:Site](https://w3id.org/rec/Site)
         * **Site**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:Site](https://w3id.org/rec/Site) |
+| Tree Root | Yes |
+
 
 ## Slots
 
@@ -267,7 +279,7 @@ URI: [rec:Site](https://w3id.org/rec/Site)
 | [constructedBy](constructedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that constructed this architecture | [Architecture](Architecture.md) |
 | [containsElement](containsElement.md) | * <br/> [BuildingElement](BuildingElement.md) | Building element contained within this architecture | [Architecture](Architecture.md) |
 | [documentation](documentation.md) | * <br/> [Document](Document.md) | Documentation related to this asset | [Architecture](Architecture.md) |
-| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | [Architecture](Architecture.md) |
+| [hasPoint](hasPoint.md) | * <br/> [Point](Point.md)&nbsp;or&nbsp;<br />[PointExt](PointExt.md) | Point associated with this architecture | [Architecture](Architecture.md) |
 | [intersectingElement](intersectingElement.md) | * <br/> [BuildingElement](BuildingElement.md) | Building element intersecting with this architecture | [Architecture](Architecture.md) |
 | [isFedBy](isFedBy.md) | * <br/> [Resource](Resource.md) | Resource that feeds this architecture | [Architecture](Architecture.md) |
 | [operatedBy](operatedBy.md) | * <br/> [Agent](Agent.md) | Agent or resource that operates this architecture | [Architecture](Architecture.md) |
@@ -324,8 +336,12 @@ URI: [rec:Site](https://w3id.org/rec/Site)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -404,7 +420,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:area
-    alias: area
     owner: Site
     domain_of:
     - Architecture
@@ -415,7 +430,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:capacity
-    alias: capacity
     owner: Site
     domain_of:
     - Architecture
@@ -426,7 +440,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:address
-    alias: address
     owner: Site
     domain_of:
     - Architecture
@@ -438,7 +451,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:adjacentElement
-    alias: adjacentElement
     owner: Site
     domain_of:
     - Architecture
@@ -450,7 +462,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:architectedBy
-    alias: architectedBy
     owner: Site
     domain_of:
     - Architecture
@@ -462,7 +473,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:constructedBy
-    alias: constructedBy
     owner: Site
     domain_of:
     - Architecture
@@ -474,7 +484,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:containsElement
-    alias: containsElement
     owner: Site
     domain_of:
     - Architecture
@@ -486,7 +495,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:documentation
-    alias: documentation
     owner: Site
     domain_of:
     - Architecture
@@ -499,7 +507,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:hasPoint
-    alias: hasPoint
     owner: Site
     domain_of:
     - Architecture
@@ -515,7 +522,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:intersectingElement
-    alias: intersectingElement
     owner: Site
     domain_of:
     - Architecture
@@ -531,7 +537,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isFedBy
-    alias: isFedBy
     owner: Site
     domain_of:
     - Architecture
@@ -544,7 +549,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:operatedBy
-    alias: operatedBy
     owner: Site
     domain_of:
     - Architecture
@@ -556,7 +560,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:ownedBy
-    alias: ownedBy
     owner: Site
     domain_of:
     - Architecture
@@ -577,7 +580,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
-    alias: id
     owner: Site
     domain_of:
     - Space
@@ -596,7 +598,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:geometry
-    alias: geometry
     owner: Site
     domain_of:
     - Space
@@ -612,7 +613,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:georeference
-    alias: georeference
     owner: Site
     domain_of:
     - Space
@@ -624,7 +624,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:hasPart
-    alias: hasPart
     owner: Site
     domain_of:
     - Space
@@ -645,7 +644,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isLocationOf
-    alias: isLocationOf
     owner: Site
     domain_of:
     - Space
@@ -657,7 +655,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isPartOf
-    alias: isPartOf
     owner: Site
     domain_of:
     - Space
@@ -678,7 +675,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: Site
     domain_of:
     - Space
@@ -701,7 +697,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: Site
     domain_of:
     - Space
@@ -724,7 +719,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: Site
     domain_of:
     - Space
@@ -748,7 +742,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: Site
     domain_of:
     - Space
@@ -773,7 +766,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:description
-    alias: description
     owner: Site
     domain_of:
     - Space
@@ -784,4 +776,4 @@ class_uri: rec:Site
 tree_root: true
 
 ```
-</details>
+</details></div>

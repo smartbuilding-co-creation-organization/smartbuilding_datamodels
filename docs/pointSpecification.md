@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: pointSpecification 
 
@@ -7,11 +10,11 @@ _Point specification category as shown in equipment point list. English is recom
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:pointSpecification](https://www.sbco.or.jp/ont/pointSpecification)
-Alias: pointSpecification
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,28 @@ Alias: pointSpecification
 
 ## Properties
 
-* Range: [PointSpecificationEnum](PointSpecificationEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [PointSpecificationEnum](PointSpecificationEnum.md) |
+| Domain Of | [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -81,10 +99,9 @@ description: Point specification category as shown in equipment point list. Engl
   is recommended.
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: pointSpecification
 domain_of:
 - PointExt
 range: PointSpecificationEnum
 
 ```
-</details>
+</details></div>

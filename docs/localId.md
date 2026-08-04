@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: localId 
 
@@ -7,11 +10,11 @@ _Local identifier for this point within the gateway or system_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:localId](https://www.sbco.or.jp/ont/localId)
-Alias: localId
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,28 @@ Alias: localId
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -80,10 +98,9 @@ annotations:
 description: Local identifier for this point within the gateway or system
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: localId
 domain_of:
 - PointExt
 range: string
 
 ```
-</details>
+</details></div>

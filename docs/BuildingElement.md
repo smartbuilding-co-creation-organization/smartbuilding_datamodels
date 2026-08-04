@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: BuildingElement 
 
@@ -6,6 +9,8 @@
 _A part of the building structure_
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -71,6 +76,12 @@ URI: [rec:BuildingElement](https://w3id.org/rec/BuildingElement)
     * **BuildingElement**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:BuildingElement](https://w3id.org/rec/BuildingElement) |
+
 
 ## Slots
 
@@ -121,8 +132,12 @@ URI: [rec:BuildingElement](https://w3id.org/rec/BuildingElement)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -215,7 +230,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
-    alias: id
     owner: BuildingElement
     domain_of:
     - Space
@@ -234,7 +248,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: BuildingElement
     domain_of:
     - Space
@@ -255,7 +268,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: BuildingElement
     domain_of:
     - Space
@@ -279,7 +291,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: BuildingElement
     domain_of:
     - Space
@@ -302,7 +313,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: BuildingElement
     domain_of:
     - Space
@@ -322,4 +332,4 @@ attributes:
 class_uri: rec:BuildingElement
 
 ```
-</details>
+</details></div>

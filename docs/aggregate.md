@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: aggregate 
 
@@ -7,11 +10,11 @@ _Aggregation function or method for point data processing_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [brick:aggregate](https://brickschema.org/schema/Brick#aggregate)
-Alias: aggregate
-
 <!-- no inheritance hierarchy -->
 
 
@@ -32,13 +35,29 @@ Alias: aggregate
 
 ## Properties
 
-* Range: [AggregateEnum](AggregateEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [AggregateEnum](AggregateEnum.md) |
+| Domain Of | [Point](Point.md) |
+| Slot URI | [brick:aggregate](https://brickschema.org/schema/Brick#aggregate) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -86,10 +105,9 @@ description: Aggregation function or method for point data processing
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: brick:aggregate
-alias: aggregate
 domain_of:
 - Point
 range: AggregateEnum
 
 ```
-</details>
+</details></div>

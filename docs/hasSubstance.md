@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: hasSubstance 
 
@@ -7,11 +10,11 @@ _Substance associated with this point_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [brick:hasSubstance](https://brickschema.org/schema/Brick#hasSubstance)
-Alias: hasSubstance
-
 <!-- no inheritance hierarchy -->
 
 
@@ -32,13 +35,29 @@ Alias: hasSubstance
 
 ## Properties
 
-* Range: [SubstanceEnum](SubstanceEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [SubstanceEnum](SubstanceEnum.md) |
+| Domain Of | [Point](Point.md) |
+| Slot URI | [brick:hasSubstance](https://brickschema.org/schema/Brick#hasSubstance) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -82,10 +101,9 @@ description: Substance associated with this point
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: brick:hasSubstance
-alias: hasSubstance
 domain_of:
 - Point
 range: SubstanceEnum
 
 ```
-</details>
+</details></div>

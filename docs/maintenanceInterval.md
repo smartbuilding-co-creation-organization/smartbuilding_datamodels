@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: maintenanceInterval 
 
@@ -7,11 +10,11 @@ _Maintenance interval duration_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:maintenanceInterval](https://w3id.org/rec/maintenanceInterval)
-Alias: maintenanceInterval
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,8 +25,8 @@ Alias: maintenanceInterval
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
@@ -33,15 +36,30 @@ Alias: maintenanceInterval
 
 ## Properties
 
-* Range: [DurationString](DurationString.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [DurationString](DurationString.md) |
+| Domain Of | [Asset](Asset.md) |
+| Slot URI | [rec:maintenanceInterval](https://w3id.org/rec/maintenanceInterval) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -74,11 +92,10 @@ description: Maintenance interval duration
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:maintenanceInterval
-alias: maintenanceInterval
 domain_of:
 - Asset
 range: DurationString
 multivalued: true
 
 ```
-</details>
+</details></div>

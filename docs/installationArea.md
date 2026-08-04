@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: installationArea 
 
@@ -7,11 +10,11 @@ _Parent installation area_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:installationArea](https://www.sbco.or.jp/ont/installationArea)
-Alias: installationArea
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,8 +25,8 @@ Alias: installationArea
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PointExt](PointExt.md) | A point (sensor/actuator) in a smart building context |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
+| [PointExt](PointExt.md) | A point (sensor/actuator) in a smart building context |  no  |
 
 
 
@@ -32,13 +35,28 @@ Alias: installationArea
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [EquipmentExt](EquipmentExt.md), [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -70,11 +88,10 @@ name: installationArea
 description: Parent installation area
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: installationArea
 domain_of:
 - EquipmentExt
 - PointExt
 range: string
 
 ```
-</details>
+</details></div>

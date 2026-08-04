@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: scale 
 
@@ -7,11 +10,11 @@ _Scale factor for raw value conversion_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:scale](https://www.sbco.or.jp/ont/scale)
-Alias: scale
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,28 @@ Alias: scale
 
 ## Properties
 
-* Range: [Float](Float.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Float](Float.md) |
+| Domain Of | [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -69,10 +87,9 @@ name: scale
 description: Scale factor for raw value conversion
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: scale
 domain_of:
 - PointExt
 range: float
 
 ```
-</details>
+</details></div>
