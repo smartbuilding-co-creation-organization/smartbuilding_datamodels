@@ -1,3 +1,9 @@
+---
+search:
+  boost: 2.0
+---
+
+
 # Enum: QuantityEnum 
 
 
@@ -7,10 +13,11 @@ _Physical quantities that can be measured or monitored by points_
 
 
 
+<div data-search-exclude markdown="1">
+
 URI: [sbco:QuantityEnum](https://www.sbco.or.jp/ont/QuantityEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | Absolute_Humidity | None | Absolute humidity measurement |
@@ -123,8 +130,12 @@ URI: [sbco:QuantityEnum](https://www.sbco.or.jp/ont/QuantityEnum)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -451,3 +462,5 @@ permissible_values:
 
 ```
 </details>
+
+</div>

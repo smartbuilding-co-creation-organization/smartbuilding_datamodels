@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: Organization 
 
@@ -6,6 +9,8 @@
 _An organization such as a company, institution, or association_
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -94,6 +99,12 @@ URI: [rec:Organization](https://w3id.org/rec/Organization)
         * **Organization**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:Organization](https://w3id.org/rec/Organization) |
+
 
 ## Slots
 
@@ -124,8 +135,12 @@ URI: [rec:Organization](https://w3id.org/rec/Organization)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -218,7 +233,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
-    alias: id
     owner: Organization
     domain_of:
     - Space
@@ -237,7 +251,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: Organization
     domain_of:
     - Space
@@ -258,7 +271,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: Organization
     domain_of:
     - Space
@@ -282,7 +294,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: Organization
     domain_of:
     - Space
@@ -305,7 +316,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: Organization
     domain_of:
     - Space
@@ -330,7 +340,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:memberOf
-    alias: memberOf
     owner: Organization
     domain_of:
     - Agent
@@ -343,7 +352,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:owns
-    alias: owns
     owner: Organization
     domain_of:
     - Agent
@@ -352,4 +360,4 @@ attributes:
 class_uri: rec:Organization
 
 ```
-</details>
+</details></div>

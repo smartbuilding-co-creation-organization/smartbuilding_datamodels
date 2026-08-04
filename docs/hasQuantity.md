@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: hasQuantity 
 
@@ -7,11 +10,11 @@ _Physical quantity measured by this point_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [brick:hasQuantity](https://brickschema.org/schema/Brick#hasQuantity)
-Alias: hasQuantity
-
 <!-- no inheritance hierarchy -->
 
 
@@ -32,13 +35,29 @@ Alias: hasQuantity
 
 ## Properties
 
-* Range: [QuantityEnum](QuantityEnum.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [QuantityEnum](QuantityEnum.md) |
+| Domain Of | [Point](Point.md) |
+| Slot URI | [brick:hasQuantity](https://brickschema.org/schema/Brick#hasQuantity) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -82,10 +101,9 @@ description: Physical quantity measured by this point
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: brick:hasQuantity
-alias: hasQuantity
 domain_of:
 - Point
 range: QuantityEnum
 
 ```
-</details>
+</details></div>

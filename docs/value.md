@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: value 
 
@@ -7,11 +10,11 @@ _Value of the map entry_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:value](https://www.sbco.or.jp/ont/value)
-Alias: value
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,28 @@ Alias: value
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [KeyStringMapEntry](KeyStringMapEntry.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -69,10 +87,9 @@ name: value
 description: Value of the map entry
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: value
 domain_of:
 - KeyStringMapEntry
 range: string
 
 ```
-</details>
+</details></div>

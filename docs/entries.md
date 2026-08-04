@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: entries 
 
@@ -7,11 +10,11 @@ _Nested map entries_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:entries](https://www.sbco.or.jp/ont/entries)
-Alias: entries
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,17 +34,30 @@ Alias: entries
 
 ## Properties
 
-* Range: [KeyStringMapEntry](KeyStringMapEntry.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [KeyStringMapEntry](KeyStringMapEntry.md) |
+| Domain Of | [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) |
 
-* Required: True
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+| Multivalued | Yes |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -73,7 +89,6 @@ name: entries
 description: Nested map entries
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: entries
 domain_of:
 - KeyMapOfStringMapEntry
 range: KeyStringMapEntry
@@ -83,4 +98,4 @@ inlined: true
 inlined_as_list: true
 
 ```
-</details>
+</details></div>

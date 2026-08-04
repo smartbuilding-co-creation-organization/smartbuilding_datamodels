@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: url 
 
@@ -7,11 +10,11 @@ _URL or URI pointing to the information resource_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:url](https://w3id.org/rec/url)
-Alias: url
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,14 +25,14 @@ Alias: url
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [PostalAddress](PostalAddress.md) | A postal address |  no  |
-| [GeoreferenceInfo](GeoreferenceInfo.md) | Placeholder for REC Georeference; details can be supplied by extensions |  no  |
-| [GeometryInfo](GeometryInfo.md) | Placeholder for REC Geometry; details can be supplied by extensions |  no  |
-| [Schema](Schema.md) | A schema definition file |  no  |
-| [Media](Media.md) | A media file such as audio or video content |  no  |
-| [Image](Image.md) | An image file containing visual information |  no  |
 | [Information](Information.md) | Abstract base class for information resources such as documents, images, medi... |  no  |
 | [Document](Document.md) | A document providing information about a building element or asset |  no  |
+| [Image](Image.md) | An image file containing visual information |  no  |
+| [Media](Media.md) | A media file such as audio or video content |  no  |
+| [Schema](Schema.md) | A schema definition file |  no  |
+| [PostalAddress](PostalAddress.md) | A postal address |  no  |
+| [GeometryInfo](GeometryInfo.md) | Placeholder for REC Geometry; details can be supplied by extensions |  no  |
+| [GeoreferenceInfo](GeoreferenceInfo.md) | Placeholder for REC Georeference; details can be supplied by extensions |  no  |
 
 
 
@@ -38,13 +41,29 @@ Alias: url
 
 ## Properties
 
-* Range: [Uri](Uri.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Uri](Uri.md) |
+| Domain Of | [Information](Information.md) |
+| Slot URI | [rec:url](https://w3id.org/rec/url) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -88,10 +107,9 @@ description: URL or URI pointing to the information resource
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:url
-alias: url
 domain_of:
 - Information
 range: uri
 
 ```
-</details>
+</details></div>

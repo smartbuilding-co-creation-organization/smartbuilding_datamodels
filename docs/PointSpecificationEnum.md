@@ -1,3 +1,9 @@
+---
+search:
+  boost: 2.0
+---
+
+
 # Enum: PointSpecificationEnum 
 
 
@@ -7,10 +13,11 @@ _Point specification categories for equipment point lists_
 
 
 
+<div data-search-exclude markdown="1">
+
 URI: [sbco:PointSpecificationEnum](https://www.sbco.or.jp/ont/PointSpecificationEnum)
 
 ## Permissible Values
-
 | Value | Meaning | Description |
 | --- | --- | --- |
 | Alarm | None | Alarm point |
@@ -33,8 +40,12 @@ URI: [sbco:PointSpecificationEnum](https://www.sbco.or.jp/ont/PointSpecification
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -115,3 +126,5 @@ permissible_values:
 
 ```
 </details>
+
+</div>

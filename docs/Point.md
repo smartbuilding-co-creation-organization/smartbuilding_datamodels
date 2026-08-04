@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: Point 
 
@@ -6,6 +9,8 @@
 _A sensor, actuator, or data point associated with equipment._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -115,6 +120,12 @@ URI: [brick:Point](https://brickschema.org/schema/Brick#Point)
     * [PointExt](PointExt.md)
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [brick:Point](https://brickschema.org/schema/Brick#Point) |
+
 
 ## Slots
 
@@ -165,8 +176,12 @@ URI: [brick:Point](https://brickschema.org/schema/Brick#Point)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -261,7 +276,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
-    alias: id
     owner: Point
     domain_of:
     - Space
@@ -284,7 +298,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: brick:isPointOf
-    alias: isPointOf
     owner: Point
     domain_of:
     - Point
@@ -302,7 +315,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: brick:aggregate
-    alias: aggregate
     owner: Point
     domain_of:
     - Point
@@ -313,7 +325,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: Point
     domain_of:
     - Space
@@ -336,7 +347,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: Point
     domain_of:
     - Space
@@ -363,7 +373,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: brick:hasQuantity
-    alias: hasQuantity
     owner: Point
     domain_of:
     - Point
@@ -378,7 +387,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: brick:hasSubstance
-    alias: hasSubstance
     owner: Point
     domain_of:
     - Point
@@ -389,7 +397,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: Point
     domain_of:
     - Space
@@ -413,7 +420,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: Point
     domain_of:
     - Space
@@ -431,4 +437,4 @@ attributes:
 class_uri: brick:Point
 
 ```
-</details>
+</details></div>

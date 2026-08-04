@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: Agent 
 
@@ -6,6 +9,8 @@
 _An entity that can act or be acted upon_
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -99,6 +104,12 @@ URI: [rec:Agent](https://w3id.org/rec/Agent)
         * [Organization](Organization.md)
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:Agent](https://w3id.org/rec/Agent) |
+
 
 ## Slots
 
@@ -167,8 +178,12 @@ URI: [rec:Agent](https://w3id.org/rec/Agent)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -263,7 +278,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
-    alias: id
     owner: Agent
     domain_of:
     - Space
@@ -282,7 +296,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: Agent
     domain_of:
     - Space
@@ -303,7 +316,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: Agent
     domain_of:
     - Space
@@ -327,7 +339,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: Agent
     domain_of:
     - Space
@@ -350,7 +361,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: Agent
     domain_of:
     - Space
@@ -375,7 +385,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:memberOf
-    alias: memberOf
     owner: Agent
     domain_of:
     - Agent
@@ -388,7 +397,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:owns
-    alias: owns
     owner: Agent
     domain_of:
     - Agent
@@ -397,4 +405,4 @@ attributes:
 class_uri: rec:Agent
 
 ```
-</details>
+</details></div>

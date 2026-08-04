@@ -1,4 +1,7 @@
-# Type: DurationString 
+---
+search:
+  boost: 1.0
+---# Type: DurationString 
 
 
 
@@ -7,23 +10,33 @@ _ISO 8601 duration format_
 
 
 
+<div data-search-exclude markdown="1">
+
 URI: [xsd:duration](http://www.w3.org/2001/XMLSchema#duration)
 
-* [base](https://w3id.org/linkml/base): str
+## Type Properties
 
-* [uri](https://w3id.org/linkml/uri): xsd:duration
+| Property | Value |
+| --- | --- |
+| Type Of | [String](String.md) |
+| Base | `str` |
+| Type URI | [xsd:duration](http://www.w3.org/2001/XMLSchema#duration) |
+## Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^P(?:\d+Y)?(?:\d+M)?(?:\d+D)?(?:T(?:\d+H)?(?:\d+M)?(?:\d+(?:\.\d+)?S)?)?$` |
 
 
-* [typeof](https://w3id.org/linkml/typeof): string
 
-* [pattern](https://w3id.org/linkml/pattern): `^P(?:\d+Y)?(?:\d+M)?(?:\d+D)?(?:T(?:\d+H)?(?:\d+M)?(?:\d+(?:\.\d+)?S)?)?$`
+
+
 
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -45,3 +58,6 @@ URI: [xsd:duration](http://www.w3.org/2001/XMLSchema#duration)
 | native | sbco:DurationString |
 
 
+
+
+</div>

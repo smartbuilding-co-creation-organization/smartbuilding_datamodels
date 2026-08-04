@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: owns 
 
@@ -7,11 +10,11 @@ _ Indicates ownership of some thing, e.g., a building, an asset, an organization
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:owns](https://w3id.org/rec/owns)
-Alias: owns
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,8 +25,8 @@ Alias: owns
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Organization](Organization.md) | An organization such as a company, institution, or association |  no  |
 | [Agent](Agent.md) | An entity that can act or be acted upon |  no  |
+| [Organization](Organization.md) | An organization such as a company, institution, or association |  no  |
 
 
 
@@ -32,15 +35,30 @@ Alias: owns
 
 ## Properties
 
-* Range: [Resource](Resource.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [Resource](Resource.md) |
+| Domain Of | [Agent](Agent.md) |
+| Slot URI | [rec:owns](https://w3id.org/rec/owns) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -74,11 +92,10 @@ description: ' Indicates ownership of some thing, e.g., a building, an asset, an
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:owns
-alias: owns
 domain_of:
 - Agent
 range: Resource
 multivalued: true
 
 ```
-</details>
+</details></div>

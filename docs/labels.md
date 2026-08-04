@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: labels 
 
@@ -7,11 +10,11 @@ _Labels or tags associated with this point_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:labels](https://www.sbco.or.jp/ont/labels)
-Alias: labels
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,15 +34,29 @@ Alias: labels
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -82,11 +99,10 @@ annotations:
 description: Labels or tags associated with this point
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: labels
 domain_of:
 - PointExt
 range: string
 multivalued: true
 
 ```
-</details>
+</details></div>

@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: MACAddress 
 
@@ -7,11 +10,11 @@ _MAC address of the asset_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:MACAddress](https://w3id.org/rec/MACAddress)
-Alias: MACAddress
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,8 +25,8 @@ Alias: MACAddress
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
@@ -33,17 +36,37 @@ Alias: MACAddress
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [Asset](Asset.md) |
+| Slot URI | [rec:MACAddress](https://w3id.org/rec/MACAddress) |
 
-* Regex pattern: `^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$`
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+### Value Constraints
+
+| Property | Value |
+| --- | --- |
+| Regex Pattern | `^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$` |
+
+
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -76,7 +99,6 @@ description: MAC address of the asset
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:MACAddress
-alias: MACAddress
 domain_of:
 - Asset
 range: string
@@ -84,4 +106,4 @@ multivalued: true
 pattern: ^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$
 
 ```
-</details>
+</details></div>

@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: operationalStageCount 
 
@@ -7,11 +10,11 @@ _The number of operational stages supported by this equipment_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [brick:operationalStageCount](https://brickschema.org/schema/Brick#operationalStageCount)
-Alias: operationalStageCount
-
 <!-- no inheritance hierarchy -->
 
 
@@ -32,13 +35,29 @@ Alias: operationalStageCount
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Integer](Integer.md) |
+| Domain Of | [Equipment](Equipment.md) |
+| Slot URI | [brick:operationalStageCount](https://brickschema.org/schema/Brick#operationalStageCount) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -71,10 +90,9 @@ description: The number of operational stages supported by this equipment
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: brick:operationalStageCount
-alias: operationalStageCount
 domain_of:
 - Equipment
 range: integer
 
 ```
-</details>
+</details></div>

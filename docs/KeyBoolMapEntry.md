@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: KeyBoolMapEntry 
 
@@ -6,6 +9,8 @@
 _One entry in a map from strings to booleans._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -30,7 +35,6 @@ URI: [sbco:KeyBoolMapEntry](https://www.sbco.or.jp/ont/KeyBoolMapEntry)
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -80,8 +84,12 @@ URI: [sbco:KeyBoolMapEntry](https://www.sbco.or.jp/ont/KeyBoolMapEntry)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -167,7 +175,6 @@ attributes:
     description: Key of the map entry
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: key
     owner: KeyBoolMapEntry
     domain_of:
     - KeyStringMapEntry
@@ -180,7 +187,6 @@ attributes:
     description: Boolean flag value
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: flag
     owner: KeyBoolMapEntry
     domain_of:
     - KeyBoolMapEntry
@@ -188,4 +194,4 @@ attributes:
     required: true
 
 ```
-</details>
+</details></div>

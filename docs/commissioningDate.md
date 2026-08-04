@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: commissioningDate 
 
@@ -7,11 +10,11 @@ _Date when the asset was commissioned_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:commissioningDate](https://w3id.org/rec/commissioningDate)
-Alias: commissioningDate
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,8 +25,8 @@ Alias: commissioningDate
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
@@ -33,13 +36,29 @@ Alias: commissioningDate
 
 ## Properties
 
-* Range: [Date](Date.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Date](Date.md) |
+| Domain Of | [Asset](Asset.md) |
+| Slot URI | [rec:commissioningDate](https://w3id.org/rec/commissioningDate) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -72,10 +91,9 @@ description: Date when the asset was commissioned
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:commissioningDate
-alias: commissioningDate
 domain_of:
 - Asset
 range: date
 
 ```
-</details>
+</details></div>

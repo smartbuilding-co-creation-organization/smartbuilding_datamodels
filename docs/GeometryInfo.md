@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: GeometryInfo 
 
@@ -6,6 +9,8 @@
 _Placeholder for REC Geometry; details can be supplied by extensions._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -84,6 +89,12 @@ URI: [rec:Geometry](https://w3id.org/rec/Geometry)
         * **GeometryInfo**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:Geometry](https://w3id.org/rec/Geometry) |
+
 
 ## Slots
 
@@ -127,8 +138,12 @@ URI: [rec:Geometry](https://w3id.org/rec/Geometry)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -206,7 +221,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: GeometryInfo
     domain_of:
     - Space
@@ -231,7 +245,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:description
-    alias: description
     owner: GeometryInfo
     domain_of:
     - Space
@@ -244,7 +257,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: GeometryInfo
     domain_of:
     - Space
@@ -268,7 +280,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: GeometryInfo
     domain_of:
     - Space
@@ -291,7 +302,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: GeometryInfo
     domain_of:
     - Space
@@ -318,7 +328,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:format
-    alias: format
     owner: GeometryInfo
     domain_of:
     - Information
@@ -333,7 +342,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:url
-    alias: url
     owner: GeometryInfo
     domain_of:
     - Information
@@ -348,7 +356,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:version
-    alias: version
     owner: GeometryInfo
     domain_of:
     - Information
@@ -363,7 +370,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:language
-    alias: language
     owner: GeometryInfo
     domain_of:
     - Information
@@ -379,7 +385,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:size
-    alias: size
     owner: GeometryInfo
     domain_of:
     - Information
@@ -394,7 +399,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:checksum
-    alias: checksum
     owner: GeometryInfo
     domain_of:
     - Information
@@ -402,4 +406,4 @@ attributes:
 class_uri: rec:Geometry
 
 ```
-</details>
+</details></div>

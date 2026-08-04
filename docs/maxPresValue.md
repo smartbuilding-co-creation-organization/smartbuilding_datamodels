@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: maxPresValue 
 
@@ -7,11 +10,11 @@ _Maximum plausible reading_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:maxPresValue](https://www.sbco.or.jp/ont/maxPresValue)
-Alias: maxPresValue
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,28 @@ Alias: maxPresValue
 
 ## Properties
 
-* Range: [Float](Float.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Float](Float.md) |
+| Domain Of | [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -69,10 +87,9 @@ name: maxPresValue
 description: Maximum plausible reading
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: maxPresValue
 domain_of:
 - PointExt
 range: float
 
 ```
-</details>
+</details></div>

@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: PointExt 
 
@@ -6,6 +9,8 @@
 _A point (sensor/actuator) in a smart building context._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -167,6 +172,12 @@ URI: [sbco:PointExt](https://www.sbco.or.jp/ont/PointExt)
     * **PointExt**
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [sbco:PointExt](https://www.sbco.or.jp/ont/PointExt) |
+
 
 ## Slots
 
@@ -190,7 +201,7 @@ URI: [sbco:PointExt](https://www.sbco.or.jp/ont/PointExt)
 | [labels](labels.md) | * <br/> [String](String.md) | Labels or tags associated with this point | direct |
 | [objectTypeBacnet](objectTypeBacnet.md) | 0..1 <br/> [String](String.md) | BACnet object type (e | direct |
 | [id](id.md) | 1 <br/> [String](String.md) | Unique identifier within the schema | [Point](Point.md) |
-| [isPointOf](isPointOf.md) | 0..1 <br/> [Equipment](Equipment.md)&nbsp;or&nbsp;<br />[Equipment](Equipment.md)&nbsp;or&nbsp;<br />[EquipmentExt](EquipmentExt.md) | Equipment that this point belongs to | [Point](Point.md) |
+| [isPointOf](isPointOf.md) | 0..1 <br/> [Equipment](Equipment.md)&nbsp;or&nbsp;<br />[EquipmentExt](EquipmentExt.md) | Equipment that this point belongs to | [Point](Point.md) |
 | [aggregate](aggregate.md) | 0..1 <br/> [AggregateEnum](AggregateEnum.md) | Aggregation function or method for point data processing | [Point](Point.md) |
 | [customProperties](customProperties.md) | * <br/> [KeyMapOfStringMapEntry](KeyMapOfStringMapEntry.md) | map(string -> map(string -> string)) | [Point](Point.md) |
 | [customTags](customTags.md) | * <br/> [KeyBoolMapEntry](KeyBoolMapEntry.md) | map(string -> boolean) | [Point](Point.md) |
@@ -224,8 +235,12 @@ URI: [sbco:PointExt](https://www.sbco.or.jp/ont/PointExt)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -332,7 +347,6 @@ attributes:
       is recommended.
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: pointSpecification
     owner: PointExt
     domain_of:
     - PointExt
@@ -348,7 +362,6 @@ attributes:
       separately in schema files.
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: pointType
     owner: PointExt
     domain_of:
     - PointExt
@@ -359,7 +372,6 @@ attributes:
     description: Measurement unit (enum key; symbol can be taken from annotations)
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: unit
     owner: PointExt
     domain_of:
     - PointExt
@@ -369,7 +381,6 @@ attributes:
     description: Maximum plausible reading
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: maxPresValue
     owner: PointExt
     domain_of:
     - PointExt
@@ -379,7 +390,6 @@ attributes:
     description: Minimum plausible reading
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: minPresValue
     owner: PointExt
     domain_of:
     - PointExt
@@ -389,7 +399,6 @@ attributes:
     description: Scale factor for raw value conversion
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: scale
     owner: PointExt
     domain_of:
     - PointExt
@@ -403,7 +412,6 @@ attributes:
     description: Whether the point value can be written (commanded)
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: writable
     owner: PointExt
     domain_of:
     - PointExt
@@ -417,7 +425,6 @@ attributes:
     description: Polling or reporting interval in seconds
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: interval
     owner: PointExt
     domain_of:
     - PointExt
@@ -431,7 +438,6 @@ attributes:
     description: Identifier of the gateway device managing this point
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: gatewayId
     owner: PointExt
     domain_of:
     - PointExt
@@ -445,7 +451,6 @@ attributes:
     description: Local identifier for this point within the gateway or system
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: localId
     owner: PointExt
     domain_of:
     - PointExt
@@ -459,7 +464,6 @@ attributes:
     description: Supplier or vendor of the device associated with this point
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: supplier
     owner: PointExt
     domain_of:
     - PointExt
@@ -469,7 +473,6 @@ attributes:
     description: Parent installation area
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: installationArea
     owner: PointExt
     domain_of:
     - EquipmentExt
@@ -480,7 +483,6 @@ attributes:
     description: Target area for this resource
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: targetArea
     owner: PointExt
     domain_of:
     - EquipmentExt
@@ -495,7 +497,6 @@ attributes:
     description: BACnet device identifier
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: deviceIdBacnet
     owner: PointExt
     domain_of:
     - PointExt
@@ -509,7 +510,6 @@ attributes:
     description: BACnet object instance number
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: instanceNoBacnet
     owner: PointExt
     domain_of:
     - PointExt
@@ -523,7 +523,6 @@ attributes:
     description: Labels or tags associated with this point
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: labels
     owner: PointExt
     domain_of:
     - PointExt
@@ -538,7 +537,6 @@ attributes:
     description: BACnet object type (e.g., Analog-Input, Binary-Output)
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: objectTypeBacnet
     owner: PointExt
     domain_of:
     - PointExt
@@ -558,7 +556,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
-    alias: id
     owner: PointExt
     domain_of:
     - Space
@@ -581,7 +578,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: brick:isPointOf
-    alias: isPointOf
     owner: PointExt
     domain_of:
     - Point
@@ -602,7 +598,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: brick:aggregate
-    alias: aggregate
     owner: PointExt
     domain_of:
     - Point
@@ -613,7 +608,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: PointExt
     domain_of:
     - Space
@@ -636,7 +630,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: PointExt
     domain_of:
     - Space
@@ -663,7 +656,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: brick:hasQuantity
-    alias: hasQuantity
     owner: PointExt
     domain_of:
     - Point
@@ -678,7 +670,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: brick:hasSubstance
-    alias: hasSubstance
     owner: PointExt
     domain_of:
     - Point
@@ -689,7 +680,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: PointExt
     domain_of:
     - Space
@@ -713,7 +703,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: PointExt
     domain_of:
     - Space
@@ -731,4 +720,4 @@ attributes:
 class_uri: sbco:PointExt
 
 ```
-</details>
+</details></div>

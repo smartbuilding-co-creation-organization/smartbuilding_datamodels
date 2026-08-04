@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: supplier 
 
@@ -7,11 +10,11 @@ _Supplier or vendor of the device associated with this point_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:supplier](https://www.sbco.or.jp/ont/supplier)
-Alias: supplier
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,28 @@ Alias: supplier
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -80,10 +98,9 @@ annotations:
 description: Supplier or vendor of the device associated with this point
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: supplier
 domain_of:
 - PointExt
 range: string
 
 ```
-</details>
+</details></div>

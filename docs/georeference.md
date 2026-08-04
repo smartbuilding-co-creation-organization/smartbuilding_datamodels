@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: georeference 
 
@@ -7,11 +10,11 @@ _A georeference creates a relationship between the local coordinate system used 
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:georeference](https://w3id.org/rec/georeference)
-Alias: georeference
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,14 +25,14 @@ Alias: georeference
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
-| [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  no  |
-| [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
-| [Site](Site.md) | A piece of land upon which zero or more buildings may be situated |  no  |
 | [Space](Space.md) | A contiguous part of the physical world that contains or can contain sub-spac... |  no  |
+| [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  no  |
+| [Site](Site.md) | A piece of land upon which zero or more buildings may be situated |  no  |
 | [Building](Building.md) | A building which is part of a site |  no  |
-| [Room](Room.md) | A room within a building |  no  |
 | [Level](Level.md) | A building storey |  no  |
+| [Room](Room.md) | A room within a building |  no  |
+| [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
+| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
 
 
 
@@ -38,13 +41,29 @@ Alias: georeference
 
 ## Properties
 
-* Range: [GeoreferenceInfo](GeoreferenceInfo.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [GeoreferenceInfo](GeoreferenceInfo.md) |
+| Domain Of | [Space](Space.md) |
+| Slot URI | [rec:georeference](https://w3id.org/rec/georeference) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -80,11 +99,10 @@ description: A georeference creates a relationship between the local coordinate 
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:georeference
-alias: georeference
 domain_of:
 - Space
 range: GeoreferenceInfo
 multivalued: false
 
 ```
-</details>
+</details></div>

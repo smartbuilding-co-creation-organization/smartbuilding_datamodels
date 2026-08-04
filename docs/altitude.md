@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: altitude 
 
@@ -7,11 +10,11 @@ _Altitude above sea level in meters_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:altitude](https://w3id.org/rec/altitude)
-Alias: altitude
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,13 +25,28 @@ Alias: altitude
 
 ## Properties
 
-* Range: [Float](Float.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Float](Float.md) |
+| Slot URI | [rec:altitude](https://w3id.org/rec/altitude) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -72,8 +90,7 @@ description: Altitude above sea level in meters
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:altitude
-alias: altitude
 range: float
 
 ```
-</details>
+</details></div>

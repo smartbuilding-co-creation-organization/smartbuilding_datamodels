@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: Resource 
 
@@ -6,6 +9,8 @@
 _Base class for all resources_
 
 
+
+<div data-search-exclude markdown="1">
 
 
 * __NOTE__: this is an abstract class and should not be instantiated directly
@@ -51,6 +56,12 @@ URI: [rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource)
     * [ArchitectureCapacity](ArchitectureCapacity.md)
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource) |
+
 
 ## Slots
 
@@ -85,8 +96,12 @@ URI: [rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -145,4 +160,4 @@ abstract: true
 class_uri: rdfs:Resource
 
 ```
-</details>
+</details></div>

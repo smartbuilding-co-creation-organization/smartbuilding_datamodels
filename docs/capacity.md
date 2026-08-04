@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: capacity 
 
@@ -7,11 +10,11 @@ _Capacity of the architecture_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:capacity](https://w3id.org/rec/capacity)
-Alias: capacity
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,13 +25,13 @@ Alias: capacity
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
 | [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  no  |
-| [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
 | [Site](Site.md) | A piece of land upon which zero or more buildings may be situated |  no  |
 | [Building](Building.md) | A building which is part of a site |  no  |
-| [Room](Room.md) | A room within a building |  no  |
 | [Level](Level.md) | A building storey |  no  |
+| [Room](Room.md) | A room within a building |  no  |
+| [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
+| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
 
 
 
@@ -37,13 +40,29 @@ Alias: capacity
 
 ## Properties
 
-* Range: [ArchitectureCapacity](ArchitectureCapacity.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [ArchitectureCapacity](ArchitectureCapacity.md) |
+| Domain Of | [Architecture](Architecture.md) |
+| Slot URI | [rec:capacity](https://w3id.org/rec/capacity) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -76,10 +95,9 @@ description: Capacity of the architecture
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:capacity
-alias: capacity
 domain_of:
 - Architecture
 range: ArchitectureCapacity
 
 ```
-</details>
+</details></div>

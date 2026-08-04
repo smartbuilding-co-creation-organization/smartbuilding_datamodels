@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: isFedBy 
 
@@ -7,11 +10,11 @@ _Resource that feeds this architecture_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:isFedBy](https://w3id.org/rec/isFedBy)
-Alias: isFedBy
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,15 +25,15 @@ Alias: isFedBy
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
 | [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  no  |
-| [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
-| [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [Site](Site.md) | A piece of land upon which zero or more buildings may be situated |  no  |
 | [Building](Building.md) | A building which is part of a site |  no  |
-| [Room](Room.md) | A room within a building |  no  |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [Level](Level.md) | A building storey |  no  |
+| [Room](Room.md) | A room within a building |  no  |
+| [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
+| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
+| [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
 
@@ -39,15 +42,30 @@ Alias: isFedBy
 
 ## Properties
 
-* Range: [Resource](Resource.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [Resource](Resource.md) |
+| Domain Of | [Architecture](Architecture.md), [Equipment](Equipment.md) |
+| Slot URI | [rec:isFedBy](https://w3id.org/rec/isFedBy) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -91,7 +109,6 @@ description: Resource that feeds this architecture
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:isFedBy
-alias: isFedBy
 domain_of:
 - Architecture
 - Equipment
@@ -99,4 +116,4 @@ range: Resource
 multivalued: true
 
 ```
-</details>
+</details></div>

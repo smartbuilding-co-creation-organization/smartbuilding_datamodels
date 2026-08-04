@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: objectTypeBacnet 
 
@@ -7,11 +10,11 @@ _BACnet object type (e.g., Analog-Input, Binary-Output)_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:objectTypeBacnet](https://www.sbco.or.jp/ont/objectTypeBacnet)
-Alias: objectTypeBacnet
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,13 +34,28 @@ Alias: objectTypeBacnet
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -80,10 +98,9 @@ annotations:
 description: BACnet object type (e.g., Analog-Input, Binary-Output)
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: objectTypeBacnet
 domain_of:
 - PointExt
 range: string
 
 ```
-</details>
+</details></div>

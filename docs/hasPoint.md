@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: hasPoint 
 
@@ -7,11 +10,11 @@ _Point associated with this architecture_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:hasPoint](https://w3id.org/rec/hasPoint)
-Alias: hasPoint
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,16 +25,16 @@ Alias: hasPoint
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  yes  |
-| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
 | [Architecture](Architecture.md) | A designed/landscaped (or potentially designed/landscaped) part of the physic... |  yes  |
-| [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
-| [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
+| [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  yes  |
 | [Site](Site.md) | A piece of land upon which zero or more buildings may be situated |  no  |
 | [Building](Building.md) | A building which is part of a site |  no  |
-| [Room](Room.md) | A room within a building |  no  |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [Level](Level.md) | A building storey |  no  |
+| [Room](Room.md) | A room within a building |  no  |
+| [Zone](Zone.md) | A sub-zone within or outside of a building defined to support some technology... |  no  |
+| [OutdoorSpace](OutdoorSpace.md) | An outdoor space associated with a site or building |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
+| [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
 
@@ -40,15 +43,30 @@ Alias: hasPoint
 
 ## Properties
 
-* Range: [Point](Point.md)
+### Type and Range
 
-* Multivalued: True
+| Property | Value |
+| --- | --- |
+| Range | [Point](Point.md) |
+| Domain Of | [Architecture](Architecture.md), [Asset](Asset.md) |
+| Slot URI | [rec:hasPoint](https://w3id.org/rec/hasPoint) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Multivalued | Yes |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -81,7 +99,6 @@ description: Point associated with this architecture
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:hasPoint
-alias: hasPoint
 domain_of:
 - Architecture
 - Asset
@@ -89,4 +106,4 @@ range: Point
 multivalued: true
 
 ```
-</details>
+</details></div>

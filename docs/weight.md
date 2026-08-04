@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: weight 
 
@@ -7,11 +10,11 @@ _Weight of the asset_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [rec:weight](https://w3id.org/rec/weight)
-Alias: weight
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,8 +25,8 @@ Alias: weight
 
 | Name | Description | Modifies Slot |
 | --- | --- | --- |
-| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [Asset](Asset.md) | Something which is placed inside of a building, but is not an integral part o... |  no  |
+| [Equipment](Equipment.md) | An equipment asset installed in a space |  no  |
 | [EquipmentExt](EquipmentExt.md) | An equipment asset installed in a space |  no  |
 
 
@@ -33,13 +36,29 @@ Alias: weight
 
 ## Properties
 
-* Range: [Decimal](Decimal.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Decimal](Decimal.md) |
+| Domain Of | [Asset](Asset.md) |
+| Slot URI | [rec:weight](https://w3id.org/rec/weight) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -72,10 +91,9 @@ description: Weight of the asset
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 slot_uri: rec:weight
-alias: weight
 domain_of:
 - Asset
 range: decimal
 
 ```
-</details>
+</details></div>

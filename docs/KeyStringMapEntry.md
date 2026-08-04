@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: KeyStringMapEntry 
 
@@ -6,6 +9,8 @@
 _One entry in a map from strings to strings._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -30,7 +35,6 @@ URI: [sbco:KeyStringMapEntry](https://www.sbco.or.jp/ont/KeyStringMapEntry)
 
 
 <!-- no inheritance hierarchy -->
-
 
 ## Slots
 
@@ -81,8 +85,12 @@ URI: [sbco:KeyStringMapEntry](https://www.sbco.or.jp/ont/KeyStringMapEntry)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -168,7 +176,6 @@ attributes:
     description: Key of the map entry
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: key
     owner: KeyStringMapEntry
     domain_of:
     - KeyStringMapEntry
@@ -181,7 +188,6 @@ attributes:
     description: Value of the map entry
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
-    alias: value
     owner: KeyStringMapEntry
     domain_of:
     - KeyStringMapEntry
@@ -189,4 +195,4 @@ attributes:
     required: true
 
 ```
-</details>
+</details></div>

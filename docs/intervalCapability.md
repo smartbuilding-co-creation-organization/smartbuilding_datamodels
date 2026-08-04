@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: intervalCapability 
 
@@ -7,11 +10,11 @@ _Polling period (period speed that the device is capable of)_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:intervalCapability](https://www.sbco.or.jp/ont/intervalCapability)
-Alias: intervalCapability
-
 <!-- no inheritance hierarchy -->
 
 
@@ -22,13 +25,27 @@ Alias: intervalCapability
 
 ## Properties
 
-* Range: [Integer](Integer.md)
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Integer](Integer.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -60,8 +77,7 @@ name: intervalCapability
 description: Polling period (period speed that the device is capable of)
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: intervalCapability
 range: integer
 
 ```
-</details>
+</details></div>

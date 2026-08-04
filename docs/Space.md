@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 10.0
+---
 
 # Class: Space 
 
@@ -6,6 +9,8 @@
 _A contiguous part of the physical world that contains or can contain sub-spaces. E.g., a Region can contain many Sites, which in turn can contain many Buildings._
 
 
+
+<div data-search-exclude markdown="1">
 
 
 
@@ -110,6 +115,12 @@ URI: [rec:Space](https://w3id.org/rec/Space)
     * [Architecture](Architecture.md)
 
 
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Class URI | [rec:Space](https://w3id.org/rec/Space) |
+
 
 ## Slots
 
@@ -167,8 +178,12 @@ URI: [rec:Space](https://w3id.org/rec/Space)
 
 
 
-## Identifier and Mapping Information
 
+
+
+
+
+## Identifier and Mapping Information
 
 
 
@@ -269,7 +284,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     identifier: true
-    alias: id
     owner: Space
     domain_of:
     - Space
@@ -288,7 +302,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:geometry
-    alias: geometry
     owner: Space
     domain_of:
     - Space
@@ -304,7 +317,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:georeference
-    alias: georeference
     owner: Space
     domain_of:
     - Space
@@ -316,7 +328,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:hasPart
-    alias: hasPart
     owner: Space
     domain_of:
     - Space
@@ -337,7 +348,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isLocationOf
-    alias: isLocationOf
     owner: Space
     domain_of:
     - Space
@@ -349,7 +359,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:isPartOf
-    alias: isPartOf
     owner: Space
     domain_of:
     - Space
@@ -370,7 +379,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customProperties
-    alias: customProperties
     owner: Space
     domain_of:
     - Space
@@ -393,7 +401,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:customTags
-    alias: customTags
     owner: Space
     domain_of:
     - Space
@@ -416,7 +423,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:identifiers
-    alias: identifiers
     owner: Space
     domain_of:
     - Space
@@ -440,7 +446,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:name
-    alias: name
     owner: Space
     domain_of:
     - Space
@@ -465,7 +470,6 @@ attributes:
     from_schema: https://www.sbco.or.jp/ont/schema
     rank: 1000
     slot_uri: rec:description
-    alias: description
     owner: Space
     domain_of:
     - Space
@@ -475,4 +479,4 @@ attributes:
 class_uri: rec:Space
 
 ```
-</details>
+</details></div>

@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: flag 
 
@@ -7,11 +10,11 @@ _Boolean flag value_
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:flag](https://www.sbco.or.jp/ont/flag)
-Alias: flag
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,15 +34,29 @@ Alias: flag
 
 ## Properties
 
-* Range: [Boolean](Boolean.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [Boolean](Boolean.md) |
+| Domain Of | [KeyBoolMapEntry](KeyBoolMapEntry.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -71,11 +88,10 @@ name: flag
 description: Boolean flag value
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: flag
 domain_of:
 - KeyBoolMapEntry
 range: boolean
 required: true
 
 ```
-</details>
+</details></div>

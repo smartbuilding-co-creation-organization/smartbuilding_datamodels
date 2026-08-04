@@ -1,4 +1,7 @@
-
+---
+search:
+  boost: 5.0
+---
 
 # Slot: pointType 
 
@@ -7,11 +10,11 @@ _Point type - a profile or template name used to refer to the telemetry format o
 
 
 
+<div data-search-exclude markdown="1">
+
 
 
 URI: [sbco:pointType](https://www.sbco.or.jp/ont/pointType)
-Alias: pointType
-
 <!-- no inheritance hierarchy -->
 
 
@@ -31,15 +34,29 @@ Alias: pointType
 
 ## Properties
 
-* Range: [String](String.md)
+### Type and Range
 
-* Required: True
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [PointExt](PointExt.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+| Required | Yes |
+
+
+
+
+
+
 
 
 
 
 ## Identifier and Mapping Information
-
 
 
 
@@ -84,11 +101,10 @@ description: Point type - a profile or template name used to refer to the teleme
   in schema files.
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
-alias: pointType
 domain_of:
 - PointExt
 range: string
 required: true
 
 ```
-</details>
+</details></div>
