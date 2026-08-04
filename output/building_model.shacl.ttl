@@ -16,123 +16,99 @@ brick:EquipmentShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "An equipment asset installed in a space." ;
     sh:ignoredProperties ( sbco:panel sbco:targetArea sbco:deviceType rdf:type sbco:installationArea ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path sbco:id ],
-        [ sh:class rec:Document ;
-            sh:description "Documentation related to this asset" ;
+    sh:property [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path rec:documentation ],
-        [ sh:datatype xsd:string ;
-            sh:description "Initial cost of the asset" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 21 ;
-            sh:path rec:initialCost ],
-        [ sh:description "The subject is a part of the entity given by the object." ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 11 ;
-            sh:path rec:isPartOf ],
-        [ sh:datatype xsd:date ;
-            sh:description "Date when the asset was installed" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 22 ;
-            sh:path rec:installationDate ],
+            sh:order 20 ;
+            sh:path rec:identifiers ],
         [ sh:datatype xsd:date ;
             sh:description "Date when the asset was commissioned" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 17 ;
             sh:path rec:commissioningDate ],
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element on which this asset is mounted" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 14 ;
+            sh:path rec:mountedOn ],
         [ sh:datatype xsd:integer ;
             sh:description "The number of operational stages supported by this equipment" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path brick:operationalStageCount ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that installed this asset" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 10 ;
-            sh:path rec:installedBy ],
-        [ sh:description "The subject is composed in part of the entity given by the object." ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 8 ;
-            sh:path rec:hasPart ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that commissioned this asset" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path rec:commissionedBy ],
-        [ sh:class rec:Geometry ;
-            sh:description "Polygon representing the spatial extent of this Space." ;
-            sh:maxCount 1 ;
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 7 ;
-            sh:path rec:geometry ],
-        [ sh:datatype xsd:duration ;
-            sh:description "Maintenance interval duration" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 25 ;
-            sh:path rec:maintenanceInterval ;
-            sh:pattern "^P(?:\\d+Y)?(?:\\d+M)?(?:\\d+D)?(?:T(?:\\d+H)?(?:\\d+M)?(?:\\d+(?:\\.\\d+)?S)?)?$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "Serial number of the asset" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 28 ;
-            sh:path rec:serialNumber ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 19 ;
-            sh:path rec:customTags ],
+            sh:order 18 ;
+            sh:path rec:customProperties ],
         [ sh:datatype xsd:decimal ;
             sh:description "Weight of the asset" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 30 ;
             sh:path rec:weight ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that commissioned this asset" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path rec:commissionedBy ],
+        [ sh:datatype xsd:date ;
+            sh:description "Date when the asset was turned over" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 29 ;
+            sh:path rec:turnoverDate ],
         [ sh:datatype xsd:string ;
             sh:description "Model number of the asset" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 26 ;
             sh:path rec:modelNumber ],
-        [ sh:datatype xsd:string ;
-            sh:description "Asset identification tag" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path rec:assetTag ],
-        [ sh:datatype xsd:string ;
-            sh:description "IP address of the asset" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 23 ;
-            sh:path rec:IPAddress ;
-            sh:pattern "^((25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)$" ],
         [ sh:class rec:Agent ;
             sh:description "Agent or resource that services this asset" ;
             sh:nodeKind sh:IRI ;
             sh:order 15 ;
             sh:path rec:servicedBy ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 18 ;
-            sh:path rec:customProperties ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path rec:description ],
         [ sh:datatype xsd:string ;
             sh:description "MAC address of the asset" ;
             sh:nodeKind sh:Literal ;
             sh:order 24 ;
             sh:path rec:MACAddress ;
             sh:pattern "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" ],
+        [ sh:class rec:Document ;
+            sh:description "Documentation related to this asset" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path rec:documentation ],
+        [ sh:description "Point associated with this architecture" ;
+            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
+            sh:order 9 ;
+            sh:path rec:hasPoint ],
+        [ sh:class rdfs:Resource ;
+            sh:description "Equipment or system that this equipment feeds" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path brick:feeds ],
+        [ sh:class rec:Geometry ;
+            sh:description "Polygon representing the spatial extent of this Space." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path rec:geometry ],
+        [ sh:description "The subject is a part of the entity given by the object." ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 11 ;
+            sh:path rec:isPartOf ],
         [ sh:datatype xsd:string ;
             sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
@@ -140,94 +116,107 @@ brick:EquipmentShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 27 ;
             sh:path rec:name ],
+        [ sh:description "The subject is composed in part of the entity given by the object." ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 8 ;
+            sh:path rec:hasPart ],
+        [ sh:datatype xsd:duration ;
+            sh:description "Maintenance interval duration" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 25 ;
+            sh:path rec:maintenanceInterval ;
+            sh:pattern "^P(?:\\d+Y)?(?:\\d+M)?(?:\\d+D)?(?:T(?:\\d+H)?(?:\\d+M)?(?:\\d+(?:\\.\\d+)?S)?)?$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "IP address of the asset" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 23 ;
+            sh:path rec:IPAddress ;
+            sh:pattern "^((25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)$" ],
+        [ sh:description "Space where this asset is located" ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 12 ;
+            sh:path rec:locatedIn ],
         [ sh:class rec:Agent ;
             sh:description "Agent or resource that manufactured this asset" ;
             sh:nodeKind sh:IRI ;
             sh:order 13 ;
             sh:path rec:manufacturedBy ],
-        [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
+        [ sh:datatype xsd:date ;
+            sh:description "Date when the asset was installed" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path rec:description ],
+            sh:order 22 ;
+            sh:path rec:installationDate ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 19 ;
+            sh:path rec:customTags ],
+        [ sh:datatype xsd:string ;
+            sh:description "Serial number of the asset" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 28 ;
+            sh:path rec:serialNumber ],
         [ sh:class rdfs:Resource ;
             sh:description "Resource that feeds this architecture" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path rec:isFedBy ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 20 ;
-            sh:path rec:identifiers ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element on which this asset is mounted" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path sbco:id ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that installed this asset" ;
             sh:nodeKind sh:IRI ;
-            sh:order 14 ;
-            sh:path rec:mountedOn ],
-        [ sh:description "Space where this asset is located" ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 12 ;
-            sh:path rec:locatedIn ],
-        [ sh:class rdfs:Resource ;
-            sh:description "Equipment or system that this equipment feeds" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path brick:feeds ],
-        [ sh:datatype xsd:date ;
-            sh:description "Date when the asset was turned over" ;
+            sh:order 10 ;
+            sh:path rec:installedBy ],
+        [ sh:datatype xsd:string ;
+            sh:description "Asset identification tag" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path rec:assetTag ],
+        [ sh:datatype xsd:string ;
+            sh:description "Initial cost of the asset" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 29 ;
-            sh:path rec:turnoverDate ],
-        [ sh:description "Point associated with this architecture" ;
-            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
-            sh:order 9 ;
-            sh:path rec:hasPoint ] ;
+            sh:order 21 ;
+            sh:path rec:initialCost ] ;
     sh:targetClass brick:Equipment .
 
 brick:PointShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "A sensor, actuator, or data point associated with equipment." ;
     sh:ignoredProperties ( sbco:unit sbco:supplier sbco:maxPresValue sbco:labels sbco:targetArea sbco:pointSpecification sbco:pointType sbco:writable sbco:localId sbco:scale rdf:type sbco:instanceNoBacnet sbco:installationArea sbco:objectTypeBacnet sbco:minPresValue sbco:interval sbco:deviceIdBacnet sbco:gatewayId ) ;
-    sh:property [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path rec:customProperties ],
-        [ sh:description "Physical quantity measured by this point" ;
-            sh:in ( "Absolute_Humidity" "Acceleration_Time" "Active_Energy" "Active_Power" "Air_Quality" "Alternating_Current_Frequency" "Ammonia_Concentration" "Angle" "Apparent_Energy" "Apparent_Power" "Atmospheric_Pressure" "CO2_Concentration" "CO_Concentration" "Capacity" "Cloudage" "Complex_Power" "Conductivity" "Current_Angle" "Current_Imbalance" "Current_Total_Harmonic_Distortion" "Deceleration_Time" "Dewpoint" "Differential_CO2_Concentration" "Differential_CO_Concentration" "Differential_Dry_Bulb_Temperature" "Differential_Dynamic_Pressure" "Differential_Pressure" "Differential_Static_Pressure" "Differential_Temperature" "Direction" "Dry_Bulb_Temperature" "Dynamic_Pressure" "Electric_Current" "Electric_Energy" "Electric_Power" "Energy" "Enthalpy" "Flow" "Flow_Loss" "Formaldehyde_Concentration" "Frequency" "GrainsOfMoisture" "Humidity" "Illuminance" "Irradiance" "Level" "Linear_Speed" "Luminance" "Luminous_Flux" "Luminous_Intensity" "Mass" "Methane_Concentration" "NO2_Concentration" "Occupancy" "Occupancy_Count" "Occupancy_Percentage" "Operative_Temperature" "Ozone_Concentration" "PM10_Concentration" "PM1_Concentration" "PM2_5_Concentration" "Peak_Power" "Phasor" "Phasor_Angle" "Phasor_Magnitude" "Position" "Power" "Power_Factor" "Precipitation" "Pressure" "Radiance" "Radiant_Temperature" "Radioactivity_Concentration" "Radon_Concentration" "Reactive_Energy" "Reactive_Power" "Real_Power" "Relative_Humidity" "Rotational_Speed" "Solar_Irradiance" "Solar_Radiance" "Speed" "Static_Pressure" "TVOC_Concentration" "Temperature" "Thermal_Energy" "Thermal_Power" "Time" "Torque" "Velocity_Pressure" "Voltage" "Voltage_Angle" "Voltage_Imbalance" "Weather_Condition" "Wet_Bulb_Temperature" "Wind_Direction" ) ;
-            sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path brick:hasQuantity ],
-        [ sh:class brick:Equipment ;
-            sh:description "Equipment that this point belongs to" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path brick:isPointOf ],
-        [ sh:class sbco:KeyBoolMapEntry ;
+    sh:property [ sh:class sbco:KeyBoolMapEntry ;
             sh:description "map(string -> boolean)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path rec:customTags ],
-        [ sh:description "Aggregation function or method for point data processing" ;
-            sh:in ( "average" "sum" "minimum" "maximum" "count" "first" "last" "median" "standardDeviation" ) ;
-            sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path brick:aggregate ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 7 ;
-            sh:path rec:identifiers ],
+            sh:order 3 ;
+            sh:path rec:customProperties ],
         [ sh:description "Substance associated with this point" ;
             sh:in ( "ACElec" "Air" "BlowdownWater" "ChilledWater" "ColdDomesticWater" "Condensate" "CondenserWater" "DCElec" "Diesel" "DriveElec" "Ethernet" "ExhaustAir" "Freight" "FuelOil" "Gasoline" "GreaseExhaustAir" "HotDomesticWater" "HotWater" "IrrigationWater" "Light" "MakeupWater" "NaturalGas" "NonPotableDomesticWater" "OutsideAir" "People" "Propane" "RecircHotDomesticWater" "Refrig" "ReturnAir" "SprinklerWater" "Steam" "StormDrainage" "SupplyAir" "TransferAir" "WasteVentDrainage" "Water" ) ;
             sh:maxCount 1 ;
             sh:order 6 ;
             sh:path brick:hasSubstance ],
+        [ sh:description "Physical quantity measured by this point" ;
+            sh:in ( "Absolute_Humidity" "Acceleration_Time" "Active_Energy" "Active_Power" "Air_Quality" "Alternating_Current_Frequency" "Ammonia_Concentration" "Angle" "Apparent_Energy" "Apparent_Power" "Atmospheric_Pressure" "CO2_Concentration" "CO_Concentration" "Capacity" "Cloudage" "Complex_Power" "Conductivity" "Current_Angle" "Current_Imbalance" "Current_Total_Harmonic_Distortion" "Deceleration_Time" "Dewpoint" "Differential_CO2_Concentration" "Differential_CO_Concentration" "Differential_Dry_Bulb_Temperature" "Differential_Dynamic_Pressure" "Differential_Pressure" "Differential_Static_Pressure" "Differential_Temperature" "Direction" "Dry_Bulb_Temperature" "Dynamic_Pressure" "Electric_Current" "Electric_Energy" "Electric_Power" "Energy" "Enthalpy" "Flow" "Flow_Loss" "Formaldehyde_Concentration" "Frequency" "GrainsOfMoisture" "Humidity" "Illuminance" "Irradiance" "Level" "Linear_Speed" "Luminance" "Luminous_Flux" "Luminous_Intensity" "Mass" "Methane_Concentration" "NO2_Concentration" "Occupancy" "Occupancy_Count" "Occupancy_Percentage" "Operative_Temperature" "Ozone_Concentration" "PM10_Concentration" "PM1_Concentration" "PM2_5_Concentration" "Peak_Power" "Phasor" "Phasor_Angle" "Phasor_Magnitude" "Position" "Power" "Power_Factor" "Precipitation" "Pressure" "Radiance" "Radiant_Temperature" "Radioactivity_Concentration" "Radon_Concentration" "Reactive_Energy" "Reactive_Power" "Real_Power" "Relative_Humidity" "Rotational_Speed" "Solar_Irradiance" "Solar_Radiance" "Speed" "Static_Pressure" "TVOC_Concentration" "Temperature" "Thermal_Energy" "Thermal_Power" "Time" "Torque" "Velocity_Pressure" "Voltage" "Voltage_Angle" "Voltage_Imbalance" "Weather_Condition" "Wet_Bulb_Temperature" "Wind_Direction" ) ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path brick:hasQuantity ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path rec:identifiers ],
         [ sh:datatype xsd:string ;
             sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
             sh:maxCount 1 ;
@@ -241,18 +230,31 @@ brick:PointShape a sh:NodeShape ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 8 ;
-            sh:path rec:name ] ;
+            sh:path rec:name ],
+        [ sh:class brick:Equipment ;
+            sh:description "Equipment that this point belongs to" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path brick:isPointOf ],
+        [ sh:description "Aggregation function or method for point data processing" ;
+            sh:in ( "average" "sum" "minimum" "maximum" "count" "first" "last" "median" "standardDeviation" ) ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path brick:aggregate ] ;
     sh:targetClass brick:Point .
 
 rec:AgentShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "An entity that can act or be acted upon" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:identifiers ],
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sbco:id ],
         [ sh:datatype xsd:string ;
             sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
@@ -265,44 +267,44 @@ rec:AgentShape a sh:NodeShape ;
             sh:nodeKind sh:IRI ;
             sh:order 5 ;
             sh:path rec:memberOf ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path rec:customTags ],
         [ sh:class rdfs:Resource ;
             sh:description " Indicates ownership of some thing, e.g., a building, an asset, an organization, etc." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
             sh:path rec:owns ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path rec:identifiers ],
         [ sh:class sbco:KeyMapOfStringMapEntry ;
             sh:description "map(string -> map(string -> string))" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path rec:customProperties ],
-        [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sbco:id ] ;
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path rec:customTags ] ;
     sh:targetClass rec:Agent .
 
 rec:ArchitectureAreaShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "Describes business-relevant area measurements typically associated with architected spaces" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class sbco:KeyStringMapEntry ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Machine or Human-readable name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rec:name ],
+        [ sh:class sbco:KeyStringMapEntry ;
             sh:description "map(string -> string)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path rec:identifiers ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path rec:customTags ],
         [ sh:datatype xsd:string ;
             sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
             sh:maxCount 1 ;
@@ -310,18 +312,16 @@ rec:ArchitectureAreaShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path sbco:id ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path rec:customTags ],
         [ sh:class sbco:KeyMapOfStringMapEntry ;
             sh:description "map(string -> map(string -> string))" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
-            sh:path rec:customProperties ],
-        [ sh:datatype xsd:string ;
-            sh:description "Machine or Human-readable name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path rec:name ] ;
+            sh:path rec:customProperties ] ;
     sh:targetClass rec:ArchitectureArea .
 
 rec:ArchitectureCapacityShape a sh:NodeShape ;
@@ -334,125 +334,52 @@ rec:ArchitectureCapacityShape a sh:NodeShape ;
             sh:order 3 ;
             sh:path rec:customTags ],
         [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sbco:id ],
-        [ sh:datatype xsd:string ;
             sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path rec:name ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:identifiers ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sbco:id ],
         [ sh:class sbco:KeyMapOfStringMapEntry ;
             sh:description "map(string -> map(string -> string))" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
-            sh:path rec:customProperties ] ;
+            sh:path rec:customProperties ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path rec:identifiers ] ;
     sh:targetClass rec:ArchitectureCapacity .
 
 rec:ArchitectureShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "A designed/landscaped (or potentially designed/landscaped) part of the physical world that has a 3D spatial extent. E.g., a building site, a building, levels within the building, rooms, etc." ;
     sh:ignoredProperties ( rec:levelNumber rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
+    sh:property [ sh:class rec:BuildingElement ;
+            sh:description "Building element contained within this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 6 ;
+            sh:path rec:containsElement ],
+        [ sh:datatype xsd:string ;
             sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 22 ;
             sh:path rec:name ],
-        [ sh:class sbco:EquipmentExt ;
-            sh:description "Subject is the physical location encapsulating the object." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 17 ;
-            sh:path rec:isLocationOf ],
-        [ sh:class rec:Geometry ;
-            sh:description "Polygon representing the spatial extent of this Space." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 14 ;
-            sh:path rec:geometry ],
-        [ sh:description "Point associated with this architecture" ;
-            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
-            sh:order 8 ;
-            sh:path rec:hasPoint ],
-        [ sh:class rec:ArchitectureArea ;
-            sh:description "Area of the architecture" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path rec:area ],
-        [ sh:description "The subject is composed in part of the entity given by the object." ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 16 ;
-            sh:path rec:hasPart ],
-        [ sh:class rec:ArchitectureCapacity ;
-            sh:description "Capacity of the architecture" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path rec:capacity ],
-        [ sh:class rec:Georeference ;
-            sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 15 ;
-            sh:path rec:georeference ],
-        [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 23 ;
-            sh:path rec:description ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element adjacent to this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path rec:adjacentElement ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path rec:identifiers ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element intersecting with this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 9 ;
-            sh:path rec:intersectingElement ],
         [ sh:class rec:Agent ;
-            sh:description "Agent or resource that operates this architecture" ;
+            sh:description "Agent or resource that owns this architecture" ;
             sh:nodeKind sh:IRI ;
-            sh:order 11 ;
-            sh:path rec:operatedBy ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that constructed this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path rec:constructedBy ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element contained within this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 6 ;
-            sh:path rec:containsElement ],
-        [ sh:class rdfs:Resource ;
-            sh:description "Resource that feeds this architecture" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path rec:isFedBy ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that architected this structure" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path rec:architectedBy ],
+            sh:order 12 ;
+            sh:path rec:ownedBy ],
         [ sh:datatype xsd:string ;
             sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
             sh:maxCount 1 ;
@@ -460,123 +387,180 @@ rec:ArchitectureShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 13 ;
             sh:path sbco:id ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
+        [ sh:class rec:Geometry ;
+            sh:description "Polygon representing the spatial extent of this Space." ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 20 ;
-            sh:path rec:customTags ],
+            sh:order 14 ;
+            sh:path rec:geometry ],
+        [ sh:description "The subject is composed in part of the entity given by the object." ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 16 ;
+            sh:path rec:hasPart ],
+        [ sh:class rec:ArchitectureArea ;
+            sh:description "Area of the architecture" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path rec:area ],
         [ sh:class rec:PostalAddress ;
             sh:description "Address of the architecture" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path rec:address ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
+        [ sh:class rec:Georeference ;
+            sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 19 ;
-            sh:path rec:customProperties ],
+            sh:order 15 ;
+            sh:path rec:georeference ],
+        [ sh:class rec:ArchitectureCapacity ;
+            sh:description "Capacity of the architecture" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path rec:capacity ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that operates this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 11 ;
+            sh:path rec:operatedBy ],
         [ sh:description "The subject is a part of the entity given by the object." ;
             sh:maxCount 1 ;
             sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
             sh:order 18 ;
             sh:path rec:isPartOf ],
+        [ sh:description "Point associated with this architecture" ;
+            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
+            sh:order 8 ;
+            sh:path rec:hasPoint ],
         [ sh:class rec:Agent ;
-            sh:description "Agent or resource that owns this architecture" ;
+            sh:description "Agent or resource that constructed this architecture" ;
             sh:nodeKind sh:IRI ;
-            sh:order 12 ;
-            sh:path rec:ownedBy ],
+            sh:order 5 ;
+            sh:path rec:constructedBy ],
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element adjacent to this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rec:adjacentElement ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that architected this structure" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path rec:architectedBy ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 19 ;
+            sh:path rec:customProperties ],
         [ sh:class rec:Document ;
             sh:description "Documentation related to this asset" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 7 ;
-            sh:path rec:documentation ] ;
+            sh:path rec:documentation ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 21 ;
+            sh:path rec:identifiers ],
+        [ sh:class rdfs:Resource ;
+            sh:description "Resource that feeds this architecture" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 10 ;
+            sh:path rec:isFedBy ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 23 ;
+            sh:path rec:description ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 20 ;
+            sh:path rec:customTags ],
+        [ sh:class sbco:EquipmentExt ;
+            sh:description "Subject is the physical location encapsulating the object." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 17 ;
+            sh:path rec:isLocationOf ],
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element intersecting with this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 9 ;
+            sh:path rec:intersectingElement ] ;
     sh:targetClass rec:Architecture .
 
 rec:AssetShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "Something which is placed inside of a building, but is not an integral part of that building's structure; e.g., furniture, equipment, systems, etc." ;
     sh:ignoredProperties ( sbco:panel brick:feeds sbco:targetArea sbco:deviceType rec:isFedBy rdf:type sbco:installationArea brick:operationalStageCount ) ;
-    sh:property [ sh:class rec:BuildingElement ;
+    sh:property [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 16 ;
+            sh:path rec:customTags ],
+        [ sh:datatype xsd:string ;
+            sh:description "MAC address of the asset" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 21 ;
+            sh:path rec:MACAddress ;
+            sh:pattern "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" ],
+        [ sh:description "The subject is composed in part of the entity given by the object." ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 5 ;
+            sh:path rec:hasPart ],
+        [ sh:datatype xsd:date ;
+            sh:description "Date when the asset was turned over" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 26 ;
+            sh:path rec:turnoverDate ],
+        [ sh:class rec:BuildingElement ;
             sh:description "Building element on which this asset is mounted" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 11 ;
             sh:path rec:mountedOn ],
-        [ sh:datatype xsd:string ;
-            sh:description "Initial cost of the asset" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 18 ;
-            sh:path rec:initialCost ],
         [ sh:class rec:Agent ;
-            sh:description "Agent or resource that services this asset" ;
+            sh:description "Agent or resource that commissioned this asset" ;
             sh:nodeKind sh:IRI ;
-            sh:order 12 ;
-            sh:path rec:servicedBy ],
-        [ sh:datatype xsd:string ;
-            sh:description "Asset identification tag" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path rec:assetTag ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 16 ;
-            sh:path rec:customTags ],
+            sh:order 1 ;
+            sh:path rec:commissionedBy ],
         [ sh:datatype xsd:duration ;
             sh:description "Maintenance interval duration" ;
             sh:nodeKind sh:Literal ;
             sh:order 22 ;
             sh:path rec:maintenanceInterval ;
             sh:pattern "^P(?:\\d+Y)?(?:\\d+M)?(?:\\d+D)?(?:T(?:\\d+H)?(?:\\d+M)?(?:\\d+(?:\\.\\d+)?S)?)?$" ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that installed this asset" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 7 ;
+            sh:path rec:installedBy ],
         [ sh:datatype xsd:string ;
-            sh:description "Serial number of the asset" ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 25 ;
-            sh:path rec:serialNumber ],
+            sh:order 0 ;
+            sh:path sbco:id ],
         [ sh:class sbco:KeyStringMapEntry ;
             sh:description "map(string -> string)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 17 ;
             sh:path rec:identifiers ],
-        [ sh:class rec:Geometry ;
-            sh:description "Polygon representing the spatial extent of this Space." ;
+        [ sh:description "The subject is a part of the entity given by the object." ;
             sh:maxCount 1 ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 8 ;
+            sh:path rec:isPartOf ],
+        [ sh:class rec:Document ;
+            sh:description "Documentation related to this asset" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path rec:geometry ],
-        [ sh:description "Point associated with this architecture" ;
-            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
-            sh:order 6 ;
-            sh:path rec:hasPoint ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that manufactured this asset" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 10 ;
-            sh:path rec:manufacturedBy ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 15 ;
-            sh:path rec:customProperties ],
-        [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path rec:description ],
-        [ sh:datatype xsd:decimal ;
-            sh:description "Weight of the asset" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 27 ;
-            sh:path rec:weight ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that commissioned this asset" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path rec:commissionedBy ],
+            sh:order 2 ;
+            sh:path rec:documentation ],
         [ sh:datatype xsd:date ;
             sh:description "Date when the asset was installed" ;
             sh:maxCount 1 ;
@@ -584,32 +568,53 @@ rec:AssetShape a sh:NodeShape ;
             sh:order 19 ;
             sh:path rec:installationDate ],
         [ sh:datatype xsd:string ;
-            sh:description "MAC address of the asset" ;
+            sh:description "IP address of the asset" ;
             sh:nodeKind sh:Literal ;
-            sh:order 21 ;
-            sh:path rec:MACAddress ;
-            sh:pattern "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" ],
+            sh:order 20 ;
+            sh:path rec:IPAddress ;
+            sh:pattern "^((25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)$" ],
+        [ sh:description "Point associated with this architecture" ;
+            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
+            sh:order 6 ;
+            sh:path rec:hasPoint ],
+        [ sh:description "Space where this asset is located" ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 9 ;
+            sh:path rec:locatedIn ],
         [ sh:class rec:Agent ;
-            sh:description "Agent or resource that installed this asset" ;
+            sh:description "Agent or resource that services this asset" ;
             sh:nodeKind sh:IRI ;
-            sh:order 7 ;
-            sh:path rec:installedBy ],
+            sh:order 12 ;
+            sh:path rec:servicedBy ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that manufactured this asset" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 10 ;
+            sh:path rec:manufacturedBy ],
+        [ sh:datatype xsd:string ;
+            sh:description "Serial number of the asset" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 25 ;
+            sh:path rec:serialNumber ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path rec:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Initial cost of the asset" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 18 ;
+            sh:path rec:initialCost ],
         [ sh:datatype xsd:string ;
             sh:description "Model number of the asset" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 23 ;
             sh:path rec:modelNumber ],
-        [ sh:datatype xsd:string ;
-            sh:description "IP address of the asset" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 20 ;
-            sh:path rec:IPAddress ;
-            sh:pattern "^((25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)$" ],
-        [ sh:description "Space where this asset is located" ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 9 ;
-            sh:path rec:locatedIn ],
         [ sh:datatype xsd:string ;
             sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
@@ -618,45 +623,59 @@ rec:AssetShape a sh:NodeShape ;
             sh:order 24 ;
             sh:path rec:name ],
         [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
+            sh:description "Asset identification tag" ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sbco:id ],
+            sh:order 13 ;
+            sh:path rec:assetTag ],
+        [ sh:datatype xsd:decimal ;
+            sh:description "Weight of the asset" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 27 ;
+            sh:path rec:weight ],
+        [ sh:class rec:Geometry ;
+            sh:description "Polygon representing the spatial extent of this Space." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path rec:geometry ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 15 ;
+            sh:path rec:customProperties ],
         [ sh:datatype xsd:date ;
             sh:description "Date when the asset was commissioned" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 14 ;
-            sh:path rec:commissioningDate ],
-        [ sh:datatype xsd:date ;
-            sh:description "Date when the asset was turned over" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 26 ;
-            sh:path rec:turnoverDate ],
-        [ sh:description "The subject is composed in part of the entity given by the object." ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 5 ;
-            sh:path rec:hasPart ],
-        [ sh:description "The subject is a part of the entity given by the object." ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 8 ;
-            sh:path rec:isPartOf ],
-        [ sh:class rec:Document ;
-            sh:description "Documentation related to this asset" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:documentation ] ;
+            sh:path rec:commissioningDate ] ;
     sh:targetClass rec:Asset .
 
 rec:BuildingElementShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "A part of the building structure" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class sbco:KeyMapOfStringMapEntry ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Machine or Human-readable name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rec:name ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path rec:identifiers ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sbco:id ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
             sh:description "map(string -> map(string -> string))" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
@@ -665,114 +684,18 @@ rec:BuildingElementShape a sh:NodeShape ;
             sh:description "map(string -> boolean)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
-            sh:path rec:customTags ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:identifiers ],
-        [ sh:datatype xsd:string ;
-            sh:description "Machine or Human-readable name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path rec:name ],
-        [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sbco:id ] ;
+            sh:path rec:customTags ] ;
     sh:targetClass rec:BuildingElement .
 
 rec:BuildingShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "A building which is part of a site." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class rec:Agent ;
-            sh:description "Agent or resource that operates this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 11 ;
-            sh:path rec:operatedBy ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element adjacent to this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path rec:adjacentElement ],
-        [ sh:class rec:PostalAddress ;
+    sh:property [ sh:class rec:PostalAddress ;
             sh:description "Address of the architecture" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path rec:address ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path rec:identifiers ],
-        [ sh:class rdfs:Resource ;
-            sh:description "Resource that feeds this architecture" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path rec:isFedBy ],
-        [ sh:description "The subject is composed in part of the entity given by the object." ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 16 ;
-            sh:path rec:hasPart ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 20 ;
-            sh:path rec:customTags ],
-        [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path sbco:id ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that owns this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 12 ;
-            sh:path rec:ownedBy ],
-        [ sh:class sbco:EquipmentExt ;
-            sh:description "Subject is the physical location encapsulating the object." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 17 ;
-            sh:path rec:isLocationOf ],
-        [ sh:description "Point associated with this architecture" ;
-            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
-            sh:order 8 ;
-            sh:path rec:hasPoint ],
-        [ sh:class rec:ArchitectureCapacity ;
-            sh:description "Capacity of the architecture" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path rec:capacity ],
-        [ sh:class rec:Georeference ;
-            sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 15 ;
-            sh:path rec:georeference ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 19 ;
-            sh:path rec:customProperties ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that constructed this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path rec:constructedBy ],
-        [ sh:description "The subject is a part of the entity given by the object." ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 18 ;
-            sh:path rec:isPartOf ],
         [ sh:class rec:BuildingElement ;
             sh:description "Building element intersecting with this architecture" ;
             sh:nodeKind sh:IRI ;
@@ -783,17 +706,21 @@ rec:BuildingShape a sh:NodeShape ;
             sh:nodeKind sh:IRI ;
             sh:order 6 ;
             sh:path rec:containsElement ],
-        [ sh:class rec:Geometry ;
-            sh:description "Polygon representing the spatial extent of this Space." ;
+        [ sh:description "The subject is a part of the entity given by the object." ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 14 ;
-            sh:path rec:geometry ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that architected this structure" ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 18 ;
+            sh:path rec:isPartOf ],
+        [ sh:class sbco:EquipmentExt ;
+            sh:description "Subject is the physical location encapsulating the object." ;
             sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path rec:architectedBy ],
+            sh:order 17 ;
+            sh:path rec:isLocationOf ],
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element adjacent to this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rec:adjacentElement ],
         [ sh:class rec:ArchitectureArea ;
             sh:description "Area of the architecture" ;
             sh:maxCount 1 ;
@@ -801,11 +728,12 @@ rec:BuildingShape a sh:NodeShape ;
             sh:order 0 ;
             sh:path rec:area ],
         [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 23 ;
-            sh:path rec:description ],
+            sh:order 13 ;
+            sh:path sbco:id ],
         [ sh:datatype xsd:string ;
             sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
@@ -813,71 +741,100 @@ rec:BuildingShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 22 ;
             sh:path rec:name ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that constructed this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path rec:constructedBy ],
+        [ sh:class rdfs:Resource ;
+            sh:description "Resource that feeds this architecture" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 10 ;
+            sh:path rec:isFedBy ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 19 ;
+            sh:path rec:customProperties ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that architected this structure" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path rec:architectedBy ],
+        [ sh:description "The subject is composed in part of the entity given by the object." ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 16 ;
+            sh:path rec:hasPart ],
+        [ sh:class rec:Georeference ;
+            sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 15 ;
+            sh:path rec:georeference ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that operates this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 11 ;
+            sh:path rec:operatedBy ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 21 ;
+            sh:path rec:identifiers ],
+        [ sh:description "Point associated with this architecture" ;
+            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
+            sh:order 8 ;
+            sh:path rec:hasPoint ],
+        [ sh:class rec:ArchitectureCapacity ;
+            sh:description "Capacity of the architecture" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path rec:capacity ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that owns this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 12 ;
+            sh:path rec:ownedBy ],
         [ sh:class rec:Document ;
             sh:description "Documentation related to this asset" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 7 ;
-            sh:path rec:documentation ] ;
+            sh:path rec:documentation ],
+        [ sh:class rec:Geometry ;
+            sh:description "Polygon representing the spatial extent of this Space." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 14 ;
+            sh:path rec:geometry ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 20 ;
+            sh:path rec:customTags ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 23 ;
+            sh:path rec:description ] ;
     sh:targetClass rec:Building .
 
 rec:DocumentShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "A document providing information about a building element or asset" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Machine or Human-readable name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path rec:name ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Size of the information resource in bytes" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path rec:size ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:identifiers ],
-        [ sh:datatype xsd:string ;
-            sh:description "Version identifier for the information" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path rec:version ],
-        [ sh:datatype xsd:anyURI ;
+    sh:property [ sh:datatype xsd:anyURI ;
             sh:description "URL or URI pointing to the information resource" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
             sh:path rec:url ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path rec:customProperties ],
-        [ sh:datatype xsd:string ;
-            sh:description "MIME type or format identifier for the information" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path rec:format ],
-        [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path rec:description ],
-        [ sh:datatype xsd:string ;
-            sh:description "Language code (ISO 639-1) of the information content" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path rec:language ;
-            sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
+            sh:order 2 ;
+            sh:path rec:identifiers ],
         [ sh:datatype xsd:string ;
             sh:description "Checksum or hash of the information content" ;
             sh:maxCount 1 ;
@@ -888,91 +845,61 @@ rec:DocumentShape a sh:NodeShape ;
             sh:description "map(string -> boolean)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
-            sh:path rec:customTags ] ;
+            sh:path rec:customTags ],
+        [ sh:datatype xsd:string ;
+            sh:description "MIME type or format identifier for the information" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path rec:format ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path rec:customProperties ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Size of the information resource in bytes" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path rec:size ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rec:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Version identifier for the information" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path rec:version ],
+        [ sh:datatype xsd:string ;
+            sh:description "Language code (ISO 639-1) of the information content" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path rec:language ;
+            sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "Machine or Human-readable name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path rec:name ] ;
     sh:targetClass rec:Document .
 
 rec:GeometryShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "Placeholder for REC Geometry; details can be supplied by extensions." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Version identifier for the information" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path rec:version ],
-        [ sh:class sbco:KeyBoolMapEntry ;
+    sh:property [ sh:class sbco:KeyBoolMapEntry ;
             sh:description "map(string -> boolean)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path rec:customTags ],
-        [ sh:datatype xsd:string ;
-            sh:description "Machine or Human-readable name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path rec:name ],
-        [ sh:datatype xsd:string ;
-            sh:description "MIME type or format identifier for the information" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path rec:format ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path rec:customProperties ],
-        [ sh:datatype xsd:string ;
-            sh:description "Language code (ISO 639-1) of the information content" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path rec:language ;
-            sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path rec:description ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:identifiers ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Size of the information resource in bytes" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path rec:size ],
-        [ sh:datatype xsd:string ;
-            sh:description "Checksum or hash of the information content" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path rec:checksum ],
-        [ sh:datatype xsd:anyURI ;
-            sh:description "URL or URI pointing to the information resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path rec:url ] ;
-    sh:targetClass rec:Geometry .
-
-rec:GeoreferenceShape a sh:NodeShape ;
-    sh:closed false ;
-    sh:description "Placeholder for REC Georeference; details can be supplied by extensions." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Machine or Human-readable name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path rec:name ],
         [ sh:datatype xsd:anyURI ;
             sh:description "URL or URI pointing to the information resource" ;
             sh:maxCount 1 ;
@@ -985,17 +912,12 @@ rec:GeoreferenceShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 10 ;
             sh:path rec:checksum ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:identifiers ],
         [ sh:datatype xsd:string ;
-            sh:description "Version identifier for the information" ;
+            sh:description "MIME type or format identifier for the information" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path rec:version ],
+            sh:order 5 ;
+            sh:path rec:format ],
         [ sh:datatype xsd:string ;
             sh:description "Language code (ISO 639-1) of the information content" ;
             sh:maxCount 1 ;
@@ -1003,22 +925,29 @@ rec:GeoreferenceShape a sh:NodeShape ;
             sh:order 8 ;
             sh:path rec:language ;
             sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "MIME type or format identifier for the information" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path rec:format ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path rec:identifiers ],
         [ sh:class sbco:KeyMapOfStringMapEntry ;
             sh:description "map(string -> map(string -> string))" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path rec:customProperties ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path rec:customTags ],
+        [ sh:datatype xsd:string ;
+            sh:description "Machine or Human-readable name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path rec:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "Version identifier for the information" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path rec:version ],
         [ sh:datatype xsd:string ;
             sh:description "A textual description of the resource" ;
             sh:maxCount 1 ;
@@ -1031,6 +960,77 @@ rec:GeoreferenceShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 9 ;
             sh:path rec:size ] ;
+    sh:targetClass rec:Geometry .
+
+rec:GeoreferenceShape a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "Placeholder for REC Georeference; details can be supplied by extensions." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Version identifier for the information" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path rec:version ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path rec:customTags ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "URL or URI pointing to the information resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path rec:url ],
+        [ sh:datatype xsd:string ;
+            sh:description "MIME type or format identifier for the information" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path rec:format ],
+        [ sh:datatype xsd:string ;
+            sh:description "Language code (ISO 639-1) of the information content" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path rec:language ;
+            sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path rec:identifiers ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rec:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Checksum or hash of the information content" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path rec:checksum ],
+        [ sh:datatype xsd:string ;
+            sh:description "Machine or Human-readable name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path rec:name ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Size of the information resource in bytes" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path rec:size ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path rec:customProperties ] ;
     sh:targetClass rec:Georeference .
 
 rec:ImageShape a sh:NodeShape ;
@@ -1044,112 +1044,17 @@ rec:ImageShape a sh:NodeShape ;
             sh:order 1 ;
             sh:path rec:description ],
         [ sh:datatype xsd:string ;
-            sh:description "Machine or Human-readable name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path rec:name ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:identifiers ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Size of the information resource in bytes" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path rec:size ],
-        [ sh:datatype xsd:string ;
-            sh:description "Checksum or hash of the information content" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path rec:checksum ],
-        [ sh:datatype xsd:string ;
             sh:description "Version identifier for the information" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path rec:version ],
         [ sh:datatype xsd:string ;
-            sh:description "Language code (ISO 639-1) of the information content" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path rec:language ;
-            sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path rec:customProperties ],
-        [ sh:datatype xsd:anyURI ;
-            sh:description "URL or URI pointing to the information resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path rec:url ],
-        [ sh:datatype xsd:string ;
-            sh:description "MIME type or format identifier for the information" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path rec:format ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path rec:customTags ] ;
-    sh:targetClass rec:Image .
-
-rec:InformationShape a sh:NodeShape ;
-    sh:closed false ;
-    sh:description "Abstract base class for information resources such as documents, images, media files, etc." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Language code (ISO 639-1) of the information content" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path rec:language ;
-            sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path rec:customProperties ],
-        [ sh:datatype xsd:string ;
-            sh:description "MIME type or format identifier for the information" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path rec:format ],
-        [ sh:datatype xsd:anyURI ;
-            sh:description "URL or URI pointing to the information resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path rec:url ],
-        [ sh:datatype xsd:string ;
             sh:description "Checksum or hash of the information content" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 10 ;
             sh:path rec:checksum ],
-        [ sh:datatype xsd:string ;
-            sh:description "Version identifier for the information" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path rec:version ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Size of the information resource in bytes" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path rec:size ],
         [ sh:class sbco:KeyBoolMapEntry ;
             sh:description "map(string -> boolean)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -1162,43 +1067,156 @@ rec:InformationShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path rec:name ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path rec:identifiers ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "URL or URI pointing to the information resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path rec:url ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Size of the information resource in bytes" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path rec:size ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path rec:customProperties ],
+        [ sh:datatype xsd:string ;
+            sh:description "MIME type or format identifier for the information" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path rec:format ],
+        [ sh:datatype xsd:string ;
+            sh:description "Language code (ISO 639-1) of the information content" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path rec:language ;
+            sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ] ;
+    sh:targetClass rec:Image .
+
+rec:InformationShape a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "Abstract base class for information resources such as documents, images, media files, etc." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:description "Size of the information resource in bytes" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path rec:size ],
+        [ sh:datatype xsd:string ;
+            sh:description "MIME type or format identifier for the information" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path rec:format ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path rec:customProperties ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "URL or URI pointing to the information resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path rec:url ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path rec:identifiers ],
+        [ sh:datatype xsd:string ;
+            sh:description "Language code (ISO 639-1) of the information content" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path rec:language ;
+            sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "Version identifier for the information" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path rec:version ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path rec:customTags ],
         [ sh:datatype xsd:string ;
             sh:description "A textual description of the resource" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path rec:description ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:identifiers ] ;
+        [ sh:datatype xsd:string ;
+            sh:description "Checksum or hash of the information content" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path rec:checksum ],
+        [ sh:datatype xsd:string ;
+            sh:description "Machine or Human-readable name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path rec:name ] ;
     sh:targetClass rec:Information .
 
 rec:LevelShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "A building storey. Levels can also be treated as a kind of space." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class rec:Agent ;
-            sh:description "Agent or resource that owns this architecture" ;
+    sh:property [ sh:class rec:Georeference ;
+            sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 16 ;
+            sh:path rec:georeference ],
+        [ sh:class rec:Document ;
+            sh:description "Documentation related to this asset" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path rec:documentation ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that operates this architecture" ;
             sh:nodeKind sh:IRI ;
-            sh:order 13 ;
-            sh:path rec:ownedBy ],
+            sh:order 12 ;
+            sh:path rec:operatedBy ],
         [ sh:class rec:BuildingElement ;
             sh:description "Building element adjacent to this architecture" ;
             sh:nodeKind sh:IRI ;
             sh:order 4 ;
             sh:path rec:adjacentElement ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 24 ;
+            sh:path rec:description ],
+        [ sh:class rec:ArchitectureCapacity ;
+            sh:description "Capacity of the architecture" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path rec:capacity ],
         [ sh:class rec:Agent ;
             sh:description "Agent or resource that constructed this architecture" ;
             sh:nodeKind sh:IRI ;
             sh:order 6 ;
             sh:path rec:constructedBy ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element intersecting with this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 10 ;
-            sh:path rec:intersectingElement ],
         [ sh:class rec:ArchitectureArea ;
             sh:description "Area of the architecture" ;
             sh:maxCount 1 ;
@@ -1221,12 +1239,44 @@ rec:LevelShape a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 15 ;
             sh:path rec:geometry ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that owns this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 13 ;
+            sh:path rec:ownedBy ],
         [ sh:datatype xsd:integer ;
             sh:description "Floor or level number within a building" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path rec:levelNumber ],
+        [ sh:class rdfs:Resource ;
+            sh:description "Resource that feeds this architecture" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 11 ;
+            sh:path rec:isFedBy ],
+        [ sh:datatype xsd:string ;
+            sh:description "Machine or Human-readable name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 23 ;
+            sh:path rec:name ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that architected this structure" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path rec:architectedBy ],
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element intersecting with this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 10 ;
+            sh:path rec:intersectingElement ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 20 ;
+            sh:path rec:customProperties ],
         [ sh:datatype xsd:string ;
             sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
             sh:maxCount 1 ;
@@ -1234,84 +1284,34 @@ rec:LevelShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 14 ;
             sh:path sbco:id ],
-        [ sh:class rec:Georeference ;
-            sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 16 ;
-            sh:path rec:georeference ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that operates this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 12 ;
-            sh:path rec:operatedBy ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path rec:customTags ],
-        [ sh:description "The subject is a part of the entity given by the object." ;
-            sh:maxCount 1 ;
+        [ sh:description "The subject is composed in part of the entity given by the object." ;
             sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 19 ;
-            sh:path rec:isPartOf ],
-        [ sh:description "Point associated with this architecture" ;
-            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
-            sh:order 9 ;
-            sh:path rec:hasPoint ],
-        [ sh:class sbco:EquipmentExt ;
-            sh:description "Subject is the physical location encapsulating the object." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 18 ;
-            sh:path rec:isLocationOf ],
-        [ sh:class rdfs:Resource ;
-            sh:description "Resource that feeds this architecture" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 11 ;
-            sh:path rec:isFedBy ],
-        [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 24 ;
-            sh:path rec:description ],
-        [ sh:class rec:ArchitectureCapacity ;
-            sh:description "Capacity of the architecture" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path rec:capacity ],
-        [ sh:class rec:Document ;
-            sh:description "Documentation related to this asset" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 8 ;
-            sh:path rec:documentation ],
+            sh:order 17 ;
+            sh:path rec:hasPart ],
         [ sh:class rec:PostalAddress ;
             sh:description "Address of the architecture" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path rec:address ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that architected this structure" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path rec:architectedBy ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 20 ;
-            sh:path rec:customProperties ],
-        [ sh:description "The subject is composed in part of the entity given by the object." ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 17 ;
-            sh:path rec:hasPart ],
-        [ sh:datatype xsd:string ;
-            sh:description "Machine or Human-readable name" ;
+            sh:order 21 ;
+            sh:path rec:customTags ],
+        [ sh:description "Point associated with this architecture" ;
+            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
+            sh:order 9 ;
+            sh:path rec:hasPoint ],
+        [ sh:description "The subject is a part of the entity given by the object." ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 23 ;
-            sh:path rec:name ] ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 19 ;
+            sh:path rec:isPartOf ],
+        [ sh:class sbco:EquipmentExt ;
+            sh:description "Subject is the physical location encapsulating the object." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 18 ;
+            sh:path rec:isLocationOf ] ;
     sh:targetClass rec:Level .
 
 rec:MediaShape a sh:NodeShape ;
@@ -1319,13 +1319,6 @@ rec:MediaShape a sh:NodeShape ;
     sh:description "A media file such as audio or video content" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Machine or Human-readable name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path rec:name ],
-        [ sh:datatype xsd:string ;
             sh:description "Version identifier for the information" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1336,30 +1329,6 @@ rec:MediaShape a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path rec:identifiers ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Size of the information resource in bytes" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path rec:size ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path rec:customTags ],
-        [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path rec:description ],
-        [ sh:datatype xsd:string ;
-            sh:description "Language code (ISO 639-1) of the information content" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path rec:language ;
-            sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
         [ sh:class sbco:KeyMapOfStringMapEntry ;
             sh:description "map(string -> map(string -> string))" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -1371,6 +1340,37 @@ rec:MediaShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 10 ;
             sh:path rec:checksum ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path rec:customTags ],
+        [ sh:datatype xsd:string ;
+            sh:description "Language code (ISO 639-1) of the information content" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path rec:language ;
+            sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "Machine or Human-readable name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path rec:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rec:description ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Size of the information resource in bytes" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path rec:size ],
         [ sh:datatype xsd:string ;
             sh:description "MIME type or format identifier for the information" ;
             sh:maxCount 1 ;
@@ -1389,23 +1389,26 @@ rec:OrganizationShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "An organization such as a company, institution, or association" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sbco:id ],
-        [ sh:class rec:Organization ;
+    sh:property [ sh:class rec:Organization ;
             sh:description "Indicates membership in an organization. Note that componency (e.g., departments of a corporation) are expressed using the more generic Organization.isPartOf property." ;
             sh:nodeKind sh:IRI ;
             sh:order 5 ;
             sh:path rec:memberOf ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path rec:customProperties ],
         [ sh:class sbco:KeyBoolMapEntry ;
             sh:description "map(string -> boolean)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path rec:customTags ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path rec:identifiers ],
         [ sh:class rdfs:Resource ;
             sh:description " Indicates ownership of some thing, e.g., a building, an asset, an organization, etc." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -1418,16 +1421,13 @@ rec:OrganizationShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path rec:name ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:identifiers ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path rec:customProperties ] ;
+        [ sh:datatype xsd:string ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sbco:id ] ;
     sh:targetClass rec:Organization .
 
 rec:OutdoorSpaceShape a sh:NodeShape ;
@@ -1439,23 +1439,38 @@ rec:OutdoorSpaceShape a sh:NodeShape ;
             sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
             sh:order 18 ;
             sh:path rec:isPartOf ],
-        [ sh:class rec:Document ;
-            sh:description "Documentation related to this asset" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 7 ;
-            sh:path rec:documentation ],
-        [ sh:class rec:PostalAddress ;
-            sh:description "Address of the architecture" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:address ],
-        [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element contained within this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 6 ;
+            sh:path rec:containsElement ],
+        [ sh:class rec:ArchitectureArea ;
+            sh:description "Area of the architecture" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path sbco:id ],
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path rec:area ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 20 ;
+            sh:path rec:customTags ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that constructed this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path rec:constructedBy ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that architected this structure" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path rec:architectedBy ],
+        [ sh:class rec:ArchitectureCapacity ;
+            sh:description "Capacity of the architecture" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path rec:capacity ],
         [ sh:datatype xsd:string ;
             sh:description "A textual description of the resource" ;
             sh:maxCount 1 ;
@@ -1463,115 +1478,106 @@ rec:OutdoorSpaceShape a sh:NodeShape ;
             sh:order 23 ;
             sh:path rec:description ],
         [ sh:datatype xsd:string ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path sbco:id ],
+        [ sh:class rec:Document ;
+            sh:description "Documentation related to this asset" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path rec:documentation ],
+        [ sh:class sbco:EquipmentExt ;
+            sh:description "Subject is the physical location encapsulating the object." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 17 ;
+            sh:path rec:isLocationOf ],
+        [ sh:class rec:PostalAddress ;
+            sh:description "Address of the architecture" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path rec:address ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that operates this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 11 ;
+            sh:path rec:operatedBy ],
+        [ sh:datatype xsd:string ;
             sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 22 ;
             sh:path rec:name ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that architected this structure" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path rec:architectedBy ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that owns this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 12 ;
-            sh:path rec:ownedBy ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that constructed this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path rec:constructedBy ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path rec:identifiers ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element contained within this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 6 ;
-            sh:path rec:containsElement ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that operates this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 11 ;
-            sh:path rec:operatedBy ],
-        [ sh:class rec:ArchitectureArea ;
-            sh:description "Area of the architecture" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path rec:area ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element intersecting with this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 9 ;
-            sh:path rec:intersectingElement ],
-        [ sh:class rdfs:Resource ;
-            sh:description "Resource that feeds this architecture" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path rec:isFedBy ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 19 ;
-            sh:path rec:customProperties ],
-        [ sh:description "The subject is composed in part of the entity given by the object." ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 16 ;
-            sh:path rec:hasPart ],
         [ sh:class rec:Georeference ;
             sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 15 ;
             sh:path rec:georeference ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 20 ;
-            sh:path rec:customTags ],
-        [ sh:class sbco:EquipmentExt ;
-            sh:description "Subject is the physical location encapsulating the object." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 17 ;
-            sh:path rec:isLocationOf ],
         [ sh:class rec:Geometry ;
             sh:description "Polygon representing the spatial extent of this Space." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 14 ;
             sh:path rec:geometry ],
-        [ sh:class rec:ArchitectureCapacity ;
-            sh:description "Capacity of the architecture" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path rec:capacity ],
+        [ sh:description "Point associated with this architecture" ;
+            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
+            sh:order 8 ;
+            sh:path rec:hasPoint ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 19 ;
+            sh:path rec:customProperties ],
         [ sh:class rec:BuildingElement ;
             sh:description "Building element adjacent to this architecture" ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
             sh:path rec:adjacentElement ],
-        [ sh:description "Point associated with this architecture" ;
-            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
-            sh:order 8 ;
-            sh:path rec:hasPoint ] ;
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that owns this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 12 ;
+            sh:path rec:ownedBy ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 21 ;
+            sh:path rec:identifiers ],
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element intersecting with this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 9 ;
+            sh:path rec:intersectingElement ],
+        [ sh:description "The subject is composed in part of the entity given by the object." ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 16 ;
+            sh:path rec:hasPart ],
+        [ sh:class rdfs:Resource ;
+            sh:description "Resource that feeds this architecture" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 10 ;
+            sh:path rec:isFedBy ] ;
     sh:targetClass rec:OutdoorSpace .
 
 rec:PostalAddressShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "A postal address" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
+    sh:property [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:customTags ],
+            sh:order 3 ;
+            sh:path rec:customProperties ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path rec:description ],
         [ sh:datatype xsd:string ;
             sh:description "Checksum or hash of the information content" ;
             sh:maxCount 1 ;
@@ -1585,35 +1591,35 @@ rec:PostalAddressShape a sh:NodeShape ;
             sh:order 7 ;
             sh:path rec:version ],
         [ sh:datatype xsd:string ;
-            sh:description "Language code (ISO 639-1) of the information content" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path rec:language ;
-            sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
-        [ sh:datatype xsd:string ;
             sh:description "MIME type or format identifier for the information" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
             sh:path rec:format ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "URL or URI pointing to the information resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path rec:url ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path rec:customTags ],
         [ sh:datatype xsd:integer ;
             sh:description "Size of the information resource in bytes" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 9 ;
             sh:path rec:size ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 3 ;
-            sh:path rec:customProperties ],
         [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
+            sh:description "Language code (ISO 639-1) of the information content" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path rec:description ],
+            sh:order 8 ;
+            sh:path rec:language ;
+            sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
         [ sh:datatype xsd:string ;
             sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
@@ -1625,13 +1631,7 @@ rec:PostalAddressShape a sh:NodeShape ;
             sh:description "map(string -> string)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path rec:identifiers ],
-        [ sh:datatype xsd:anyURI ;
-            sh:description "URL or URI pointing to the information resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path rec:url ] ;
+            sh:path rec:identifiers ] ;
     sh:targetClass rec:PostalAddress .
 
 rec:RoomShape a sh:NodeShape ;
@@ -1646,79 +1646,19 @@ rec:RoomShape a sh:NodeShape ;
             sh:order 22 ;
             sh:path rec:name ],
         [ sh:class rec:Agent ;
-            sh:description "Agent or resource that operates this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 11 ;
-            sh:path rec:operatedBy ],
-        [ sh:class rec:Agent ;
             sh:description "Agent or resource that constructed this architecture" ;
             sh:nodeKind sh:IRI ;
             sh:order 5 ;
             sh:path rec:constructedBy ],
-        [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 23 ;
-            sh:path rec:description ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element adjacent to this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path rec:adjacentElement ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element intersecting with this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 9 ;
-            sh:path rec:intersectingElement ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 19 ;
-            sh:path rec:customProperties ],
-        [ sh:description "Point associated with this architecture" ;
-            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
-            sh:order 8 ;
-            sh:path rec:hasPoint ],
-        [ sh:class rec:ArchitectureArea ;
-            sh:description "Area of the architecture" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path rec:area ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that owns this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 12 ;
-            sh:path rec:ownedBy ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path rec:identifiers ],
+        [ sh:description "The subject is composed in part of the entity given by the object." ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 16 ;
+            sh:path rec:hasPart ],
         [ sh:class rec:PostalAddress ;
             sh:description "Address of the architecture" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
             sh:path rec:address ],
-        [ sh:class rec:ArchitectureCapacity ;
-            sh:description "Capacity of the architecture" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path rec:capacity ],
-        [ sh:class rec:Geometry ;
-            sh:description "Polygon representing the spatial extent of this Space." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 14 ;
-            sh:path rec:geometry ],
-        [ sh:class rec:Georeference ;
-            sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 15 ;
-            sh:path rec:georeference ],
         [ sh:datatype xsd:string ;
             sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
             sh:maxCount 1 ;
@@ -1726,80 +1666,118 @@ rec:RoomShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 13 ;
             sh:path sbco:id ],
-        [ sh:description "The subject is a part of the entity given by the object." ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 18 ;
-            sh:path rec:isPartOf ],
-        [ sh:class rdfs:Resource ;
-            sh:description "Resource that feeds this architecture" ;
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 10 ;
-            sh:path rec:isFedBy ],
+            sh:order 19 ;
+            sh:path rec:customProperties ],
         [ sh:class rec:BuildingElement ;
-            sh:description "Building element contained within this architecture" ;
+            sh:description "Building element intersecting with this architecture" ;
             sh:nodeKind sh:IRI ;
-            sh:order 6 ;
-            sh:path rec:containsElement ],
+            sh:order 9 ;
+            sh:path rec:intersectingElement ],
+        [ sh:class rec:Georeference ;
+            sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 15 ;
+            sh:path rec:georeference ],
         [ sh:class rec:Agent ;
             sh:description "Agent or resource that architected this structure" ;
             sh:nodeKind sh:IRI ;
             sh:order 4 ;
             sh:path rec:architectedBy ],
-        [ sh:description "The subject is composed in part of the entity given by the object." ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 16 ;
-            sh:path rec:hasPart ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 23 ;
+            sh:path rec:description ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that owns this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 12 ;
+            sh:path rec:ownedBy ],
+        [ sh:class rec:Geometry ;
+            sh:description "Polygon representing the spatial extent of this Space." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 14 ;
+            sh:path rec:geometry ],
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element contained within this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 6 ;
+            sh:path rec:containsElement ],
+        [ sh:class rec:ArchitectureCapacity ;
+            sh:description "Capacity of the architecture" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path rec:capacity ],
         [ sh:class rec:Document ;
             sh:description "Documentation related to this asset" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 7 ;
             sh:path rec:documentation ],
+        [ sh:class sbco:EquipmentExt ;
+            sh:description "Subject is the physical location encapsulating the object." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 17 ;
+            sh:path rec:isLocationOf ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 21 ;
+            sh:path rec:identifiers ],
+        [ sh:description "Point associated with this architecture" ;
+            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
+            sh:order 8 ;
+            sh:path rec:hasPoint ],
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element adjacent to this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rec:adjacentElement ],
+        [ sh:class rec:ArchitectureArea ;
+            sh:description "Area of the architecture" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path rec:area ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that operates this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 11 ;
+            sh:path rec:operatedBy ],
         [ sh:class sbco:KeyBoolMapEntry ;
             sh:description "map(string -> boolean)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 20 ;
             sh:path rec:customTags ],
-        [ sh:class sbco:EquipmentExt ;
-            sh:description "Subject is the physical location encapsulating the object." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 17 ;
-            sh:path rec:isLocationOf ] ;
+        [ sh:class rdfs:Resource ;
+            sh:description "Resource that feeds this architecture" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 10 ;
+            sh:path rec:isFedBy ],
+        [ sh:description "The subject is a part of the entity given by the object." ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 18 ;
+            sh:path rec:isPartOf ] ;
     sh:targetClass rec:Room .
 
 rec:SchemaShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "A schema definition file" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:anyURI ;
-            sh:description "URL or URI pointing to the information resource" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path rec:url ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path rec:customProperties ],
-        [ sh:datatype xsd:string ;
-            sh:description "MIME type or format identifier for the information" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path rec:format ],
-        [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path rec:description ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Size of the information resource in bytes" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path rec:size ],
+            sh:order 0 ;
+            sh:path rec:name ],
         [ sh:datatype xsd:string ;
             sh:description "Language code (ISO 639-1) of the information content" ;
             sh:maxCount 1 ;
@@ -1807,18 +1785,45 @@ rec:SchemaShape a sh:NodeShape ;
             sh:order 8 ;
             sh:path rec:language ;
             sh:pattern "^[a-z]{2}(-[A-Z]{2})?$" ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rec:description ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path rec:identifiers ],
         [ sh:class sbco:KeyBoolMapEntry ;
             sh:description "map(string -> boolean)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path rec:customTags ],
-        [ sh:datatype xsd:string ;
-            sh:description "Machine or Human-readable name" ;
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path rec:customProperties ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Size of the information resource in bytes" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path rec:name ],
+            sh:order 9 ;
+            sh:path rec:size ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "URL or URI pointing to the information resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path rec:url ],
+        [ sh:datatype xsd:string ;
+            sh:description "Version identifier for the information" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path rec:version ],
         [ sh:datatype xsd:string ;
             sh:description "Checksum or hash of the information content" ;
             sh:maxCount 1 ;
@@ -1826,104 +1831,73 @@ rec:SchemaShape a sh:NodeShape ;
             sh:order 10 ;
             sh:path rec:checksum ],
         [ sh:datatype xsd:string ;
-            sh:description "Version identifier for the information" ;
+            sh:description "MIME type or format identifier for the information" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path rec:version ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:identifiers ] ;
+            sh:order 5 ;
+            sh:path rec:format ] ;
     sh:targetClass rec:Schema .
 
 rec:SiteShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "A piece of land upon which zero or more buildings may be situated." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "The subject is a part of the entity given by the object." ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 18 ;
-            sh:path rec:isPartOf ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element intersecting with this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 9 ;
-            sh:path rec:intersectingElement ],
-        [ sh:class rdfs:Resource ;
+    sh:property [ sh:class rdfs:Resource ;
             sh:description "Resource that feeds this architecture" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 10 ;
             sh:path rec:isFedBy ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element contained within this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 6 ;
-            sh:path rec:containsElement ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that owns this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 12 ;
-            sh:path rec:ownedBy ],
-        [ sh:description "The subject is composed in part of the entity given by the object." ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 16 ;
-            sh:path rec:hasPart ],
-        [ sh:class rec:ArchitectureArea ;
-            sh:description "Area of the architecture" ;
+        [ sh:class rec:ArchitectureCapacity ;
+            sh:description "Capacity of the architecture" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path rec:area ],
+            sh:order 1 ;
+            sh:path rec:capacity ],
+        [ sh:description "The subject is a part of the entity given by the object." ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 18 ;
+            sh:path rec:isPartOf ],
         [ sh:class rec:Document ;
             sh:description "Documentation related to this asset" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 7 ;
             sh:path rec:documentation ],
         [ sh:class rec:Agent ;
+            sh:description "Agent or resource that architected this structure" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path rec:architectedBy ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that owns this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 12 ;
+            sh:path rec:ownedBy ],
+        [ sh:class rec:Agent ;
             sh:description "Agent or resource that constructed this architecture" ;
             sh:nodeKind sh:IRI ;
             sh:order 5 ;
             sh:path rec:constructedBy ],
-        [ sh:class rec:PostalAddress ;
-            sh:description "Address of the architecture" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:address ],
-        [ sh:class sbco:EquipmentExt ;
-            sh:description "Subject is the physical location encapsulating the object." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 17 ;
-            sh:path rec:isLocationOf ],
-        [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path sbco:id ],
         [ sh:class sbco:KeyStringMapEntry ;
             sh:description "map(string -> string)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 21 ;
             sh:path rec:identifiers ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that architected this structure" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path rec:architectedBy ],
         [ sh:class rec:BuildingElement ;
-            sh:description "Building element adjacent to this architecture" ;
+            sh:description "Building element intersecting with this architecture" ;
             sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path rec:adjacentElement ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that operates this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 11 ;
-            sh:path rec:operatedBy ],
+            sh:order 9 ;
+            sh:path rec:intersectingElement ],
+        [ sh:class rec:Geometry ;
+            sh:description "Polygon representing the spatial extent of this Space." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 14 ;
+            sh:path rec:geometry ],
+        [ sh:description "The subject is composed in part of the entity given by the object." ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 16 ;
+            sh:path rec:hasPart ],
         [ sh:datatype xsd:string ;
             sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
@@ -1931,24 +1905,59 @@ rec:SiteShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 22 ;
             sh:path rec:name ],
-        [ sh:class rec:ArchitectureCapacity ;
-            sh:description "Capacity of the architecture" ;
-            sh:maxCount 1 ;
+        [ sh:description "Point associated with this architecture" ;
+            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
+            sh:order 8 ;
+            sh:path rec:hasPoint ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that operates this architecture" ;
             sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path rec:capacity ],
-        [ sh:class rec:Geometry ;
-            sh:description "Polygon representing the spatial extent of this Space." ;
+            sh:order 11 ;
+            sh:path rec:operatedBy ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path sbco:id ],
+        [ sh:class sbco:EquipmentExt ;
+            sh:description "Subject is the physical location encapsulating the object." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 17 ;
+            sh:path rec:isLocationOf ],
+        [ sh:class rec:PostalAddress ;
+            sh:description "Address of the architecture" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 14 ;
-            sh:path rec:geometry ],
+            sh:order 2 ;
+            sh:path rec:address ],
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element adjacent to this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rec:adjacentElement ],
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element contained within this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 6 ;
+            sh:path rec:containsElement ],
         [ sh:class rec:Georeference ;
             sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 15 ;
             sh:path rec:georeference ],
+        [ sh:class rec:ArchitectureArea ;
+            sh:description "Area of the architecture" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path rec:area ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 19 ;
+            sh:path rec:customProperties ],
         [ sh:class sbco:KeyBoolMapEntry ;
             sh:description "map(string -> boolean)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -1959,39 +1968,48 @@ rec:SiteShape a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 23 ;
-            sh:path rec:description ],
-        [ sh:description "Point associated with this architecture" ;
-            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
-            sh:order 8 ;
-            sh:path rec:hasPoint ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 19 ;
-            sh:path rec:customProperties ] ;
+            sh:path rec:description ] ;
     sh:targetClass rec:Site .
 
 rec:SpaceShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "A contiguous part of the physical world that contains or can contain sub-spaces. E.g., a Region can contain many Sites, which in turn can contain many Buildings." ;
     sh:ignoredProperties ( rec:address rec:operatedBy rec:intersectingElement rec:documentation rec:levelNumber rec:isFedBy rec:adjacentElement rdf:type rec:constructedBy rec:capacity rec:hasPoint rec:area rec:containsElement rec:ownedBy rec:architectedBy ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
+    sh:property [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path rec:identifiers ],
+        [ sh:description "The subject is composed in part of the entity given by the object." ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 3 ;
+            sh:path rec:hasPart ],
+        [ sh:description "The subject is a part of the entity given by the object." ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sbco:id ],
-        [ sh:class sbco:EquipmentExt ;
-            sh:description "Subject is the physical location encapsulating the object." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 4 ;
-            sh:path rec:isLocationOf ],
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 5 ;
+            sh:path rec:isPartOf ],
         [ sh:class sbco:KeyMapOfStringMapEntry ;
             sh:description "map(string -> map(string -> string))" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
             sh:path rec:customProperties ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path rec:customTags ],
+        [ sh:class sbco:EquipmentExt ;
+            sh:description "Subject is the physical location encapsulating the object." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path rec:isLocationOf ],
+        [ sh:class rec:Geometry ;
+            sh:description "Polygon representing the spatial extent of this Space." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path rec:geometry ],
         [ sh:datatype xsd:string ;
             sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
@@ -1999,71 +2017,82 @@ rec:SpaceShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 9 ;
             sh:path rec:name ],
-        [ sh:description "The subject is a part of the entity given by the object." ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 5 ;
-            sh:path rec:isPartOf ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 8 ;
-            sh:path rec:identifiers ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 7 ;
-            sh:path rec:customTags ],
-        [ sh:class rec:Geometry ;
-            sh:description "Polygon representing the spatial extent of this Space." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
-            sh:path rec:geometry ],
-        [ sh:description "The subject is composed in part of the entity given by the object." ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 3 ;
-            sh:path rec:hasPart ],
-        [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path rec:description ],
         [ sh:class rec:Georeference ;
             sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 2 ;
-            sh:path rec:georeference ] ;
+            sh:path rec:georeference ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sbco:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path rec:description ] ;
     sh:targetClass rec:Space .
 
 rec:ZoneShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "A sub-zone within or outside of a building defined to support some technology and/or use." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class rec:Agent ;
-            sh:description "Agent or resource that operates this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 11 ;
-            sh:path rec:operatedBy ],
-        [ sh:class rec:ArchitectureArea ;
-            sh:description "Area of the architecture" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path rec:area ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path rec:identifiers ],
-        [ sh:class rec:Georeference ;
-            sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
+    sh:property [ sh:class rec:Geometry ;
+            sh:description "Polygon representing the spatial extent of this Space." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 15 ;
-            sh:path rec:georeference ],
+            sh:order 14 ;
+            sh:path rec:geometry ],
+        [ sh:datatype xsd:string ;
+            sh:description "Machine or Human-readable name" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 22 ;
+            sh:path rec:name ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that owns this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 12 ;
+            sh:path rec:ownedBy ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 20 ;
+            sh:path rec:customTags ],
+        [ sh:datatype xsd:string ;
+            sh:description "A textual description of the resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 23 ;
+            sh:path rec:description ],
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element intersecting with this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 9 ;
+            sh:path rec:intersectingElement ],
+        [ sh:class rec:BuildingElement ;
+            sh:description "Building element adjacent to this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rec:adjacentElement ],
+        [ sh:class sbco:EquipmentExt ;
+            sh:description "Subject is the physical location encapsulating the object." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 17 ;
+            sh:path rec:isLocationOf ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path sbco:id ],
         [ sh:class rec:Agent ;
             sh:description "Agent or resource that architected this structure" ;
             sh:nodeKind sh:IRI ;
@@ -2074,112 +2103,148 @@ rec:ZoneShape a sh:NodeShape ;
             sh:nodeKind sh:IRI ;
             sh:order 5 ;
             sh:path rec:constructedBy ],
+        [ sh:class rec:PostalAddress ;
+            sh:description "Address of the architecture" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path rec:address ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 21 ;
+            sh:path rec:identifiers ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that operates this architecture" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 11 ;
+            sh:path rec:operatedBy ],
+        [ sh:class rec:Document ;
+            sh:description "Documentation related to this asset" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 7 ;
+            sh:path rec:documentation ],
+        [ sh:description "The subject is composed in part of the entity given by the object." ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 16 ;
+            sh:path rec:hasPart ],
+        [ sh:class rec:ArchitectureArea ;
+            sh:description "Area of the architecture" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path rec:area ],
+        [ sh:description "Point associated with this architecture" ;
+            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
+            sh:order 8 ;
+            sh:path rec:hasPoint ],
         [ sh:description "The subject is a part of the entity given by the object." ;
             sh:maxCount 1 ;
             sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
             sh:order 18 ;
             sh:path rec:isPartOf ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 19 ;
-            sh:path rec:customProperties ],
-        [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path sbco:id ],
         [ sh:class rdfs:Resource ;
             sh:description "Resource that feeds this architecture" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 10 ;
             sh:path rec:isFedBy ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element contained within this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 6 ;
-            sh:path rec:containsElement ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 20 ;
-            sh:path rec:customTags ],
-        [ sh:class rec:BuildingElement ;
-            sh:description "Building element adjacent to this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path rec:adjacentElement ],
-        [ sh:class rec:Geometry ;
-            sh:description "Polygon representing the spatial extent of this Space." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 14 ;
-            sh:path rec:geometry ],
-        [ sh:description "The subject is composed in part of the entity given by the object." ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 16 ;
-            sh:path rec:hasPart ],
         [ sh:class rec:ArchitectureCapacity ;
             sh:description "Capacity of the architecture" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 1 ;
             sh:path rec:capacity ],
+        [ sh:class rec:Georeference ;
+            sh:description "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 15 ;
+            sh:path rec:georeference ],
         [ sh:class rec:BuildingElement ;
-            sh:description "Building element intersecting with this architecture" ;
+            sh:description "Building element contained within this architecture" ;
             sh:nodeKind sh:IRI ;
-            sh:order 9 ;
-            sh:path rec:intersectingElement ],
-        [ sh:class rec:Document ;
-            sh:description "Documentation related to this asset" ;
+            sh:order 6 ;
+            sh:path rec:containsElement ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 7 ;
-            sh:path rec:documentation ],
-        [ sh:datatype xsd:string ;
-            sh:description "Machine or Human-readable name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 22 ;
-            sh:path rec:name ],
-        [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 23 ;
-            sh:path rec:description ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that owns this architecture" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 12 ;
-            sh:path rec:ownedBy ],
-        [ sh:class sbco:EquipmentExt ;
-            sh:description "Subject is the physical location encapsulating the object." ;
-            sh:nodeKind sh:IRI ;
-            sh:order 17 ;
-            sh:path rec:isLocationOf ],
-        [ sh:class rec:PostalAddress ;
-            sh:description "Address of the architecture" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
-            sh:path rec:address ],
-        [ sh:description "Point associated with this architecture" ;
-            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
-            sh:order 8 ;
-            sh:path rec:hasPoint ] ;
+            sh:order 19 ;
+            sh:path rec:customProperties ] ;
     sh:targetClass rec:Zone .
 
 sbco:EquipmentExtShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "An equipment asset installed in a space." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "The subject is a part of the entity given by the object." ;
+    sh:property [ sh:class rdfs:Resource ;
+            sh:description "Resource that feeds this architecture" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path rec:isFedBy ],
+        [ sh:class rec:Document ;
+            sh:description "Documentation related to this asset" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 9 ;
+            sh:path rec:documentation ],
+        [ sh:datatype xsd:string ;
+            sh:description "Initial cost of the asset" ;
             sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 25 ;
+            sh:path rec:initialCost ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that manufactured this asset" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 17 ;
+            sh:path rec:manufacturedBy ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 22 ;
+            sh:path rec:customProperties ],
+        [ sh:datatype xsd:string ;
+            sh:description "Asset identification tag" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 20 ;
+            sh:path rec:assetTag ],
+        [ sh:class rdfs:Resource ;
+            sh:description "Equipment or system that this equipment feeds" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path brick:feeds ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that services this asset" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 19 ;
+            sh:path rec:servicedBy ],
+        [ sh:description "The subject is composed in part of the entity given by the object." ;
             sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 15 ;
-            sh:path rec:isPartOf ],
+            sh:order 12 ;
+            sh:path rec:hasPart ],
+        [ sh:datatype xsd:string ;
+            sh:description "Device Type" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sbco:deviceType ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path sbco:id ],
+        [ sh:class rec:Geometry ;
+            sh:description "Polygon representing the spatial extent of this Space." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 11 ;
+            sh:path rec:geometry ],
+        [ sh:datatype xsd:string ;
+            sh:description "MAC address of the asset" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 28 ;
+            sh:path rec:MACAddress ;
+            sh:pattern "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" ],
         [ sh:datatype xsd:string ;
             sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
@@ -2187,6 +2252,41 @@ sbco:EquipmentExtShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 31 ;
             sh:path rec:name ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that installed this asset" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 14 ;
+            sh:path rec:installedBy ],
+        [ sh:description "Point associated with this architecture" ;
+            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
+            sh:order 13 ;
+            sh:path rec:hasPoint ],
+        [ sh:datatype xsd:string ;
+            sh:description "IP address of the asset" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 27 ;
+            sh:path rec:IPAddress ;
+            sh:pattern "^((25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)$" ],
+        [ sh:description "The subject is a part of the entity given by the object." ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 15 ;
+            sh:path rec:isPartOf ],
+        [ sh:description "Space where this asset is located" ;
+            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
+            sh:order 16 ;
+            sh:path rec:locatedIn ],
+        [ sh:datatype xsd:string ;
+            sh:description "Target area for this resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path sbco:targetArea ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 23 ;
+            sh:path rec:customTags ],
         [ sh:datatype xsd:duration ;
             sh:description "Maintenance interval duration" ;
             sh:nodeKind sh:Literal ;
@@ -2194,113 +2294,51 @@ sbco:EquipmentExtShape a sh:NodeShape ;
             sh:path rec:maintenanceInterval ;
             sh:pattern "^P(?:\\d+Y)?(?:\\d+M)?(?:\\d+D)?(?:T(?:\\d+H)?(?:\\d+M)?(?:\\d+(?:\\.\\d+)?S)?)?$" ],
         [ sh:datatype xsd:string ;
-            sh:description "Asset identification tag" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 20 ;
-            sh:path rec:assetTag ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that installed this asset" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 14 ;
-            sh:path rec:installedBy ],
-        [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 7 ;
-            sh:path sbco:id ],
-        [ sh:datatype xsd:string ;
-            sh:description "Serial number of the asset" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 32 ;
-            sh:path rec:serialNumber ],
-        [ sh:datatype xsd:decimal ;
-            sh:description "Weight of the asset" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 34 ;
-            sh:path rec:weight ],
-        [ sh:datatype xsd:string ;
             sh:description "Parent panel" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path sbco:panel ],
-        [ sh:datatype xsd:string ;
-            sh:description "Target area for this resource" ;
+        [ sh:datatype xsd:integer ;
+            sh:description "The number of operational stages supported by this equipment" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path sbco:targetArea ],
-        [ sh:datatype xsd:date ;
-            sh:description "Date when the asset was installed" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 26 ;
-            sh:path rec:installationDate ],
-        [ sh:datatype xsd:date ;
-            sh:description "Date when the asset was commissioned" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 21 ;
-            sh:path rec:commissioningDate ],
-        [ sh:datatype xsd:string ;
-            sh:description "Initial cost of the asset" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 25 ;
-            sh:path rec:initialCost ],
-        [ sh:class rec:Document ;
-            sh:description "Documentation related to this asset" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 9 ;
-            sh:path rec:documentation ],
-        [ sh:datatype xsd:date ;
-            sh:description "Date when the asset was turned over" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 33 ;
-            sh:path rec:turnoverDate ],
-        [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 22 ;
-            sh:path rec:customProperties ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that manufactured this asset" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 17 ;
-            sh:path rec:manufacturedBy ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 23 ;
-            sh:path rec:customTags ],
+            sh:order 6 ;
+            sh:path brick:operationalStageCount ],
         [ sh:class rec:BuildingElement ;
             sh:description "Building element on which this asset is mounted" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 18 ;
             sh:path rec:mountedOn ],
+        [ sh:datatype xsd:date ;
+            sh:description "Date when the asset was turned over" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 33 ;
+            sh:path rec:turnoverDate ],
+        [ sh:datatype xsd:string ;
+            sh:description "Serial number of the asset" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 32 ;
+            sh:path rec:serialNumber ],
         [ sh:class sbco:KeyStringMapEntry ;
             sh:description "map(string -> string)" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 24 ;
             sh:path rec:identifiers ],
+        [ sh:class rec:Agent ;
+            sh:description "Agent or resource that commissioned this asset" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 8 ;
+            sh:path rec:commissionedBy ],
         [ sh:datatype xsd:string ;
-            sh:description "A textual description of the resource" ;
+            sh:description "Model number of the asset" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path rec:description ],
-        [ sh:class rec:Geometry ;
-            sh:description "Polygon representing the spatial extent of this Space." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 11 ;
-            sh:path rec:geometry ],
+            sh:order 30 ;
+            sh:path rec:modelNumber ],
         [ sh:datatype xsd:string ;
             sh:description "Parent installation area" ;
             sh:maxCount 1 ;
@@ -2308,92 +2346,34 @@ sbco:EquipmentExtShape a sh:NodeShape ;
             sh:order 2 ;
             sh:path sbco:installationArea ],
         [ sh:datatype xsd:string ;
-            sh:description "Device Type" ;
+            sh:description "A textual description of the resource" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sbco:deviceType ],
-        [ sh:datatype xsd:integer ;
-            sh:description "The number of operational stages supported by this equipment" ;
+            sh:order 10 ;
+            sh:path rec:description ],
+        [ sh:datatype xsd:decimal ;
+            sh:description "Weight of the asset" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path brick:operationalStageCount ],
-        [ sh:datatype xsd:string ;
-            sh:description "MAC address of the asset" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 28 ;
-            sh:path rec:MACAddress ;
-            sh:pattern "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" ],
-        [ sh:class rdfs:Resource ;
-            sh:description "Resource that feeds this architecture" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 5 ;
-            sh:path rec:isFedBy ],
-        [ sh:class rdfs:Resource ;
-            sh:description "Equipment or system that this equipment feeds" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
-            sh:path brick:feeds ],
-        [ sh:datatype xsd:string ;
-            sh:description "IP address of the asset" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 27 ;
-            sh:path rec:IPAddress ;
-            sh:pattern "^((25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)$" ],
-        [ sh:datatype xsd:string ;
-            sh:description "Model number of the asset" ;
+            sh:order 34 ;
+            sh:path rec:weight ],
+        [ sh:datatype xsd:date ;
+            sh:description "Date when the asset was commissioned" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 30 ;
-            sh:path rec:modelNumber ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that commissioned this asset" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 8 ;
-            sh:path rec:commissionedBy ],
-        [ sh:description "The subject is composed in part of the entity given by the object." ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 12 ;
-            sh:path rec:hasPart ],
-        [ sh:description "Space where this asset is located" ;
-            sh:or ( [ sh:class rec:Space ] [ sh:class rec:Site ] [ sh:class rec:Building ] [ sh:class rec:Level ] [ sh:class rec:Room ] [ sh:class rec:Zone ] [ sh:class rec:OutdoorSpace ] ) ;
-            sh:order 16 ;
-            sh:path rec:locatedIn ],
-        [ sh:class rec:Agent ;
-            sh:description "Agent or resource that services this asset" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 19 ;
-            sh:path rec:servicedBy ],
-        [ sh:description "Point associated with this architecture" ;
-            sh:or ( [ sh:class brick:Point ] [ sh:class sbco:PointExt ] ) ;
-            sh:order 13 ;
-            sh:path rec:hasPoint ] ;
+            sh:order 21 ;
+            sh:path rec:commissioningDate ],
+        [ sh:datatype xsd:date ;
+            sh:description "Date when the asset was installed" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 26 ;
+            sh:path rec:installationDate ] ;
     sh:targetClass sbco:EquipmentExt .
 
 sbco:KeyBoolMapEntryShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "One entry in a map from strings to booleans." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:boolean ;
-            sh:description "Boolean flag value" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path sbco:flag ],
-        [ sh:datatype xsd:string ;
-            sh:description "Key of the map entry" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path sbco:key ] ;
-    sh:targetClass sbco:KeyBoolMapEntry .
-
-sbco:KeyMapOfStringMapEntryShape a sh:NodeShape ;
-    sh:closed false ;
-    sh:description "One entry in a map from strings to string-to-string maps." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
             sh:description "Key of the map entry" ;
@@ -2402,12 +2382,32 @@ sbco:KeyMapOfStringMapEntryShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path sbco:key ],
-        [ sh:class sbco:KeyStringMapEntry ;
+        [ sh:datatype xsd:boolean ;
+            sh:description "Boolean flag value" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path sbco:flag ] ;
+    sh:targetClass sbco:KeyBoolMapEntry .
+
+sbco:KeyMapOfStringMapEntryShape a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "One entry in a map from strings to string-to-string maps." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class sbco:KeyStringMapEntry ;
             sh:description "Nested map entries" ;
             sh:minCount 1 ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path sbco:entries ] ;
+            sh:path sbco:entries ],
+        [ sh:datatype xsd:string ;
+            sh:description "Key of the map entry" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path sbco:key ] ;
     sh:targetClass sbco:KeyMapOfStringMapEntry .
 
 sbco:KeyStringMapEntryShape a sh:NodeShape ;
@@ -2434,91 +2434,22 @@ sbco:PointExtShape a sh:NodeShape ;
     sh:closed false ;
     sh:description "A point (sensor/actuator) in a smart building context." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class sbco:KeyMapOfStringMapEntry ;
-            sh:description "map(string -> map(string -> string))" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 20 ;
-            sh:path rec:customProperties ],
-        [ sh:class sbco:KeyBoolMapEntry ;
-            sh:description "map(string -> boolean)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 21 ;
-            sh:path rec:customTags ],
-        [ sh:datatype xsd:string ;
-            sh:description "Parent installation area" ;
+    sh:property [ sh:description "Measurement unit (enum key; symbol can be taken from annotations)" ;
+            sh:in ( "celsius" "percent" "ppm" ) ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path sbco:installationArea ],
-        [ sh:datatype xsd:float ;
-            sh:description "Scale factor for raw value conversion" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path sbco:scale ],
-        [ sh:datatype xsd:float ;
-            sh:description "Minimum plausible reading" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path sbco:minPresValue ],
+            sh:order 2 ;
+            sh:path sbco:unit ],
         [ sh:description "Aggregation function or method for point data processing" ;
             sh:in ( "average" "sum" "minimum" "maximum" "count" "first" "last" "median" "standardDeviation" ) ;
             sh:maxCount 1 ;
             sh:order 19 ;
             sh:path brick:aggregate ],
-        [ sh:description "Physical quantity measured by this point" ;
-            sh:in ( "Absolute_Humidity" "Acceleration_Time" "Active_Energy" "Active_Power" "Air_Quality" "Alternating_Current_Frequency" "Ammonia_Concentration" "Angle" "Apparent_Energy" "Apparent_Power" "Atmospheric_Pressure" "CO2_Concentration" "CO_Concentration" "Capacity" "Cloudage" "Complex_Power" "Conductivity" "Current_Angle" "Current_Imbalance" "Current_Total_Harmonic_Distortion" "Deceleration_Time" "Dewpoint" "Differential_CO2_Concentration" "Differential_CO_Concentration" "Differential_Dry_Bulb_Temperature" "Differential_Dynamic_Pressure" "Differential_Pressure" "Differential_Static_Pressure" "Differential_Temperature" "Direction" "Dry_Bulb_Temperature" "Dynamic_Pressure" "Electric_Current" "Electric_Energy" "Electric_Power" "Energy" "Enthalpy" "Flow" "Flow_Loss" "Formaldehyde_Concentration" "Frequency" "GrainsOfMoisture" "Humidity" "Illuminance" "Irradiance" "Level" "Linear_Speed" "Luminance" "Luminous_Flux" "Luminous_Intensity" "Mass" "Methane_Concentration" "NO2_Concentration" "Occupancy" "Occupancy_Count" "Occupancy_Percentage" "Operative_Temperature" "Ozone_Concentration" "PM10_Concentration" "PM1_Concentration" "PM2_5_Concentration" "Peak_Power" "Phasor" "Phasor_Angle" "Phasor_Magnitude" "Position" "Power" "Power_Factor" "Precipitation" "Pressure" "Radiance" "Radiant_Temperature" "Radioactivity_Concentration" "Radon_Concentration" "Reactive_Energy" "Reactive_Power" "Real_Power" "Relative_Humidity" "Rotational_Speed" "Solar_Irradiance" "Solar_Radiance" "Speed" "Static_Pressure" "TVOC_Concentration" "Temperature" "Thermal_Energy" "Thermal_Power" "Time" "Torque" "Velocity_Pressure" "Voltage" "Voltage_Angle" "Voltage_Imbalance" "Weather_Condition" "Wet_Bulb_Temperature" "Wind_Direction" ) ;
-            sh:maxCount 1 ;
-            sh:order 22 ;
-            sh:path brick:hasQuantity ],
-        [ sh:description "Equipment that this point belongs to" ;
-            sh:maxCount 1 ;
-            sh:or ( [ sh:class brick:Equipment ] [ sh:class sbco:EquipmentExt ] ) ;
-            sh:order 18 ;
-            sh:path brick:isPointOf ],
         [ sh:datatype xsd:string ;
-            sh:description "Supplier or vendor of the device associated with this point" ;
+            sh:description "BACnet object instance number" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path sbco:supplier ],
-        [ sh:datatype xsd:string ;
-            sh:description "Point type - a profile or template name used to refer to the telemetry format obtainable from the device or point. Specific definitions are provided separately in schema files." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path sbco:pointType ],
-        [ sh:datatype xsd:string ;
-            sh:description "Labels or tags associated with this point" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 15 ;
-            sh:path sbco:labels ],
-        [ sh:datatype xsd:string ;
-            sh:description "Machine or Human-readable name" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 25 ;
-            sh:path rec:name ],
-        [ sh:description "Measurement unit (enum key; symbol can be taken from annotations)" ;
-            sh:in ( "celsius" "percent" "ppm" ) ;
-            sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path sbco:unit ],
-        [ sh:datatype xsd:string ;
-            sh:description "BACnet object type (e.g., Analog-Input, Binary-Output)" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 16 ;
-            sh:path sbco:objectTypeBacnet ],
-        [ sh:datatype xsd:string ;
-            sh:description "BACnet device identifier" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path sbco:deviceIdBacnet ],
+            sh:order 14 ;
+            sh:path sbco:instanceNoBacnet ],
         [ sh:datatype xsd:float ;
             sh:description "Maximum plausible reading" ;
             sh:maxCount 1 ;
@@ -2526,50 +2457,97 @@ sbco:PointExtShape a sh:NodeShape ;
             sh:order 3 ;
             sh:path sbco:maxPresValue ],
         [ sh:datatype xsd:string ;
-            sh:description "BACnet object instance number" ;
+            sh:description "Machine or Human-readable name" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 14 ;
-            sh:path sbco:instanceNoBacnet ],
+            sh:order 25 ;
+            sh:path rec:name ],
         [ sh:datatype xsd:boolean ;
             sh:description "Whether the point value can be written (commanded)" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
             sh:path sbco:writable ],
+        [ sh:class sbco:KeyStringMapEntry ;
+            sh:description "map(string -> string)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 24 ;
+            sh:path rec:identifiers ],
+        [ sh:class sbco:KeyBoolMapEntry ;
+            sh:description "map(string -> boolean)" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 21 ;
+            sh:path rec:customTags ],
         [ sh:datatype xsd:string ;
-            sh:description "Identifier of the gateway device managing this point" ;
-            sh:maxCount 1 ;
+            sh:description "Labels or tags associated with this point" ;
             sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path sbco:gatewayId ],
-        [ sh:description "Substance associated with this point" ;
-            sh:in ( "ACElec" "Air" "BlowdownWater" "ChilledWater" "ColdDomesticWater" "Condensate" "CondenserWater" "DCElec" "Diesel" "DriveElec" "Ethernet" "ExhaustAir" "Freight" "FuelOil" "Gasoline" "GreaseExhaustAir" "HotDomesticWater" "HotWater" "IrrigationWater" "Light" "MakeupWater" "NaturalGas" "NonPotableDomesticWater" "OutsideAir" "People" "Propane" "RecircHotDomesticWater" "Refrig" "ReturnAir" "SprinklerWater" "Steam" "StormDrainage" "SupplyAir" "TransferAir" "WasteVentDrainage" "Water" ) ;
-            sh:maxCount 1 ;
-            sh:order 23 ;
-            sh:path brick:hasSubstance ],
+            sh:order 15 ;
+            sh:path sbco:labels ],
         [ sh:description "Point specification category as shown in equipment point list. English is recommended." ;
             sh:in ( "Alarm" "Command" "Setpoint" "Measurement" "Metering" "Status" ) ;
             sh:maxCount 1 ;
             sh:order 0 ;
             sh:path sbco:pointSpecification ],
+        [ sh:datatype xsd:string ;
+            sh:description "BACnet object type (e.g., Analog-Input, Binary-Output)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 16 ;
+            sh:path sbco:objectTypeBacnet ],
+        [ sh:datatype xsd:float ;
+            sh:description "Scale factor for raw value conversion" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path sbco:scale ],
         [ sh:datatype xsd:integer ;
             sh:description "Polling or reporting interval in seconds" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path sbco:interval ],
+        [ sh:description "Equipment that this point belongs to" ;
+            sh:maxCount 1 ;
+            sh:or ( [ sh:class brick:Equipment ] [ sh:class sbco:EquipmentExt ] ) ;
+            sh:order 18 ;
+            sh:path brick:isPointOf ],
+        [ sh:description "Substance associated with this point" ;
+            sh:in ( "ACElec" "Air" "BlowdownWater" "ChilledWater" "ColdDomesticWater" "Condensate" "CondenserWater" "DCElec" "Diesel" "DriveElec" "Ethernet" "ExhaustAir" "Freight" "FuelOil" "Gasoline" "GreaseExhaustAir" "HotDomesticWater" "HotWater" "IrrigationWater" "Light" "MakeupWater" "NaturalGas" "NonPotableDomesticWater" "OutsideAir" "People" "Propane" "RecircHotDomesticWater" "Refrig" "ReturnAir" "SprinklerWater" "Steam" "StormDrainage" "SupplyAir" "TransferAir" "WasteVentDrainage" "Water" ) ;
+            sh:maxCount 1 ;
+            sh:order 23 ;
+            sh:path brick:hasSubstance ],
         [ sh:datatype xsd:string ;
-            sh:description "Target area for this resource" ;
+            sh:description "Parent installation area" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 12 ;
-            sh:path sbco:targetArea ],
-        [ sh:class sbco:KeyStringMapEntry ;
-            sh:description "map(string -> string)" ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 24 ;
-            sh:path rec:identifiers ],
+            sh:order 11 ;
+            sh:path sbco:installationArea ],
+        [ sh:datatype xsd:string ;
+            sh:description "BACnet device identifier" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path sbco:deviceIdBacnet ],
+        [ sh:datatype xsd:string ;
+            sh:description "Supplier or vendor of the device associated with this point" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path sbco:supplier ],
+        [ sh:datatype xsd:string ;
+            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 17 ;
+            sh:path sbco:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Identifier of the gateway device managing this point" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path sbco:gatewayId ],
         [ sh:datatype xsd:string ;
             sh:description "Local identifier for this point within the gateway or system" ;
             sh:maxCount 1 ;
@@ -2577,12 +2555,34 @@ sbco:PointExtShape a sh:NodeShape ;
             sh:order 9 ;
             sh:path sbco:localId ],
         [ sh:datatype xsd:string ;
-            sh:description "Unique identifier within the schema. Must start with a letter and contain only letters, digits, underscores, hyphens, colons, semicolons, or periods. DTMI is one acceptable example." ;
+            sh:description "Point type - a profile or template name used to refer to the telemetry format obtainable from the device or point. Specific definitions are provided separately in schema files." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 17 ;
-            sh:path sbco:id ] ;
+            sh:order 1 ;
+            sh:path sbco:pointType ],
+        [ sh:description "Physical quantity measured by this point" ;
+            sh:in ( "Absolute_Humidity" "Acceleration_Time" "Active_Energy" "Active_Power" "Air_Quality" "Alternating_Current_Frequency" "Ammonia_Concentration" "Angle" "Apparent_Energy" "Apparent_Power" "Atmospheric_Pressure" "CO2_Concentration" "CO_Concentration" "Capacity" "Cloudage" "Complex_Power" "Conductivity" "Current_Angle" "Current_Imbalance" "Current_Total_Harmonic_Distortion" "Deceleration_Time" "Dewpoint" "Differential_CO2_Concentration" "Differential_CO_Concentration" "Differential_Dry_Bulb_Temperature" "Differential_Dynamic_Pressure" "Differential_Pressure" "Differential_Static_Pressure" "Differential_Temperature" "Direction" "Dry_Bulb_Temperature" "Dynamic_Pressure" "Electric_Current" "Electric_Energy" "Electric_Power" "Energy" "Enthalpy" "Flow" "Flow_Loss" "Formaldehyde_Concentration" "Frequency" "GrainsOfMoisture" "Humidity" "Illuminance" "Irradiance" "Level" "Linear_Speed" "Luminance" "Luminous_Flux" "Luminous_Intensity" "Mass" "Methane_Concentration" "NO2_Concentration" "Occupancy" "Occupancy_Count" "Occupancy_Percentage" "Operative_Temperature" "Ozone_Concentration" "PM10_Concentration" "PM1_Concentration" "PM2_5_Concentration" "Peak_Power" "Phasor" "Phasor_Angle" "Phasor_Magnitude" "Position" "Power" "Power_Factor" "Precipitation" "Pressure" "Radiance" "Radiant_Temperature" "Radioactivity_Concentration" "Radon_Concentration" "Reactive_Energy" "Reactive_Power" "Real_Power" "Relative_Humidity" "Rotational_Speed" "Solar_Irradiance" "Solar_Radiance" "Speed" "Static_Pressure" "TVOC_Concentration" "Temperature" "Thermal_Energy" "Thermal_Power" "Time" "Torque" "Velocity_Pressure" "Voltage" "Voltage_Angle" "Voltage_Imbalance" "Weather_Condition" "Wet_Bulb_Temperature" "Wind_Direction" ) ;
+            sh:maxCount 1 ;
+            sh:order 22 ;
+            sh:path brick:hasQuantity ],
+        [ sh:datatype xsd:float ;
+            sh:description "Minimum plausible reading" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path sbco:minPresValue ],
+        [ sh:datatype xsd:string ;
+            sh:description "Target area for this resource" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path sbco:targetArea ],
+        [ sh:class sbco:KeyMapOfStringMapEntry ;
+            sh:description "map(string -> map(string -> string))" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 20 ;
+            sh:path rec:customProperties ] ;
     sh:targetClass sbco:PointExt .
 
 
