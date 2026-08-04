@@ -1,0 +1,27 @@
+name: reject-external-pull-requests
+
+on:
+  pull_request_target:
+    types: [opened, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  close-external-pull-request:
+    if: github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Explain the contribution policy and close the pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          gh api --method POST "repos/${GH_REPO}/issues/${PR_NUMBER}/comments" \
+            -f body='Thank you for your interest. This repository accepts public Issues, but Pull Requests are limited to branches maintained by the Smart Building Co-creation Organization. Please open an Issue describing the proposed change so the Datamodel TF can evaluate and implement it.'
+          gh api --method PATCH "repos/${GH_REPO}/pulls/${PR_NUMBER}" \
+            -f state=closed
