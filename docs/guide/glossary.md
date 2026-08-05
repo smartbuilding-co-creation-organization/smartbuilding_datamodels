@@ -9,10 +9,10 @@
 
 | 用語 | 英語 | 説明 |
 |------|------|------|
-| ゲートウェイ | Gateway | 現地の設備機器とクラウドをつなぐ中継装置。`gateway_id` で識別する |
+| ゲートウェイ | Gateway | 現地の設備機器とクラウドをつなぐ中継装置。`gateway_id` で識別する。参考実装: [nexus-gateway](https://github.com/gutp-bim/nexus-gateway) |
 | ポイント | Point | センサーや制御機器が持つデータの1単位。計測・制御・警報などの種類がある |
 | ポイントリスト | Point List | 建物内の全ポイントを記録したCSVカタログ |
-| ビルOS | Building OS | 建物の設備データを統合管理するプラットフォーム |
+| ビルOS | Building OS | 建物の設備データを統合管理するプラットフォーム。参考実装: [gutp-building-os-ri](https://github.com/gutp-bim/gutp-building-os-ri) |
 | デジタルツイン | Digital Twin | 物理的な建物のデータ上の仮想モデル |
 | BMS | BMS (Building Management System) | 建物設備（空調・照明・防災等）を統合監視・制御するシステム |
 | BACS | BACS (Building Automation and Control System) | 建物の自動化・制御システム。BMSとほぼ同義で使われることも多い |

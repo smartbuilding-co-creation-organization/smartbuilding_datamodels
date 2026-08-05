@@ -68,6 +68,8 @@
 [温度センサー] ─── BACnet ───→ [ゲートウェイ GW001] ─── インターネット ───→ [ビルOS クラウド]
 ```
 
+> ゲートウェイとビルOSの参考実装（リファレンス実装）は後述の「5. ツール全体像」を参照してください。
+
 ### BACnetとは
 
 **BACnet（Building Automation and Control Networks）**は、空調・照明・防災設備などの建物設備を制御・監視するために広く使われている通信プロトコル（ASHRAE規格）です。ビル内の多くの機器がBACnetで通信しているため、ポイントリストにはBACnet固有のフィールド（`device_id_bacnet`、`object_type_bacnet`など）が含まれています。
@@ -138,6 +140,13 @@ smartbuilding_datamodels/        ← オントロジー定義 + RDF/JSON Schema 
 - `schema/building_model_shacl.yaml` がメインの定義ファイル
 - `output/` 以下に生成済みの RDF/Turtle・SHACL・JSON Schema が含まれる
 - GitHub Actions により push のたびに自動生成・ドキュメント更新
+
+### 参考実装：ビルOS・ゲートウェイ
+
+上記2リポジトリは「ポイントリスト作成 〜 データモデル生成」までを担いますが、その先の「④ ビルOSプラットフォームへ投入」「ゲートウェイでの中継」に対応する参考実装（リファレンス実装）として、以下のOSSプロジェクトが公開されています。SBCO自身のリポジトリではありませんが、データフロー全体を実際に動かして確認したい場合の入り口として参照してください。
+
+- **[gutp-building-os-ri](https://github.com/gutp-bim/gutp-building-os-ri)** — ビルOSの参考実装。datamodels のオントロジーに基づく意味付けデータを受け入れ、デジタルツインとして管理する側の実装例
+- **[nexus-gateway](https://github.com/gutp-bim/nexus-gateway)** — ゲートウェイの参考実装。BACnetなどで収集したポイントデータをビルOS側へ中継する実装例
 
 ---
 
