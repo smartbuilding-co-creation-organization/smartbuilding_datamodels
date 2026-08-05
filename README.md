@@ -23,7 +23,7 @@ linkml generate shacl --non-closed --suffix Shape schema/building_model_shacl.ya
 linkml generate json-schema schema/building_model_shacl.yaml > output/building_model.schema.json
 
 # Generate docs and preview
-gen-doc --directory docs schema/building_model_shacl.yaml
+gen-doc --directory docs/reference --template-directory templates/docgen schema/building_model_shacl.yaml
 mkdocs serve
 ```
 
