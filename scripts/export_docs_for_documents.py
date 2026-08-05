@@ -73,8 +73,12 @@ def transform(text: str) -> str:
 
 def extract_schema_tables(index_text: str) -> str:
     marker = "## Classes"
-    idx = index_text.index(marker)
-    return index_text[idx:].strip()
+    if marker not in index_text:
+        raise SystemExit(
+            f"export_docs_for_documents: expected marker {marker!r} not found in "
+            "docs/index.md — gen-doc's output format may have changed."
+        )
+    return index_text[index_text.index(marker):].strip()
 
 
 def merge_index_page(generated_tables: str, existing_path: Path) -> str:

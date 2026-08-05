@@ -70,6 +70,10 @@ jobs:
         env:
           DOCS_SYNC_TOKEN: ${{ secrets.DOCS_SYNC_TOKEN }}
         run: |
+          if [ -z "${DOCS_SYNC_TOKEN}" ]; then
+            echo "::warning::DOCS_SYNC_TOKEN is not set — skipping smartbuilding_documents sync notification."
+            exit 0
+          fi
           curl -sS --fail -X POST \
             -H "Authorization: Bearer ${DOCS_SYNC_TOKEN}" \
             -H "Accept: application/vnd.github+json" \
