@@ -3,6 +3,8 @@
 LinkMLでスマートビル向けモデル（オントロジー）を管理し、以下を自動生成・公開するプロジェクトです。
 このプロジェクトは、スマートビルディング共創機構の標準策定WGで仕様検討しているデータモデルです。
 
+📖 **公開ドキュメント:** [Smart Building Ontology](https://smartbuilding-co-creation-organization.github.io/smartbuilding_datamodels/)
+
 - OWL (Turtle): `output/building_model.owl.ttl` (from `schema/building_model_owl.yaml`)
 - SHACL (Turtle): `output/building_model.shacl.ttl` (from `schema/building_model_shacl.yaml`)
 - JSON Schema: `output/building_model.schema.json` (from `schema/building_model_shacl.yaml`)
@@ -44,7 +46,7 @@ python scripts/validate_rdf.py \
 - GitHub Actions (`.github/workflows/ci.yml`) により、`main` への push で
   - 生成（OWL/SHACL/JSON Schema/Docs）
   - MkDocs build
-  - GitHub Pages へデプロイ（`gh-pages`）
+  - GitHub Pages へデプロイ
   を自動実行します。
 
 ## スキーマ概要と編集ポイント
