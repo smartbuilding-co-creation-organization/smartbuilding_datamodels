@@ -117,9 +117,9 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--src",
-        default=Path("docs"),
+        default=Path("docs/reference"),
         type=Path,
-        help="Directory containing the gen-doc Markdown output (default: docs).",
+        help="Directory containing the gen-doc Markdown output (default: docs/reference).",
     )
     parser.add_argument(
         "--out",
