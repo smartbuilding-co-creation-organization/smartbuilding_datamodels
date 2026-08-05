@@ -18,6 +18,15 @@
 
 これらを実現するためには、**多数の機器・センサーからのデータを統一的に扱うための仕組み**が必要です。それが本プロジェクトが扱う「ポイントリスト」「データモデル」「オントロジー」です。
 
+### 正式な定義について
+
+上記は初学者向けに**分かりやすさを優先した表現**であり、公式な定義文ではありません。国内におけるスマートビルの定義は、IPA（独立行政法人情報処理推進機構）デジタルアーキテクチャ・デザインセンター（DADC）のスマートビルプロジェクトが「スマートビル総合ガイドライン」（2023年4月公開）で提案しています。同ガイドラインは、スマートビルの定義に加えて、社会要素としてスマートビルが担うべき機能、従来のビルとの比較、設計原則と実装方針などを示しています。
+
+正確な定義を確認する場合は、以下の一次情報を参照してください。
+
+- [スマートビル総合ガイドライン（PDF）](https://www.ipa.go.jp/digital/architecture/Individual-link/ps6vr70000016bsc-att/smartbuilding_comprehensive_guideline.pdf) — IPA/DADC スマートビルプロジェクト
+- [スマートビルガイドライン（IPA 公開ページ）](https://www.ipa.go.jp/digital/architecture/guidelines/smartbuilding-guideline.html) — 総合／システムアーキテクチャ／構築・運用の各ガイドライン一式
+
 ---
 
 ## 2. 「ポイント」とは
@@ -59,6 +68,8 @@
 [温度センサー] ─── BACnet ───→ [ゲートウェイ GW001] ─── インターネット ───→ [ビルOS クラウド]
 ```
 
+> ゲートウェイとビルOSの参考実装（リファレンス実装）は後述の「5. ツール全体像」を参照してください。
+
 ### BACnetとは
 
 **BACnet（Building Automation and Control Networks）**は、空調・照明・防災設備などの建物設備を制御・監視するために広く使われている通信プロトコル（ASHRAE規格）です。ビル内の多くの機器がBACnetで通信しているため、ポイントリストにはBACnet固有のフィールド（`device_id_bacnet`、`object_type_bacnet`など）が含まれています。
@@ -83,14 +94,13 @@ CSV形式のポイントリストは人間には読みやすいですが、コ�
 
 ---
 
-## 5. ツール全体像：3つのリポジトリの連携
+## 5. ツール全体像：2つのリポジトリの連携
 
-本プロジェクトは以下の3つのリポジトリで構成されています。
+本プロジェクトの公開リポジトリは以下の2つです。
 
 ```
-smartbuilding_documents/        ← このリポジトリ（仕様文書・入門ガイド）
 smartbuilding_datamodel_builder/ ← CSVエディタ＆バリデータ（Webアプリ）
-smartbuilding_datamodels/       ← オントロジー定義 + RDF/JSON Schema 生成
+smartbuilding_datamodels/        ← オントロジー定義 + RDF/JSON Schema 生成（本ガイドの公開元）
 ```
 
 ### データフロー
@@ -130,6 +140,13 @@ smartbuilding_datamodels/       ← オントロジー定義 + RDF/JSON Schema �
 - `schema/building_model_shacl.yaml` がメインの定義ファイル
 - `output/` 以下に生成済みの RDF/Turtle・SHACL・JSON Schema が含まれる
 - GitHub Actions により push のたびに自動生成・ドキュメント更新
+
+### 参考実装：ビルOS・ゲートウェイ
+
+上記2リポジトリは「ポイントリスト作成 〜 データモデル生成」までを担いますが、その先の「④ ビルOSプラットフォームへ投入」「ゲートウェイでの中継」に対応する参考実装（リファレンス実装）として、以下のOSSプロジェクトが公開されています。SBCO自身のリポジトリではありませんが、データフロー全体を実際に動かして確認したい場合の入り口として参照してください。
+
+- **[gutp-building-os-ri](https://github.com/gutp-bim/gutp-building-os-ri)** — ビルOSの参考実装。datamodels のオントロジーに基づく意味付けデータを受け入れ、デジタルツインとして管理する側の実装例
+- **[nexus-gateway](https://github.com/gutp-bim/nexus-gateway)** — ゲートウェイの参考実装。BACnetなどで収集したポイントデータをビルOS側へ中継する実装例
 
 ---
 
