@@ -46,7 +46,7 @@ python scripts/validate_rdf.py \
 - GitHub Actions (`.github/workflows/ci.yml`) により、`main` への push で
   - 生成（OWL/SHACL/JSON Schema/Docs）
   - MkDocs build
-  - GitHub Pages へデプロイ（`gh-pages`）
+  - GitHub Pages へデプロイ
   を自動実行します。
 
 ## スキーマ概要と編集ポイント
