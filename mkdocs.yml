@@ -7,6 +7,17 @@ theme:
     - content.code.copy
 nav:
   - Home: index.md
+  - ガイド:
+    # BEGIN documents-guide-generated
+    - スマートビルとは: guide/getting_started.md
+    - ウォークスルー: guide/walkthrough.md
+    - 学習ロードマップ: guide/learning_roadmap.md
+    - 用語集: guide/glossary.md
+    - データフロー: guide/smart_building_data_flow.md
+    - ポイントリスト定義: guide/pointlist.md
+    - ポイントリスト サンプル: guide/pointlist_sample.md
+    - オントロジー調査: guide/smart_building_ontology_survey.md
+# END documents-guide-generated
 extra:
   social:
     - icon: fontawesome/brands/github
