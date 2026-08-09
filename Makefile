@@ -20,6 +20,7 @@ docgen:
 
 gen:
 	PYTHONHASHSEED=$(PYTHONHASHSEED) $(LINKML) generate owl --metadata-profile rdfs schema/building_model_owl.yaml -f ttl > output/building_model.owl.ttl
+	$(PYTHON) scripts/postprocess_owl.py output/building_model.owl.ttl
 	PYTHONHASHSEED=$(PYTHONHASHSEED) $(LINKML) generate shacl --non-closed --suffix Shape schema/building_model_shacl.yaml > output/building_model.shacl.ttl
 	PYTHONHASHSEED=$(PYTHONHASHSEED) $(LINKML) generate json-schema schema/building_model_shacl.yaml > output/building_model.schema.json
 	PYTHONHASHSEED=$(PYTHONHASHSEED) $(GEN_DOC) --directory docs/reference --template-directory templates/docgen schema/building_model_shacl.yaml

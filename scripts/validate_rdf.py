@@ -11,12 +11,11 @@ import yaml
 from linkml_runtime.utils.schemaview import SchemaView
 from owlrl import DeductiveClosure, OWLRL_Semantics
 from pyshacl import validate
-from rdflib import Graph, Namespace, OWL, RDF, RDFS, URIRef
+from rdflib import Graph, OWL, RDF, RDFS, URIRef
 
 from convert_yaml_to_ttl import ConversionConfig, build_graph, expand_uri, normalize_prefix_map
 
 LOGGER = logging.getLogger(__name__)
-SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 
 
 @dataclass(frozen=True)
@@ -122,8 +121,12 @@ def run_inference_checks(
 
 
 def build_equivalence_map(ontology: Graph) -> dict[URIRef, set[URIRef]]:
+    # Only real OWL equivalence axioms count as class/property equivalence for inference
+    # purposes. skos:exactMatch is SKOS concept-mapping metadata (see postprocess_owl.py) —
+    # conflating it here previously masked the absence of real owl:equivalentClass /
+    # owl:equivalentProperty axioms in the generated ontology.
     eq_map: dict[URIRef, set[URIRef]] = {}
-    for predicate in (SKOS.exactMatch, OWL.equivalentClass):
+    for predicate in (OWL.equivalentClass, OWL.equivalentProperty):
         for subject, _, obj in ontology.triples((None, predicate, None)):
             if not isinstance(subject, URIRef) or not isinstance(obj, URIRef):
                 continue
@@ -170,6 +173,16 @@ def expand_supertypes(
     return expanded
 
 
+def build_conversion_config(case: ValidationCase) -> ConversionConfig:
+    return ConversionConfig(
+        root_class=case.root_class,
+        class_chain=case.class_chain,
+        inject_is_part_of=case.inject_is_part_of,
+        instance_prefix="ex",
+        instance_base="https://example.com/",
+    )
+
+
 def run_case(
     case: ValidationCase,
     schema_path: Path,
@@ -185,11 +198,7 @@ def run_case(
             return [f"Case {case.name} output_ttl not found: {case.output_ttl}"]
         graph = Graph().parse(str(case.output_ttl), format="turtle")
     else:
-        config = ConversionConfig(
-            root_class=case.root_class,
-            class_chain=case.class_chain,
-            inject_is_part_of=case.inject_is_part_of,
-        )
+        config = build_conversion_config(case)
         graph = build_graph(schema_path, case.input_path, config)
         if case.output_ttl:
             case.output_ttl.parent.mkdir(parents=True, exist_ok=True)
