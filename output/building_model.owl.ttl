@@ -17,6 +17,7 @@ sbco:Image a owl:Class ;
     rdfs:label "Image" ;
     rdfs:comment "An image file containing visual information" ;
     rdfs:subClassOf sbco:Information ;
+    owl:equivalentClass rec:Image ;
     skos:exactMatch rec:Image ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "視覚情報を含む画像ファイル" .
@@ -25,6 +26,7 @@ sbco:Media a owl:Class ;
     rdfs:label "Media" ;
     rdfs:comment "A media file such as audio or video content" ;
     rdfs:subClassOf sbco:Information ;
+    owl:equivalentClass rec:Media ;
     skos:exactMatch rec:Media ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "オーディオやビデオコンテンツなどのメディアファイル" .
@@ -33,6 +35,7 @@ sbco:Schema a owl:Class ;
     rdfs:label "Schema" ;
     rdfs:comment "A schema definition file" ;
     rdfs:subClassOf sbco:Information ;
+    owl:equivalentClass rec:Schema ;
     skos:exactMatch rec:Schema ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "スキーマ定義ファイル" .
@@ -41,6 +44,8 @@ sbco:altitude a owl:DatatypeProperty ;
     rdfs:label "altitude" ;
     rdfs:comment "Altitude above sea level in meters" ;
     rdfs:range xsd:float ;
+    owl:equivalentProperty rec:altitude ;
+    skos:exactMatch rec:altitude ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "海抜高度（メートル）" .
 
@@ -48,6 +53,8 @@ sbco:coordinates a owl:DatatypeProperty ;
     rdfs:label "coordinates" ;
     rdfs:comment "Geographic coordinates defining the geofence boundary" ;
     rdfs:range xsd:string ;
+    owl:equivalentProperty rec:coordinates ;
+    skos:exactMatch rec:coordinates ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "ジオフェンス境界を定義する地理座標" .
 
@@ -61,6 +68,8 @@ sbco:radius a owl:DatatypeProperty ;
     rdfs:label "radius" ;
     rdfs:comment "Radius in meters for circular geofences" ;
     rdfs:range xsd:float ;
+    owl:equivalentProperty rec:radius ;
+    skos:exactMatch rec:radius ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "円形ジオフェンスの半径（メートル）" .
 
@@ -76,6 +85,7 @@ sbco:Building a owl:Class ;
     rdfs:label "Building" ;
     rdfs:comment "A building which is part of a site." ;
     rdfs:subClassOf sbco:Architecture ;
+    owl:equivalentClass rec:Building ;
     skos:exactMatch rec:Building ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "サイトの一部である建物。" .
@@ -84,15 +94,16 @@ sbco:Level a owl:Class ;
     rdfs:label "Level" ;
     rdfs:comment "A building storey. Levels can also be treated as a kind of space." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
+            owl:minCardinality 0 ;
             owl:onProperty sbco:levelNumber ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom xsd:integer ;
             owl:onProperty sbco:levelNumber ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:levelNumber ],
         sbco:Architecture ;
+    owl:equivalentClass rec:Level ;
     skos:exactMatch rec:Level ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "建物のフロア。スペースの一種として扱える。" .
@@ -101,6 +112,7 @@ sbco:OutdoorSpace a owl:Class ;
     rdfs:label "OutdoorSpace" ;
     rdfs:comment "An outdoor space associated with a site or building." ;
     rdfs:subClassOf sbco:Architecture ;
+    owl:equivalentClass rec:OutdoorSpace ;
     skos:exactMatch rec:OutdoorSpace ;
     skos:inScheme sbco:schema .
 
@@ -108,6 +120,7 @@ sbco:Room a owl:Class ;
     rdfs:label "Room" ;
     rdfs:comment "A room within a building." ;
     rdfs:subClassOf sbco:Architecture ;
+    owl:equivalentClass rec:Room ;
     skos:exactMatch rec:Room ;
     skos:inScheme sbco:schema .
 
@@ -115,6 +128,7 @@ sbco:Site a owl:Class ;
     rdfs:label "Site" ;
     rdfs:comment "A piece of land upon which zero or more buildings may be situated." ;
     rdfs:subClassOf sbco:Architecture ;
+    owl:equivalentClass rec:Site ;
     skos:exactMatch rec:Site ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "サイト。複数の建物を含みうる。" .
@@ -123,6 +137,7 @@ sbco:Zone a owl:Class ;
     rdfs:label "Zone" ;
     rdfs:comment "A sub-zone within or outside of a building defined to support some technology and/or use." ;
     rdfs:subClassOf sbco:Architecture ;
+    owl:equivalentClass rec:Zone ;
     skos:exactMatch rec:Zone ;
     skos:inScheme sbco:schema .
 
@@ -181,164 +196,8 @@ sbco:Asset a owl:Class ;
     rdfs:label "Asset" ;
     rdfs:comment "Something which is placed inside of a building, but is not an integral part of that building's structure; e.g., furniture, equipment, systems, etc." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:intersectionOf ( [ owl:unionOf ( sbco:Point sbco:PointExt ) ] sbco:Point ) ] ;
-            owl:onProperty sbco:hasPoint ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Space ;
-            owl:onProperty sbco:isPartOf ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:serialNumber ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:installationDate ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:hasPart ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:maintenanceInterval ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:installedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:commissionedBy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:BuildingElement ;
-            owl:onProperty sbco:mountedOn ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:modelNumber ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:description ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Agent ;
-            owl:onProperty sbco:installedBy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:GeometryInfo ;
-            owl:onProperty sbco:geometry ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:assetTag ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:date ;
-            owl:onProperty sbco:commissioningDate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Space ;
-            owl:onProperty sbco:locatedIn ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Agent ;
-            owl:onProperty sbco:manufacturedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:geometry ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Space ;
-            owl:onProperty sbco:hasPart ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:MACAddress ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:serialNumber ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:installationDate ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:hasPoint ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:turnoverDate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Agent ;
-            owl:onProperty sbco:commissionedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:assetTag ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:modelNumber ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:manufacturedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:servicedBy ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:isPartOf ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:commissioningDate ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:initialCost ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Document ;
-            owl:onProperty sbco:documentation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:modelNumber ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:weight ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:locatedIn ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:date ;
-            owl:onProperty sbco:installationDate ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:serialNumber ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:initialCost ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyStringMapEntry ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Agent ;
-            owl:onProperty sbco:servicedBy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:decimal ;
-            owl:onProperty sbco:weight ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:commissioningDate ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:turnoverDate ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
@@ -346,55 +205,212 @@ sbco:Asset a owl:Class ;
                                 owl:withRestrictions ( [ xsd:pattern "^((25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)$" ] ) ] ) ] ;
             owl:onProperty sbco:IPAddress ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:isPartOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" ] ) ] ) ] ;
             owl:onProperty sbco:MACAddress ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:mountedOn ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:assetTag ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:documentation ],
+            owl:onProperty sbco:isPartOf ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:weight ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:geometry ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:date ;
-            owl:onProperty sbco:turnoverDate ],
+            owl:onProperty sbco:serialNumber ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyBoolMapEntry ;
             owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:commissionedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:modelNumber ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:commissioningDate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty sbco:weight ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:manufacturedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:date ;
+            owl:onProperty sbco:commissioningDate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:mountedOn ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:installationDate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:initialCost ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:hasPart ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:installedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:serialNumber ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:date ;
+            owl:onProperty sbco:turnoverDate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:IPAddress ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Space ;
+            owl:onProperty sbco:hasPart ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Space ;
+            owl:onProperty sbco:isPartOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:documentation ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:duration ;
             owl:onProperty sbco:maintenanceInterval ],
         [ a owl:Restriction ;
+            owl:allValuesFrom sbco:GeometryInfo ;
+            owl:onProperty sbco:geometry ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Document ;
+            owl:onProperty sbco:documentation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:installedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:assetTag ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:mountedOn ],
+            owl:onProperty sbco:servicedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:installationDate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:date ;
+            owl:onProperty sbco:installationDate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:turnoverDate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:modelNumber ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:modelNumber ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:initialCost ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:IPAddress ],
+            owl:onProperty sbco:hasPoint ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:servicedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:serialNumber ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:weight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:manufacturedBy ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:turnoverDate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:initialCost ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:commissionedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Space ;
+            owl:onProperty sbco:locatedIn ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:geometry ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:mountedOn ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:locatedIn ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( sbco:Point sbco:PointExt ) ] ;
+            owl:onProperty sbco:hasPoint ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:maintenanceInterval ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:geometry ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:MACAddress ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyStringMapEntry ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:weight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:BuildingElement ;
+            owl:onProperty sbco:mountedOn ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:commissioningDate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:isPartOf ],
         sbco:Equipment,
         sbco:Resource ;
+    owl:equivalentClass rec:Asset ;
     skos:exactMatch rec:Asset ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "建物内に配置されるが、建物構造の不可欠な部分ではないもの。例：家具、設備、システムなど。" .
@@ -403,6 +419,7 @@ sbco:GeoreferenceInfo a owl:Class ;
     rdfs:label "GeoreferenceInfo" ;
     rdfs:comment "Placeholder for REC Georeference; details can be supplied by extensions." ;
     rdfs:subClassOf sbco:Information ;
+    owl:equivalentClass rec:Georeference ;
     skos:exactMatch rec:Georeference ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "地理参照情報のプレースホルダ" .
@@ -414,6 +431,8 @@ sbco:IPAddress a owl:DatatypeProperty ;
             owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
                         owl:onDatatype xsd:string ;
                         owl:withRestrictions ( [ xsd:pattern "^((25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)$" ] ) ] ) ] ;
+    owl:equivalentProperty rec:IPAddress ;
+    skos:exactMatch rec:IPAddress ;
     skos:inScheme sbco:schema .
 
 sbco:MACAddress a owl:DatatypeProperty ;
@@ -423,48 +442,51 @@ sbco:MACAddress a owl:DatatypeProperty ;
             owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
                         owl:onDatatype xsd:string ;
                         owl:withRestrictions ( [ xsd:pattern "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$" ] ) ] ) ] ;
+    owl:equivalentProperty rec:MACAddress ;
+    skos:exactMatch rec:MACAddress ;
     skos:inScheme sbco:schema .
 
 sbco:Organization a owl:Class ;
     rdfs:label "Organization" ;
     rdfs:comment "An organization such as a company, institution, or association" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyStringMapEntry ;
             owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyBoolMapEntry ;
             owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:identifiers ],
         sbco:Agent ;
+    owl:equivalentClass rec:Organization ;
     skos:exactMatch rec:Organization ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "会社、機関、協会などの組織" .
@@ -512,30 +534,31 @@ sbco:PostalAddress a owl:Class ;
             owl:minCardinality 1 ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyBoolMapEntry ;
             owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
-            owl:onProperty sbco:customProperties ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyStringMapEntry ;
             owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
+            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
+            owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:name ],
         sbco:Information ;
+    owl:equivalentClass rec:PostalAddress ;
     skos:exactMatch rec:PostalAddress ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "郵便住所" .
@@ -1222,42 +1245,56 @@ sbco:address a owl:ObjectProperty ;
     rdfs:label "address" ;
     rdfs:comment "Address of the architecture" ;
     rdfs:range sbco:PostalAddress ;
+    owl:equivalentProperty rec:address ;
+    skos:exactMatch rec:address ;
     skos:inScheme sbco:schema .
 
 sbco:adjacentElement a owl:ObjectProperty ;
     rdfs:label "adjacentElement" ;
     rdfs:comment "Building element adjacent to this architecture" ;
     rdfs:range sbco:BuildingElement ;
+    owl:equivalentProperty rec:adjacentElement ;
+    skos:exactMatch rec:adjacentElement ;
     skos:inScheme sbco:schema .
 
 sbco:architectedBy a owl:ObjectProperty ;
     rdfs:label "architectedBy" ;
     rdfs:comment "Agent or resource that architected this structure" ;
     rdfs:range sbco:Agent ;
+    owl:equivalentProperty rec:architectedBy ;
+    skos:exactMatch rec:architectedBy ;
     skos:inScheme sbco:schema .
 
 sbco:assetTag a owl:DatatypeProperty ;
     rdfs:label "assetTag" ;
     rdfs:comment "Asset identification tag" ;
     rdfs:range xsd:string ;
+    owl:equivalentProperty rec:assetTag ;
+    skos:exactMatch rec:assetTag ;
     skos:inScheme sbco:schema .
 
 sbco:commissionedBy a owl:ObjectProperty ;
     rdfs:label "commissionedBy" ;
     rdfs:comment "Agent or resource that commissioned this asset" ;
     rdfs:range sbco:Agent ;
+    owl:equivalentProperty rec:commissionedBy ;
+    skos:exactMatch rec:commissionedBy ;
     skos:inScheme sbco:schema .
 
 sbco:constructedBy a owl:ObjectProperty ;
     rdfs:label "constructedBy" ;
     rdfs:comment "Agent or resource that constructed this architecture" ;
     rdfs:range sbco:Agent ;
+    owl:equivalentProperty rec:constructedBy ;
+    skos:exactMatch rec:constructedBy ;
     skos:inScheme sbco:schema .
 
 sbco:containsElement a owl:ObjectProperty ;
     rdfs:label "containsElement" ;
     rdfs:comment "Building element contained within this architecture" ;
     rdfs:range sbco:BuildingElement ;
+    owl:equivalentProperty rec:containsElement ;
+    skos:exactMatch rec:containsElement ;
     skos:inScheme sbco:schema .
 
 sbco:entries a owl:ObjectProperty ;
@@ -1270,6 +1307,8 @@ sbco:feeds a owl:ObjectProperty ;
     rdfs:label "feeds" ;
     rdfs:comment "Equipment or system that this equipment feeds" ;
     rdfs:range sbco:Resource ;
+    owl:equivalentProperty brick:feeds ;
+    skos:exactMatch brick:feeds ;
     skos:inScheme sbco:schema ;
     sbco:substance "SubstanceEnum" .
 
@@ -1277,18 +1316,24 @@ sbco:installedBy a owl:ObjectProperty ;
     rdfs:label "installedBy" ;
     rdfs:comment "Agent or resource that installed this asset" ;
     rdfs:range sbco:Agent ;
+    owl:equivalentProperty rec:installedBy ;
+    skos:exactMatch rec:installedBy ;
     skos:inScheme sbco:schema .
 
 sbco:intersectingElement a owl:ObjectProperty ;
     rdfs:label "intersectingElement" ;
     rdfs:comment "Building element intersecting with this architecture" ;
     rdfs:range sbco:BuildingElement ;
+    owl:equivalentProperty rec:intersectingElement ;
+    skos:exactMatch rec:intersectingElement ;
     skos:inScheme sbco:schema .
 
 sbco:isLocationOf a owl:ObjectProperty ;
     rdfs:label "isLocationOf" ;
     rdfs:comment "Subject is the physical location encapsulating the object." ;
     rdfs:range sbco:EquipmentExt ;
+    owl:equivalentProperty rec:isLocationOf ;
+    skos:exactMatch rec:isLocationOf ;
     skos:inScheme sbco:schema .
 
 sbco:labels a owl:DatatypeProperty ;
@@ -1302,84 +1347,99 @@ sbco:maintenanceInterval a owl:DatatypeProperty ;
     rdfs:label "maintenanceInterval" ;
     rdfs:comment "Maintenance interval duration" ;
     rdfs:range xsd:duration ;
+    owl:equivalentProperty rec:maintenanceInterval ;
+    skos:exactMatch rec:maintenanceInterval ;
     skos:inScheme sbco:schema .
 
 sbco:manufacturedBy a owl:ObjectProperty ;
     rdfs:label "manufacturedBy" ;
     rdfs:comment "Agent or resource that manufactured this asset" ;
     rdfs:range sbco:Agent ;
+    owl:equivalentProperty rec:manufacturedBy ;
+    skos:exactMatch rec:manufacturedBy ;
     skos:inScheme sbco:schema .
 
 sbco:memberOf a owl:ObjectProperty ;
     rdfs:label "memberOf" ;
     rdfs:comment "Indicates membership in an organization. Note that componency (e.g., departments of a corporation) are expressed using the more generic Organization.isPartOf property." ;
     rdfs:range sbco:Organization ;
+    owl:equivalentProperty rec:memberOf ;
+    skos:exactMatch rec:memberOf ;
     skos:inScheme sbco:schema .
 
 sbco:operatedBy a owl:ObjectProperty ;
     rdfs:label "operatedBy" ;
     rdfs:comment "Agent or resource that operates this architecture" ;
     rdfs:range sbco:Agent ;
+    owl:equivalentProperty rec:operatedBy ;
+    skos:exactMatch rec:operatedBy ;
     skos:inScheme sbco:schema .
 
 sbco:ownedBy a owl:ObjectProperty ;
     rdfs:label "ownedBy" ;
     rdfs:comment "Agent or resource that owns this architecture" ;
     rdfs:range sbco:Agent ;
+    owl:equivalentProperty rec:ownedBy ;
+    skos:exactMatch rec:ownedBy ;
     skos:inScheme sbco:schema .
 
 sbco:owns a owl:ObjectProperty ;
     rdfs:label "owns" ;
     rdfs:comment " Indicates ownership of some thing, e.g., a building, an asset, an organization, etc." ;
     rdfs:range sbco:Resource ;
+    owl:equivalentProperty rec:owns ;
+    skos:exactMatch rec:owns ;
     skos:inScheme sbco:schema .
 
 sbco:servicedBy a owl:ObjectProperty ;
     rdfs:label "servicedBy" ;
     rdfs:comment "Agent or resource that services this asset" ;
     rdfs:range sbco:Agent ;
+    owl:equivalentProperty rec:servicedBy ;
+    skos:exactMatch rec:servicedBy ;
     skos:inScheme sbco:schema .
 
 sbco:ArchitectureArea a owl:Class ;
     rdfs:label "ArchitectureArea" ;
     rdfs:comment "Describes business-relevant area measurements typically associated with architected spaces" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:name ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
-            owl:onProperty sbco:customTags ],
+            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
+            owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyStringMapEntry ;
             owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
+            owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:id ],
         sbco:Resource ;
+    owl:equivalentClass rec:ArchitectureArea ;
     skos:exactMatch rec:ArchitectureArea ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "設計された空間に関連する業務上重要な面積測定" .
@@ -1388,42 +1448,43 @@ sbco:ArchitectureCapacity a owl:Class ;
     rdfs:label "ArchitectureCapacity" ;
     rdfs:comment "Describes business-relevant capacity measurements typically associated with architected spaces" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:name ],
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyBoolMapEntry ;
             owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyStringMapEntry ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
             owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:id ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:customTags ],
+            owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom sbco:KeyStringMapEntry ;
             owl:onProperty sbco:identifiers ],
         sbco:Resource ;
+    owl:equivalentClass rec:ArchitectureCapacity ;
     skos:exactMatch rec:ArchitectureCapacity ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "設計された空間に関連する業務上重要な容量測定" .
@@ -1432,189 +1493,142 @@ sbco:Document a owl:Class ;
     rdfs:label "Document" ;
     rdfs:comment "A document providing information about a building element or asset" ;
     rdfs:subClassOf sbco:Information ;
+    owl:equivalentClass rec:Document ;
     skos:exactMatch rec:Document ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "建物要素やアセットに関する情報を提供するドキュメント" .
+
+sbco:Equipment a owl:Class ;
+    rdfs:label "Equipment" ;
+    rdfs:comment "An equipment asset installed in a space." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Space ;
+            owl:onProperty sbco:locatedIn ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:isFedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Resource ;
+            owl:onProperty sbco:feeds ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:feeds ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty sbco:operationalStageCount ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:operationalStageCount ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Resource ;
+            owl:onProperty sbco:isFedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:locatedIn ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:operationalStageCount ],
+        sbco:Asset ;
+    owl:equivalentClass brick:Equipment ;
+    skos:exactMatch brick:Equipment ;
+    skos:inScheme sbco:schema ;
+    sbco:description_ja "空間に設置された設備アセット。" .
 
 sbco:GeometryInfo a owl:Class ;
     rdfs:label "GeometryInfo" ;
     rdfs:comment "Placeholder for REC Geometry; details can be supplied by extensions." ;
     rdfs:subClassOf sbco:Information ;
+    owl:equivalentClass rec:Geometry ;
     skos:exactMatch rec:Geometry ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "ジオメトリ情報のプレースホルダ" .
 
-sbco:PointExt a owl:Class ;
-    rdfs:label "PointExt" ;
-    rdfs:comment "A point (sensor/actuator) in a smart building context." ;
+sbco:Point a owl:Class ;
+    rdfs:label "Point" ;
+    rdfs:comment "A sensor, actuator, or data point associated with equipment." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:instanceNoBacnet ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:labels ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:writable ],
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:pointType ],
+            owl:onProperty sbco:name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:labels ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:hasQuantity ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:isPointOf ],
         [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:unionOf ( sbco:Equipment sbco:EquipmentExt ) ] ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:isPointOf ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:targetArea ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:gatewayId ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:deviceIdBacnet ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:pointType ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:targetArea ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:objectTypeBacnet ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:scale ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:pointSpecification ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:writable ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:supplier ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:supplier ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty sbco:interval ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:isPointOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:supplier ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:gatewayId ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:deviceIdBacnet ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:objectTypeBacnet ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:localId ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:installationArea ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:installationArea ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:pointSpecification ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:localId ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:instanceNoBacnet ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:unit ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:PointSpecificationEnum ;
-            owl:onProperty sbco:pointSpecification ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:installationArea ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:boolean ;
-            owl:onProperty sbco:writable ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:gatewayId ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:maxPresValue ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:maxPresValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:objectTypeBacnet ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:interval ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty sbco:scale ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty sbco:maxPresValue ],
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty sbco:pointType ],
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:hasQuantity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:localId ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:unit ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:interval ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:minPresValue ],
+            owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:instanceNoBacnet ],
+            owl:onProperty sbco:isPointOf ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:UnitEnum ;
-            owl:onProperty sbco:unit ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:targetArea ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:deviceIdBacnet ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty sbco:minPresValue ],
+            owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:scale ],
+            owl:onProperty sbco:hasSubstance ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:minPresValue ],
-        sbco:Point ;
-    skos:exactMatch sbco:PointExt ;
+            owl:onProperty sbco:aggregate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:hasSubstance ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:aggregate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:AggregateEnum ;
+            owl:onProperty sbco:aggregate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:QuantityEnum ;
+            owl:onProperty sbco:hasQuantity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyStringMapEntry ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:SubstanceEnum ;
+            owl:onProperty sbco:hasSubstance ] ;
+    owl:equivalentClass brick:Point ;
+    skos:exactMatch brick:Point ;
     skos:inScheme sbco:schema ;
-    sbco:description_ja "スマートビルディングの文脈におけるポイント（センサー/アクチュエータ）。" .
+    sbco:description_ja "設備に紐づくセンサー/アクチュエータ/データポイント。" .
 
 sbco:aggregate a owl:ObjectProperty ;
     rdfs:label "aggregate" ;
     rdfs:comment "Aggregation function or method for point data processing" ;
     rdfs:range sbco:AggregateEnum ;
+    owl:equivalentProperty brick:aggregate ;
+    skos:exactMatch brick:aggregate ;
     skos:inScheme sbco:schema ;
     sbco:azure_dtdl_type "DTObjectInfo" ;
     sbco:description_ja "ポイントデータ処理のための集約関数または方法" .
@@ -1623,18 +1637,24 @@ sbco:area a owl:ObjectProperty ;
     rdfs:label "area" ;
     rdfs:comment "Area of the architecture" ;
     rdfs:range sbco:ArchitectureArea ;
+    owl:equivalentProperty rec:area ;
+    skos:exactMatch rec:area ;
     skos:inScheme sbco:schema .
 
 sbco:capacity a owl:ObjectProperty ;
     rdfs:label "capacity" ;
     rdfs:comment "Capacity of the architecture" ;
     rdfs:range sbco:ArchitectureCapacity ;
+    owl:equivalentProperty rec:capacity ;
+    skos:exactMatch rec:capacity ;
     skos:inScheme sbco:schema .
 
 sbco:checksum a owl:DatatypeProperty ;
     rdfs:label "checksum" ;
     rdfs:comment "Checksum or hash of the information content" ;
     rdfs:range xsd:string ;
+    owl:equivalentProperty rec:checksum ;
+    skos:exactMatch rec:checksum ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "情報コンテンツのチェックサムまたはハッシュ" .
 
@@ -1642,6 +1662,8 @@ sbco:commissioningDate a owl:DatatypeProperty ;
     rdfs:label "commissioningDate" ;
     rdfs:comment "Date when the asset was commissioned" ;
     rdfs:range xsd:date ;
+    owl:equivalentProperty rec:commissioningDate ;
+    skos:exactMatch rec:commissioningDate ;
     skos:inScheme sbco:schema .
 
 sbco:deviceIdBacnet a owl:DatatypeProperty ;
@@ -1667,6 +1689,8 @@ sbco:format a owl:DatatypeProperty ;
     rdfs:label "format" ;
     rdfs:comment "MIME type or format identifier for the information" ;
     rdfs:range xsd:string ;
+    owl:equivalentProperty rec:format ;
+    skos:exactMatch rec:format ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "情報のMIMEタイプまたはフォーマット識別子" .
 
@@ -1681,12 +1705,16 @@ sbco:georeference a owl:ObjectProperty ;
     rdfs:label "georeference" ;
     rdfs:comment "A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes)." ;
     rdfs:range sbco:GeoreferenceInfo ;
+    owl:equivalentProperty rec:georeference ;
+    skos:exactMatch rec:georeference ;
     skos:inScheme sbco:schema .
 
 sbco:hasQuantity a owl:ObjectProperty ;
     rdfs:label "hasQuantity" ;
     rdfs:comment "Physical quantity measured by this point" ;
     rdfs:range sbco:QuantityEnum ;
+    owl:equivalentProperty brick:hasQuantity ;
+    skos:exactMatch brick:hasQuantity ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "このポイントで測定される物理量" .
 
@@ -1694,6 +1722,8 @@ sbco:hasSubstance a owl:ObjectProperty ;
     rdfs:label "hasSubstance" ;
     rdfs:comment "Substance associated with this point" ;
     rdfs:range sbco:SubstanceEnum ;
+    owl:equivalentProperty brick:hasSubstance ;
+    skos:exactMatch brick:hasSubstance ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "このポイントに関連する物質" .
 
@@ -1701,12 +1731,16 @@ sbco:initialCost a owl:DatatypeProperty ;
     rdfs:label "initialCost" ;
     rdfs:comment "Initial cost of the asset" ;
     rdfs:range xsd:string ;
+    owl:equivalentProperty rec:initialCost ;
+    skos:exactMatch rec:initialCost ;
     skos:inScheme sbco:schema .
 
 sbco:installationDate a owl:DatatypeProperty ;
     rdfs:label "installationDate" ;
     rdfs:comment "Date when the asset was installed" ;
     rdfs:range xsd:date ;
+    owl:equivalentProperty rec:installationDate ;
+    skos:exactMatch rec:installationDate ;
     skos:inScheme sbco:schema .
 
 sbco:instanceNoBacnet a owl:DatatypeProperty ;
@@ -1730,6 +1764,8 @@ sbco:language a owl:DatatypeProperty ;
             owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
                         owl:onDatatype xsd:string ;
                         owl:withRestrictions ( [ xsd:pattern "^[a-z]{2}(-[A-Z]{2})?$" ] ) ] ) ] ;
+    owl:equivalentProperty rec:language ;
+    skos:exactMatch rec:language ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "情報コンテンツの言語コード (ISO 639-1)" .
 
@@ -1737,6 +1773,8 @@ sbco:levelNumber a owl:DatatypeProperty ;
     rdfs:label "levelNumber" ;
     rdfs:comment "Floor or level number within a building" ;
     rdfs:range xsd:integer ;
+    owl:equivalentProperty rec:levelNumber ;
+    skos:exactMatch rec:levelNumber ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "建物内のフロアまたはレベル番号" .
 
@@ -1763,12 +1801,16 @@ sbco:modelNumber a owl:DatatypeProperty ;
     rdfs:label "modelNumber" ;
     rdfs:comment "Model number of the asset" ;
     rdfs:range xsd:string ;
+    owl:equivalentProperty rec:modelNumber ;
+    skos:exactMatch rec:modelNumber ;
     skos:inScheme sbco:schema .
 
 sbco:mountedOn a owl:ObjectProperty ;
     rdfs:label "mountedOn" ;
     rdfs:comment "Building element on which this asset is mounted" ;
     rdfs:range sbco:BuildingElement ;
+    owl:equivalentProperty rec:mountedOn ;
+    skos:exactMatch rec:mountedOn ;
     skos:inScheme sbco:schema .
 
 sbco:objectTypeBacnet a owl:DatatypeProperty ;
@@ -1782,6 +1824,8 @@ sbco:operationalStageCount a owl:DatatypeProperty ;
     rdfs:label "operationalStageCount" ;
     rdfs:comment "The number of operational stages supported by this equipment" ;
     rdfs:range xsd:integer ;
+    owl:equivalentProperty brick:operationalStageCount ;
+    skos:exactMatch brick:operationalStageCount ;
     skos:inScheme sbco:schema .
 
 sbco:panel a owl:DatatypeProperty ;
@@ -1814,12 +1858,16 @@ sbco:serialNumber a owl:DatatypeProperty ;
     rdfs:label "serialNumber" ;
     rdfs:comment "Serial number of the asset" ;
     rdfs:range xsd:string ;
+    owl:equivalentProperty rec:serialNumber ;
+    skos:exactMatch rec:serialNumber ;
     skos:inScheme sbco:schema .
 
 sbco:size a owl:DatatypeProperty ;
     rdfs:label "size" ;
     rdfs:comment "Size of the information resource in bytes" ;
     rdfs:range xsd:integer ;
+    owl:equivalentProperty rec:size ;
+    skos:exactMatch rec:size ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "情報リソースのサイズ（バイト）" .
 
@@ -1834,6 +1882,8 @@ sbco:turnoverDate a owl:DatatypeProperty ;
     rdfs:label "turnoverDate" ;
     rdfs:comment "Date when the asset was turned over" ;
     rdfs:range xsd:date ;
+    owl:equivalentProperty rec:turnoverDate ;
+    skos:exactMatch rec:turnoverDate ;
     skos:inScheme sbco:schema .
 
 sbco:unit a owl:ObjectProperty ;
@@ -1846,6 +1896,8 @@ sbco:url a owl:DatatypeProperty ;
     rdfs:label "url" ;
     rdfs:comment "URL or URI pointing to the information resource" ;
     rdfs:range xsd:anyURI ;
+    owl:equivalentProperty rec:url ;
+    skos:exactMatch rec:url ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "情報リソースを指すURLまたはURI" .
 
@@ -1859,6 +1911,8 @@ sbco:version a owl:DatatypeProperty ;
     rdfs:label "version" ;
     rdfs:comment "Version identifier for the information" ;
     rdfs:range xsd:string ;
+    owl:equivalentProperty rec:version ;
+    skos:exactMatch rec:version ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "情報のバージョン識別子" .
 
@@ -1866,6 +1920,8 @@ sbco:weight a owl:DatatypeProperty ;
     rdfs:label "weight" ;
     rdfs:comment "Weight of the asset" ;
     rdfs:range xsd:decimal ;
+    owl:equivalentProperty rec:weight ;
+    skos:exactMatch rec:weight ;
     skos:inScheme sbco:schema .
 
 sbco:writable a owl:DatatypeProperty ;
@@ -1875,115 +1931,256 @@ sbco:writable a owl:DatatypeProperty ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "ポイントの値を書き込み（制御）できるかどうか" .
 
-sbco:EquipmentExt a owl:Class ;
-    rdfs:label "EquipmentExt" ;
-    rdfs:comment "An equipment asset installed in a space." ;
+sbco:PointExt a owl:Class ;
+    rdfs:label "PointExt" ;
+    rdfs:comment "A point (sensor/actuator) in a smart building context." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:deviceType ],
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty sbco:maxPresValue ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:deviceType ],
+            owl:onProperty sbco:minPresValue ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Space ;
-            owl:onProperty sbco:locatedIn ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:pointType ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:interval ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:pointType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:deviceIdBacnet ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:objectTypeBacnet ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:supplier ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:maxPresValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:UnitEnum ;
+            owl:onProperty sbco:unit ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:isPointOf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:gatewayId ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:installationArea ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:panel ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:deviceType ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:installationArea ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:unit ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:locatedIn ],
+            owl:onProperty sbco:labels ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:labels ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:minPresValue ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:deviceIdBacnet ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:writable ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:localId ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:targetArea ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:objectTypeBacnet ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:gatewayId ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:objectTypeBacnet ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:writable ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:PointSpecificationEnum ;
+            owl:onProperty sbco:pointSpecification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:supplier ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:deviceIdBacnet ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:interval ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:isPointOf ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:gatewayId ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:localId ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:instanceNoBacnet ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty sbco:writable ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:localId ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( sbco:Equipment sbco:EquipmentExt ) ] ;
+            owl:onProperty sbco:isPointOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:pointSpecification ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:scale ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:installationArea ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:panel ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:panel ],
+            owl:onProperty sbco:maxPresValue ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:targetArea ],
         [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty sbco:minPresValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:installationArea ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty sbco:interval ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:targetArea ],
+            owl:onProperty sbco:instanceNoBacnet ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:instanceNoBacnet ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty sbco:scale ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:scale ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:pointType ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty sbco:targetArea ],
-        sbco:Equipment ;
-    skos:exactMatch sbco:EquipmentExt ;
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:pointSpecification ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:supplier ],
+        sbco:Point ;
+    owl:equivalentClass sbco:PointExt ;
+    skos:exactMatch sbco:PointExt ;
     skos:inScheme sbco:schema ;
-    sbco:description_ja "SBCOにて拡張したデバイスモデル" .
+    sbco:description_ja "スマートビルディングの文脈におけるポイント（センサー/アクチュエータ）。" .
 
 sbco:documentation a owl:ObjectProperty ;
     rdfs:label "documentation" ;
     rdfs:comment "Documentation related to this asset" ;
     rdfs:range sbco:Document ;
+    owl:equivalentProperty rec:documentation ;
+    skos:exactMatch rec:documentation ;
     skos:inScheme sbco:schema .
 
 sbco:hasPart a owl:ObjectProperty ;
     rdfs:label "hasPart" ;
     rdfs:comment "The subject is composed in part of the entity given by the object." ;
     rdfs:range sbco:Space ;
+    owl:equivalentProperty rec:hasPart ;
+    skos:exactMatch rec:hasPart ;
     skos:inScheme sbco:schema .
 
-sbco:hasPoint a owl:ObjectProperty ;
+sbco:hasPoint a owl:DatatypeProperty ;
     rdfs:label "hasPoint" ;
     rdfs:comment "Point associated with this architecture" ;
-    rdfs:range sbco:Point ;
+    owl:equivalentProperty rec:hasPoint ;
+    skos:exactMatch rec:hasPoint ;
     skos:inScheme sbco:schema .
 
 sbco:isFedBy a owl:ObjectProperty ;
     rdfs:label "isFedBy" ;
     rdfs:comment "Resource that feeds this architecture" ;
     rdfs:range sbco:Resource ;
+    owl:equivalentProperty rec:isFedBy ;
+    skos:exactMatch rec:isFedBy ;
     skos:inScheme sbco:schema ;
     sbco:substance "SubstanceEnum" .
 
-sbco:Equipment a owl:Class ;
-    rdfs:label "Equipment" ;
+sbco:EquipmentExt a owl:Class ;
+    rdfs:label "EquipmentExt" ;
     rdfs:comment "An equipment asset installed in a space." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Space ;
-            owl:onProperty sbco:locatedIn ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:panel ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:operationalStageCount ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:panel ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:locatedIn ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:installationArea ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:operationalStageCount ],
+            owl:onProperty sbco:targetArea ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Resource ;
-            owl:onProperty sbco:feeds ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:feeds ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:targetArea ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:isFedBy ],
+            owl:onProperty sbco:deviceType ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Resource ;
-            owl:onProperty sbco:isFedBy ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:panel ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty sbco:operationalStageCount ],
-        sbco:Asset ;
-    skos:exactMatch brick:Equipment ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:installationArea ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:installationArea ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:deviceType ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:locatedIn ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:targetArea ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:deviceType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Space ;
+            owl:onProperty sbco:locatedIn ],
+        sbco:Equipment ;
+    owl:equivalentClass sbco:EquipmentExt ;
+    skos:exactMatch sbco:EquipmentExt ;
     skos:inScheme sbco:schema ;
-    sbco:description_ja "空間に設置された設備アセット。" .
+    sbco:description_ja "SBCOにて拡張したデバイスモデル" .
 
 sbco:UnitEnum a owl:Class ;
     rdfs:label "UnitEnum" ;
@@ -1998,49 +2195,24 @@ sbco:Architecture a owl:Class ;
     rdfs:label "Architecture" ;
     rdfs:comment "A designed/landscaped (or potentially designed/landscaped) part of the physical world that has a 3D spatial extent. E.g., a building site, a building, levels within the building, rooms, etc." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom sbco:PostalAddress ;
-            owl:onProperty sbco:address ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Agent ;
-            owl:onProperty sbco:constructedBy ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:constructedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:adjacentElement ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:hasPoint ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:isFedBy ],
-        [ owl:unionOf ( sbco:Building sbco:Level sbco:OutdoorSpace sbco:Room sbco:Site sbco:Zone ) ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Agent ;
             owl:onProperty sbco:ownedBy ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:intersectingElement ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Agent ;
-            owl:onProperty sbco:operatedBy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:ArchitectureArea ;
-            owl:onProperty sbco:area ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:capacity ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:area ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:intersectionOf ( [ owl:unionOf ( sbco:Point sbco:PointExt ) ] sbco:Point ) ] ;
+            owl:allValuesFrom [ owl:unionOf ( sbco:Point sbco:PointExt ) ] ;
             owl:onProperty sbco:hasPoint ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:Document ;
             owl:onProperty sbco:documentation ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:area ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:ownedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:hasPoint ],
+        [ a owl:Restriction ;
             owl:allValuesFrom sbco:BuildingElement ;
             owl:onProperty sbco:intersectingElement ],
         [ a owl:Restriction ;
@@ -2048,18 +2220,9 @@ sbco:Architecture a owl:Class ;
             owl:onProperty sbco:adjacentElement ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:operatedBy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty sbco:capacity ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:documentation ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:ownedBy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:ArchitectureCapacity ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:capacity ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:Resource ;
@@ -2068,107 +2231,65 @@ sbco:Architecture a owl:Class ;
             owl:allValuesFrom sbco:BuildingElement ;
             owl:onProperty sbco:containsElement ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom sbco:PostalAddress ;
+            owl:onProperty sbco:address ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:operatedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:constructedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:adjacentElement ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:architectedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:ArchitectureArea ;
             owl:onProperty sbco:area ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:address ],
+            owl:onProperty sbco:documentation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Agent ;
+            owl:onProperty sbco:constructedBy ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:architectedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:ArchitectureCapacity ;
+            owl:onProperty sbco:capacity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:isFedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:intersectingElement ],
+        [ owl:unionOf ( sbco:Building sbco:Level sbco:OutdoorSpace sbco:Room sbco:Site sbco:Zone ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:operatedBy ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:containsElement ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Agent ;
-            owl:onProperty sbco:architectedBy ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:address ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:area ],
         sbco:Space ;
+    owl:equivalentClass rec:Architecture ;
     skos:exactMatch rec:Architecture ;
     skos:inScheme sbco:schema .
-
-sbco:Point a owl:Class ;
-    rdfs:label "Point" ;
-    rdfs:comment "A sensor, actuator, or data point associated with equipment." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:aggregate ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:hasQuantity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:QuantityEnum ;
-            owl:onProperty sbco:hasQuantity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Equipment ;
-            owl:onProperty sbco:isPointOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:SubstanceEnum ;
-            owl:onProperty sbco:hasSubstance ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:hasQuantity ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:hasSubstance ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:isPointOf ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:isPointOf ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:hasSubstance ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:AggregateEnum ;
-            owl:onProperty sbco:aggregate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyStringMapEntry ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
-            owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:aggregate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:name ] ;
-    skos:exactMatch brick:Point ;
-    skos:inScheme sbco:schema ;
-    sbco:description_ja "設備に紐づくセンサー/アクチュエータ/データポイント。" .
 
 sbco:geometry a owl:ObjectProperty ;
     rdfs:label "geometry" ;
     rdfs:comment "Polygon representing the spatial extent of this Space." ;
     rdfs:range sbco:GeometryInfo ;
+    owl:equivalentProperty rec:geometry ;
+    skos:exactMatch rec:geometry ;
     skos:inScheme sbco:schema .
 
 sbco:installationArea a owl:DatatypeProperty ;
@@ -2181,12 +2302,15 @@ sbco:isPartOf a owl:ObjectProperty ;
     rdfs:label "isPartOf" ;
     rdfs:comment "The subject is a part of the entity given by the object." ;
     rdfs:range sbco:Space ;
+    owl:equivalentProperty rec:isPartOf ;
+    skos:exactMatch rec:isPartOf ;
     skos:inScheme sbco:schema .
 
-sbco:isPointOf a owl:ObjectProperty ;
+sbco:isPointOf a owl:DatatypeProperty ;
     rdfs:label "isPointOf" ;
     rdfs:comment "Equipment that this point belongs to" ;
-    rdfs:range sbco:Equipment ;
+    owl:equivalentProperty brick:isPointOf ;
+    skos:exactMatch brick:isPointOf ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "このポイントが属する設備" .
 
@@ -2194,6 +2318,8 @@ sbco:locatedIn a owl:ObjectProperty ;
     rdfs:label "locatedIn" ;
     rdfs:comment "Space where this asset is located" ;
     rdfs:range sbco:Space ;
+    owl:equivalentProperty rec:locatedIn ;
+    skos:exactMatch rec:locatedIn ;
     skos:inScheme sbco:schema .
 
 sbco:targetArea a owl:DatatypeProperty ;
@@ -2206,80 +2332,74 @@ sbco:Information a owl:Class ;
     rdfs:label "Information" ;
     rdfs:comment "Abstract base class for information resources such as documents, images, media files, etc." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:customProperties ],
+            owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:size ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:version ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:format ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:checksum ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:integer ;
             owl:onProperty sbco:size ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:checksum ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:checksum ],
-        [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyStringMapEntry ;
             owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:format ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty sbco:url ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty sbco:url ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:format ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:size ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:format ],
+            owl:onProperty sbco:version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:language ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty sbco:version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customProperties ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty sbco:checksum ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty sbco:url ],
+            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
+            owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:language ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:url ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:version ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:version ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
             owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:version ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:language ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:description ],
+            owl:onProperty sbco:size ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( xsd:string [ a rdfs:Datatype ;
@@ -2287,18 +2407,25 @@ sbco:Information a owl:Class ;
                                 owl:withRestrictions ( [ xsd:pattern "^[a-z]{2}(-[A-Z]{2})?$" ] ) ] ) ] ;
             owl:onProperty sbco:language ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:format ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:url ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:checksum ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
-            owl:onProperty sbco:customProperties ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:language ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:description ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:format ],
         sbco:Resource ;
+    owl:equivalentClass rec:Information ;
     skos:exactMatch rec:Information ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "ドキュメント、画像、メディアファイルなどの情報リソースの抽象基底クラス" .
@@ -2320,42 +2447,43 @@ sbco:BuildingElement a owl:Class ;
     rdfs:label "BuildingElement" ;
     rdfs:comment "A part of the building structure" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:id ],
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyStringMapEntry ;
             owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:id ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
             owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:name ],
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:id ],
         sbco:Resource ;
+    owl:equivalentClass rec:BuildingElement ;
     skos:exactMatch rec:BuildingElement ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "建物構造の一部" .
@@ -2364,6 +2492,8 @@ sbco:description a owl:DatatypeProperty ;
     rdfs:label "description" ;
     rdfs:comment "A textual description of the resource" ;
     rdfs:range xsd:string ;
+    owl:equivalentProperty rec:description ;
+    skos:exactMatch rec:description ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "リソースのテキスト記述" .
 
@@ -2393,14 +2523,14 @@ sbco:KeyBoolMapEntry a owl:Class ;
     rdfs:label "KeyBoolMapEntry" ;
     rdfs:comment "One entry in a map from strings to booleans." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:key ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:boolean ;
             owl:onProperty sbco:flag ],
         [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:key ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:flag ],
+            owl:onProperty sbco:key ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty sbco:key ],
@@ -2409,7 +2539,7 @@ sbco:KeyBoolMapEntry a owl:Class ;
             owl:onProperty sbco:flag ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:key ] ;
+            owl:onProperty sbco:flag ] ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "map(string -> boolean) の1エントリ" .
 
@@ -2423,14 +2553,14 @@ sbco:KeyMapOfStringMapEntry a owl:Class ;
             owl:minCardinality 1 ;
             owl:onProperty sbco:entries ],
         [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyStringMapEntry ;
+            owl:onProperty sbco:entries ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty sbco:key ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:key ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyStringMapEntry ;
-            owl:onProperty sbco:entries ] ;
+            owl:onProperty sbco:key ] ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "map(string -> map(string -> string)) の1エントリ" .
 
@@ -2439,88 +2569,89 @@ sbco:Space a owl:Class ;
     rdfs:comment "A contiguous part of the physical world that contains or can contain sub-spaces. E.g., a Region can contain many Sites, which in turn can contain many Buildings." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Space ;
-            owl:onProperty sbco:hasPart ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:geometry ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:Space ;
             owl:onProperty sbco:isPartOf ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:name ],
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:customProperties ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:hasPart ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:GeoreferenceInfo ;
-            owl:onProperty sbco:georeference ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:GeometryInfo ;
-            owl:onProperty sbco:geometry ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:geometry ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyStringMapEntry ;
             owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:isPartOf ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:description ],
+            owl:onProperty sbco:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty sbco:hasPart ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Space ;
+            owl:onProperty sbco:hasPart ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:georeference ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:isLocationOf ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty sbco:description ],
         [ a owl:Restriction ;
-            owl:allValuesFrom sbco:EquipmentExt ;
-            owl:onProperty sbco:isLocationOf ],
+            owl:allValuesFrom sbco:GeometryInfo ;
+            owl:onProperty sbco:geometry ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:isPartOf ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:geometry ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:geometry ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:GeoreferenceInfo ;
+            owl:onProperty sbco:georeference ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:isPartOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:georeference ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
             owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:georeference ] ;
+            owl:allValuesFrom sbco:EquipmentExt ;
+            owl:onProperty sbco:isLocationOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:Space ;
+            owl:onProperty sbco:isPartOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:isLocationOf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
+            owl:onProperty sbco:customTags ] ;
+    owl:equivalentClass rec:Space ;
     skos:exactMatch rec:Space ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "室やゾーンなどの空間単位。設備を含みうる。" .
@@ -2529,23 +2660,23 @@ sbco:KeyStringMapEntry a owl:Class ;
     rdfs:label "KeyStringMapEntry" ;
     rdfs:comment "One entry in a map from strings to strings." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:key ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty sbco:value ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:value ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:key ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty sbco:value ],
+            owl:onProperty sbco:key ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty sbco:key ] ;
+            owl:onProperty sbco:key ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty sbco:value ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:value ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty sbco:value ] ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "map(string -> string) の1エントリ" .
 
@@ -2553,6 +2684,7 @@ sbco:Resource a owl:Class ;
     rdfs:label "Resource" ;
     rdfs:comment "Base class for all resources" ;
     rdfs:subClassOf [ owl:unionOf ( sbco:Agent sbco:ArchitectureArea sbco:ArchitectureCapacity sbco:Asset sbco:BuildingElement sbco:Information ) ] ;
+    owl:equivalentClass rdfs:Resource ;
     skos:exactMatch rdfs:Resource ;
     skos:inScheme sbco:schema .
 
@@ -2560,29 +2692,32 @@ sbco:Agent a owl:Class ;
     rdfs:label "Agent" ;
     rdfs:comment "An entity that can act or be acted upon" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyStringMapEntry ;
+            owl:onProperty sbco:identifiers ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:identifiers ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom sbco:KeyBoolMapEntry ;
+            owl:onProperty sbco:customTags ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:owns ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:Resource ;
             owl:onProperty sbco:owns ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyStringMapEntry ;
-            owl:onProperty sbco:identifiers ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty sbco:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty sbco:id ],
+            owl:minCardinality 0 ;
+            owl:onProperty sbco:memberOf ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty sbco:owns ],
+            owl:onProperty sbco:customTags ],
         [ a owl:Restriction ;
             owl:allValuesFrom sbco:KeyMapOfStringMapEntry ;
             owl:onProperty sbco:customProperties ],
@@ -2593,21 +2728,19 @@ sbco:Agent a owl:Class ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty sbco:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom sbco:KeyBoolMapEntry ;
-            owl:onProperty sbco:customTags ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:maxCardinality 1 ;
             owl:onProperty sbco:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty sbco:customProperties ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty sbco:memberOf ],
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty sbco:name ],
         sbco:Resource ;
+    owl:equivalentClass rec:Agent ;
     skos:exactMatch rec:Agent ;
     skos:inScheme sbco:schema ;
     sbco:description_ja "行動することができる、または行動される主体" .
@@ -2616,18 +2749,24 @@ sbco:customProperties a owl:ObjectProperty ;
     rdfs:label "customProperties" ;
     rdfs:comment "map(string -> map(string -> string))" ;
     rdfs:range sbco:KeyMapOfStringMapEntry ;
+    owl:equivalentProperty rec:customProperties ;
+    skos:exactMatch rec:customProperties ;
     skos:inScheme sbco:schema .
 
 sbco:customTags a owl:ObjectProperty ;
     rdfs:label "customTags" ;
     rdfs:comment "map(string -> boolean)" ;
     rdfs:range sbco:KeyBoolMapEntry ;
+    owl:equivalentProperty rec:customTags ;
+    skos:exactMatch rec:customTags ;
     skos:inScheme sbco:schema .
 
 sbco:identifiers a owl:ObjectProperty ;
     rdfs:label "identifiers" ;
     rdfs:comment "map(string -> string)" ;
     rdfs:range sbco:KeyStringMapEntry ;
+    owl:equivalentProperty rec:identifiers ;
+    skos:exactMatch rec:identifiers ;
     skos:inScheme sbco:schema .
 
 sbco:id a owl:DatatypeProperty ;
@@ -2642,6 +2781,8 @@ sbco:name a owl:DatatypeProperty ;
     rdfs:label "name" ;
     rdfs:comment "Machine or Human-readable name" ;
     rdfs:range xsd:string ;
+    owl:equivalentProperty rec:name ;
+    skos:exactMatch rec:name ;
     skos:inScheme sbco:schema .
 
 sbco:SubstanceEnum a owl:Class ;
@@ -2788,5 +2929,4 @@ sbco:QuantityEnum a owl:Class ;
         <https://www.sbco.or.jp/ont/QuantityEnum#Wet_Bulb_Temperature>,
         <https://www.sbco.or.jp/ont/QuantityEnum#Wind_Direction> ;
     sbco:description_ja "ポイントで測定・監視可能な物理量" .
-
 

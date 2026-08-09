@@ -404,6 +404,8 @@ slots:
     inlined_as_list: true
     required: false
     slot_uri: rec:identifiers
+    exact_mappings:
+      - rec:identifiers
 
   key:
     description: "Key of the map entry"
@@ -433,6 +435,8 @@ slots:
     inlined: true
     inlined_as_list: true
     slot_uri: rec:customTags
+    exact_mappings:
+      - rec:customTags
 
   customProperties:
     description: map(string -> map(string -> string))
@@ -441,12 +445,16 @@ slots:
     inlined: true
     inlined_as_list: true
     slot_uri: rec:customProperties
+    exact_mappings:
+      - rec:customProperties
 
   name:
     description: Machine or Human-readable name
     range: string
     required: true
     slot_uri: rec:name
+    exact_mappings:
+      - rec:name
     
 #  名称が被るため    
 #  site:
@@ -579,36 +587,48 @@ slots:
     range: GeometryInfo
     multivalued: false
     slot_uri: rec:geometry
+    exact_mappings:
+      - rec:geometry
 
   georeference:
     description: A georeference creates a relationship between the local coordinate system used within a building (e.g., measured in meters) and a geographic coordinate system (e.g., lat, long, alt), such that locally placed Spaces can be resolved and rendered in that geographic coordinate system (e.g., for mapping purposes).
     range: GeoreferenceInfo
     multivalued: false
     slot_uri: rec:georeference
+    exact_mappings:
+      - rec:georeference
 
   hasPart:
     description: The subject is composed in part of the entity given by the object.
     range: Space
     multivalued: true
     slot_uri: rec:hasPart
+    exact_mappings:
+      - rec:hasPart
 
   isPartOf:
     description: The subject is a part of the entity given by the object.
     range: Space
     multivalued: false
     slot_uri: rec:isPartOf
+    exact_mappings:
+      - rec:isPartOf
 
   isLocationOf:
     description: Subject is the physical location encapsulating the object.
     range: EquipmentExt
     multivalued: true
     slot_uri: rec:isLocationOf
+    exact_mappings:
+      - rec:isLocationOf
 
   # Asset specific slots
   assetTag:
     description: "Asset identification tag"
     range: string
     slot_uri: rec:assetTag
+    exact_mappings:
+      - rec:assetTag
     multivalued: true
     
   commissionedBy:
@@ -616,27 +636,37 @@ slots:
     range: Agent
     multivalued: true
     slot_uri: rec:commissionedBy
+    exact_mappings:
+      - rec:commissionedBy
     
   commissioningDate:
     description: "Date when the asset was commissioned"
     range: date
     slot_uri: rec:commissioningDate
+    exact_mappings:
+      - rec:commissioningDate
     
   documentation:
     description: "Documentation related to this asset"
     range: Document
     multivalued: true
     slot_uri: rec:documentation
+    exact_mappings:
+      - rec:documentation
     
   initialCost:
     description: "Initial cost of the asset"
     range: string  # Using string for rdfs:Literal
     slot_uri: rec:initialCost
+    exact_mappings:
+      - rec:initialCost
     
   installationDate:
     description: "Date when the asset was installed"
     range: date
     slot_uri: rec:installationDate
+    exact_mappings:
+      - rec:installationDate
     #exact_mappings:
     #  - xsd:date  # XSD date型との正確なマッピングを明示
       
@@ -645,6 +675,8 @@ slots:
     range: Agent
     multivalued: true
     slot_uri: rec:installedBy
+    exact_mappings:
+      - rec:installedBy
     
   IPAddress:  
     description: "IP address of the asset"
@@ -652,12 +684,16 @@ slots:
     pattern: "^((25[0-5]|2[0-4]\\d|1?\\d?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)$"
     multivalued: true
     slot_uri: rec:IPAddress
+    exact_mappings:
+      - rec:IPAddress
     
   locatedIn:
     description: "Space where this asset is located"
     range: Space
     multivalued: true
     slot_uri: rec:locatedIn
+    exact_mappings:
+      - rec:locatedIn
     
   MACAddress:  
     description: "MAC address of the asset"
@@ -665,44 +701,60 @@ slots:
     pattern: "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
     multivalued: true
     slot_uri: rec:MACAddress
+    exact_mappings:
+      - rec:MACAddress
     
   maintenanceInterval:
     description: "Maintenance interval duration"
     range: DurationString
     multivalued: true
     slot_uri: rec:maintenanceInterval
+    exact_mappings:
+      - rec:maintenanceInterval
 
   modelNumber:
     description: "Model number of the asset"
     range: string
     slot_uri: rec:modelNumber
+    exact_mappings:
+      - rec:modelNumber
 
   manufacturedBy:
     description: "Agent or resource that manufactured this asset"
     range: Agent
     multivalued: true
     slot_uri: rec:manufacturedBy
+    exact_mappings:
+      - rec:manufacturedBy
     
   mountedOn:
     description: "Building element on which this asset is mounted"
     range: BuildingElement
     slot_uri: rec:mountedOn
+    exact_mappings:
+      - rec:mountedOn
     
   servicedBy:
     description: "Agent or resource that services this asset"
     range: Agent
     multivalued: true
     slot_uri: rec:servicedBy
+    exact_mappings:
+      - rec:servicedBy
     
   serialNumber:
     description: "Serial number of the asset"
     range: string
     slot_uri: rec:serialNumber
+    exact_mappings:
+      - rec:serialNumber
 
   turnoverDate:
     description: "Date when the asset was turned over"
     range: date
     slot_uri: rec:turnoverDate
+    exact_mappings:
+      - rec:turnoverDate
     #exact_mappings:
     #  - xsd:date
     
@@ -710,6 +762,8 @@ slots:
     description: "Weight of the asset"
     range: decimal
     slot_uri: rec:weight
+    exact_mappings:
+      - rec:weight
     #exact_mappings:
     #  - xsd:decimal
       
@@ -719,12 +773,16 @@ slots:
     range: Organization
     multivalued: true
     slot_uri: rec:memberOf
+    exact_mappings:
+      - rec:memberOf
     
   owns:
     description: " Indicates ownership of some thing, e.g., a building, an asset, an organization, etc."
     range: Resource
     multivalued: true
     slot_uri: rec:owns
+    exact_mappings:
+      - rec:owns
 
   # Architecture specific slots
   address:
@@ -732,52 +790,74 @@ slots:
     range: PostalAddress
     multivalued: true
     slot_uri: rec:address
+    exact_mappings:
+      - rec:address
     
   adjacentElement:
     description: "Building element adjacent to this architecture"
     range: BuildingElement
     multivalued: true
     slot_uri: rec:adjacentElement
+    exact_mappings:
+      - rec:adjacentElement
     
   architectedBy:
     description: "Agent or resource that architected this structure"
     range: Agent
     multivalued: true
     slot_uri: rec:architectedBy
+    exact_mappings:
+      - rec:architectedBy
     
   area:
     description: "Area of the architecture"
     range: ArchitectureArea
     slot_uri: rec:area
+    exact_mappings:
+      - rec:area
     
   capacity:
     description: "Capacity of the architecture"
     range: ArchitectureCapacity
     slot_uri: rec:capacity
+    exact_mappings:
+      - rec:capacity
     
   constructedBy:
     description: "Agent or resource that constructed this architecture"
     range: Agent
     multivalued: true
     slot_uri: rec:constructedBy
+    exact_mappings:
+      - rec:constructedBy
     
   containsElement:
     description: "Building element contained within this architecture"
     range: BuildingElement
     multivalued: true
     slot_uri: rec:containsElement
+    exact_mappings:
+      - rec:containsElement
     
   hasPoint:
     description: "Point associated with this architecture"
-    range: Point
+    # No base `range:` here on purpose: every usage site overrides this slot with
+    # `slot_usage.hasPoint.any_of: [Point, PointExt]`. LinkML's OWL generator combines a
+    # declared base range with an any_of override via owl:intersectionOf, which collapses
+    # right back to the (narrower) base range and defeats the union — see
+    # scripts/postprocess_owl.py's module docstring for the SHACL-validation-bypass this caused.
     multivalued: true
     slot_uri: rec:hasPoint
+    exact_mappings:
+      - rec:hasPoint
     
   intersectingElement:
     description: "Building element intersecting with this architecture"
     range: BuildingElement
     multivalued: true
     slot_uri: rec:intersectingElement
+    exact_mappings:
+      - rec:intersectingElement
     
 
   operatedBy:
@@ -785,17 +865,23 @@ slots:
     range: Agent
     multivalued: true
     slot_uri: rec:operatedBy
+    exact_mappings:
+      - rec:operatedBy
     
   ownedBy:
     description: "Agent or resource that owns this architecture"
     range: Agent
     multivalued: true
     slot_uri: rec:ownedBy
+    exact_mappings:
+      - rec:ownedBy
 
   levelNumber:
     description: "Floor or level number within a building"
     range: integer
     slot_uri: rec:levelNumber
+    exact_mappings:
+      - rec:levelNumber
     annotations:
       - tag: description_ja
         value: "建物内のフロアまたはレベル番号"
@@ -805,6 +891,8 @@ slots:
     range: Resource
     multivalued: true
     slot_uri: brick:feeds
+    exact_mappings:
+      - brick:feeds
     annotations:
       - tag: substance
         value: SubstanceEnum
@@ -814,6 +902,8 @@ slots:
     range: Resource
     multivalued: true
     slot_uri: rec:isFedBy
+    exact_mappings:
+      - rec:isFedBy
     annotations:
       - tag: substance
         value: SubstanceEnum 
@@ -822,11 +912,15 @@ slots:
     description: "The number of operational stages supported by this equipment"
     range: integer
     slot_uri: brick:operationalStageCount
+    exact_mappings:
+      - brick:operationalStageCount
 
   aggregate:
     description: "Aggregation function or method for point data processing"
     range: AggregateEnum
     slot_uri: brick:aggregate
+    exact_mappings:
+      - brick:aggregate
     annotations:
       - tag: description_ja
         value: "ポイントデータ処理のための集約関数または方法"
@@ -837,6 +931,8 @@ slots:
     description: "Physical quantity measured by this point"
     range: QuantityEnum
     slot_uri: brick:hasQuantity
+    exact_mappings:
+      - brick:hasQuantity
     annotations:
       - tag: description_ja
         value: "このポイントで測定される物理量"
@@ -845,14 +941,21 @@ slots:
     description: "Substance associated with this point"
     range: SubstanceEnum
     slot_uri: brick:hasSubstance
+    exact_mappings:
+      - brick:hasSubstance
     annotations:
       - tag: description_ja
         value: "このポイントに関連する物質"
 
   isPointOf:
     description: "Equipment that this point belongs to"
-    range: Equipment
+    # No base `range:` here on purpose: PointExt overrides this slot with
+    # `slot_usage.isPointOf.any_of: [Equipment, EquipmentExt]`. See the matching note on
+    # `hasPoint` above — a declared base range here would collapse that union back down via
+    # owl:intersectionOf in the generated OWL.
     slot_uri: brick:isPointOf
+    exact_mappings:
+      - brick:isPointOf
     annotations:
       - tag: description_ja
         value: "このポイントが属する設備"
@@ -863,6 +966,8 @@ slots:
     description: "A textual description of the resource"
     range: string
     slot_uri: rec:description
+    exact_mappings:
+      - rec:description
     annotations:
       - tag: description_ja
         value: "リソースのテキスト記述"
@@ -871,6 +976,8 @@ slots:
     description: "MIME type or format identifier for the information"
     range: string
     slot_uri: rec:format
+    exact_mappings:
+      - rec:format
     annotations:
       - tag: description_ja
         value: "情報のMIMEタイプまたはフォーマット識別子"
@@ -879,6 +986,8 @@ slots:
     description: "URL or URI pointing to the information resource"
     range: uri
     slot_uri: rec:url
+    exact_mappings:
+      - rec:url
     annotations:
       - tag: description_ja
         value: "情報リソースを指すURLまたはURI"
@@ -887,6 +996,8 @@ slots:
     description: "Version identifier for the information"
     range: string
     slot_uri: rec:version
+    exact_mappings:
+      - rec:version
     annotations:
       - tag: description_ja
         value: "情報のバージョン識別子"
@@ -896,6 +1007,8 @@ slots:
     range: string
     pattern: "^[a-z]{2}(-[A-Z]{2})?$"
     slot_uri: rec:language
+    exact_mappings:
+      - rec:language
     annotations:
       - tag: description_ja
         value: "情報コンテンツの言語コード (ISO 639-1)"
@@ -904,6 +1017,8 @@ slots:
     description: "Size of the information resource in bytes"
     range: integer
     slot_uri: rec:size
+    exact_mappings:
+      - rec:size
     annotations:
       - tag: description_ja
         value: "情報リソースのサイズ（バイト）"
@@ -912,6 +1027,8 @@ slots:
     description: "Checksum or hash of the information content"
     range: string
     slot_uri: rec:checksum
+    exact_mappings:
+      - rec:checksum
     annotations:
       - tag: description_ja
         value: "情報コンテンツのチェックサムまたはハッシュ"
@@ -921,6 +1038,8 @@ slots:
     description: "Geographic coordinates defining the geofence boundary"
     range: string
     slot_uri: rec:coordinates
+    exact_mappings:
+      - rec:coordinates
     annotations:
       - tag: description_ja
         value: "ジオフェンス境界を定義する地理座標"
@@ -929,6 +1048,8 @@ slots:
     description: "Radius in meters for circular geofences"
     range: float
     slot_uri: rec:radius
+    exact_mappings:
+      - rec:radius
     annotations:
       - tag: description_ja
         value: "円形ジオフェンスの半径（メートル）"
@@ -937,6 +1058,8 @@ slots:
     description: "Altitude above sea level in meters"
     range: float
     slot_uri: rec:altitude
+    exact_mappings:
+      - rec:altitude
     annotations:
       - tag: description_ja
         value: "海抜高度（メートル）"

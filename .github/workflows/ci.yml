@@ -40,6 +40,11 @@ jobs:
       - name: Verify generated JSON Schema and docs are committed
         run: git diff --exit-code -- output/building_model.schema.json docs
 
+      - name: Verify generated OWL/SHACL Turtle are committed
+        # Turtle serialization is not blank-node-order-stable across runs, so this compares
+        # RDF graph isomorphism instead of raw text (see scripts/check_ttl_drift.py).
+        run: .venv/bin/python scripts/check_ttl_drift.py output/building_model.owl.ttl output/building_model.shacl.ttl
+
       - name: Upload GitHub Pages artifact
         if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v5
@@ -79,3 +84,22 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/smartbuilding-co-creation-organization/smartbuilding_documents/dispatches \
             -d '{"event_type":"datamodels-docs-updated"}'
+
+  notify-builder-sync:
+    if: github.event_name == 'push'
+    needs: deploy-pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify smartbuilding_datamodel_builder to sync vendored schema
+        env:
+          BUILDER_SYNC_TOKEN: ${{ secrets.BUILDER_SYNC_TOKEN }}
+        run: |
+          if [ -z "${BUILDER_SYNC_TOKEN}" ]; then
+            echo "::warning::BUILDER_SYNC_TOKEN is not set — skipping smartbuilding_datamodel_builder sync notification."
+            exit 0
+          fi
+          curl -sS --fail -X POST \
+            -H "Authorization: Bearer ${BUILDER_SYNC_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/smartbuilding-co-creation-organization/smartbuilding_datamodel_builder/dispatches \
+            -d '{"event_type":"datamodels-schema-updated"}'
