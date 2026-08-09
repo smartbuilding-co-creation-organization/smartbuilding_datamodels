@@ -22,6 +22,12 @@ class ConversionConfig:
     inject_is_part_of: bool
     instance_prefix: str
     instance_base: str
+    # When set (e.g. "sbco"), every class/slot URI is emitted under this prefix's namespace
+    # (prefix + bare class/slot name) instead of the schema's declared class_uri/slot_uri — i.e. an
+    # sbco:-unified alternative to the canonical rec:/brick: output, for consumers who would rather
+    # not deal with rec:/brick: at all (see smartbuilding_datamodels issue #32 for the tradeoff this
+    # is meant to sidestep). None (default) keeps the schema's normal per-class/slot vocabulary.
+    unify_prefix: str | None = None
 
 
 def load_yaml(path: Path) -> dict[str, Any]:
@@ -56,10 +62,19 @@ def expand_uri(prefix_map: dict[str, str], value: str) -> URIRef:
     raise ValueError(f"Expected CURIE or absolute URI, got '{value}'")
 
 
-def slot_predicate(schema_view: SchemaView, prefix_map: dict[str, str], slot_name: str) -> URIRef:
+def slot_predicate(
+    schema_view: SchemaView,
+    prefix_map: dict[str, str],
+    slot_name: str,
+    unify_prefix: str | None = None,
+) -> URIRef:
     slot = schema_view.get_slot(slot_name)
     if slot is None:
         raise KeyError(f"Slot '{slot_name}' missing from schema")
+    if unify_prefix:
+        if unify_prefix not in prefix_map:
+            raise KeyError(f"Unify prefix '{unify_prefix}' is not defined in schema prefixes")
+        return URIRef(prefix_map[unify_prefix] + slot_name)
     if slot.slot_uri:
         return expand_uri(prefix_map, str(slot.slot_uri))
     default_prefix = schema_view.schema.default_prefix
@@ -97,9 +112,20 @@ def is_curie_or_uri(value: str) -> bool:
     return value.startswith("http://") or value.startswith("https://") or ":" in value
 
 
-def class_uri(schema_view: SchemaView, prefix_map: dict[str, str], class_name: str) -> URIRef:
+def class_uri(
+    schema_view: SchemaView,
+    prefix_map: dict[str, str],
+    class_name: str,
+    unify_prefix: str | None = None,
+) -> URIRef:
     class_def = schema_view.get_class(class_name)
-    if class_def is None or class_def.class_uri is None:
+    if class_def is None:
+        raise KeyError(f"Class '{class_name}' missing from schema")
+    if unify_prefix:
+        if unify_prefix not in prefix_map:
+            raise KeyError(f"Unify prefix '{unify_prefix}' is not defined in schema prefixes")
+        return URIRef(prefix_map[unify_prefix] + class_name)
+    if class_def.class_uri is None:
         raise KeyError(f"Class '{class_name}' missing class_uri in schema")
     return expand_uri(prefix_map, str(class_def.class_uri))
 
@@ -194,7 +220,7 @@ def convert_node(
     subject = curie_to_uri(prefix_map, normalized_id)
 
     class_name = resolve_class_name(node, depth, config, class_override=class_override)
-    graph.add((subject, RDF.type, class_uri(schema_view, prefix_map, class_name)))
+    graph.add((subject, RDF.type, class_uri(schema_view, prefix_map, class_name, config.unify_prefix)))
 
     if schema_view.get_slot("id") is not None:
         add_slot_literal(
@@ -202,7 +228,7 @@ def convert_node(
             schema_view,
             prefix_map,
             subject,
-            slot_predicate(schema_view, prefix_map, "id"),
+            slot_predicate(schema_view, prefix_map, "id", config.unify_prefix),
             "id",
             node_id,
         )
@@ -210,13 +236,13 @@ def convert_node(
     if parent is not None and parent_predicate is not None:
         graph.add((parent, parent_predicate, subject))
         if config.inject_is_part_of and schema_view.get_slot("isPartOf"):
-            graph.add((subject, slot_predicate(schema_view, prefix_map, "isPartOf"), parent))
+            graph.add((subject, slot_predicate(schema_view, prefix_map, "isPartOf", config.unify_prefix), parent))
 
     for key, value in node.items():
         if key in {"id", "type", "@type", "class"}:
             continue
         if key == "hasPart":
-            predicate = slot_predicate(schema_view, prefix_map, key)
+            predicate = slot_predicate(schema_view, prefix_map, key, config.unify_prefix)
             for child in iter_child_nodes(value):
                 convert_node(
                     graph,
@@ -230,13 +256,13 @@ def convert_node(
                 )
             continue
         if key == "isLocationOf":
-            predicate = slot_predicate(schema_view, prefix_map, key)
+            predicate = slot_predicate(schema_view, prefix_map, key, config.unify_prefix)
             items = value if isinstance(value, list) else [value]
             for item in items:
                 graph.add((subject, predicate, expand_uri(prefix_map, str(item))))
             continue
 
-        predicate = slot_predicate(schema_view, prefix_map, key)
+        predicate = slot_predicate(schema_view, prefix_map, key, config.unify_prefix)
         if isinstance(value, dict):
             if slot_range_is_class(schema_view, key):
                 class_name = slot_range(schema_view, key)
@@ -355,6 +381,20 @@ def parse_args() -> argparse.Namespace:
         help="Base URI for the instance prefix.",
     )
     parser.add_argument(
+        "--unify-prefix",
+        default=None,
+        help=(
+            "Emit every class/slot URI under this schema prefix's namespace (e.g. 'sbco') instead of "
+            "the schema's declared class_uri/slot_uri (which resolve to rec:/brick: for the building "
+            "hierarchy). Off by default, which keeps the canonical rec:/brick:+sbco: output. Caveat: "
+            "the generated SHACL shapes still use rec:/brick: property paths (e.g. sh:path rec:name), "
+            "so validating --unify-prefix output with --shacl alone reports false minCount violations "
+            "for those paths — pass --ontology too so pyshacl can run with owl:equivalentProperty "
+            "inference (this script always validates with inference='rdfs', which does not do this; "
+            "see validate_rdf.py's inference='owlrl' path for a working example)."
+        ),
+    )
+    parser.add_argument(
         "--shacl",
         type=Path,
         help="Optional SHACL shapes graph for validation.",
@@ -381,6 +421,7 @@ def main() -> None:
         inject_is_part_of=args.inject_is_part_of,
         instance_prefix=args.instance_prefix,
         instance_base=args.instance_base,
+        unify_prefix=args.unify_prefix,
     )
     if not config.class_chain:
         raise ValueError("class-chain must include at least one class name")
@@ -391,11 +432,16 @@ def main() -> None:
         ont_graph = None
         if args.ontology:
             ont_graph = Graph().parse(args.ontology, format="turtle")
+        # owl:equivalentProperty/equivalentClass (from --ontology) only take effect under OWL-RL
+        # inference — plain "rdfs" inference ignores them, so e.g. --unify-prefix sbco output would
+        # spuriously fail shapes whose sh:path is a rec:/brick: property (like name) even though the
+        # ontology says sbco:name and rec:name are equivalent. Only step up to owlrl when an ontology
+        # is actually supplied, since it's more expensive than plain rdfs.
         conforms, report_graph, report_text = validate(
             data_graph=graph,
             shacl_graph=shacl_graph,
             ont_graph=ont_graph,
-            inference="rdfs",
+            inference="owlrl" if ont_graph is not None else "rdfs",
             debug=False,
         )
         if args.validation_report:
