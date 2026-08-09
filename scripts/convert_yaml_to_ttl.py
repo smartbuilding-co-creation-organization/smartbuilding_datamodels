@@ -389,9 +389,9 @@ def parse_args() -> argparse.Namespace:
             "hierarchy). Off by default, which keeps the canonical rec:/brick:+sbco: output. Caveat: "
             "the generated SHACL shapes still use rec:/brick: property paths (e.g. sh:path rec:name), "
             "so validating --unify-prefix output with --shacl alone reports false minCount violations "
-            "for those paths — pass --ontology too so pyshacl can run with owl:equivalentProperty "
-            "inference (this script always validates with inference='rdfs', which does not do this; "
-            "see validate_rdf.py's inference='owlrl' path for a working example)."
+            "for those paths — pass --ontology too so this script's --shacl validation switches from "
+            "inference='rdfs' to inference='owlrl' (which does process owl:equivalentProperty; see "
+            "validate_rdf.py's inference='owlrl' path for a second working example)."
         ),
     )
     parser.add_argument(

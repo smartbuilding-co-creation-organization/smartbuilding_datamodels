@@ -27,6 +27,7 @@ def committed_graph(path: Path) -> Graph:
         ["git", "show", f"HEAD:{path.as_posix()}"],
         capture_output=True,
         text=True,
+        encoding="utf-8",
         check=True,
     )
     graph = Graph()

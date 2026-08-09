@@ -841,11 +841,18 @@ slots:
     
   hasPoint:
     description: "Point associated with this architecture"
-    # No base `range:` here on purpose: every usage site overrides this slot with
-    # `slot_usage.hasPoint.any_of: [Point, PointExt]`. LinkML's OWL generator combines a
-    # declared base range with an any_of override via owl:intersectionOf, which collapses
-    # right back to the (narrower) base range and defeats the union — see
-    # scripts/postprocess_owl.py's module docstring for the SHACL-validation-bypass this caused.
+    # `range: Resource` here is deliberately broad, not `Point`/`PointExt` (see the any_of override
+    # at every usage site: `slot_usage.hasPoint.any_of: [Point, PointExt]`). LinkML's OWL generator
+    # combines a declared base range with an any_of override via owl:intersectionOf, so a narrow base
+    # range (e.g. `Point`) collapses the union right back down to itself — and once this property also
+    # gains an owl:equivalentProperty to an external vocabulary term, RDFS range entailment then
+    # mistypes *any* value (even a wrongly-used EquipmentExt) as Point, silently defeating the SHACL
+    # check that exists to catch exactly that mistake (see scripts/postprocess_owl.py's module
+    # docstring). `Resource` is deliberately unrelated to Point/PointExt/EquipmentExt — broad enough
+    # that intersecting it with the any_of union doesn't narrow anything, but not itself a class any
+    # SHACL shape here checks for, so the same entailment that keeps this an owl:ObjectProperty cannot
+    # be exploited to launder bad data past validation the way the narrow range did.
+    range: Resource
     multivalued: true
     slot_uri: rec:hasPoint
     exact_mappings:
@@ -949,10 +956,13 @@ slots:
 
   isPointOf:
     description: "Equipment that this point belongs to"
-    # No base `range:` here on purpose: PointExt overrides this slot with
-    # `slot_usage.isPointOf.any_of: [Equipment, EquipmentExt]`. See the matching note on
-    # `hasPoint` above — a declared base range here would collapse that union back down via
-    # owl:intersectionOf in the generated OWL.
+    # `range: Resource` is deliberately broad, not `Equipment`/`EquipmentExt` — see the matching note
+    # on `hasPoint` above. A narrow base range here (e.g. `Equipment`) would collapse PointExt's
+    # `slot_usage.isPointOf.any_of: [Equipment, EquipmentExt]` union back down via owl:intersectionOf
+    # and reopen the same validation-bypass this fixes. (The bare `Point` class, which has no any_of
+    # override for this slot, ends up with the broader-but-safe `Resource` restriction directly —
+    # less precise than `Equipment` would have been, but not exploitable the way it was.)
+    range: Resource
     slot_uri: brick:isPointOf
     exact_mappings:
       - brick:isPointOf
