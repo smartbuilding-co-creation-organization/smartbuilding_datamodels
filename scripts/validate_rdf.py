@@ -173,6 +173,16 @@ def expand_supertypes(
     return expanded
 
 
+def build_conversion_config(case: ValidationCase) -> ConversionConfig:
+    return ConversionConfig(
+        root_class=case.root_class,
+        class_chain=case.class_chain,
+        inject_is_part_of=case.inject_is_part_of,
+        instance_prefix="ex",
+        instance_base="https://example.com/",
+    )
+
+
 def run_case(
     case: ValidationCase,
     schema_path: Path,
@@ -188,11 +198,7 @@ def run_case(
             return [f"Case {case.name} output_ttl not found: {case.output_ttl}"]
         graph = Graph().parse(str(case.output_ttl), format="turtle")
     else:
-        config = ConversionConfig(
-            root_class=case.root_class,
-            class_chain=case.class_chain,
-            inject_is_part_of=case.inject_is_part_of,
-        )
+        config = build_conversion_config(case)
         graph = build_graph(schema_path, case.input_path, config)
         if case.output_ttl:
             case.output_ttl.parent.mkdir(parents=True, exist_ok=True)
