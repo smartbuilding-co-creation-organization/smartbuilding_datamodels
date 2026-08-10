@@ -1,0 +1,67 @@
+id: sbco:site_demo_006
+name: Demo Site Unit Categories
+hasPart:
+  - id: sbco:building_demo_006
+    name: Demo Building
+    hasPart:
+      - id: sbco:level_demo_6f
+        name: 6F
+        hasPart:
+          - id: sbco:room_demo_601
+            name: Demo Room
+            hasPoint:
+              - id: sbco:point_energy_kwh_006
+                type: PointExt
+                name: Energy (kWh)
+                pointType: EnergySensor
+                unit: sbco:UnitEnum#kilowatt_hour
+              - id: sbco:point_energy_mj_006
+                type: PointExt
+                name: Energy (MJ)
+                pointType: EnergySensor
+                unit: sbco:UnitEnum#megajoule
+              - id: sbco:point_energy_rate_006
+                type: PointExt
+                name: Energy Rate (MJ/h)
+                pointType: EnergySensor
+                unit: sbco:UnitEnum#megajoule_per_hour
+              - id: sbco:point_power_kw_006
+                type: PointExt
+                name: Power (kW)
+                pointType: PowerSensor
+                unit: sbco:UnitEnum#kilowatt
+              - id: sbco:point_current_a_006
+                type: PointExt
+                name: Current (A)
+                pointType: CurrentSensor
+                unit: sbco:UnitEnum#ampere
+              - id: sbco:point_volume_m3_006
+                type: PointExt
+                name: Volume (m3)
+                pointType: FlowSensor
+                unit: sbco:UnitEnum#cubic_meter
+              - id: sbco:point_flow_m3h_006
+                type: PointExt
+                name: Volumetric Flow (m3/h)
+                pointType: FlowSensor
+                unit: sbco:UnitEnum#cubic_meter_per_hour
+              - id: sbco:point_angle_deg_006
+                type: PointExt
+                name: Damper Angle
+                pointType: PositionSensor
+                unit: sbco:UnitEnum#degree
+              - id: sbco:point_irradiance_006
+                type: PointExt
+                name: Solar Irradiance
+                pointType: IrradianceSensor
+                unit: sbco:UnitEnum#watt_per_square_meter
+              - id: sbco:point_speed_ms_006
+                type: PointExt
+                name: Air Speed
+                pointType: SpeedSensor
+                unit: sbco:UnitEnum#meter_per_second
+              - id: sbco:point_precip_006
+                type: PointExt
+                name: Precipitation Rate
+                pointType: PrecipitationSensor
+                unit: sbco:UnitEnum#millimeter_per_hour

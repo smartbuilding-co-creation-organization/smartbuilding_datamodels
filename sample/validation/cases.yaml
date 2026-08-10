@@ -83,3 +83,11 @@ cases:
     inject_is_part_of: true
     expected:
       shacl_conforms: false
+  - name: valid_unit_categories
+    input: sample/validation/valid_unit_categories.yaml
+    output_ttl: reports/validation/valid_unit_categories.ttl
+    root_class: Site
+    class_chain: [Site, Building, Level, Room]
+    inject_is_part_of: true
+    expected:
+      shacl_conforms: true

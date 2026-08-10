@@ -7,6 +7,15 @@ Releases for published release notes.
 
 ## [Unreleased]
 
+### Added
+
+- Expanded `UnitEnum` (`sbco:unit`) with canonical keys for energy, power,
+  current, volume, volumetric flow, angle, irradiance, speed, and
+  precipitation, alongside the existing temperature/percent/ppm values.
+  Each permissible value documents its display symbol (`text`) and the raw
+  legacy/Japanese symbol variants that normalize to it (`legacy_symbols`,
+  e.g. `℃`/`KWH`/`％RH`) — see README "sbco:unit 語彙と正規化" (#35).
+
 ## [0.1.0] - 2026-08-04
 
 ### Added

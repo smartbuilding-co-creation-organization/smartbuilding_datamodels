@@ -147,6 +147,36 @@ ex:point_AHU-01-SF-CMD a sbco:PointExt ;
   brick:hasQuantity "Active_Power" .
 ```
 
+### sbco:unit 語彙と正規化 (#35)
+
+`sbco:unit` は `UnitEnum`（`schema/building_model_owl.yaml` / `schema/building_model_shacl.yaml`）で定義される
+**正規キー**のみを許容します（例: `celsius`, `percent`, `kilowatt_hour`）。表示用の記号は各許容値の `text`
+アノテーションに、実データ（点名リストCSV等）で見られる生の表記ゆれは `legacy_symbols` アノテーションに
+記載されています。
+
+| 正規キー | 記号 | 想定される生の表記（`legacy_symbols`） |
+|---|---|---|
+| `celsius` | °C | `℃`, `°C`, `C` |
+| `percent` | % | `%`, `％`, `％RH`, `%RH` |
+| `ppm` | ppm | — |
+| `kilowatt_hour` | kWh | `KWH`, `kWh`, `kwh` |
+| `megajoule` | MJ | `MJ` |
+| `megajoule_per_hour` | MJ/h | `MJ/h`, `MJ/H` |
+| `kilowatt` | kW | `Kw`, `KW`, `kw` |
+| `ampere` | A | `A` |
+| `cubic_meter` | m³ | `m3`, `m^3` |
+| `cubic_meter_per_hour` | m³/h | `m3/h`, `m^3/h` |
+| `degree` | ° | `°`, `deg` |
+| `watt_per_square_meter` | W/m² | `W/m2`, `W/m^2` |
+| `meter_per_second` | m/s | `m/s` |
+| `millimeter_per_hour` | mm/h | `mm/h` |
+
+**重要:** この正規化（生の表記 → 正規キー）は SHACL が暗黙に行うものではありません。`sh:in` は正規キーの
+リストのみを許容し、上表にない/正規化されていない値はそのまま検証エラーになります —
+未知の単位を黙って書き換えたり通したりしないための意図的な設計です。CSV等の入力データを本スキーマの
+`sbco:unit` に変換するツール（例: `smartbuilding_datamodel_builder`）側で、上表に基づく正規化を
+明示的なステップとして実施してください。
+
 ## 参考
 
 - LinkML: https://linkml.io
