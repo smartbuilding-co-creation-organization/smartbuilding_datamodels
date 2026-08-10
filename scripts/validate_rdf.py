@@ -12,6 +12,7 @@ from linkml_runtime.utils.schemaview import SchemaView
 from owlrl import DeductiveClosure, OWLRL_Semantics
 from pyshacl import validate
 from rdflib import Graph, OWL, RDF, RDFS, URIRef
+from rdflib.namespace import SH
 
 from convert_yaml_to_ttl import ConversionConfig, build_graph, expand_uri, normalize_prefix_map
 
@@ -28,6 +29,7 @@ class InferenceExpectation:
 class CaseExpectation:
     shacl_conforms: bool
     inferred_types: list[InferenceExpectation]
+    min_warnings: int = 0
 
 
 @dataclass(frozen=True)
@@ -73,6 +75,7 @@ def parse_cases(path: Path) -> list[ValidationCase]:
         expected = CaseExpectation(
             shacl_conforms=bool(expected_raw.get("shacl_conforms", True)),
             inferred_types=inferred,
+            min_warnings=int(expected_raw.get("min_warnings", 0)),
         )
         class_chain = item.get("class_chain", ["Site", "Building", "Level", "Room"])
         cases.append(
@@ -212,6 +215,9 @@ def run_case(
         ont_graph=ont_graph,
         inference="owlrl",
         debug=False,
+        # sh:Warning-severity results (see scripts/postprocess_shacl.py) are advisory by
+        # design -- without this, pyshacl folds them into `conforms` same as sh:Violation.
+        allow_warnings=True,
     )
 
     if conforms != case.expected.shacl_conforms:
@@ -227,6 +233,14 @@ def run_case(
             errors.append(
                 f"SHACL validation failed for {case.name}: {report_text.strip()}"
                 + (f" (report: {report_path})" if report_path else "")
+            )
+
+    if case.expected.min_warnings:
+        warning_count = len(set(report_graph.subjects(SH.resultSeverity, SH.Warning)))
+        if warning_count < case.expected.min_warnings:
+            errors.append(
+                f"Expected at least {case.expected.min_warnings} SHACL warning(s) for {case.name}, "
+                f"got {warning_count}: {report_text.strip()}"
             )
 
     schema_view = SchemaView(str(schema_path))

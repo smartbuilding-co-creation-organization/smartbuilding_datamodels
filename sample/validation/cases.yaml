@@ -25,14 +25,20 @@ cases:
     inject_is_part_of: true
     expected:
       shacl_conforms: false
-  - name: invalid_unit_enum
+  - name: unrecognized_unit_warns_but_conforms
+    # sbco:unit's vocabulary is still provisional (README "sbco:unit 語彙と正規化",
+    # #35/#36) -- scripts/postprocess_shacl.py downgrades its sh:in constraint to
+    # sh:Warning severity, so an out-of-vocabulary unit is now reported but does not
+    # fail conformance. Renamed from invalid_unit_enum, same fixture (still an
+    # out-of-vocabulary value): the vocabulary is provisional, not the fixture.
     input: sample/validation/invalid_unit_enum.yaml
     output_ttl: reports/validation/invalid_unit_enum.ttl
     root_class: Site
     class_chain: [Site, Building, Level, Room]
     inject_is_part_of: true
     expected:
-      shacl_conforms: false
+      shacl_conforms: true
+      min_warnings: 1
   - name: invalid_point_class
     input: sample/validation/invalid_point_class.yaml
     output_ttl: reports/validation/invalid_point_class.ttl
@@ -83,3 +89,11 @@ cases:
     inject_is_part_of: true
     expected:
       shacl_conforms: false
+  - name: valid_unit_categories
+    input: sample/validation/valid_unit_categories.yaml
+    output_ttl: reports/validation/valid_unit_categories.ttl
+    root_class: Site
+    class_chain: [Site, Building, Level, Room]
+    inject_is_part_of: true
+    expected:
+      shacl_conforms: true
