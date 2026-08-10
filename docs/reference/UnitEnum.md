@@ -20,7 +20,7 @@ URI: [sbco:UnitEnum](https://www.sbco.or.jp/ont/UnitEnum)
 | Value | Meaning | Description |
 | --- | --- | --- |
 | celsius | None | Degree Celsius (temperature) |
-| percent | None | Percent (dimensionless ratio, e |
+| percent | None | Percent (dimensionless ratio, for example relative humidity or valve/damper p... |
 | ppm | None | Parts per million (gas concentration) |
 | kilowatt_hour | None | Kilowatt hour (energy) |
 | megajoule | None | Megajoule (energy) |
@@ -31,7 +31,7 @@ URI: [sbco:UnitEnum](https://www.sbco.or.jp/ont/UnitEnum)
 | cubic_meter_per_hour | None | Cubic meter per hour (volumetric flow) |
 | degree | None | Degree (angle) |
 | watt_per_square_meter | None | Watt per square meter (irradiance) |
-| meter_per_second | None | Meter per second (speed, e |
+| meter_per_second | None | Meter per second (speed, for example wind or air velocity) |
 | millimeter_per_hour | None | Millimeter per hour (precipitation rate) |
 
 
@@ -96,7 +96,7 @@ permissible_values:
         value: ℃, °C, C
   percent:
     text: percent
-    description: Percent (dimensionless ratio, e.g. relative humidity, valve/damper
+    description: Percent (dimensionless ratio, for example relative humidity or valve/damper
       position)
     annotations:
       text:
@@ -204,7 +204,7 @@ permissible_values:
         value: W/m2, W/m^2
   meter_per_second:
     text: meter_per_second
-    description: Meter per second (speed, e.g. wind/air velocity)
+    description: Meter per second (speed, for example wind or air velocity)
     annotations:
       text:
         tag: text

@@ -50,7 +50,7 @@ enums:
         - tag: legacy_symbols
           value: "℃, °C, C"
       percent:
-        description: Percent (dimensionless ratio, e.g. relative humidity, valve/damper position)
+        description: Percent (dimensionless ratio, for example relative humidity or valve/damper position)
         annotations:
         - tag: text
           value: '%'
@@ -125,7 +125,7 @@ enums:
         - tag: legacy_symbols
           value: "W/m2, W/m^2"
       meter_per_second:
-        description: Meter per second (speed, e.g. wind/air velocity)
+        description: Meter per second (speed, for example wind or air velocity)
         annotations:
         - tag: text
           value: m/s
