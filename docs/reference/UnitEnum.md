@@ -9,7 +9,7 @@ search:
 
 
 
-_Allowed measurement units. Each permissible value is a canonical key; the `text` annotation carries its display symbol and `legacy_symbols` lists the raw point-list tokens (Japanese/legacy variants included, e.g. from CSV `unit` columns) that normalize to it (#35). This enum intentionally does not accept those raw tokens directly — mapping a raw token to one of these keys is a deliberate, documented normalization step upstream of this vocabulary (see README "sbco:unit 語彙と正規化"), not implicit SHACL coercion, so an unrecognized unit stays a visible validation failure instead of being silently rewritten._
+_Allowed measurement units. Each permissible value is a canonical key; the `text` annotation carries its display symbol and `legacy_symbols` lists the raw point-list tokens (Japanese/legacy variants included, e.g. from CSV `unit` columns) that normalize to it (#35). This enum intentionally does not accept those raw tokens directly — mapping a raw token to one of these keys is a deliberate, documented normalization step upstream of this vocabulary (see README "sbco:unit 語彙と正規化"), not implicit SHACL coercion, so an unrecognized unit stays a visible, reported mismatch instead of being silently rewritten. The vocabulary itself is still provisional pending SBCO/GUTP working-group agreement (#36), so scripts/postprocess_shacl.py downgrades sbco:unit's `sh:in` constraint to sh:Warning severity: an out-of-vocabulary unit is reported but does not block an otherwise-valid import._
 
 
 
@@ -73,14 +73,17 @@ URI: [sbco:UnitEnum](https://www.sbco.or.jp/ont/UnitEnum)
 <details markdown="1">
 ```yaml
 name: UnitEnum
-description: Allowed measurement units. Each permissible value is a canonical key;
+description: 'Allowed measurement units. Each permissible value is a canonical key;
   the `text` annotation carries its display symbol and `legacy_symbols` lists the
   raw point-list tokens (Japanese/legacy variants included, e.g. from CSV `unit` columns)
   that normalize to it (#35). This enum intentionally does not accept those raw tokens
   directly — mapping a raw token to one of these keys is a deliberate, documented
   normalization step upstream of this vocabulary (see README "sbco:unit 語彙と正規化"),
-  not implicit SHACL coercion, so an unrecognized unit stays a visible validation
-  failure instead of being silently rewritten.
+  not implicit SHACL coercion, so an unrecognized unit stays a visible, reported mismatch
+  instead of being silently rewritten. The vocabulary itself is still provisional
+  pending SBCO/GUTP working-group agreement (#36), so scripts/postprocess_shacl.py
+  downgrades sbco:unit''s `sh:in` constraint to sh:Warning severity: an out-of-vocabulary
+  unit is reported but does not block an otherwise-valid import.'
 from_schema: https://www.sbco.or.jp/ont/schema
 rank: 1000
 permissible_values:

@@ -15,6 +15,12 @@ Releases for published release notes.
   Each permissible value documents its display symbol (`text`) and the raw
   legacy/Japanese symbol variants that normalize to it (`legacy_symbols`,
   e.g. `℃`/`KWH`/`％RH`) — see README "sbco:unit 語彙と正規化" (#35).
+- Added `scripts/postprocess_shacl.py`, run as part of `make gen`: downgrades
+  `sbco:unit`'s `sh:in` constraint from the default blocking `sh:Violation`
+  to advisory `sh:Warning` severity, since the unit vocabulary is still
+  provisional pending SBCO/GUTP working-group agreement. An out-of-vocabulary
+  unit is now reported in the SHACL validation results but no longer fails
+  `conforms` / blocks an otherwise-valid import (#36).
 
 ## [0.1.0] - 2026-08-04
 

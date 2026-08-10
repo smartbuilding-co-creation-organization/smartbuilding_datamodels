@@ -40,7 +40,11 @@ enums:
       to it (#35). This enum intentionally does not accept those raw tokens directly — mapping
       a raw token to one of these keys is a deliberate, documented normalization step upstream
       of this vocabulary (see README "sbco:unit 語彙と正規化"), not implicit SHACL coercion, so
-      an unrecognized unit stays a visible validation failure instead of being silently rewritten.
+      an unrecognized unit stays a visible, reported mismatch instead of being silently
+      rewritten. The vocabulary itself is still provisional pending SBCO/GUTP working-group
+      agreement (#36), so scripts/postprocess_shacl.py downgrades sbco:unit's `sh:in`
+      constraint to sh:Warning severity: an out-of-vocabulary unit is reported but does not
+      block an otherwise-valid import.
     permissible_values:
       celsius:
         description: Degree Celsius (temperature)

@@ -443,6 +443,9 @@ def main() -> None:
             ont_graph=ont_graph,
             inference="owlrl" if ont_graph is not None else "rdfs",
             debug=False,
+            # sh:Warning-severity results (e.g. sbco:unit, see scripts/postprocess_shacl.py)
+            # are advisory by design -- without this, pyshacl folds them into `conforms`.
+            allow_warnings=True,
         )
         if args.validation_report:
             args.validation_report.parent.mkdir(parents=True, exist_ok=True)
