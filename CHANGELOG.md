@@ -7,8 +7,15 @@ Releases for published release notes.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-09-30
+
 ### Added
 
+- Added a `--unify-prefix sbco` option to `scripts/convert_yaml_to_ttl.py` that
+  emits `sbco:`-only RDF for consumers that do not run OWL-RL reasoning. The
+  default (canonical `rec:`/`brick:`) output is unchanged (#34).
+- Added `scripts/check_ttl_drift.py`, used by CI to detect generated-artifact
+  drift in `output/*.ttl` via graph isomorphism rather than a raw text diff (#34).
 - Expanded `UnitEnum` (`sbco:unit`) with canonical keys for energy, power,
   current, volume, volumetric flow, angle, irradiance, speed, and
   precipitation, alongside the existing temperature/percent/ppm values.
@@ -21,6 +28,17 @@ Releases for published release notes.
   provisional pending SBCO/GUTP working-group agreement. An out-of-vocabulary
   unit is now reported in the SHACL validation results but no longer fails
   `conforms` / blocks an otherwise-valid import (#36).
+
+### Changed
+
+- The generated OWL now contains real `owl:equivalentClass` /
+  `owl:equivalentProperty` axioms derived from `exact_mappings`, so a reasoner
+  can treat `sbco:` terms and their `rec:`/`brick:` counterparts as equivalent.
+  `hasPoint`/`isPointOf` now declare `range: Resource` and are emitted as
+  `owl:ObjectProperty` (#34).
+- Restructured the getting-started guide (`docs/guide/getting_started.md`) into
+  concept, implementation-example, and project parts, following the review
+  feedback in #37 (#38).
 
 ## [0.1.0] - 2026-08-04
 
@@ -39,5 +57,6 @@ Releases for published release notes.
   `GeometryInfo` and `GeoreferenceInfo`; their RDF class URIs are unchanged.
 - Migrated GitHub Pages deployment to the official GitHub Actions workflow.
 
-[Unreleased]: https://github.com/smartbuilding-co-creation-organization/smartbuilding_datamodels/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/smartbuilding-co-creation-organization/smartbuilding_datamodels/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/smartbuilding-co-creation-organization/smartbuilding_datamodels/releases/tag/v1.0.0
 [0.1.0]: https://github.com/smartbuilding-co-creation-organization/smartbuilding_datamodels/releases/tag/v0.1.0
